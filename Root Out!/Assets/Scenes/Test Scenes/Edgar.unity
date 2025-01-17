@@ -513,8 +513,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiming: {fileID: 1984409665}
   weaponType: 0
-  spreadAngle: 32.31
+  spreadAngle: 12.48
   horizontalSpread: 0
+  autoFire: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
   currentAmmo: 2000
   bulletReserve: 2000
@@ -523,7 +524,7 @@ MonoBehaviour:
   range: 1
   fireRate: 8
   reloadTime: 1
-  bulletForce: 20
+  bulletForce: 2
   lifeTimeBullets: 5
   bulletsPerBurst: 2
   burstRate: 0.1
@@ -786,7 +787,7 @@ Transform:
   m_GameObject: {fileID: 1984409664}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.07, y: 0.36, z: 0}
+  m_LocalPosition: {x: -3.07, y: 2.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
