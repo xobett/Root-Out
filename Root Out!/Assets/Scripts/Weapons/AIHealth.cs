@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class AIHealth : MonoBehaviour
 {
-    [SerializeField, Range(0, 100)] private int actualHealth;
+    [SerializeField, Range(0, 100)] private float actualHealth;
    
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         Debug.Log("El personaje " + name + " recibio daño");
         actualHealth -= damage;

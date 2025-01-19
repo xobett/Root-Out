@@ -1,4 +1,5 @@
 using UnityEngine;
+using Weapons;
 
 public class Rifle : WeaponsBase
 {

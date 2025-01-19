@@ -1,4 +1,5 @@
 using UnityEngine;
+using Weapons;
 
 public class Shotgun : WeaponsBase
 {
@@ -6,7 +7,7 @@ public class Shotgun : WeaponsBase
 
 
     // Sobrescribir el método para definir el número de balas a disparar
-    protected override int GetNumBullets() 
+    protected override int GetNumBullets()
     {
         return pelletsPerShot; // Número de perdigones por disparo
     }
