@@ -45,10 +45,6 @@ public class WeaponsBaseEditor : Editor
                 // Si el tipo de arma es SingleShot, se dibuja el campo fireRate.
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("fireRate"));
                 break;
-            //case WeaponsBase.WeaponType.AutomaticShoot:
-            //    // Si el tipo de arma es AutomaticShoot, se dibuja el campo autoFire.
-            //    EditorGUILayout.PropertyField(serializedObject.FindProperty("autoFire"));
-            //    break;
         }
 
         // Dibuja campos en el inspector para las propiedades comunes a todos los tipos de armas.
