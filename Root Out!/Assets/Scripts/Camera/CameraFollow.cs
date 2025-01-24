@@ -2,67 +2,73 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [Header("SETTINGS")]
+    [Header("CAMERA FOLLOW SETTINGS")]
     [SerializeField, Range(0, 1)] private float followSpeed;
+
+    [SerializeField] private Vector3 offset;
     private Vector3 velocity =  Vector3.zero;
-
-    [SerializeField, Range(0, 50)] private float speed;
-
-    private float xRotation;
 
     private GameObject player;
 
-    [SerializeField] private Vector3 offset;
+    [Header("CAMERA SENSITIVITY SETTINGS")]
+
+    [SerializeField, Range(1, 5)] private float ySensitivity;
+    [SerializeField, Range(1, 500)] private float xSensitivity;
+
+    [SerializeField] private float lookUpLimit;
+    [SerializeField] private float lookDownLimit;
+
+    private float xRotation;
+
     private Vector3 target;
 
     void Start()
     {
-        //
         player = GameObject.FindGameObjectWithTag("Player");
         target = transform.position + offset;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //FollowPlayer();
+        //CameraRotation();
+        PlayerFollow();
     }
 
-    private void FollowPlayer()
+    private void CameraRotation()
     {
-        target = player.transform.position + offset;
-
-        transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, followSpeed);
-
-        transform.RotateAround(player.transform.position, Vector3.up, speed * Time.deltaTime);
-
-        //xRotation -= MouseVerticalInput();
+        xRotation -= MouseVerticalInput();
+        xRotation = Mathf.Clamp(xRotation, lookDownLimit, lookUpLimit);
 
         //transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
-        //Vector3 relativePos = player.transform.position - transform.position;
-        //Quaternion rotation = Quaternion.LookRotation(relativePos);
 
-        //Quaternion current = transform.localRotation;
-
-        //transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime);
-        //transform.Translate(0, 0, 3);
     }
 
-    //private void LateUpdate()
-    //{
-    //    target = player.transform.position + offset;
+    private void LateUpdate()
+    {
+        PlayerFollow();
+    }
 
-    //    transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, followSpeed);
-    //}
+    private void PlayerFollow()
+    {
+
+        Quaternion targetRotation = Quaternion.Euler(MouseVerticalInput(), MouseHorizontalInput(), 0);
+
+        target = player.transform.position + offset;
+
+        transform.position = targetRotation * target;
+        //transform.rotation = targetRotation;
+    }
 
     private float MouseHorizontalInput()
     {
-        return Input.GetAxis("Mouse X");
+        return Input.GetAxis("Mouse X") * xSensitivity;
     }
 
     private float MouseVerticalInput()
     {
-        return Input.GetAxis("Mouse Y");
+        return Input.GetAxis("Mouse Y") * ySensitivity;
     }
 }
