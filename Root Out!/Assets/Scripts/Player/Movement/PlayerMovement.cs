@@ -15,8 +15,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravityForce;
 
     private Vector2 gravityVelocity;
-    
 
+    public float turnSmoothVelocity;
+
+    [Range(0, 1)]public float turnSpeed;
     void Start()
     {
         //Se consigue el componente de Character Controller
@@ -32,13 +34,21 @@ public class PlayerMovement : MonoBehaviour
     {
         //Creo un Vector3, sumo el vector de la derecha del jugador multiplicado por el input, mas el vector de enfrente del jugador multiplicado por el input.
         //El Vector3 es usado por el metodo Move mientras checa constantemente la velocidad actual.
-        Vector3 move = transform.right * HorizontalInput() + transform.forward * ForwardInput(); 
-        charController.Move(Time.deltaTime * SpeedCheck() * move);
+        Vector3 move = new Vector3(HorizontalInput(), 0, ForwardInput());
+
+        if (move.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            charController.Move(Time.deltaTime * SpeedCheck() * move);
+        }
     }
 
     private void Jump()
     {
-        
+
     }
 
     private float SpeedCheck()

@@ -6,9 +6,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField, Range(0, 1)] private float followSpeed;
 
     [SerializeField] private Vector3 offset;
-    private Vector3 velocity =  Vector3.zero;
 
-    private GameObject player;
+    [SerializeField] private Transform followTarget;
 
     [Header("CAMERA SENSITIVITY SETTINGS")]
 
@@ -20,20 +19,21 @@ public class CameraFollow : MonoBehaviour
 
     private float xRotation;
 
-    private Vector3 target;
+    public bool testBool;
+
+    public Vector3 targetPos;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        target = transform.position + offset;
+        SetCameraPosition();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        //CameraRotation();
-        PlayerFollow();
+        CameraRotation();
+        ResetCameraPosition();
     }
 
     private void CameraRotation()
@@ -41,26 +41,35 @@ public class CameraFollow : MonoBehaviour
         xRotation -= MouseVerticalInput();
         xRotation = Mathf.Clamp(xRotation, lookDownLimit, lookUpLimit);
 
-        //transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        Quaternion upRotation = Quaternion.Euler(xRotation, 0, 0);
 
+        transform.RotateAround(followTarget.transform.position, Vector3.up, MouseHorizontalInput());
 
+        Vector3 relativePos = followTarget.transform.position - transform.position;
+
+        Quaternion lookAtPlayer = Quaternion.LookRotation(relativePos, Vector3.up);
+
+        transform.rotation = lookAtPlayer * upRotation;
     }
 
-    private void LateUpdate()
+    private void SetCameraPosition()
     {
-        PlayerFollow();
+        transform.position = followTarget.transform.position + offset;
+
+        transform.parent = followTarget.transform;
     }
 
-    private void PlayerFollow()
+    private void ResetCameraPosition()
     {
+        targetPos = followTarget.transform.position + offset;
 
-        Quaternion targetRotation = Quaternion.Euler(MouseVerticalInput(), MouseHorizontalInput(), 0);
-
-        target = player.transform.position + offset;
-
-        transform.position = targetRotation * target;
-        //transform.rotation = targetRotation;
+        if (testBool)
+        {
+            transform.position = Vector3.Slerp(transform.position, targetPos, 0.008f);
+        }
     }
+
+    //Haz que un gameobject siga al jugador y emparenta la camara a ese gameobject, para evitar que rote la camara junto con el jugador.
 
     private float MouseHorizontalInput()
     {
