@@ -39,7 +39,7 @@ public class CameraFollow : MonoBehaviour
     private void CameraRotation()
     {
         xRotation -= MouseVerticalInput();
-        xRotation = Mathf.Clamp(xRotation, lookDownLimit, lookUpLimit);
+        xRotation = Mathf.Clamp(xRotation, -lookUpLimit, lookDownLimit);
 
         Quaternion upRotation = Quaternion.Euler(xRotation, 0, 0);
 
@@ -68,8 +68,6 @@ public class CameraFollow : MonoBehaviour
             transform.position = Vector3.Slerp(transform.position, targetPos, 0.008f);
         }
     }
-
-    //Haz que un gameobject siga al jugador y emparenta la camara a ese gameobject, para evitar que rote la camara junto con el jugador.
 
     private float MouseHorizontalInput()
     {
