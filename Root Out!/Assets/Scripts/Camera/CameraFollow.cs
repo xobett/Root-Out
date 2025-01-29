@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
 
     public bool testBool;
 
-    public Vector3 targetPos;
+    private Vector3 targetPos;
 
     void Start()
     {
