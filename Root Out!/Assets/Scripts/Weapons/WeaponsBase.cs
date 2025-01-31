@@ -129,7 +129,7 @@ namespace Weapons
         // Método virtual que será sobrescrito por las clases derivadas para manejar el disparo específico
         protected virtual void Shoot()
         {
-            int numberBullets = weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Obtener el número de balas a disparar
+            int numberBullets = weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Obtener el número de balas a disparar //Chef kiss
             UseAmmo(numberBullets); // Reduce la munición actual
             FireBullet(numberBullets); // Dispara una bala (instancia el prefab)
         }
