@@ -968,11 +968,9 @@ MonoBehaviour:
   followTarget: {fileID: 2144282378}
   ySensitivity: 1
   xSensitivity: 1
-  lookUpLimit: 15
-  lookDownLimit: 10
+  lookUpLimit: 5
+  lookDownLimit: 1
   testBool: 0
-  targetPos: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
 --- !u!1 &1828146800
 GameObject:
   m_ObjectHideFlags: 0
