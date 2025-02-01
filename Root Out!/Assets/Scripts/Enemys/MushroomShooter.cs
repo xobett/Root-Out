@@ -32,8 +32,11 @@ public class MushroomShooter : MonoBehaviour
 
        else
         {
-            agent.SetDestination(sunFlower.position);
-            LookAtTarget(sunFlower);
+            if (sunFlower != null)
+            {
+                agent.SetDestination(sunFlower.position);
+                LookAtTarget(sunFlower); 
+            }
         }
     }
     private void OnDrawGizmos()

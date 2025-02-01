@@ -5,6 +5,7 @@ public class InventoryHandler : MonoBehaviour
 {
     //Inventario de jugador
     [SerializeField] private List<InventoryItemData> playerInventory = new List<InventoryItemData>();
+    [SerializeField] private InventoryItemData equippedItem;
 
     public void AddItem(InventoryItemData itemToAdd)
     {
@@ -19,5 +20,10 @@ public class InventoryHandler : MonoBehaviour
     public bool HasItem(InventoryItemData itemToVerify)
     {
         return playerInventory.Contains(itemToVerify);
+    }
+
+    public void EquipItem(InventoryItemData itemToEquip)
+    {
+        equippedItem = itemToEquip;
     }
 }
