@@ -1,9 +1,9 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Weapons
 {
-
     public class WeaponsBase : MonoBehaviour
     {
         // Enum que define los diferentes tipos de armas
@@ -12,12 +12,11 @@ namespace Weapons
             SpreadShot,
             Automatic,
             BurstFire,
-            SingleShot,
-            //AutomaticShoot
+            SingleShot
         }
 
         [Header("Punto de Mira")]
-        [SerializeField] private Transform aiming; // Punto de Mira
+        [SerializeField] public Transform aiming; // Punto de Mira
 
         [Header("Tipo de Arma")]
         [SerializeField] public WeaponType weaponType; // Tipo de Arma
@@ -26,6 +25,7 @@ namespace Weapons
         [SerializeField] protected float spreadAngle = 0f; // Ángulo de dispersión
         [SerializeField] private bool horizontalSpread = false; // Indica si la dispersión es solo horizontal
         [SerializeField] private bool autoFire = false; // Indica si el arma se dispara automáticamente
+        [SerializeField] private bool automaticShoot = false; // Indica si el arma se dispara automáticamente
 
         [Header("Tipo de Bala")]
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
@@ -49,7 +49,13 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f; // Pausa después de una ráfaga
 
+        [Header("Aim Assist")]
+        [SerializeField] private bool aimAssist = false; 
+        [SerializeField] private string aimAssistTag = "Enemy"; // Tag que el aim assist seguirá
+        [SerializeField] private float aimAssistStrength = 0.5f; // Fuerza del aim assist
+
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
+        protected RaycastHit hit;
 
         // Método que se llama al iniciar el script
         protected virtual void Start()
@@ -67,6 +73,11 @@ namespace Weapons
         public void FireNReload()
         {
             if (autoFire && CanShoot())
+            {
+                nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
+                Shoot(); // Llama al método Shoot para disparar
+            }
+            if (automaticShoot && CanShoot() && Input.GetKey(KeyCode.Mouse0))
             {
                 nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
                 Shoot(); // Llama al método Shoot para disparar
@@ -89,13 +100,6 @@ namespace Weapons
                             Shoot(); // Llama al método Shoot para disparar
                         }
                         break;
-                    //case WeaponType.AutomaticShoot:
-                    //    if (CanShoot())
-                    //    {
-                    //        nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
-                    //        Shoot(); // Llama al método Shoot para disparar
-                    //    }
-                    //    break;
                     case WeaponType.BurstFire:
                         if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
                         {
@@ -129,7 +133,7 @@ namespace Weapons
         // Método virtual que será sobrescrito por las clases derivadas para manejar el disparo específico
         protected virtual void Shoot()
         {
-            int numberBullets = weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Obtener el número de balas a disparar //Chef kiss
+            int numberBullets = weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Obtener el número de balas a disparar
             UseAmmo(numberBullets); // Reduce la munición actual
             FireBullet(numberBullets); // Dispara una bala (instancia el prefab)
         }
@@ -198,7 +202,8 @@ namespace Weapons
                 for (int i = 0; i < numberBullets; i++)
                 {
                     Vector3 direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
-                    Vector3 positionOffset = weaponType == WeaponType.BurstFire ? aiming.forward * burstDistance * burstIndex : Vector3.zero;
+                    direction = AimAssist(direction); // Aplicar aim assist
+                    Vector3 positionOffset = weaponType == WeaponType.BurstFire ? burstDistance * burstIndex * aiming.forward : Vector3.zero;
                     GameObject bullet = Instantiate(bulletPrefab, aiming.position + positionOffset, Quaternion.LookRotation(direction));
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     rb.AddForce(direction * bulletForce, ForceMode.Impulse);
@@ -267,6 +272,8 @@ namespace Weapons
         {
             Gizmos.color = Color.red; // Establece el color de los Gizmos a rojo.
             Gizmos.DrawRay(aiming.position, aiming.forward * range); // Dibuja una línea de Gizmos desde el punto de mira en la dirección del frente hasta el rango especificado.
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(aiming.position, AimAssist(aiming.forward) * range);
 
             // Dibujar el cono de visión
             if (spreadAngle > 0) // Comprueba si el ángulo de dispersión es mayor que 0.
@@ -287,6 +294,23 @@ namespace Weapons
                     Gizmos.DrawRay(aiming.position, direction); // Dibuja una línea de Gizmos para cada segmento dentro del cono de visión.
                 }
             }
+        }
+
+        // Método para obtener la dirección con aim assist y magnetismo
+        protected Vector3 AimAssist(Vector3 baseDirection) // Método para obtener la dirección con aim assist y magnetismo
+        {
+            if (aimAssist) // Comprueba si el aim assist está habilitado.
+            {
+                if (Physics.Raycast(aiming.position, baseDirection, out hit, range)) // Realiza un raycast en la dirección base.
+                {
+                    if (hit.collider.CompareTag(aimAssistTag)) // Comprueba si el objetivo del aim assist tiene el Tag.
+                    {
+                        Vector3 targetDirection = (hit.point - aiming.position).normalized; // Calcula la dirección al objetivo.
+                        return Vector3.Lerp(baseDirection, targetDirection, aimAssistStrength).normalized; // Aplica el aim assist y devuelve la dirección ajustada.
+                    }
+                }
+            }
+            return baseDirection; // Devuelve la dirección base si no se aplica aim assist.
         }
     }
 }
