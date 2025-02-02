@@ -826,7 +826,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -1032,6 +1032,9 @@ MonoBehaviour:
   xSensitivity: 1
   lookUpLimit: 5
   lookDownLimit: 1
+  zoomSpeed: 6.5
+  zoomIn: 25
+  postAimed: 0
   testBool: 0
 --- !u!1 &1828146800
 GameObject:
