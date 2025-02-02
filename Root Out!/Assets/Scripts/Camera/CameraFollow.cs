@@ -23,11 +23,15 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 targetPos;
 
+    private GameObject player;
+
     void Start()
     {
         SetCameraPosition();
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -43,7 +47,10 @@ public class CameraFollow : MonoBehaviour
 
         Quaternion upRotation = Quaternion.Euler(xRotation, 0, 0);
 
+        player.transform.Rotate(Vector3.up * MouseHorizontalInput());
+
         transform.RotateAround(followTarget.transform.position, Vector3.up, MouseHorizontalInput());
+
 
         Vector3 relativePos = followTarget.transform.position - transform.position;
 
@@ -59,7 +66,7 @@ public class CameraFollow : MonoBehaviour
         transform.parent = followTarget.transform;
     }
 
-    private void ResetCameraPosition()
+    private void ResetCameraPosition() // No se implementara, aun...
     {
         targetPos = followTarget.transform.position + offset;
 
