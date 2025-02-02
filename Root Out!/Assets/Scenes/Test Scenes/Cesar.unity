@@ -1026,15 +1026,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followSpeed: 0.12
-  offset: {x: 0, y: 2, z: -10}
+  offset: {x: 0, y: 2, z: -8}
   followTarget: {fileID: 2144282378}
   ySensitivity: 1
   xSensitivity: 1
   lookUpLimit: 5
   lookDownLimit: 1
-  zoomSpeed: 6.5
+  zoomSpeed: 5
   zoomIn: 25
-  postAimed: 0
+  zoomHorizontalOffset: 3
   testBool: 0
 --- !u!1 &1828146800
 GameObject:
