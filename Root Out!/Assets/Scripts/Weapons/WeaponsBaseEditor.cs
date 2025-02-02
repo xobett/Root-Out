@@ -56,11 +56,6 @@ public class WeaponsBaseEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("lifeTimeBullets"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("fireRate"));
 
-
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("aimAssist"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("aimAssistTag"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("aimAssistStrength"));
-
         // Aplica las modificaciones realizadas a las propiedades serializadas.
         serializedObject.ApplyModifiedProperties();
     }

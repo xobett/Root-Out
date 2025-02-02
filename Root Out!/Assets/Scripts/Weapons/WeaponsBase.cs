@@ -23,9 +23,11 @@ namespace Weapons
 
         [Header("Opciones de Disparo")]
         [SerializeField] protected float spreadAngle = 0f; // Ángulo de dispersión
-        [SerializeField] private bool horizontalSpread = false; // Indica si la dispersión es solo horizontal
         [SerializeField] private bool autoFire = false; // Indica si el arma se dispara automáticamente
         [SerializeField] private bool automaticShoot = false; // Indica si el arma se dispara automáticamente
+        [SerializeField] private bool shootHorizontal = false; // Indica si el arma dispara en horizontal sin dispersión
+        [SerializeField] private bool shootUpwards = false; // Indica si el arma dispara hacia arriba
+        [SerializeField] private bool shootDownwards = false; // Indica si el arma dispara hacia abajo
 
         [Header("Tipo de Bala")]
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
@@ -49,10 +51,6 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f; // Pausa después de una ráfaga
 
-        [Header("Aim Assist")]
-        [SerializeField] private bool aimAssist = false; 
-        [SerializeField] private string aimAssistTag = "Enemy"; // Tag que el aim assist seguirá
-        [SerializeField] private float aimAssistStrength = 0.5f; // Fuerza del aim assist
 
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
         protected RaycastHit hit;
@@ -64,7 +62,7 @@ namespace Weapons
         }
 
         // Método que se llama en cada frame
-        protected void Update()
+        protected virtual void Update()
         {
             FireNReload(); // Método que controla el disparo y la recarga
         }
@@ -201,8 +199,7 @@ namespace Weapons
             {
                 for (int i = 0; i < numberBullets; i++)
                 {
-                    Vector3 direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
-                    direction = AimAssist(direction); // Aplicar aim assist
+                    Vector3 direction = BulletDirection(i, numberBullets);
                     Vector3 positionOffset = weaponType == WeaponType.BurstFire ? burstDistance * burstIndex * aiming.forward : Vector3.zero;
                     GameObject bullet = Instantiate(bulletPrefab, aiming.position + positionOffset, Quaternion.LookRotation(direction));
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -228,27 +225,55 @@ namespace Weapons
             }
         }
 
+        // Método para obtener la dirección de la bala
+        private Vector3 BulletDirection(int bulletIndex, int totalBullets)
+        {
+            if (weaponType == WeaponType.SpreadShot)
+            {
+                return SpreadDirection(aiming.forward);
+            }
+            if (shootDownwards)
+            {
+                return -aiming.up;
+            }
+            if (shootUpwards)
+            {
+                return aiming.up;
+            }
+            else
+            {
+                return NonSpreadDirection(aiming.forward, bulletIndex, totalBullets);
+            }
+        }
+
         // Método para obtener una dirección con dispersión
-        private Vector3 GetSpreadDirection(Vector3 baseDirection)
+        private Vector3 SpreadDirection(Vector3 baseDirection)
         {
             float spreadRadius = Mathf.Tan(spreadAngle * Mathf.Deg2Rad); // Convertir ángulo a radianes y calcular el radio de dispersión
             Vector2 randomPoint = Random.insideUnitCircle * spreadRadius; // Generar un punto aleatorio dentro del círculo de dispersión
 
             Vector3 spread;
-            if (horizontalSpread)
+            if (shootHorizontal)
             {
-                spread = new Vector3(randomPoint.x, 0, randomPoint.y); // Dispersión solo en horizontal
+                spread = new Vector3(randomPoint.x, 0, 0); // Dispersión solo en horizontal
+            }
+            else if (shootUpwards == true)
+            {
+                spread = new Vector3(0, randomPoint.y,0); // Dispersión solo hacia arriba
+            }
+            else if (shootDownwards == true)
+            {
+                spread = new Vector3(0, -randomPoint.y, 0); // Dispersión solo hacia abajo
             }
             else
             {
                 spread = new Vector3(randomPoint.x, randomPoint.y, 0); // Dispersión en todas las direcciones
             }
-
-            return (baseDirection + spread).normalized; // Ajustar la dirección base con la dispersión
+            return baseDirection + spread; // Aplicar la dispersión a la dirección base
         }
 
         // Método para obtener una dirección sin dispersión
-        private Vector3 GetNonSpreadDirection(Vector3 baseDirection, int bulletIndex, int totalBullets)
+        private Vector3 NonSpreadDirection(Vector3 baseDirection, int bulletIndex, int totalBullets)
         {
             if (totalBullets == 1)
             {
@@ -262,7 +287,7 @@ namespace Weapons
         }
 
         // Método virtual para obtener el número de balas, será sobrescrito en las clases derivadas
-        protected virtual int GetNumBullets()
+        protected virtual int NumBullets()
         {
             return weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Valor predeterminado
         }
@@ -272,8 +297,6 @@ namespace Weapons
         {
             Gizmos.color = Color.red; // Establece el color de los Gizmos a rojo.
             Gizmos.DrawRay(aiming.position, aiming.forward * range); // Dibuja una línea de Gizmos desde el punto de mira en la dirección del frente hasta el rango especificado.
-            Gizmos.color = Color.green;
-            Gizmos.DrawRay(aiming.position, AimAssist(aiming.forward) * range);
 
             // Dibujar el cono de visión
             if (spreadAngle > 0) // Comprueba si el ángulo de dispersión es mayor que 0.
@@ -294,23 +317,6 @@ namespace Weapons
                     Gizmos.DrawRay(aiming.position, direction); // Dibuja una línea de Gizmos para cada segmento dentro del cono de visión.
                 }
             }
-        }
-
-        // Método para obtener la dirección con aim assist y magnetismo
-        protected Vector3 AimAssist(Vector3 baseDirection) // Método para obtener la dirección con aim assist y magnetismo
-        {
-            if (aimAssist) // Comprueba si el aim assist está habilitado.
-            {
-                if (Physics.Raycast(aiming.position, baseDirection, out hit, range)) // Realiza un raycast en la dirección base.
-                {
-                    if (hit.collider.CompareTag(aimAssistTag)) // Comprueba si el objetivo del aim assist tiene el Tag.
-                    {
-                        Vector3 targetDirection = (hit.point - aiming.position).normalized; // Calcula la dirección al objetivo.
-                        return Vector3.Lerp(baseDirection, targetDirection, aimAssistStrength).normalized; // Aplica el aim assist y devuelve la dirección ajustada.
-                    }
-                }
-            }
-            return baseDirection; // Devuelve la dirección base si no se aplica aim assist.
         }
     }
 }
