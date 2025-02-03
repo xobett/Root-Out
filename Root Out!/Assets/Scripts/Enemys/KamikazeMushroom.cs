@@ -31,7 +31,7 @@ public class KamikazeMushroom : WeaponsBase
             Debug.Log("1");
             yield return new WaitForSeconds(1f);
             Debug.Log("BOOM");
-            sunFlower.SetDamage(damage);
+            sunFlower.DamageSunFlower(damage);
             Destroy(gameObject);
 
 

@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            currentHealth = 0;
         }
     }
     void Die()

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Sunflower : MonoBehaviour, IBullet
+public class Sunflower : MonoBehaviour
 {
     [Header("GAMEOBJECT SETTINGS")]
     [SerializeField] private GameObject terrain;
@@ -73,8 +73,8 @@ public class Sunflower : MonoBehaviour, IBullet
             Destroy(gameObject);
         }
     }
-    public void SetDamage(int damageAmount)
+    public void DamageSunFlower(int damage)
     {
-        currentHealth -= damageAmount;   
+        currentHealth -= damage;   
     }
 }

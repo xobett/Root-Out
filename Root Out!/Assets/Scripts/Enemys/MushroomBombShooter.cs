@@ -38,9 +38,9 @@ public class MushroomBombShooter : WeaponsBase
             yield return new WaitForSeconds(1f / fireRate); // Espera el tiempo de la cadencia de disparo
 
             Vector3 randomOffset = new Vector3(
-                Random.Range(-2f, 2f), // Desplazamiento aleatorio en X
-                Random.Range(9f, 9f), // Desplazamiento aleatorio en Y (por encima del jugador)
-                Random.Range(-2f, 2f) // Desplazamiento aleatorio en Z
+                Random.Range(-1.5f, 1.5f), // Desplazamiento aleatorio en X
+                Random.Range(12f, 12f), // Desplazamiento aleatorio en Y (por encima del jugador)
+                Random.Range(-3f, 3f) // Desplazamiento aleatorio en Z
             );
 
             Vector3 spawnPosition = player.position + randomOffset; // Posición de aparición de la bala

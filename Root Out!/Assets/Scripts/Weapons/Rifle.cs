@@ -3,12 +3,12 @@ using Weapons;
 
 public class Rifle : WeaponsBase
 {
-    [Header("Balas a disparar")]
-    [SerializeField] private int bullet = 1;
-
-    protected override int NumBullets()
+   
+    protected override void Shoot()
     {
-        return bullet; // Número de perdigones por disparo
+        base.Shoot();
+        CameraShake.StartShake(0.1f, 0.1f);
     }
+
 }
 

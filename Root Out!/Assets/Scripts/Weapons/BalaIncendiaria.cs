@@ -31,7 +31,7 @@ public class BalaIncendiaria : MonoBehaviour, IBullet
         while (tiempoTranscurrido < duracion)
         {
             // Aplica daño al objetivo
-           objetivo.GetComponent<AIHealth>().TakeDamage(daño);
+           objetivo.GetComponent<AIHealth>().TakeDamageAI(daño);
 
             // Espera el intervalo antes de aplicar el siguiente daño
             yield return new WaitForSeconds(intervalo);
