@@ -1,12 +1,15 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Sunflower : MonoBehaviour
+public class Sunflower : MonoBehaviour, IBullet
 {
     [Header("GAMEOBJECT SETTINGS")]
     [SerializeField] private GameObject terrain;
     [SerializeField] private float distanceSpawn;
 
     [Header("DETECTION SETTINGS")]
+    [SerializeField, Range(0, 100)] private int currentHealth;
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask whatIsSunflower;
 
@@ -69,5 +72,9 @@ public class Sunflower : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void SetDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;   
     }
 }

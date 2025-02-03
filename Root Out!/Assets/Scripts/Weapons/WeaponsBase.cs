@@ -189,7 +189,6 @@ namespace Weapons
         protected void UseAmmo(int numberBullets)
         {
             currentAmmo -= numberBullets;
-            Debug.Log("Ammo left: " + currentAmmo);
         }
 
         // Método que dispara una bala (instancia el prefab)
