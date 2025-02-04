@@ -205,8 +205,7 @@ namespace Weapons
                     rb.AddForce(direction * bulletForce, ForceMode.Impulse);
 
                     // Verifica si el prefab de la bala tiene el componente IBullet
-                    IBullet bulletComponent = bullet.GetComponent<IBullet>();
-                    if (bulletComponent != null)
+                    if (bullet.TryGetComponent<IBullet>(out var bulletComponent))
                     {
                         bulletComponent.SetDamage(damage); // Establece el daño de la bala
                     }
