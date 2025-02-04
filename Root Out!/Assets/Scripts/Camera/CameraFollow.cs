@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -11,6 +14,8 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private Transform followTarget;
 
+    private GameObject player;
+
     [Header("CAMERA SENSITIVITY SETTINGS")]
 
     [SerializeField, Range(1, 5)] private float ySensitivity;
@@ -19,24 +24,27 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float lookUpLimit;
     [SerializeField] private float lookDownLimit;
 
+    private float xRotation;
+
     [Header("CAMERA ZOOM SETTINGS")]
     [SerializeField, Range(1, 10)] private float zoomSpeed;
     [SerializeField] private float zoomIn;
-    [SerializeField] private float zoomHorizontalOffset;
+    [SerializeField] private int zoomHorizontalOffset;
+
+    private Camera cam;
 
     private bool zooming;
     private bool postAimed;
 
-    private float xRotation;
+    private float time;
 
     public bool testBool;
-
-    private GameObject player;
-
-     private Camera cam;
+    [Range(1,5)] public float testVelo;
 
     void Start()
     {
+        Application.targetFrameRate = 60;
+
         SetCameraPosition(followTarget);
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -44,6 +52,7 @@ public class CameraFollow : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         cam = gameObject.GetComponent<Camera>();
+
     }
 
     void Update()
@@ -61,21 +70,23 @@ public class CameraFollow : MonoBehaviour
 
         player.transform.Rotate(Vector3.up * MouseHorizontalInput());
 
-        transform.RotateAround(followTarget.transform.position, Vector3.up, MouseHorizontalInput());
+        if (!zooming)
+        {
+            transform.RotateAround(followTarget.transform.position, Vector3.up, MouseHorizontalInput());
+        }
 
         Vector3 relativePos = followTarget.transform.position - transform.position;
 
         Quaternion lookAtPlayer = Quaternion.LookRotation(relativePos, Vector3.up);
 
-        if (!IsAiming())
+        if (!IsAiming() && !zooming && !postAimed) 
         {
-            transform.rotation = lookAtPlayer * upRotation; 
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookAtPlayer * upRotation, testVelo * Time.deltaTime);
         }
     }
 
     private void Aim()
     {
-
         if (IsAiming() && !postAimed && !zooming)
         {
             StartCoroutine(CameraZoom(zoomIn, zoomHorizontalOffset));
@@ -86,6 +97,7 @@ public class CameraFollow : MonoBehaviour
         {
             StartCoroutine(CameraZoom(-zoomIn, -zoomHorizontalOffset));
 
+            xRotation = 0;
             postAimed = false;
         }
     }
@@ -112,7 +124,7 @@ public class CameraFollow : MonoBehaviour
         return Input.GetMouseButton(1);
     }
 
-    private IEnumerator CameraZoom(float zoomValue, float offsetValue)
+    private IEnumerator CameraZoom(float zoomValue, int offsetValue)
     {
         zooming = true;
         postAimed = true;
@@ -120,7 +132,9 @@ public class CameraFollow : MonoBehaviour
         float currentZoom = cam.fieldOfView;
         float targetZoom = cam.fieldOfView - zoomValue;
 
-        Vector3 targetPos = transform.position + transform.right * offsetValue;
+        Vector3 targetPos = transform.position - transform.right * offsetValue;
+
+        Debug.Log(targetPos);
 
         float time = 0;
 
@@ -133,6 +147,7 @@ public class CameraFollow : MonoBehaviour
             yield return null;
         }
 
+        transform.position = targetPos;
         cam.fieldOfView = targetZoom;
 
         zooming = false;
