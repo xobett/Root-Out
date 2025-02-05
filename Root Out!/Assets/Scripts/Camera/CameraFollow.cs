@@ -36,7 +36,7 @@ public class CameraFollow : MonoBehaviour
     private bool zooming;
     private bool postAimed;
 
-    private float time;
+    [SerializeField] private Transform followPos;
 
     public bool testBool;
     [Range(1,5)] public float testVelo;
@@ -61,6 +61,19 @@ public class CameraFollow : MonoBehaviour
         Aim();
     }
 
+    private void LateUpdate()
+    {
+        Follow();
+    }
+
+    private void Follow()
+    {
+        if (!IsAiming() && !zooming && !postAimed)
+        {
+            transform.position = Vector3.Lerp(transform.position, followPos.position, 4f * Time.deltaTime);
+        }
+    }
+
     private void CameraRotation()
     {
         xRotation -= MouseVerticalInput();
@@ -73,6 +86,7 @@ public class CameraFollow : MonoBehaviour
         if (!zooming)
         {
             transform.RotateAround(followTarget.transform.position, Vector3.up, MouseHorizontalInput());
+            followPos.transform.RotateAround(followTarget.transform.position, Vector3.up, MouseHorizontalInput());
         }
 
         Vector3 relativePos = followTarget.transform.position - transform.position;
@@ -107,6 +121,7 @@ public class CameraFollow : MonoBehaviour
         transform.position = targetPosition.position + offset;
 
         transform.parent = followTarget.transform;
+
     }
 
     private float MouseHorizontalInput()
