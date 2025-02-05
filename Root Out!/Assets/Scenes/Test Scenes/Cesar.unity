@@ -1040,15 +1040,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771aa369d71593f4c9882bf99c1a333c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 0.12
-  offset: {x: 0, y: 2, z: -8}
-  followTarget: {fileID: 2014384363162099806}
+  playerTracker: {fileID: 2014384363162099806}
   ySensitivity: 1
   xSensitivity: 1
   lookUpLimit: 10
   lookDownLimit: 0
   zoomSpeed: 10
-  zoomIn: 5
+  zoomIn: 25
   zoomHorizontalOffset: -3
   followPos: {fileID: 6125188020529499409}
   testBool: 0
@@ -1164,7 +1162,7 @@ GameObject:
   - component: {fileID: 2014384363162099806}
   - component: {fileID: 1907872180241103999}
   m_Layer: 0
-  m_Name: Player follow
+  m_Name: Player Tracker
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
