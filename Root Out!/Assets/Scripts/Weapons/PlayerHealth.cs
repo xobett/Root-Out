@@ -1,11 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
    // [SerializeField, Range(0,100)] private int maxHealth = 100;
     [SerializeField, Range(0,100)] private int currentHealth;
-    
-   
+    [SerializeField] Image lifeBar;
+
+
+    private void Update()
+    {
+        LifeBar();
+    }
     public void TakeDamagePlayer(int damage)
     {
         currentHealth -= damage;
@@ -21,6 +27,11 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("El jugador ha muerto.");
         
+    }
+
+    void LifeBar()
+    {
+        lifeBar.fillAmount = currentHealth / 100f;
     }
 
 }
