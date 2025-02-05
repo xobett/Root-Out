@@ -76,9 +76,6 @@ public class CameraFollow : MonoBehaviour
 
     private void CameraRotation()
     {
-        xRotation -= MouseVerticalInput();
-        xRotation = Mathf.Clamp(xRotation, -lookUpLimit, lookDownLimit);
-
         Quaternion upRotation = Quaternion.Euler(xRotation, 0, 0);
 
         player.transform.Rotate(Vector3.up * MouseHorizontalInput());
@@ -95,6 +92,9 @@ public class CameraFollow : MonoBehaviour
 
         if (!IsAiming() && !zooming && !postAimed) 
         {
+            xRotation -= MouseVerticalInput();
+            xRotation = Mathf.Clamp(xRotation, -lookUpLimit, lookDownLimit);
+
             transform.rotation = Quaternion.Slerp(transform.rotation, lookAtPlayer * upRotation, testVelo * Time.deltaTime);
         }
     }
@@ -111,7 +111,6 @@ public class CameraFollow : MonoBehaviour
         {
             StartCoroutine(CameraZoom(-zoomIn, -zoomHorizontalOffset));
 
-            xRotation = 0;
             postAimed = false;
         }
     }
@@ -149,8 +148,6 @@ public class CameraFollow : MonoBehaviour
 
         Vector3 targetPos = transform.position - transform.right * offsetValue;
 
-        Debug.Log(targetPos);
-
         float time = 0;
 
         while (time < 1)
@@ -164,6 +161,8 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = targetPos;
         cam.fieldOfView = targetZoom;
+
+        xRotation = -10;
 
         zooming = false;
 
