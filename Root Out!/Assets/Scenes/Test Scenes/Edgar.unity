@@ -343,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &42196438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,9 +383,9 @@ MonoBehaviour:
   maxAmmo: 5000
   damage: 5
   range: 3
-  fireRate: 3
+  fireRate: 1
   reloadTime: 0
-  bulletForce: 2
+  bulletForce: 20
   lifeTimeBullets: 10
   bulletsPerBurst: 3
   burstRate: 0.1
@@ -1264,7 +1264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &505127649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,9 +1304,9 @@ MonoBehaviour:
   maxAmmo: 5000
   damage: 5
   range: 3
-  fireRate: 3
+  fireRate: 1
   reloadTime: 0
-  bulletForce: 2
+  bulletForce: 20
   lifeTimeBullets: 10
   bulletsPerBurst: 3
   burstRate: 0.1
@@ -3248,6 +3248,63 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 5861dabb2a1133b4a8bfefb154ad8cd7, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &1163566803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1163566804}
+  - component: {fileID: 1163566805}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1163566804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163566803}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.319727, y: -3.240256, z: 4.1391954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1163566805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163566803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29d3e04f08809d4db721390487554ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicClips: []
+  sfxClips:
+  - name: Automatic Rifle
+    clip: {fileID: 8300000, guid: eca4c8ed8ff34834d9f20762d48d32a0, type: 3}
+    volume: 1
+    pitch: 0.1
+    loop: 0
+  - name: Revolver
+    clip: {fileID: 8300000, guid: f90a51755b7fc2f438974d3c0975213b, type: 3}
+    volume: 1
+    pitch: 0.1
+    loop: 0
+  randomClips: []
 --- !u!1 &1174474061
 GameObject:
   m_ObjectHideFlags: 0
@@ -21325,9 +21382,9 @@ MonoBehaviour:
   maxAmmo: 5000
   damage: 5
   range: 3
-  fireRate: 3
+  fireRate: 1
   reloadTime: 0
-  bulletForce: 2
+  bulletForce: 15
   lifeTimeBullets: 10
   bulletsPerBurst: 3
   burstRate: 0.1
@@ -21541,3 +21598,4 @@ SceneRoots:
   - {fileID: 1904211188}
   - {fileID: 947285918}
   - {fileID: 1538966846}
+  - {fileID: 1163566804}
