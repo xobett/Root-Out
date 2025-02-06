@@ -33,7 +33,7 @@ namespace Weapons
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
 
         [Header("Munición")]
-        [SerializeField] private int currentAmmo; // Munición actual
+        [SerializeField] public int currentAmmo; // Munición actual
         [SerializeField] protected int bulletReserve; // Reserva de balas
         [SerializeField] protected int maxAmmo; // Capacidad máxima de munición
 
