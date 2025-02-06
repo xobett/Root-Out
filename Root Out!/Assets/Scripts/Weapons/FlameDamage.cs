@@ -15,7 +15,7 @@ public class FlameDamage : MonoBehaviour, IBullet
         continuousDamage = damage * -1;
         if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth))
         {
-            aiHealth.TakeDamage(damage); 
+            aiHealth.TakeDamageAI(damage); 
         }
         // Destruir la bala al colisionar
         Destroy(gameObject);

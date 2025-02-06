@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3897243201130050257}
   - component: {fileID: 8717347943297315175}
   - component: {fileID: 1110766236262086663}
-  - component: {fileID: 1538865763615494471}
   m_Layer: 0
   m_Name: Assault Rifle
   m_TagString: Untagged
@@ -110,37 +109,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1538865763615494471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3670986462572352019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe49a19536265b45bb5c3a4f20d627b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiming: {fileID: 2491898095002134753}
-  weaponType: 1
-  spreadAngle: 0
-  horizontalSpread: 0
-  autoFire: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  currentAmmo: 350
-  bulletReserve: 350
-  maxAmmo: 350
-  damage: 2
-  range: 2
-  fireRate: 8
-  reloadTime: 2
-  bulletForce: 20
-  lifeTimeBullets: 5
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
 --- !u!1 &7177445724948284079
 GameObject:
   m_ObjectHideFlags: 0

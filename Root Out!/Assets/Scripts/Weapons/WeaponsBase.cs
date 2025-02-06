@@ -1,9 +1,9 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Weapons
 {
-
     public class WeaponsBase : MonoBehaviour
     {
         // Enum que define los diferentes tipos de armas
@@ -12,26 +12,28 @@ namespace Weapons
             SpreadShot,
             Automatic,
             BurstFire,
-            SingleShot,
-            //AutomaticShoot
+            SingleShot
         }
 
         [Header("Punto de Mira")]
-        [SerializeField] private Transform aiming; // Punto de Mira
+        [SerializeField] public Transform aiming; // Punto de Mira
 
         [Header("Tipo de Arma")]
         [SerializeField] public WeaponType weaponType; // Tipo de Arma
 
         [Header("Opciones de Disparo")]
         [SerializeField] protected float spreadAngle = 0f; // Ángulo de dispersión
-        [SerializeField] private bool horizontalSpread = false; // Indica si la dispersión es solo horizontal
         [SerializeField] private bool autoFire = false; // Indica si el arma se dispara automáticamente
+        [SerializeField] private bool automaticShoot = false; // Indica si el arma se dispara automáticamente
+        [SerializeField] private bool shootHorizontal = false; // Indica si el arma dispara en horizontal sin dispersión
+        [SerializeField] private bool shootUpwards = false; // Indica si el arma dispara hacia arriba
+        [SerializeField] private bool shootDownwards = false; // Indica si el arma dispara hacia abajo
 
         [Header("Tipo de Bala")]
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
 
         [Header("Munición")]
-        [SerializeField] private int currentAmmo; // Munición actual
+        [SerializeField] public int currentAmmo; // Munición actual
         [SerializeField] protected int bulletReserve; // Reserva de balas
         [SerializeField] protected int maxAmmo; // Capacidad máxima de munición
 
@@ -49,7 +51,9 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f; // Pausa después de una ráfaga
 
+
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
+        protected RaycastHit hit;
 
         // Método que se llama al iniciar el script
         protected virtual void Start()
@@ -58,7 +62,7 @@ namespace Weapons
         }
 
         // Método que se llama en cada frame
-        protected void Update()
+        protected virtual void Update()
         {
             FireNReload(); // Método que controla el disparo y la recarga
         }
@@ -67,6 +71,11 @@ namespace Weapons
         public void FireNReload()
         {
             if (autoFire && CanShoot())
+            {
+                nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
+                Shoot(); // Llama al método Shoot para disparar
+            }
+            if (automaticShoot && CanShoot() && Input.GetKey(KeyCode.Mouse0))
             {
                 nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
                 Shoot(); // Llama al método Shoot para disparar
@@ -89,13 +98,6 @@ namespace Weapons
                             Shoot(); // Llama al método Shoot para disparar
                         }
                         break;
-                    //case WeaponType.AutomaticShoot:
-                    //    if (CanShoot())
-                    //    {
-                    //        nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
-                    //        Shoot(); // Llama al método Shoot para disparar
-                    //    }
-                    //    break;
                     case WeaponType.BurstFire:
                         if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
                         {
@@ -187,7 +189,6 @@ namespace Weapons
         protected void UseAmmo(int numberBullets)
         {
             currentAmmo -= numberBullets;
-            Debug.Log("Ammo left: " + currentAmmo);
         }
 
         // Método que dispara una bala (instancia el prefab)
@@ -197,15 +198,14 @@ namespace Weapons
             {
                 for (int i = 0; i < numberBullets; i++)
                 {
-                    Vector3 direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
-                    Vector3 positionOffset = weaponType == WeaponType.BurstFire ? aiming.forward * burstDistance * burstIndex : Vector3.zero;
+                    Vector3 direction = BulletDirection(i, numberBullets);
+                    Vector3 positionOffset = weaponType == WeaponType.BurstFire ? burstDistance * burstIndex * aiming.forward : Vector3.zero;
                     GameObject bullet = Instantiate(bulletPrefab, aiming.position + positionOffset, Quaternion.LookRotation(direction));
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     rb.AddForce(direction * bulletForce, ForceMode.Impulse);
 
                     // Verifica si el prefab de la bala tiene el componente IBullet
-                    IBullet bulletComponent = bullet.GetComponent<IBullet>();
-                    if (bulletComponent != null)
+                    if (bullet.TryGetComponent<IBullet>(out var bulletComponent))
                     {
                         bulletComponent.SetDamage(damage); // Establece el daño de la bala
                     }
@@ -223,27 +223,55 @@ namespace Weapons
             }
         }
 
+        // Método para obtener la dirección de la bala
+        private Vector3 BulletDirection(int bulletIndex, int totalBullets)
+        {
+            if (weaponType == WeaponType.SpreadShot)
+            {
+                return SpreadDirection(aiming.forward);
+            }
+            if (shootDownwards)
+            {
+                return -aiming.up;
+            }
+            if (shootUpwards)
+            {
+                return aiming.up;
+            }
+            else
+            {
+                return NonSpreadDirection(aiming.forward, bulletIndex, totalBullets);
+            }
+        }
+
         // Método para obtener una dirección con dispersión
-        private Vector3 GetSpreadDirection(Vector3 baseDirection)
+        private Vector3 SpreadDirection(Vector3 baseDirection)
         {
             float spreadRadius = Mathf.Tan(spreadAngle * Mathf.Deg2Rad); // Convertir ángulo a radianes y calcular el radio de dispersión
             Vector2 randomPoint = Random.insideUnitCircle * spreadRadius; // Generar un punto aleatorio dentro del círculo de dispersión
 
             Vector3 spread;
-            if (horizontalSpread)
+            if (shootHorizontal)
             {
-                spread = new Vector3(randomPoint.x, 0, randomPoint.y); // Dispersión solo en horizontal
+                spread = new Vector3(randomPoint.x, 0, 0); // Dispersión solo en horizontal
+            }
+            else if (shootUpwards == true)
+            {
+                spread = new Vector3(0, randomPoint.y,0); // Dispersión solo hacia arriba
+            }
+            else if (shootDownwards == true)
+            {
+                spread = new Vector3(0, -randomPoint.y, 0); // Dispersión solo hacia abajo
             }
             else
             {
                 spread = new Vector3(randomPoint.x, randomPoint.y, 0); // Dispersión en todas las direcciones
             }
-
-            return (baseDirection + spread).normalized; // Ajustar la dirección base con la dispersión
+            return baseDirection + spread; // Aplicar la dispersión a la dirección base
         }
 
         // Método para obtener una dirección sin dispersión
-        private Vector3 GetNonSpreadDirection(Vector3 baseDirection, int bulletIndex, int totalBullets)
+        private Vector3 NonSpreadDirection(Vector3 baseDirection, int bulletIndex, int totalBullets)
         {
             if (totalBullets == 1)
             {
@@ -257,7 +285,7 @@ namespace Weapons
         }
 
         // Método virtual para obtener el número de balas, será sobrescrito en las clases derivadas
-        protected virtual int GetNumBullets()
+        protected virtual int NumBullets()
         {
             return weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Valor predeterminado
         }

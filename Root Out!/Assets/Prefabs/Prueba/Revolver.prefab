@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6766878885635850706}
   - component: {fileID: 3963295442854434077}
   - component: {fileID: 7526597116965921022}
-  - component: {fileID: 8119670829973538092}
   m_Layer: 0
   m_Name: Revolver
   m_TagString: Untagged
@@ -110,37 +109,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8119670829973538092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4548677687606793572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe49a19536265b45bb5c3a4f20d627b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiming: {fileID: 8073067902723502772}
-  weaponType: 3
-  spreadAngle: 0
-  horizontalSpread: 0
-  autoFire: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  currentAmmo: 1000000
-  bulletReserve: 1000000
-  maxAmmo: 1000000
-  damage: 1
-  range: 2
-  fireRate: 8
-  reloadTime: 1.5
-  bulletForce: 10
-  lifeTimeBullets: 5
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
 --- !u!1 &8063805543368426809
 GameObject:
   m_ObjectHideFlags: 0

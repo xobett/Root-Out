@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class TargetFollow : MonoBehaviour
 {
-    [SerializeField] private GameObject target;
-
-    [SerializeField, Range(0, 1)] private float followSpeed;
-    [SerializeField] private Vector3 velocity;
+    private GameObject target;
 
     void Start()
     {
@@ -14,7 +11,7 @@ public class TargetFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, target.transform.position, ref velocity, followSpeed * Time.deltaTime);
+        transform.position = target.transform.position;
     }
 }
 

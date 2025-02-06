@@ -30,10 +30,7 @@ public class WeaponsBaseEditor : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("spreadAngle"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("horizontalSpread"));
                 break;
-            case WeaponsBase.WeaponType.Automatic:
-                // Si el tipo de arma es Automatic, se dibuja el campo fireRate.
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("fireRate"));
-                break;
+
             case WeaponsBase.WeaponType.BurstFire:
                 // Si el tipo de arma es BurstFire, se dibujan los campos bulletsPerBurst, burstRate, burstDistance y burstPause.
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletsPerBurst"));
@@ -41,15 +38,14 @@ public class WeaponsBaseEditor : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("burstDistance"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("burstPause"));
                 break;
-            case WeaponsBase.WeaponType.SingleShot:
-                // Si el tipo de arma es SingleShot, se dibuja el campo fireRate.
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("fireRate"));
-                break;
         }
 
         // Dibuja campos en el inspector para las propiedades comunes a todos los tipos de armas.
         EditorGUILayout.PropertyField(serializedObject.FindProperty("autoFire"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("automaticShoot"));
+
         EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletPrefab"));
+
         EditorGUILayout.PropertyField(serializedObject.FindProperty("currentAmmo"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletReserve"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("maxAmmo"));
@@ -58,6 +54,7 @@ public class WeaponsBaseEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("reloadTime"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletForce"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("lifeTimeBullets"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("fireRate"));
 
         // Aplica las modificaciones realizadas a las propiedades serializadas.
         serializedObject.ApplyModifiedProperties();
