@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1283025951697791333}
   - component: {fileID: 8397558803818061486}
   m_Layer: 0
-  m_Name: EnemyBullet
+  m_Name: EnemyBulletMortero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb0453d5eb959794b8ffcf0610b13ff3, type: 2}
+  - {fileID: 2100000, guid: bf6f9927d83cf1844ae96ac162c0d531, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,10 +132,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 18
   m_CollisionDetection: 0
 --- !u!114 &8397558803818061486
 MonoBehaviour:

@@ -3,25 +3,26 @@ using UnityEngine;
 using UnityEngine.AI;
 using Weapons;
 
-public class MushroomShooter : MonoBehaviour
+public class MushroomShooter : WeaponsBase
 {
     private NavMeshAgent agent;
     [SerializeField] private Transform player;
     [SerializeField] private Transform sunFlower;
-    [SerializeField] private float range;
+    [SerializeField] private float rangeGizmo;
     [SerializeField] LayerMask layer;
-    [SerializeField] WeaponsBase aim;
 
 
-    private void Start()
+    protected override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
     }
-    private void Update()
+   
+    protected override void Shoot()
     {
+        base.Shoot();
         TargetToAtack();
     }
-  
+
     void TargetToAtack()
     {
        if (Detection())
@@ -39,14 +40,14 @@ public class MushroomShooter : MonoBehaviour
             }
         }
     }
-    private void OnDrawGizmos()
+    private new void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, rangeGizmo);
     }
     bool Detection()
     { 
-        return Physics.CheckSphere(transform.position, range, layer);
+        return Physics.CheckSphere(transform.position, rangeGizmo, layer);
     }
     void LookAtTarget(Transform target)
     {
