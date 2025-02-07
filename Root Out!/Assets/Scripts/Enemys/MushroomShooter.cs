@@ -53,6 +53,6 @@ public class MushroomShooter : WeaponsBase
     {
         Vector3 direction = (target.position - transform.position).normalized; // Direction to the player
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Look rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f); // Smooth rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // Smooth rotation
     }
 }
