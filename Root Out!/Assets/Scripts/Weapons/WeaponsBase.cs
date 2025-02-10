@@ -24,6 +24,11 @@ namespace Weapons
         [SerializeField] protected float spreadAngle = 0f; // Ángulo de dispersión
         [SerializeField] protected bool horizontalSpread = false; // Indica si la dispersión es solo horizontal
 
+        [Header("Opciones de Disparo")]
+        [SerializeField] private bool autoFire = false; // Indica si el arma dispara automáticamente
+        [SerializeField] private bool shootUpwards = false; // Indica si el arma dispara hacia arriba
+        [SerializeField] private bool shootDownwards = false; // Indica si el arma dispara hacia abajo
+
         [Header("Tipo de Bala")]
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
 
@@ -46,10 +51,7 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
 
-        [Header("Opciones de Disparo")]
-        [SerializeField] private bool autoFire = false; // Indica si el arma dispara automáticamente
-        [SerializeField] private bool shootUpwards = false; // Indica si el arma dispara hacia arriba
-        [SerializeField] private bool shootDownwards = false; // Indica si el arma dispara hacia abajo
+      
 
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
 
@@ -177,7 +179,7 @@ namespace Weapons
         protected void UseAmmo(int numberBullets)
         {
             currentAmmo -= numberBullets;
-            Debug.Log("Ammo left: " + currentAmmo);
+            //Debug.Log("Ammo left: " + currentAmmo);
         }
 
         // Método que dispara una bala (instancia el prefab)

@@ -2481,6 +2481,9 @@ MonoBehaviour:
   weaponType: 0
   spreadAngle: 1
   horizontalSpread: 0
+  autoFire: 0
+  shootUpwards: 0
+  shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 9cb272a159628b24296395a1752c0d93, type: 3}
   currentAmmo: 0
   bulletReserve: 0
@@ -2495,9 +2498,6 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
   detectionRange: 2
   sunFlower: {fileID: 4188914659594138278}
   _sunFlower: {fileID: 1341339357}
@@ -3577,6 +3577,9 @@ MonoBehaviour:
   weaponType: 1
   spreadAngle: 1
   horizontalSpread: 0
+  autoFire: 0
+  shootUpwards: 0
+  shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
   currentAmmo: 350
   bulletReserve: 100
@@ -3591,9 +3594,6 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
   bulletText: {fileID: 1968219535}
 --- !u!4 &1911050530 stripped
 Transform:
@@ -3621,6 +3621,9 @@ MonoBehaviour:
   weaponType: 3
   spreadAngle: 1
   horizontalSpread: 0
+  autoFire: 0
+  shootUpwards: 0
+  shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
   currentAmmo: 350
   bulletReserve: 350
@@ -3635,9 +3638,6 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
   bulletText: {fileID: 1968219535}
 --- !u!1 &1968219533
 GameObject:
@@ -9098,6 +9098,9 @@ MonoBehaviour:
   weaponType: 1
   spreadAngle: 1
   horizontalSpread: 0
+  autoFire: 1
+  shootUpwards: 0
+  shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 9cb272a159628b24296395a1752c0d93, type: 3}
   currentAmmo: 2147483647
   bulletReserve: 2147483647
@@ -9112,9 +9115,6 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
   player: {fileID: 1921753222857182884}
   sunFlower: {fileID: 1341339357}
   rangeGizmo: 10
@@ -9387,6 +9387,63 @@ Transform:
   - {fileID: 3146513445992186867}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2128011585649313495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895098785702555165, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680952660253227925, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
+      propertyPath: m_Name
+      value: Bomb
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
 --- !u!1 &2422623207836645828
 GameObject:
   m_ObjectHideFlags: 0
@@ -20034,24 +20091,25 @@ MonoBehaviour:
   weaponType: 1
   spreadAngle: 1
   horizontalSpread: 0
+  autoFire: 1
+  shootUpwards: 1
+  shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 397fa4485e1bf7d4bb5de13b088cef74, type: 3}
   currentAmmo: 5000
   bulletReserve: 5000
   maxAmmo: 5000
   damage: 5
-  range: 15.11
-  fireRate: 1
+  range: 5
+  fireRate: 3
   reloadTime: 0
   bulletForce: 10
-  lifeTimeBullets: 2
+  lifeTimeBullets: 10
   bulletsPerBurst: 3
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  autoFire: 1
-  shootUpwards: 1
-  shootDownwards: 0
   player: {fileID: 1921753222857182884}
+  bomb: {fileID: 8680952660253227925, guid: cf17cacf7bf29bd4ba695536915e46dd, type: 3}
 --- !u!114 &8337252604411168323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20274,3 +20332,4 @@ SceneRoots:
   - {fileID: 947285918}
   - {fileID: 1538966846}
   - {fileID: 1163566804}
+  - {fileID: 2128011585649313495}

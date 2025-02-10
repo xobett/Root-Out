@@ -6,6 +6,7 @@ using Weapons;
 public class MushroomShooter : WeaponsBase
 {
     private NavMeshAgent agent;
+    [Header("MushroomShooter")]
     [SerializeField] private Transform player;
     [SerializeField] private Transform sunFlower;
     [SerializeField] private float rangeGizmo;

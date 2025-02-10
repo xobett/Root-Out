@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class MushroomBombShooter : WeaponsBase
 {
     [SerializeField] private Transform player;
+    [SerializeField] private GameObject bomb;
     NavMeshAgent agent;
 
     protected override void Start()
@@ -29,14 +30,16 @@ public class MushroomBombShooter : WeaponsBase
 
     void Mortar()
     {
+
         // Posición por encima del jugador
-        Vector3 mortarPosition = player.position + Vector3.up * 10f; // 10 unidades por encima del jugador
+        Vector3 mortarPosition = player.position + Vector3.up * 8f;
 
         // Dirección aleatoria
         Vector3 randomDirection = new Vector3(0, Random.Range(-1,1),0).normalized;
 
         // Instancia del proyectil
-        GameObject mortar = Instantiate(bulletPrefab, mortarPosition, Quaternion.identity);
+        GameObject mortar = Instantiate(bomb, mortarPosition, Quaternion.identity);
+ 
 
         // Añade fuerza en la dirección aleatoria
         mortar.GetComponent<Rigidbody>().AddForce(Vector3.down * bulletForce, ForceMode.Impulse);

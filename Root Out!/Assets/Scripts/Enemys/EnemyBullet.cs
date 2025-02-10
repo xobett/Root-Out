@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour, IBullet
 {
-    private float damageToPlayer = 10;
+    private float damageToPlayer;
 
     public void SetDamage(float damageAmount)
     {
