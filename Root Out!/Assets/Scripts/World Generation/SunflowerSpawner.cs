@@ -11,9 +11,18 @@ public class SunflowerSpawner : MonoBehaviour
     private int spawnPos;
     private int lastSpawnPos;
 
-    void Awake()
+    void Start()
     {
         SpawnSunflower();
+        //SecondSpawn();
+    }
+
+    private void SecondSpawn()
+    {
+        for (int i = 0; i < spawnPositions.Length; i++)
+        {
+            Instantiate(sunflowerPrefab, spawnPositions[i].position, spawnPositions[i].rotation);
+        }
     }
 
     private void SpawnSunflower()

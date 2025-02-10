@@ -11,19 +11,20 @@ public class Sunflower : MonoBehaviour
     [Header("DETECTION SETTINGS")]
     [SerializeField] private float rayDistance;
     [SerializeField] private LayerMask whatIsSunflower;
+    [SerializeField] private LayerMask whatIsGround;
 
     [Header("HEALTH SETTINGS")]
     [SerializeField, Range(0, 100)] private float currentHealth;
 
     [SerializeField] private RaycastHit hit;
 
-    public bool testing;
+    public bool sunflowerColliding;
+    public bool groundColliding;
 
     private void Start()
     {
-        //RandomActivation();
         BugDetection();
-        SunflowerNearDetection();
+        //SunflowerNearDetection();
     }
     void Update()
     {
@@ -37,22 +38,20 @@ public class Sunflower : MonoBehaviour
             Vector3 spawnPos = transform.position + transform.forward * distanceSpawn;
             spawnPos.y = 0;
             GameObject porelamordediosfunciona = Instantiate(prefab, spawnPos, prefab.transform.rotation);
-            //Destroy(this.gameObject);
+            
+            Destroy(this.gameObject);
         }
     }
 
-    private bool IsSpawning()
-    {
-        return Input.GetKeyDown(KeyCode.Space);
-    }
 
     private void BugDetection()
     {
         Vector3 cubePos = transform.position + transform.forward * 12;
 
-        testing = Physics.CheckBox(cubePos, new Vector3(11, 2, 11), Quaternion.identity, whatIsSunflower);
+        sunflowerColliding = Physics.CheckBox(cubePos, new Vector3(11, 2, 11), Quaternion.identity, whatIsSunflower);
+        groundColliding = Physics.CheckBox(cubePos, new Vector3(5, 2, 5), Quaternion.identity, whatIsGround);
 
-        if (testing)
+        if (sunflowerColliding || groundColliding)
         {
             Destroy(this.gameObject);
         }
@@ -96,6 +95,11 @@ public class Sunflower : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private bool IsSpawning()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
+    }
+
     public void DamageSunFlower(float damage)
     {
         currentHealth -= damage;
