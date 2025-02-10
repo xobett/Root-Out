@@ -34,10 +34,29 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Movement();
+        MovementCheck();
     }
 
-    private void Movement()
+    private void MovementCheck()
+    {
+        if (IsAiming())
+        {
+            ZoomMovement();
+        }
+        else
+        {
+            NormalMovement();
+        }
+    }
+
+    private void ZoomMovement()
+    {
+        Vector3 zoomMovement = transform.right * HorizontalInput() + transform.forward * ForwardInput();
+
+        charController.Move(Time.deltaTime * SpeedCheck() * zoomMovement);
+    }
+
+    private void NormalMovement()
     {
         Vector3 move = new Vector3(HorizontalInput(), 0, ForwardInput());
 
@@ -53,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void Gravity()
     {
         
     }
@@ -64,11 +83,6 @@ public class PlayerMovement : MonoBehaviour
         return IsSprinting() ? sprintSpeed : walkSpeed;
     }
 
-    private bool IsSprinting()
-    {
-        //Regresa si el jugador esta sprintando
-        return Input.GetKey(KeyCode.LeftShift);
-    }
 
     private float HorizontalInput()
     {
@@ -80,5 +94,15 @@ public class PlayerMovement : MonoBehaviour
     {
         //Regresa Input en Z (Hacia el frente y atras del jugador)
         return Input.GetAxis("Vertical");
+    }
+    private bool IsSprinting()
+    {
+        //Regresa si el jugador esta sprintando
+        return Input.GetKey(KeyCode.LeftShift);
+    }
+
+    private bool IsAiming()
+    {
+        return Input.GetMouseButton(1);
     }
 }

@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 public class Sunflower : MonoBehaviour
 {
     [Header("GAMEOBJECT SETTINGS")]
-    [SerializeField] private GameObject terrain;
+    public GameObject prefab;
     [SerializeField] private float distanceSpawn;
 
     [Header("DETECTION SETTINGS")]
@@ -28,7 +28,6 @@ public class Sunflower : MonoBehaviour
     void Update()
     {
         TerrainSpawn();
-        //BugDetection();
     }
 
     private void TerrainSpawn()
@@ -37,8 +36,8 @@ public class Sunflower : MonoBehaviour
         {
             Vector3 spawnPos = transform.position + transform.forward * distanceSpawn;
             spawnPos.y = 0;
-            Instantiate(terrain, spawnPos, Quaternion.identity);
-            Destroy(this.gameObject);
+            GameObject porelamordediosfunciona = Instantiate(prefab, spawnPos, prefab.transform.rotation);
+            //Destroy(this.gameObject);
         }
     }
 
@@ -51,7 +50,7 @@ public class Sunflower : MonoBehaviour
     {
         Vector3 cubePos = transform.position + transform.forward * 12;
 
-        testing = Physics.CheckBox(cubePos, new Vector3(11,2,11), Quaternion.identity, whatIsSunflower);
+        testing = Physics.CheckBox(cubePos, new Vector3(11, 2, 11), Quaternion.identity, whatIsSunflower);
 
         if (testing)
         {
@@ -71,7 +70,7 @@ public class Sunflower : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not colliding with sunflower");
+            //Destroy(this.gameObject);
         }
     }
 
@@ -83,7 +82,7 @@ public class Sunflower : MonoBehaviour
         //Vector3 newPos = transform.position + transform.forward * 11;
         //Gizmos.DrawWireCube(newPos, new Vector3(22, 1, 22));
 
-        Gizmos.DrawWireCube(transform.position + transform.forward * 12, new Vector3(22,2,22));
+        Gizmos.DrawWireCube(transform.position + transform.forward * 12, new Vector3(22, 2, 22));
     }
 
     private void RandomActivation()
