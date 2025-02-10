@@ -46,6 +46,11 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
 
+        [Header("Opciones de Disparo")]
+        [SerializeField] private bool autoFire = false; // Indica si el arma dispara automáticamente
+        [SerializeField] private bool shootUpwards = false; // Indica si el arma dispara hacia arriba
+        [SerializeField] private bool shootDownwards = false; // Indica si el arma dispara hacia abajo
+
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
 
         protected virtual void Start()
@@ -60,7 +65,12 @@ namespace Weapons
 
         void FireNReload()
         {
-            if (weaponType == WeaponType.Automatic)
+            if (autoFire && CanShoot())
+            {
+                nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
+                Shoot(); // Llama al método Shoot para disparar
+            }
+            else if (weaponType == WeaponType.Automatic)
             {
                 // Detecta si se mantiene presionado el botón y si es posible disparar
                 if (Input.GetKey(KeyCode.Mouse0) && CanShoot())
@@ -178,6 +188,17 @@ namespace Weapons
                 for (int i = 0; i < numberBullets; i++)
                 {
                     Vector3 direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
+
+                    // Ajustar la dirección de disparo hacia arriba o hacia abajo
+                    if (shootUpwards)
+                    {
+                        direction = Vector3.up;
+                    }
+                    else if (shootDownwards)
+                    {
+                        direction = Vector3.down;
+                    }
+
                     Vector3 positionOffset = weaponType == WeaponType.BurstFire ? aiming.forward * burstDistance * burstIndex : Vector3.zero;
                     GameObject bullet = Instantiate(bulletPrefab, aiming.position + positionOffset, Quaternion.LookRotation(direction));
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();

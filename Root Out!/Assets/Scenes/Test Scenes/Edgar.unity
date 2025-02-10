@@ -1260,13 +1260,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827808010}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12298927, y: -0.79218805, z: 0.14843287, w: 0.57903326}
-  m_LocalPosition: {x: 0, y: 2.02, z: -3.36}
+  m_LocalRotation: {x: -0.054016948, y: 0.4974963, z: -0.1850428, w: -0.845777}
+  m_LocalPosition: {x: 12.1, y: 17.3, z: 25.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 22.185, y: -107.95, z: -1.421}
+  m_LocalEulerAnglesHint: {x: 15.991, y: -418.718, z: 15.646}
 --- !u!114 &827808013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2480,11 +2480,7 @@ MonoBehaviour:
   aiming: {fileID: 423411026}
   weaponType: 0
   spreadAngle: 1
-  autoFire: 0
-  automaticShoot: 0
-  shootHorizontal: 0
-  shootUpwards: 0
-  shootDownwards: 0
+  horizontalSpread: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 9cb272a159628b24296395a1752c0d93, type: 3}
   currentAmmo: 0
   bulletReserve: 0
@@ -2499,6 +2495,9 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  autoFire: 0
+  shootUpwards: 0
+  shootDownwards: 0
   detectionRange: 2
   sunFlower: {fileID: 4188914659594138278}
   _sunFlower: {fileID: 1341339357}
@@ -3005,6 +3004,7 @@ GameObject:
   - component: {fileID: 1538966845}
   - component: {fileID: 1538966844}
   - component: {fileID: 1538966843}
+  - component: {fileID: 1538966847}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -3095,6 +3095,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1538966847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538966842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191a23e83681b464682141421fa64868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1800009838}
 --- !u!1 &1626074588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,11 +3576,7 @@ MonoBehaviour:
   aiming: {fileID: 952531756}
   weaponType: 1
   spreadAngle: 1
-  autoFire: 0
-  automaticShoot: 0
-  shootHorizontal: 0
-  shootUpwards: 0
-  shootDownwards: 0
+  horizontalSpread: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
   currentAmmo: 350
   bulletReserve: 100
@@ -3582,6 +3591,9 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  autoFire: 0
+  shootUpwards: 0
+  shootDownwards: 0
   bulletText: {fileID: 1968219535}
 --- !u!4 &1911050530 stripped
 Transform:
@@ -3608,11 +3620,7 @@ MonoBehaviour:
   aiming: {fileID: 1893363207}
   weaponType: 3
   spreadAngle: 1
-  autoFire: 0
-  automaticShoot: 0
-  shootHorizontal: 0
-  shootUpwards: 0
-  shootDownwards: 0
+  horizontalSpread: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
   currentAmmo: 350
   bulletReserve: 350
@@ -3627,6 +3635,9 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  autoFire: 0
+  shootUpwards: 0
+  shootDownwards: 0
   bulletText: {fileID: 1968219535}
 --- !u!1 &1968219533
 GameObject:
@@ -4099,7 +4110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 100
-  lifeBar: {fileID: 762727755}
 --- !u!1 &268022561976668744
 GameObject:
   m_ObjectHideFlags: 0
@@ -9087,11 +9097,7 @@ MonoBehaviour:
   aiming: {fileID: 5341532581791693888}
   weaponType: 1
   spreadAngle: 1
-  autoFire: 1
-  automaticShoot: 0
-  shootHorizontal: 0
-  shootUpwards: 0
-  shootDownwards: 0
+  horizontalSpread: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 9cb272a159628b24296395a1752c0d93, type: 3}
   currentAmmo: 2147483647
   bulletReserve: 2147483647
@@ -9106,6 +9112,9 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  autoFire: 0
+  shootUpwards: 0
+  shootDownwards: 0
   player: {fileID: 1921753222857182884}
   sunFlower: {fileID: 1341339357}
   rangeGizmo: 10
@@ -20023,12 +20032,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiming: {fileID: 8966824226650807625}
   weaponType: 1
-  spreadAngle: 2
-  autoFire: 1
-  automaticShoot: 0
-  shootHorizontal: 0
-  shootUpwards: 1
-  shootDownwards: 0
+  spreadAngle: 1
+  horizontalSpread: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 397fa4485e1bf7d4bb5de13b088cef74, type: 3}
   currentAmmo: 5000
   bulletReserve: 5000
@@ -20043,6 +20048,9 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  autoFire: 1
+  shootUpwards: 1
+  shootDownwards: 0
   player: {fileID: 1921753222857182884}
 --- !u!114 &8337252604411168323
 MonoBehaviour:
