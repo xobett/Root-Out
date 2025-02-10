@@ -1,18 +1,20 @@
 using System.Collections;
 using UnityEngine;
+using System;
+
 
 
 public class BalaIncendiaria : MonoBehaviour, IBullet
 {
-    private float daño;
+    private float damage;
     [SerializeField] private float duracion = 5f; // Duración del daño continuo
     [SerializeField] private float intervalo = 1f; // Intervalo entre cada aplicación de daño
 
     float tiempoTranscurrido = 0f;
 
-    public void SetDamage(int damageAmount)
+    public void SetDamage(float damageAmount)
     {
-        daño = damageAmount;
+        damage = damageAmount;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,7 +33,7 @@ public class BalaIncendiaria : MonoBehaviour, IBullet
         while (tiempoTranscurrido < duracion)
         {
             // Aplica daño al objetivo
-           objetivo.GetComponent<AIHealth>().TakeDamageAI(daño);
+           objetivo.GetComponent<AIHealth>().TakeDamage(damage);
 
             // Espera el intervalo antes de aplicar el siguiente daño
             yield return new WaitForSeconds(intervalo);

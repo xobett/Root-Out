@@ -1,12 +1,11 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Weapons
 {
+
     public class WeaponsBase : MonoBehaviour
     {
-        // Enum que define los diferentes tipos de armas
         public enum WeaponType
         {
             SpreadShot,
@@ -16,32 +15,28 @@ namespace Weapons
         }
 
         [Header("Punto de Mira")]
-        [SerializeField] public Transform aiming; // Punto de Mira
+        [SerializeField] private Transform aiming; // Punto de Mira
 
         [Header("Tipo de Arma")]
         [SerializeField] public WeaponType weaponType; // Tipo de Arma
 
-        [Header("Opciones de Disparo")]
+        [Header("Dispersión de Disparo")]
         [SerializeField] protected float spreadAngle = 0f; // Ángulo de dispersión
-        [SerializeField] private bool autoFire = false; // Indica si el arma se dispara automáticamente
-        [SerializeField] private bool automaticShoot = false; // Indica si el arma se dispara automáticamente
-        [SerializeField] private bool shootHorizontal = false; // Indica si el arma dispara en horizontal sin dispersión
-        [SerializeField] private bool shootUpwards = false; // Indica si el arma dispara hacia arriba
-        [SerializeField] private bool shootDownwards = false; // Indica si el arma dispara hacia abajo
+        [SerializeField] protected bool horizontalSpread = false; // Indica si la dispersión es solo horizontal
 
         [Header("Tipo de Bala")]
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
 
         [Header("Munición")]
-        [SerializeField] public int currentAmmo; // Munición actual
+        [SerializeField] protected int currentAmmo; // Munición actual
         [SerializeField] protected int bulletReserve; // Reserva de balas
         [SerializeField] protected int maxAmmo; // Capacidad máxima de munición
 
         [Header("Estadísticas")]
-        [SerializeField] protected int damage; // Daño 
+        [SerializeField] protected float damage; // Daño 
         [SerializeField] protected float range; // Alcance 
         [SerializeField] protected float fireRate; // Cadencia de disparo
-        [SerializeField] protected float reloadTime; // Tiempo de recarga
+        [SerializeField] protected float reloadTime; // Recargar
         [SerializeField] protected float bulletForce = 20f; // Fuerza con la que se dispara la bala
         [SerializeField] protected float lifeTimeBullets; // Tiempo de vida de la bala antes de desaparecer
 
@@ -49,68 +44,51 @@ namespace Weapons
         [SerializeField] protected int bulletsPerBurst = 3; // Número de balas por ráfaga
         [SerializeField] protected float burstRate = 0.1f; // Tiempo entre disparos en una ráfaga
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
-        [SerializeField] protected float burstPause = 0.5f; // Pausa después de una ráfaga
-
+        [SerializeField] protected float burstPause = 0.5f;
 
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
-        protected RaycastHit hit;
 
-        // Método que se llama al iniciar el script
         protected virtual void Start()
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
         }
 
-        // Método que se llama en cada frame
         protected virtual void Update()
         {
             FireNReload(); // Método que controla el disparo y la recarga
         }
 
-        // Método que controla el disparo y la recarga
-        public void FireNReload()
+        void FireNReload()
         {
-            if (autoFire && CanShoot())
+            if (weaponType == WeaponType.Automatic)
             {
-                nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
-                Shoot(); // Llama al método Shoot para disparar
+                // Detecta si se mantiene presionado el botón y si es posible disparar
+                if (Input.GetKey(KeyCode.Mouse0) && CanShoot())
+                {
+                    nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
+                    Shoot(); // Llama al método Shoot para disparar
+                }
             }
-            if (automaticShoot && CanShoot() && Input.GetKey(KeyCode.Mouse0))
+            else if (weaponType == WeaponType.BurstFire)
             {
-                nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
-                Shoot(); // Llama al método Shoot para disparar
+                // Detecta si se presiona el botón y si es posible disparar en ráfagas
+                if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
+                {
+                    StartCoroutine(FireBurst()); // Llama al método FireBurst para disparar en ráfagas
+                }
             }
             else
             {
-                switch (weaponType)
+                // Detecta si se presiona el botón y si es posible disparar
+                if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
                 {
-                    case WeaponType.SpreadShot:
-                        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
-                        {
-                            nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
-                            Shoot(); // Llama al método Shoot para disparar
-                        }
-                        break;
-                    case WeaponType.Automatic:
-                        if (Input.GetKey(KeyCode.Mouse0) && CanShoot())
-                        {
-                            nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
-                            Shoot(); // Llama al método Shoot para disparar
-                        }
-                        break;
-                    case WeaponType.BurstFire:
-                        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
-                        {
-                            StartCoroutine(FireBurst()); // Llama al método FireBurst para disparar en ráfagas
-                        }
-                        break;
-                    case WeaponType.SingleShot:
-                        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
-                        {
-                            nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
-                            Shoot(); // Llama al método Shoot para disparar
-                        }
-                        break;
+                    nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
+                    Shoot(); // Llama al método Shoot para disparar
+                }
+
+                else if (Input.GetKeyDown(KeyCode.Mouse0) && !CanShoot())
+                {
+                    Debug.Log("No ammo left!"); // Mensaje de depuración si no se puede disparar
                 }
             }
 
@@ -189,6 +167,7 @@ namespace Weapons
         protected void UseAmmo(int numberBullets)
         {
             currentAmmo -= numberBullets;
+            Debug.Log("Ammo left: " + currentAmmo);
         }
 
         // Método que dispara una bala (instancia el prefab)
@@ -198,14 +177,15 @@ namespace Weapons
             {
                 for (int i = 0; i < numberBullets; i++)
                 {
-                    Vector3 direction = BulletDirection(i, numberBullets);
-                    Vector3 positionOffset = weaponType == WeaponType.BurstFire ? burstDistance * burstIndex * aiming.forward : Vector3.zero;
+                    Vector3 direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
+                    Vector3 positionOffset = weaponType == WeaponType.BurstFire ? aiming.forward * burstDistance * burstIndex : Vector3.zero;
                     GameObject bullet = Instantiate(bulletPrefab, aiming.position + positionOffset, Quaternion.LookRotation(direction));
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     rb.AddForce(direction * bulletForce, ForceMode.Impulse);
 
                     // Verifica si el prefab de la bala tiene el componente IBullet
-                    if (bullet.TryGetComponent<IBullet>(out var bulletComponent))
+                    IBullet bulletComponent = bullet.GetComponent<IBullet>();
+                    if (bulletComponent != null)
                     {
                         bulletComponent.SetDamage(damage); // Establece el daño de la bala
                     }
@@ -223,55 +203,27 @@ namespace Weapons
             }
         }
 
-        // Método para obtener la dirección de la bala
-        private Vector3 BulletDirection(int bulletIndex, int totalBullets)
-        {
-            if (weaponType == WeaponType.SpreadShot)
-            {
-                return SpreadDirection(aiming.forward);
-            }
-            if (shootDownwards)
-            {
-                return -aiming.up;
-            }
-            if (shootUpwards)
-            {
-                return aiming.up;
-            }
-            else
-            {
-                return NonSpreadDirection(aiming.forward, bulletIndex, totalBullets);
-            }
-        }
-
         // Método para obtener una dirección con dispersión
-        private Vector3 SpreadDirection(Vector3 baseDirection)
+        private Vector3 GetSpreadDirection(Vector3 baseDirection)
         {
             float spreadRadius = Mathf.Tan(spreadAngle * Mathf.Deg2Rad); // Convertir ángulo a radianes y calcular el radio de dispersión
             Vector2 randomPoint = Random.insideUnitCircle * spreadRadius; // Generar un punto aleatorio dentro del círculo de dispersión
 
             Vector3 spread;
-            if (shootHorizontal)
+            if (horizontalSpread)
             {
-                spread = new Vector3(randomPoint.x, 0, 0); // Dispersión solo en horizontal
-            }
-            else if (shootUpwards == true)
-            {
-                spread = new Vector3(0, randomPoint.y,0); // Dispersión solo hacia arriba
-            }
-            else if (shootDownwards == true)
-            {
-                spread = new Vector3(0, -randomPoint.y, 0); // Dispersión solo hacia abajo
+                spread = new Vector3(randomPoint.x, 0, randomPoint.y); // Dispersión solo en horizontal
             }
             else
             {
                 spread = new Vector3(randomPoint.x, randomPoint.y, 0); // Dispersión en todas las direcciones
             }
-            return baseDirection + spread; // Aplicar la dispersión a la dirección base
+
+            return (baseDirection + spread).normalized; // Ajustar la dirección base con la dispersión
         }
 
         // Método para obtener una dirección sin dispersión
-        private Vector3 NonSpreadDirection(Vector3 baseDirection, int bulletIndex, int totalBullets)
+        private Vector3 GetNonSpreadDirection(Vector3 baseDirection, int bulletIndex, int totalBullets)
         {
             if (totalBullets == 1)
             {
@@ -285,12 +237,11 @@ namespace Weapons
         }
 
         // Método virtual para obtener el número de balas, será sobrescrito en las clases derivadas
-        protected virtual int NumBullets()
+        protected virtual int GetNumBullets()
         {
             return weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Valor predeterminado
         }
 
-        // Método para dibujar Gizmos en la escena para visualización
         protected void OnDrawGizmos()
         {
             Gizmos.color = Color.red; // Establece el color de los Gizmos a rojo.
@@ -318,4 +269,3 @@ namespace Weapons
         }
     }
 }
-

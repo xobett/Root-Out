@@ -1,6 +1,5 @@
 using UnityEngine;
 using Weapons;
-
 public class Lanzallamas : WeaponsBase
 {
     // Duración e intensidad de la sacudida de la cámara al usar el lanzallamas

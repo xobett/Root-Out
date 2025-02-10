@@ -13,7 +13,7 @@ public class Sunflower : MonoBehaviour
     [SerializeField] private LayerMask whatIsSunflower;
 
     [Header("HEALTH SETTINGS")]
-    [SerializeField, Range(0, 100)] private int currentHealth;
+    [SerializeField, Range(0, 100)] private float currentHealth;
 
     [SerializeField] private RaycastHit hit;
 
@@ -97,7 +97,7 @@ public class Sunflower : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void DamageSunFlower(int damage)
+    public void DamageSunFlower(float damage)
     {
         currentHealth -= damage;
     }

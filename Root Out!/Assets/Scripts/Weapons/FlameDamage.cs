@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class FlameDamage : MonoBehaviour, IBullet
 {
-    private int damage;
-    private int continuousDamage;
+    private float damage;
+    private float continuousDamage;
 
-    public void SetDamage(int damageAmount)
+    public void SetDamage(float damageAmount)
     {
         damage = damageAmount;
 
@@ -15,7 +15,7 @@ public class FlameDamage : MonoBehaviour, IBullet
         continuousDamage = damage * -1;
         if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth))
         {
-            aiHealth.TakeDamageAI(damage); 
+            aiHealth.TakeDamage(damage); 
         }
         // Destruir la bala al colisionar
         Destroy(gameObject);

@@ -1,29 +1,14 @@
 using UnityEngine;
 using Weapons;
-using TMPro;
 
 public class Rifle : WeaponsBase
 {
-    [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
-    
-    protected override void Shoot()
+    [Header("Balas a disparar")]
+    [SerializeField] private int bullet = 1;
+
+    protected override int GetNumBullets()
     {
-        base.Shoot();
-        UpdateAmmoText(); // Actualiza el texto de munición después de disparar
-       // CameraShake.StartShake(0.1f, 0.1f);
-       // AudioManager.instance.PlaySFX("Automatic Rifle"); // Reproduce el sonido de disparo
-  
-    }
-    private void UpdateAmmoText() // Actualiza el texto de munición
-    {
-        if (bulletText != null)
-        {
-            bulletText.text = $"{currentAmmo}/{maxAmmo}"; // Actualiza el texto con la munición actual y máxima
-        }
-        else
-        {
-            Debug.LogWarning("Ammo text component is not assigned.");
-        }
+        return bullet; // Número de perdigones por disparo
     }
 }
 

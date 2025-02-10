@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour, IBullet
 {
-    private int damageToPlayer;
-    private int damageSunFlower;
+    private float damageToPlayer = 10;
 
-    public void SetDamage(int damageAmount)
+    public void SetDamage(float damageAmount)
     {
         damageToPlayer = damageAmount;
-        damageSunFlower = damageAmount;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -16,10 +14,6 @@ public class EnemyBullet : MonoBehaviour, IBullet
         if (collision.collider.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
             playerHealth.TakeDamagePlayer(damageToPlayer);
-        }
-        if (collision.collider.TryGetComponent<Sunflower>(out var sunflower))
-        {
-            sunflower.DamageSunFlower(damageSunFlower);
         }
         Destroy(gameObject);
     }

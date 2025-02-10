@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour, IBullet
 {
-    private int damage; // Daño de la bala
+    private float damage;
 
-    public void SetDamage(int damageAmount) // Método para asignar el daño
+    public void SetDamage(float damageAmount)
     {
-        damage = damageAmount; // Asignar el daño
+        damage = damageAmount;
     }
 
-    private void OnCollisionEnter(Collision collision) 
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth)) // Intentar obtener el componente AIHealth
+        if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth))
         {
-            aiHealth.TakeDamageAI(damage); // Convertir el daño a entero y aplicarlo
+            aiHealth.TakeDamage(damage); 
         }
 
         // Destruir la bala al colisionar
