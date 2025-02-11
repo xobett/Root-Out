@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
+using Weapons;
 
 public class EnemyBullet : MonoBehaviour, IBullet
 {
-    private float damageToPlayer;
+    [SerializeField] private float damageToPlayer; // Daño establecido en el inspector
 
     public void SetDamage(float damageAmount)
     {
@@ -13,9 +15,12 @@ public class EnemyBullet : MonoBehaviour, IBullet
     {
         if (collision.collider.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
-            playerHealth.TakeDamagePlayer(damageToPlayer);
+            playerHealth.TakeDamagePlayer(damageToPlayer); // Aplica el daño al jugador
         }
         Destroy(gameObject);
     }
-
+    public void Initialize(WeaponsBase weapon)
+    {
+        damageToPlayer = weapon.damage; // Asigna el daño desde WeaponsBase
+    }
 }

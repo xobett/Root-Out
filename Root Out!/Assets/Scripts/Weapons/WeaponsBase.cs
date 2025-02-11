@@ -38,7 +38,7 @@ namespace Weapons
         [SerializeField] protected int maxAmmo; // Capacidad máxima de munición
 
         [Header("Estadísticas")]
-        [SerializeField] protected float damage; // Daño 
+        [SerializeField] public float damage; // Daño 
         [SerializeField] protected float range; // Alcance 
         [SerializeField] protected float fireRate; // Cadencia de disparo
         [SerializeField] protected float reloadTime; // Recargar
@@ -207,8 +207,7 @@ namespace Weapons
                     rb.AddForce(direction * bulletForce, ForceMode.Impulse);
 
                     // Verifica si el prefab de la bala tiene el componente IBullet
-                    IBullet bulletComponent = bullet.GetComponent<IBullet>();
-                    if (bulletComponent != null)
+                    if (bullet.TryGetComponent<IBullet>(out var bulletComponent))
                     {
                         bulletComponent.SetDamage(damage); // Establece el daño de la bala
                     }
