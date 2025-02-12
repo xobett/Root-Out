@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsAiming())
         {
+            FaceForward();
             ZoomMovement();
         }
         else
@@ -70,6 +71,12 @@ public class PlayerMovement : MonoBehaviour
 
             charController.Move(Time.deltaTime * SpeedCheck() * moveDirection);
         }
+    }
+
+    private void FaceForward()
+    {
+        float faceForwardAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, camRef.eulerAngles.y, ref turnSmoothVelocity, turnSpeed);
+        transform.rotation = Quaternion.Euler(0, faceForwardAngle, 0f);
     }
 
     private void Gravity()
@@ -103,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsAiming()
     {
+        //Regresa si el jugador esta apuntando
         return Input.GetMouseButton(1);
     }
 }
