@@ -14,18 +14,24 @@ public class InteractionHandler : MonoBehaviour
         Interact();
     }
 
-    private void Interact()
+    public bool Interact()
     {
+        // Verifica si el usuario está intentando interactuar
         if (IsInteracting())
         {
+            // Realiza un raycast desde la posición del objeto hacia adelante
             if (Physics.Raycast(transform.position, transform.forward * range, out outHit, range, whatIsInteraction))
             {
-                outHit.collider.GetComponent<IInteractable>().OnInteract();
+                // Llama al método OnInteract del objeto con el que se ha colisionado
+                // outHit.collider.GetComponent<IInteractable>().OnInteract();
+                Debug.Log("Tomado");
+                return true; // Indica que la interacción fue exitosa
             }
         }
+        return false; // Indica que no hubo interacción
     }
 
-    private bool IsInteracting()
+    public bool IsInteracting()
     {
         return Input.GetKeyDown(KeyCode.E);
     }

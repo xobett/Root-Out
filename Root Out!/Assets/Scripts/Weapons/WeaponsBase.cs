@@ -41,7 +41,7 @@ namespace Weapons
         [SerializeField] public float damage; // Daño 
         [SerializeField] protected float range; // Alcance 
         [SerializeField] protected float fireRate; // Cadencia de disparo
-        [SerializeField] protected float reloadTime; // Recargar
+        [SerializeField] public float reloadTime; // Recargar
         [SerializeField] protected float bulletForce = 20f; // Fuerza con la que se dispara la bala
         [SerializeField] protected float lifeTimeBullets; // Tiempo de vida de la bala antes de desaparecer
 

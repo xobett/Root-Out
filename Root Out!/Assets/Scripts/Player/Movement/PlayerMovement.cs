@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("MOVEMENT SETTINGS")]
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float sprintSpeed;
+    [SerializeField] public float walkSpeed;
+    [SerializeField] public float sprintSpeed;
 
     private CharacterController charController;
 

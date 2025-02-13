@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     private float maxHealth = 100;
-    [SerializeField, Range(0, 100)] private float currentHealth;
+    [SerializeField, Range(0, 200)] public float currentHealth;
     [SerializeField] private Image playerLifeBar;
 
     public void TakeDamagePlayer(float damage)
@@ -24,4 +25,10 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("El jugador ha muerto.");
     }
+    internal void TryGetComponent<T>()
+    {
+        // Lanza una excepción que indica que el método no está implementado
+        throw new NotImplementedException();
+    }
+
 }
