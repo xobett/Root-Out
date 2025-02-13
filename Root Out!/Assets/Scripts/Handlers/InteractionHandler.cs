@@ -9,8 +9,6 @@ public class InteractionHandler : MonoBehaviour
 
     private RaycastHit outHit;
 
-    private bool mouseOver;
-
     void Update()
     {
         Interact();

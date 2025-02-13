@@ -6,7 +6,7 @@ public class SunflowerSpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private GameObject sunflowerPrefab;
 
-    private int sunflowersToSpawn = 2;
+    [SerializeField] private int sunflowersToSpawn;
 
     private int spawnPos;
     private int lastSpawnPos;
@@ -14,15 +14,6 @@ public class SunflowerSpawner : MonoBehaviour
     void Start()
     {
         SpawnSunflower();
-        //SecondSpawn();
-    }
-
-    private void SecondSpawn()
-    {
-        for (int i = 0; i < spawnPositions.Length; i++)
-        {
-            Instantiate(sunflowerPrefab, spawnPositions[i].position, spawnPositions[i].rotation);
-        }
     }
 
     private void SpawnSunflower()
@@ -31,10 +22,10 @@ public class SunflowerSpawner : MonoBehaviour
 
         if (spawnPositions != null)
         {
-            for (int i = 0; i <= sunflowersToSpawn; i++)
+            for (int i = 0; i < sunflowersToSpawn; i++)
             {
                 StartCoroutine(AssignCorrectPos());
-                i++;
+                Debug.Log(i + 1);
             } 
         }
     }
@@ -50,7 +41,7 @@ public class SunflowerSpawner : MonoBehaviour
         }
 
         Instantiate(sunflowerPrefab, spawnPositions[spawnPos].position, spawnPositions[spawnPos].rotation);
-        Debug.Log(spawnPos);
+        //Debug.Log(spawnPos);
 
         lastSpawnPos = spawnPos;
 

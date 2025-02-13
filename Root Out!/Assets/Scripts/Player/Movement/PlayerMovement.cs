@@ -75,7 +75,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FaceForward()
     {
+        //Se crea un angulo que interpola suavemente la rotacion en Y del jugador con la de la camara.
         float faceForwardAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, camRef.eulerAngles.y, ref turnSmoothVelocity, turnSpeed);
+        //Se asigna el angulo creado a la rotacion.
         transform.rotation = Quaternion.Euler(0, faceForwardAngle, 0f);
     }
 
