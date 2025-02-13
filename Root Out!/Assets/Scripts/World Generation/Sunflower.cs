@@ -1,5 +1,7 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Sunflower : MonoBehaviour
@@ -15,6 +17,8 @@ public class Sunflower : MonoBehaviour
 
     [Header("HEALTH SETTINGS")]
     [SerializeField, Range(0, 100)] private float currentHealth;
+     private float maxHealth = 100f;
+    [SerializeField] private TextMeshProUGUI porcentLife;
 
     [SerializeField] private RaycastHit hit;
 
@@ -25,6 +29,7 @@ public class Sunflower : MonoBehaviour
     {
         BugDetection();
         //SunflowerNearDetection();
+        UpdateLifeUI(); // Actualiza la UI de vida 
     }
     void Update()
     {
@@ -103,5 +108,10 @@ public class Sunflower : MonoBehaviour
     public void DamageSunFlower(float damage)
     {
         currentHealth -= damage;
+        UpdateLifeUI();
+    }
+    private void UpdateLifeUI()
+    {
+        porcentLife.text = $"{currentHealth}%"; 
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Weapons;
+using System;
 
 public class EnemyBullet : MonoBehaviour, IBullet
 {
@@ -10,6 +11,10 @@ public class EnemyBullet : MonoBehaviour, IBullet
     {
         damageToPlayer = damageAmount;
     }
+    public void Initialize(WeaponsBase weapon) 
+    {
+        damageToPlayer = weapon.damage; // Asigna el daño desde WeaponsBase
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,10 +22,10 @@ public class EnemyBullet : MonoBehaviour, IBullet
         {
             playerHealth.TakeDamagePlayer(damageToPlayer); // Aplica el daño al jugador
         }
+        if(collision.collider.TryGetComponent<Sunflower>(out var sunFlower))
+        {
+            sunFlower.DamageSunFlower(damageToPlayer); // Aplica el da?o al hoja de calabaza
+        }
         Destroy(gameObject);
-    }
-    public void Initialize(WeaponsBase weapon)
-    {
-        damageToPlayer = weapon.damage; // Asigna el daño desde WeaponsBase
     }
 }

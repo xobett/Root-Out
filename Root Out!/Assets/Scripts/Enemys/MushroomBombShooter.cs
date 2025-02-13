@@ -41,7 +41,7 @@ public class MushroomBombShooter : WeaponsBase
         //Vector3 randomDirection = new Vector3(0, Random.Range(-1, 1), 0).normalized;
 
         // Instancia del proyectil
-        GameObject mortar = Instantiate(bulletPrefab, mortarPosition, Quaternion.identity);
+        GameObject mortar = Instantiate(bulletPrefab, mortarPosition, Quaternion.identity); 
 
         // Inicializa el daño del proyectil
         if (mortar.TryGetComponent<EnemyBullet>(out var enemyBullet)) 
