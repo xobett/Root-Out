@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
@@ -14,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("JUMP SETTINGS")]
     [SerializeField] private float jumpForce;
+    [SerializeField] private float chargedJumpForce;
+
+    [SerializeField] private bool jumpCharged;
 
     [Header("GRAVITY SETTINGS")]
     [SerializeField] private float gravityForce;
@@ -24,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField, Range(0f, 1f)] private float groundCheckRadius;
 
-    private Vector2 gravityVelocity;
+    [SerializeField] private Vector2 gravity;
 
     private Transform camRef;
 
@@ -33,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         //Se consigue el componente de Character Controller.
         charController = GetComponent<CharacterController>();
 
-        //Se cpmsogie el componente transform de la camara principal.
+        //Se consigue el componente transform de la camara principal.
         camRef = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
@@ -41,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementCheck();
         Gravity();
+
+        LeafJump();
+        ChargeJump();
     }
 
     private void MovementCheck()
@@ -89,21 +96,38 @@ public class PlayerMovement : MonoBehaviour
 
     private void Gravity()
     {
-        gravityVelocity.y -= gravityForce * Time.deltaTime;
+        gravity.y -= gravityForce * Time.deltaTime;
 
-        if (IsTouching() && gravityVelocity.y < 0)
+        if (IsTouching() && gravity.y < 0)
         {
-            gravityVelocity.y = 0;
+            gravity.y = 0;
         }
 
-        charController.Move(gravityVelocity * Time.deltaTime);
+        charController.Move(gravity * Time.deltaTime);
     }
 
-    private bool IsTouching()
+
+
+    private void LeafJump()
     {
-        bool isTouching = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
-        return isTouching;
+        if (Input.GetKeyUp(KeyCode.Space) && IsTouching())
+        {
+            Debug.Log("Is jumping");
+            gravity.y = chargedJumpForce;
+            Debug.Log(chargedJumpForce);
+            chargedJumpForce = 0f;
+        }
     }
+
+    private void ChargeJump()
+    {
+        if (Input.GetKey(KeyCode.Space) && IsTouching() && chargedJumpForce < 15f)
+        {
+            chargedJumpForce += 0.25f;
+            Debug.Log(chargedJumpForce);
+        }
+    }
+
 
     private float SpeedCheck()
     {
@@ -121,6 +145,12 @@ public class PlayerMovement : MonoBehaviour
     {
         //Regresa Input en Z (Hacia el frente y atras del jugador)
         return Input.GetAxis("Vertical");
+    }
+
+    private bool IsTouching()
+    {
+        bool isTouching = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
+        return isTouching;
     }
 
     private bool IsSprinting()

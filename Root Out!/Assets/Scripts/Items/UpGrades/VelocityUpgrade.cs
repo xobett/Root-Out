@@ -1,26 +1,19 @@
 using UnityEngine;
 
-public class VelocityUpgrade : MonoBehaviour
+public class VelocityUpgrade : MonoBehaviour , IInteractable
 {
     [Header("Ref Scripts")]
-    [SerializeField] InteractionHandler interactionHandler;
     [SerializeField] PlayerMovement playerMovement;
 
     [Header("Upgrades")]
     [SerializeField] float walkUpgrade;
     [SerializeField] float sprintUpgrade;
 
-    private void Update()
+    public void OnInteract()
     {
-        VelUpgrade();
+        playerMovement.walkSpeed = walkUpgrade;
+        playerMovement.sprintSpeed = sprintUpgrade;
+        Destroy(gameObject);
     }
-    private void VelUpgrade()
-    {
-        if (interactionHandler.Interact())
-        {
-            playerMovement.walkSpeed = walkUpgrade;
-            playerMovement.sprintSpeed = sprintUpgrade;
-            Destroy(gameObject);    
-        }
-    }
+
 }

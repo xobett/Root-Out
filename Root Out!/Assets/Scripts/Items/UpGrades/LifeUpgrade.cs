@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LifeUpgrade : MonoBehaviour
+public class LifeUpgrade : MonoBehaviour, IInteractable
 {
 
     [SerializeField] PlayerHealth scriptPlayerHealth;
@@ -8,23 +8,9 @@ public class LifeUpgrade : MonoBehaviour
     //[SerializeField] PerksData _lifeUpgrade;
     [SerializeField] private float lifeUpgrade;
 
-
-    
-    private void Update()
+    public void OnInteract()
     {
-        UpgradeLife();
+        scriptPlayerHealth.currentHealth += lifeUpgrade;
+        Destroy(gameObject);
     }
-
-
-    private void UpgradeLife()
-    {
-        if (scriptInteractionHandler.Interact())
-        {
-            scriptPlayerHealth.currentHealth += lifeUpgrade;
-            Destroy(gameObject);
-            
-        }
-    }
-
-
 }
