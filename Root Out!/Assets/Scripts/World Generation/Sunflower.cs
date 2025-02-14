@@ -29,7 +29,7 @@ public class Sunflower : MonoBehaviour
     private void Start()
     {
         BugDetection();
-        UpdateLife(); //Actualiza la UI de vida.
+        //UpdateLife(); //Actualiza la UI de vida.
     }
 
     public void OnInteract()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -6,22 +7,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float walkSpeed;
     [SerializeField] public float sprintSpeed;
 
+    [SerializeField] private float turnSmoothVelocity;
+    [Range(0, 1)] public float turnSpeed;
+
     private CharacterController charController;
 
     [Header("JUMP SETTINGS")]
     [SerializeField] private float jumpForce;
+
+    [Header("GRAVITY SETTINGS")]
+    [SerializeField] private float gravityForce;
+
     [SerializeField] private LayerMask whatIsGround;
 
-    [SerializeField] private float gravityForce;
+    [SerializeField] private Transform groundCheck;
+
+    [SerializeField, Range(0f, 1f)] private float groundCheckRadius;
 
     private Vector2 gravityVelocity;
 
-    public float turnSmoothVelocity;
-
-    public Transform camRef;
-
-    [Range(0, 1)]public float turnSpeed;
-
+    private Transform camRef;
 
     void Start()
     {
@@ -35,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovementCheck();
+        Gravity();
     }
 
     private void MovementCheck()
@@ -83,7 +89,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Gravity()
     {
-        
+        gravityVelocity.y -= gravityForce * Time.deltaTime;
+
+        if (IsTouching() && gravityVelocity.y < 0)
+        {
+            gravityVelocity.y = 0;
+        }
+
+        charController.Move(gravityVelocity * Time.deltaTime);
+    }
+
+    private bool IsTouching()
+    {
+        bool isTouching = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
+        return isTouching;
     }
 
     private float SpeedCheck()
@@ -91,7 +110,6 @@ public class PlayerMovement : MonoBehaviour
         //Regresa velocidad de sprint si esta haciendo sprint el jugador, de lo contrario regresa velocidad normal.
         return IsSprinting() ? sprintSpeed : walkSpeed;
     }
-
 
     private float HorizontalInput()
     {
@@ -104,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         //Regresa Input en Z (Hacia el frente y atras del jugador)
         return Input.GetAxis("Vertical");
     }
+
     private bool IsSprinting()
     {
         //Regresa si el jugador esta sprintando
@@ -114,5 +133,11 @@ public class PlayerMovement : MonoBehaviour
     {
         //Regresa si el jugador esta apuntando
         return Input.GetMouseButton(1);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 }
