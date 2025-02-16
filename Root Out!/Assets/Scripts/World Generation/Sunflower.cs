@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class Sunflower : MonoBehaviour
+public class Sunflower : MonoBehaviour, IInteractable
 {
     [Header("GAMEOBJECT SETTINGS")]
     public GameObject prefab;
@@ -19,6 +19,8 @@ public class Sunflower : MonoBehaviour
 
     private bool sunflowerColliding;
     private bool groundColliding;
+
+    [SerializeField] private bool activated;
 
     [Header("HEALTH SETTINGS")]
     [SerializeField, Range(0, 100)] private float currentHealth;
@@ -34,20 +36,25 @@ public class Sunflower : MonoBehaviour
 
     public void OnInteract()
     {
-        Debug.Log("Testing");
-        //TerrainSpawn();
+        TerrainSpawn();
     }
 
     private void TerrainSpawn()
     {
-        //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.
-        Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
-        spawnPos.y = 0;
-        //Se genera un nuevo terreno en la posicion creada.
-        Instantiate(prefab, spawnPos, prefab.transform.rotation);
+        if (!activated)
+        {
+            //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.
+            Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
+            spawnPos.y = 0;
 
-        //Tras instanciar el terreno, se autodestruye el girasol.
-        Destroy(this.gameObject);
+            //Se genera un nuevo terreno en la posicion creada.
+            Instantiate(prefab, spawnPos, prefab.transform.rotation);
+
+            //Tras instanciar el terreno, se autodestruye el girasol.
+            Destroy(this.gameObject);
+            
+            activated = true;
+        }
     }
 
 

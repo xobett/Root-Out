@@ -6,6 +6,6 @@ public class SunflowerActuator : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Debug.Log("Opening sunflower");
+        
     }
 }

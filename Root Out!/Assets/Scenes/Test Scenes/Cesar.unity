@@ -346,6 +346,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!65 &89726437
@@ -478,6 +479,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!65 &283880097
@@ -1160,6 +1162,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!65 &556153490
@@ -1963,6 +1966,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!65 &1585541659
@@ -2095,6 +2099,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!65 &1604018312
@@ -2227,6 +2232,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!65 &1725995259
@@ -2547,6 +2553,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!65 &1989147079
@@ -2987,6 +2994,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!23 &1215235345815813429
@@ -3248,7 +3256,7 @@ Transform:
   m_GameObject: {fileID: 4987343170800073198}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.16, z: 0}
+  m_LocalPosition: {x: 0, y: 1.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3394,6 +3402,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!65 &3596474435992018225
@@ -3847,6 +3856,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!143 &5572672871938764871
@@ -4046,6 +4056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 3
+  verticalOffset: {x: 0, y: -0.2, z: 0}
   whatIsInteraction:
     serializedVersion: 2
     m_Bits: 2112
@@ -4131,6 +4142,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
 --- !u!1 &7836322401331810297
