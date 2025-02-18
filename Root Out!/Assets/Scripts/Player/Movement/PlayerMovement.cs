@@ -14,10 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController charController;
 
     [Header("JUMP SETTINGS")]
-    [SerializeField] private float jumpForce;
     [SerializeField] private float chargedJumpForce;
-
-    [SerializeField] private bool jumpCharged;
 
     [Header("GRAVITY SETTINGS")]
     [SerializeField] private float gravityForce;
@@ -28,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField, Range(0f, 1f)] private float groundCheckRadius;
 
-    [SerializeField] private Vector2 gravity;
+    [SerializeField] public Vector2 gravity;
 
     private Transform camRef;
 
@@ -38,16 +35,13 @@ public class PlayerMovement : MonoBehaviour
         charController = GetComponent<CharacterController>();
 
         //Se consigue el componente transform de la camara principal.
-        camRef = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        camRef = Camera.main.transform;
     }
 
     void Update()
     {
         MovementCheck();
         Gravity();
-
-        LeafJump();
-        ChargeJump();
     }
 
     private void MovementCheck()
@@ -122,32 +116,6 @@ public class PlayerMovement : MonoBehaviour
         charController.Move(gravity * Time.deltaTime);
     }
 
-
-
-    private void LeafJump()
-    {
-        //Checa si se esta presionando la barra espaciadora y si el jugador se encuentra en el suelo.
-        if (Input.GetKeyUp(KeyCode.Space) && IsTouching())
-        {
-            Debug.Log("Is jumping");
-            //Se agrega fuerza positiva sobre el Vector3 que constantemente ejerce gravedad.
-            gravity.y = chargedJumpForce;
-            Debug.Log(chargedJumpForce);
-            //Tras saltar, se reinicia el valor del salto cargado.
-            chargedJumpForce = 0f;
-        }
-    }
-
-    private void ChargeJump()
-    {
-        if (Input.GetKey(KeyCode.Space) && IsTouching() && chargedJumpForce < 15f)
-        {
-            chargedJumpForce += 0.25f;
-            Debug.Log(chargedJumpForce);
-        }
-    }
-
-
     private float SpeedCheck()
     {
         //Regresa velocidad de sprint si esta haciendo sprint el jugador, de lo contrario regresa velocidad normal.
@@ -166,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         return Input.GetAxis("Vertical");
     }
 
-    private bool IsTouching()
+    public bool IsTouching()
     {
         bool isTouching = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
         return isTouching;
