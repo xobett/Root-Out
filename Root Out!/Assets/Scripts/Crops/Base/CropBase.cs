@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class CropBase : MonoBehaviour
@@ -38,7 +39,14 @@ public abstract class CropBase : MonoBehaviour
 
         desiredFollowingPos.y = transform.position.y;
 
-        transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f /cropWalkSpeed); 
+        transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f /cropWalkSpeed);
+
+        Debug.Log(desiredFollowingPos);
+
+        if (transform.position == desiredFollowingPos)
+        {
+            Debug.Log("Ha llegado a la posicion.");
+        }
 
     }
 
