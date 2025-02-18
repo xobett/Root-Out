@@ -6,16 +6,16 @@ public class SunflowerSpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private GameObject sunflowerPrefab;
 
+    [SerializeField] private int sunflowersToSpawn;
+
     [SerializeField] private int[] usedPositions = new int[3];
 
-    [SerializeField] private int sunflowersToSpawn;
 
     private int spawnPos;
 
     void Start()
     {
         SpawnSunflower();
-
     }
 
     private void SpawnSunflower()
@@ -24,33 +24,9 @@ public class SunflowerSpawner : MonoBehaviour
 
         if (spawnPositions != null)
         {
-            for (int i = 0; i < sunflowersToSpawn; i++)
-            {
-                //StartCoroutine(AssignCorrectPos());
-
-                spawnPos = RandomPos();
-
-                Debug.Log(spawnPos);
-
-                usedPositions[i] = spawnPos;
-
-            } 
+            StartCoroutine(AssignSpawnPosition());
         }
     }
-
-    private IEnumerator AssignCorrectPos()
-    {
-        Debug.Log("Entro");
-        spawnPos = RandomPos();
-
-        VerifyLastPositions(spawnPos);
-
-        //Instantiate(sunflowerPrefab, spawnPositions[spawnPos].position, spawnPositions[spawnPos].rotation);
-        Debug.Log(spawnPos);
-        yield return null;
-
-    }
-
     private bool VerifyLastPositions(int positionToVerify)
     {
         bool notUsed = false;
@@ -66,6 +42,29 @@ public class SunflowerSpawner : MonoBehaviour
 
         return notUsed;
     }
+
+    private IEnumerator AssignSpawnPosition()
+    {
+        for (int i = 0; i < sunflowersToSpawn; i++)
+        {
+            Debug.Log("Entro");
+            spawnPos = RandomPos();
+
+            while (VerifyLastPositions(spawnPos))
+            {
+                spawnPos = RandomPos();
+                yield return null;
+            }
+
+            Instantiate(sunflowerPrefab, spawnPositions[spawnPos].position, spawnPositions[spawnPos].rotation);
+            Debug.Log($"Position {spawnPos} was used and added");
+
+            usedPositions[i] = spawnPos;
+        }
+
+        yield return null;
+    }
+
 
     private int RandomPos()
     {

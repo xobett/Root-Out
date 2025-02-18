@@ -65,23 +65,35 @@ public class PlayerMovement : MonoBehaviour
 
     private void ZoomMovement()
     {
+        //Mueve al jugador de izquierda a derecha, de frente hacia atras sin rotar a la direccion a la que camina.
+        //Se usa al apuntar para fijar la mira del personaje al disparar.
         Vector3 zoomMovement = transform.right * HorizontalInput() + transform.forward * ForwardInput();
 
+        //Mueve al personaje sin rotacion.
         charController.Move(Time.deltaTime * SpeedCheck() * zoomMovement);
     }
 
     private void NormalMovement()
     {
+        //Se crea un Vector3 donde se almacenara en X el input de izquierda a derecha del jugador, y en Z el input de frente hacia atras del jugador.
+        //Se crea de esta manera para que despues se pueda sacar un angulo entre el axis X y Z.
         Vector3 move = new Vector3(HorizontalInput(), 0, ForwardInput());
 
+        //Como constantemente se avanza hacia la rotacion del jugador, solamente se mueve el personaje si hay un input desigual a 0.
         if (move.magnitude != 0f)
         {
+            //Obtiene un angulo en radianes creado entre el axis X y Z, lo convierte en grados y suma la rotacion frontal de la camara.
+            //El angulo total que se obtiene es para rotar al jugador hacia la direccion donde camina y hacia la camara.
             float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + camRef.eulerAngles.y;
+            //Interpola suavemente la rotacion actual del jugador a el angulo creado.
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
+            //Aplica la rotacion hacia el angulo deseado.
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
+            //Se crea un Vector3 donde se multiplica la rotacion del jugador hacia delante.
             Vector3 moveDirection = transform.rotation * Vector3.forward;
 
+            //Mueve al jugador hacia donde este rotado.
             charController.Move(Time.deltaTime * SpeedCheck() * moveDirection);
         }
     }
@@ -96,13 +108,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Gravity()
     {
+        //Le resta al Vector3 en su eje Y la cantidad de gravedad determinada.
         gravity.y -= gravityForce * Time.deltaTime;
 
+        //Checa si esta tocando el suelo y la velocidad ejercida en Y es menor a 0.
         if (IsTouching() && gravity.y < 0)
         {
+            //Si el condicional es cierto, se deja de restar valor al Vector3 en su axis Y.
             gravity.y = 0;
         }
 
+        //Aplica constantemente la fuerza de gravedad.
         charController.Move(gravity * Time.deltaTime);
     }
 
@@ -110,11 +126,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void LeafJump()
     {
+        //Checa si se esta presionando la barra espaciadora y si el jugador se encuentra en el suelo.
         if (Input.GetKeyUp(KeyCode.Space) && IsTouching())
         {
             Debug.Log("Is jumping");
+            //Se agrega fuerza positiva sobre el Vector3 que constantemente ejerce gravedad.
             gravity.y = chargedJumpForce;
             Debug.Log(chargedJumpForce);
+            //Tras saltar, se reinicia el valor del salto cargado.
             chargedJumpForce = 0f;
         }
     }
