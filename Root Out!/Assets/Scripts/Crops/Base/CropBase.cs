@@ -13,7 +13,7 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField, Range(0f, 1f)] protected float cropWalkSpeed;
     [SerializeField] protected float cropRunSpeed;
 
-    [SerializeField, Range(0.5f,1f)] protected float lookAtPlayerSpeed;
+    [SerializeField, Range(0.5f,10f)] protected float lookAtPlayerSpeed;
 
     [SerializeField] protected Vector3 followingOffset; 
     private Vector3 velocityRef = Vector3.zero; 
@@ -35,18 +35,22 @@ public abstract class CropBase : MonoBehaviour
     {
         LookAtPlayer();
 
-        Vector3 desiredFollowingPos = player.transform.position + followingOffset;
+        //Vector3 desiredFollowingPos = player.transform.position + followingOffset;
+        //desiredFollowingPos.y = transform.position.y;
 
-        desiredFollowingPos.y = transform.position.y;
+        //float distance = Vector3.Distance(transform.position, desiredFollowingPos);
 
-        transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f /cropWalkSpeed);
+        //Debug.Log(distance);
 
-        Debug.Log(desiredFollowingPos);
+        //if (distance > 1 )
+        //{
+        //    transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f /cropWalkSpeed);
+        //    Debug.Log($"Moving and desired vector is: {desiredFollowingPos}");
+        //}
 
-        if (transform.position == desiredFollowingPos)
-        {
-            Debug.Log("Ha llegado a la posicion.");
-        }
+
+        //Debug.Log(desiredFollowingPos);
+
 
     }
 
@@ -56,9 +60,13 @@ public abstract class CropBase : MonoBehaviour
 
         Quaternion lookAtPlayer = Quaternion.LookRotation(relativeDistance, Vector3.up);
 
+        Quaternion testAngle = Quaternion.Euler(0, lookAtPlayer.y, 0);
+
         float desiredRotation = Mathf.Lerp(transform.eulerAngles.y, lookAtPlayer.eulerAngles.y, lookAtPlayerSpeed * Time.deltaTime);
 
         transform.rotation = Quaternion.Euler(0, desiredRotation, 0);
+
+
     }
 
     protected void BeginCooldownTime(float cooldownTime)
