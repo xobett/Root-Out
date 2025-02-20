@@ -59,7 +59,7 @@ public class SunflowerSpawner : MonoBehaviour
             clone.transform.parent = gameObject.transform.parent;
             Debug.Log($"Position {spawnPos} was used and added");
 
-            usedPositions[i] = spawnPos;
+            //usedPositions[i] = spawnPos;
             lastPositions.Add(spawnPos);
         }
 
