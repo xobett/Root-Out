@@ -17,6 +17,9 @@ public class Sunflower : MonoBehaviour, IInteractable
     [SerializeField] private LayerMask whatIsSunflower;
     [SerializeField] private LayerMask whatIsGround;
 
+    [SerializeField] private Vector3 sunflowerCollisionCube = new Vector3(22, 2, 22);
+    [SerializeField] private Vector3 groundCollisionCube = new Vector3(5, 2, 5);
+
     private bool sunflowerColliding;
     private bool groundColliding;
 
@@ -64,12 +67,12 @@ public class Sunflower : MonoBehaviour, IInteractable
         Vector3 cubePos = transform.position + transform.forward * debugCubeDistance;
 
         //Detecta si el area de generacion de terreno esta colisionando con otro girasol.
-        sunflowerColliding = Physics.CheckBox(cubePos, new Vector3(11, 1, 11), Quaternion.identity, whatIsSunflower);
+        sunflowerColliding = Physics.CheckBox(cubePos, sunflowerCollisionCube / 2, Quaternion.identity, whatIsSunflower);
 
         //Detecta si el area de generacion de terreno esta colisionando con terreno.
-        groundColliding = Physics.CheckBox(cubePos, new Vector3(2.5f, 1, 2.5f), Quaternion.identity, whatIsGround);
+        groundColliding = Physics.CheckBox(cubePos, groundCollisionCube / 2, Quaternion.identity, whatIsGround);
 
-        //Si detecta que hay un escenario donde generara doble terreno.
+        //Si detecta que hay un escenario donde se puede generar doble terreno.
         if (sunflowerColliding || groundColliding)
         {
             //Tras detectar positivo, se autodestruye el girasol.
@@ -81,11 +84,11 @@ public class Sunflower : MonoBehaviour, IInteractable
     {
         //Dibuja el cuadro de deteccion de girasoles en area de generacion de terreno.
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(transform.position + transform.forward * debugCubeDistance, new Vector3(22, 2, 22));
+        Gizmos.DrawWireCube(transform.position + transform.forward * debugCubeDistance, sunflowerCollisionCube);
 
         //Dibuja el cuadro de deteccion de terreno en area de generacion de terreno.
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + transform.forward * debugCubeDistance, new Vector3(5, 2, 5));
+        Gizmos.DrawWireCube(transform.position + transform.forward * debugCubeDistance, groundCollisionCube);
 
     }
 

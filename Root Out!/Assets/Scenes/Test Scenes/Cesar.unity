@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &22959429
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -374,6 +374,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -507,6 +509,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -1068,6 +1072,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -1207,7 +1213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5220125646828196507, guid: 2471a9024fa02cc439c605b9481c5a53, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1872,6 +1878,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -2005,6 +2013,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -2138,6 +2148,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -2459,6 +2471,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -2900,6 +2914,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -3306,6 +3322,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -3385,6 +3403,10 @@ PrefabInstance:
     - target: {fileID: 6155343336968990131, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155343336968990131, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3822,6 +3844,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}
@@ -4108,6 +4132,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
+  sunflowerCollisionCube: {x: 22, y: 2, z: 22}
+  groundCollisionCube: {x: 5, y: 2, z: 5}
   activated: 0
   currentHealth: 0
   porcentLife: {fileID: 0}

@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEditor.Hardware;
 
 public class SunflowerSpawner : MonoBehaviour
 {
@@ -8,8 +10,9 @@ public class SunflowerSpawner : MonoBehaviour
 
     [SerializeField] private int sunflowersToSpawn;
 
-    [SerializeField] private int[] usedPositions = new int[3];
+    [SerializeField] private List<int> lastPositions = new List<int>();
 
+    //[SerializeField] private int[] usedPositions = new int[3];
 
     private int spawnPos;
 
@@ -20,46 +23,44 @@ public class SunflowerSpawner : MonoBehaviour
 
     private void SpawnSunflower()
     {
-        //spawn a sunflower in a spawnposition, while its still 2
-
         if (spawnPositions != null)
         {
             StartCoroutine(AssignSpawnPosition());
         }
     }
-    private bool VerifyLastPositions(int positionToVerify)
+
+
+    private bool VerifyUsedPositions(int positionToVerify)
     {
-        bool notUsed = false;
+        bool posUsed = false;
 
-        foreach (int usedPosition in usedPositions)
+        if (lastPositions.Contains(positionToVerify))
         {
-            if (positionToVerify == usedPosition)
-            {
-                notUsed = true;
-                Debug.Log("Position was used.");
-            }
+            posUsed = true;
         }
-
-        return notUsed;
+        return posUsed;
     }
 
     private IEnumerator AssignSpawnPosition()
     {
         for (int i = 0; i < sunflowersToSpawn; i++)
         {
-            Debug.Log("Entro");
+            Debug.Log($"Entrada numero {i + 1}");
             spawnPos = RandomPos();
+            Debug.Log($"Numero inicial: {spawnPos}");
 
-            while (VerifyLastPositions(spawnPos))
+            while (VerifyUsedPositions(spawnPos))
             {
                 spawnPos = RandomPos();
                 yield return null;
             }
 
-            Instantiate(sunflowerPrefab, spawnPositions[spawnPos].position, spawnPositions[spawnPos].rotation);
+            GameObject clone = Instantiate(sunflowerPrefab, spawnPositions[spawnPos].position, spawnPositions[spawnPos].rotation);
+            clone.transform.parent = gameObject.transform.parent;
             Debug.Log($"Position {spawnPos} was used and added");
 
             usedPositions[i] = spawnPos;
+            lastPositions.Add(spawnPos);
         }
 
         yield return null;
@@ -72,5 +73,33 @@ public class SunflowerSpawner : MonoBehaviour
 
         return spawnPos;
     }
+
+    //private bool VerifyLastPositions(int positionToVerify)
+    //{
+    //    bool zeroUsed = false;
+    //    bool positionUsed = false;
+
+    //    foreach (int usedPosition in usedPositions)
+    //    {
+    //        Debug.Log($"Number to verify {positionToVerify} and used position {usedPosition}");
+    //        if (positionToVerify == usedPosition)
+    //        {
+
+    //            positionUsed = true;
+    //            Debug.Log($"Position {usedPosition} was already used.");
+
+    //            if (positionToVerify == 0 && usedPosition == 0 && !zeroUsed)
+    //            {
+    //                Debug.Log("Aqui entra el 0 usado por primera vez");
+    //                zeroUsed = true;
+    //                positionUsed = false;
+    //            }
+
+    //        }
+
+    //        Debug.Log($"Regresa {positionUsed}");
+    //    }
+    //    return positionUsed;
+    //}
 }
 

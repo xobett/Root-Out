@@ -122,14 +122,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5101719505382201497, guid: 2471a9024fa02cc439c605b9481c5a53, type: 3}
-  distanceSpawn: 11
-  rayDistance: 2
+  terrainDistanceSpawn: 21
+  debugCubeDistance: 22
   whatIsSunflower:
     serializedVersion: 2
     m_Bits: 64
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  sunflowerCollisionCube: {x: 42, y: 2, z: 42}
+  groundCollisionCube: {x: 10, y: 2, z: 10}
+  activated: 0
   currentHealth: 0
-  sunflowerColliding: 0
-  groundColliding: 0
+  porcentLife: {fileID: 0}
