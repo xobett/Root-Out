@@ -4,9 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
-
     public string name;
-
     public AudioClip clip;
 
     [Range(0f, 1f)]
@@ -148,5 +146,24 @@ public class AudioManager : MonoBehaviour
 
         // Establecer el volumen del AudioSource
         audioSource.volume = volume;
+    }
+
+    // Método para establecer el volumen de los VFX
+    public void SetVFXVolume(float volume)
+    {
+        foreach (var sound in sfxClips)
+        {
+            sound.volume = volume;
+        }
+    }
+
+    // Método para obtener el volumen actual de los VFX
+    public float GetVFXVolume()
+    {
+        if (sfxClips.Length > 0)
+        {
+            return sfxClips[0].volume;
+        }
+        return 0.5f; // Valor por defecto si no hay clips de sonido
     }
 }

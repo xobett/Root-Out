@@ -923,15 +923,15 @@ RectTransform:
   m_GameObject: {fileID: 429592015}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.9701366, y: 0.9406346, z: 1.8572}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1617000221}
-  m_Father: {fileID: 1546378606}
+  m_Father: {fileID: 1800009839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 164.47687, y: 255.14685}
+  m_AnchoredPosition: {x: 46.000122, y: 302.99994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429592017
@@ -1402,7 +1402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 5, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &638503282
@@ -1465,7 +1465,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.48319057, g: 1, b: 0.124213755, a: 1}
+    m_NormalColor: {r: 0.18828177, g: 1, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1487,11 +1487,11 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1626858910}
   m_FillRect: {fileID: 731431690}
   m_HandleRect: {fileID: 1626858909}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1507,7 +1507,7 @@ GameObject:
   - component: {fileID: 645134296}
   - component: {fileID: 645134295}
   m_Layer: 5
-  m_Name: Main Menu Panel
+  m_Name: Panel Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2279,15 +2279,15 @@ RectTransform:
   m_GameObject: {fileID: 929642880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.9701366, y: 0.9406346, z: 1.8572}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2138491243}
-  m_Father: {fileID: 1546378606}
+  m_Father: {fileID: 1800009839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 319.13147, y: -503.9151}
+  m_AnchoredPosition: {x: 659.9999, y: -410.99997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &929642882
@@ -2968,7 +2968,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e2439454592c28e439acfc35bd01de5e, type: 3}
   m_Resource: {fileID: 8300000, guid: e2439454592c28e439acfc35bd01de5e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.104
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3286,17 +3286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1101449127}
   musicClips: []
-  sfxClips:
-  - name: Automatic Rifle
-    clip: {fileID: 8300000, guid: eca4c8ed8ff34834d9f20762d48d32a0, type: 3}
-    volume: 1
-    pitch: 0.1
-    loop: 0
-  - name: Revolver
-    clip: {fileID: 8300000, guid: f90a51755b7fc2f438974d3c0975213b, type: 3}
-    volume: 1
-    pitch: 0.1
-    loop: 0
+  sfxClips: []
   randomClips: []
 --- !u!1 &1172407332
 GameObject:
@@ -3738,8 +3728,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.48319057, g: 1, b: 0.124213755, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.11080289, g: 1, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.06666667}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3760,11 +3750,11 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1628607322}
   m_FillRect: {fileID: 1439548985}
   m_HandleRect: {fileID: 1628607321}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4045,15 +4035,15 @@ RectTransform:
   m_GameObject: {fileID: 1369778847}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.9701366, y: 0.9406346, z: 1.8572}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1273218610}
-  m_Father: {fileID: 1546378606}
+  m_Father: {fileID: 1800009839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 164.47687, y: -156.27748}
+  m_AnchoredPosition: {x: 46.000122, y: -84.000015}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1369778849
@@ -4458,9 +4448,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1800009838}
+  HUD: {fileID: 1904211184}
+  panelControls: {fileID: 1691605058}
+  settings: {fileID: 1546378605}
+  mainMenu: {fileID: 645134293}
+  vfx: {fileID: 1369778847}
+  back: {fileID: 929642880}
+  volumen: {fileID: 429592015}
   cameraController: {fileID: 1101449122}
   movementController: {fileID: 191920561}
-  HUD: {fileID: 1904211184}
+  vfxVolumeSlider: {fileID: 638503284}
+  mainVolumeSlider: {fileID: 1231230227}
+  audioSourceMain: {fileID: 1101449127}
 --- !u!1 &1546378605
 GameObject:
   m_ObjectHideFlags: 0
@@ -4473,7 +4472,7 @@ GameObject:
   - component: {fileID: 1546378608}
   - component: {fileID: 1546378607}
   m_Layer: 5
-  m_Name: Settings Panel
+  m_Name: Panel Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4492,9 +4491,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1775120544}
-  - {fileID: 429592016}
-  - {fileID: 1369778848}
-  - {fileID: 929642881}
   m_Father: {fileID: 1800009839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5207,7 +5203,7 @@ GameObject:
   - component: {fileID: 1691605061}
   - component: {fileID: 1691605060}
   m_Layer: 5
-  m_Name: Controls Panel
+  m_Name: Panel Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5499,6 +5495,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1691605059}
+  - {fileID: 1369778848}
+  - {fileID: 429592016}
+  - {fileID: 929642881}
   - {fileID: 1546378606}
   - {fileID: 645134294}
   m_Father: {fileID: 1538966846}
@@ -5794,7 +5793,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 5, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1968219533
@@ -6558,7 +6557,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1538966847}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Settings
+        m_MethodName: Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
