@@ -7,8 +7,10 @@ using Random = UnityEngine.Random;
 
 public class Sunflower : MonoBehaviour, IInteractable
 {
-    [Header("GAMEOBJECT SETTINGS")]
+    [Header("SPAWN SETTINGS")]
     public GameObject prefab;
+
+    [SerializeField] private GameObject[] terrainsToSpawnPrefabs;
 
     [Header("DETECTION SETTINGS")]
     [SerializeField] private float terrainDistanceSpawn = 11;
@@ -60,6 +62,15 @@ public class Sunflower : MonoBehaviour, IInteractable
         }
     }
 
+    private void GenerateRandomTerrain()
+    {
+        Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
+        spawnPos.y = 0;
+
+        Instantiate(terrainsToSpawnPrefabs[GenerateRandomTerrainType()], spawnPos, Quaternion.identity);
+
+        Destroy(this.gameObject);
+    }
 
     private void BugDetection()
     {
@@ -102,6 +113,11 @@ public class Sunflower : MonoBehaviour, IInteractable
     {
         currentHealth -= damage;
         UpdateLife(); 
+    }
+
+    private int GenerateRandomTerrainType()
+    {
+        return Random.Range(0, terrainsToSpawnPrefabs.Length);
     }
 
     private void UpdateLife()
