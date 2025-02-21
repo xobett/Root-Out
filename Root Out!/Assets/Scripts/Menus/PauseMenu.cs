@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu; // Referencia al menú de pausa
     [SerializeField] GameObject HUD; // Referencia al HUD del juego
+    [SerializeField] GameObject panelResume;
     [SerializeField] GameObject panelControls; // Referencia al panel de controles
     [SerializeField] GameObject settings; // Referencia al menú de configuración
     [SerializeField] GameObject mainMenu; // Referencia al menú principal
@@ -26,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         vfx.SetActive(false);
-        back.SetActive(false); 
+        back.SetActive(false);
         volumen.SetActive(false);
 
         // Configurar el Slider de volumen de VFX
@@ -47,12 +48,9 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) // Si se presiona la tecla Escape
         {
-            if (isPaused) // Si el juego está en pausa
+            if (!isPaused) // Si el juego está en pausa
             {
-                ResumeGame(); // Reanuda el juego
-            }
-            else
-            {
+
                 PauseGame(); // Pausa el juego
             }
         }
@@ -69,7 +67,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = true; // Establece la variable de pausa a true
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
         cameraController.enabled = true; // Activa el controlador de la cámara

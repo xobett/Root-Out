@@ -1,12 +1,9 @@
 using UnityEngine;
+using Weapons;
 
 public class FastRecharge : MonoBehaviour
 {
-    [Header("Ref Scripts")]
-    [SerializeField] InteractionHandler interactionHandler;
-    [SerializeField] Rifle rifle;
-    [SerializeField] Revolver revolver;
-
+    [SerializeField] WeaponsBase weaponBase;
     [Header("Upgrades")]
     [SerializeField] float rechargeUpgrade;
 
@@ -17,8 +14,9 @@ public class FastRecharge : MonoBehaviour
 
     private void RechargeUpgrade()
     {
-      
+        weaponBase.reloadTime = rechargeUpgrade;
     }
+    
 }
 
 
