@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
-    
+
     public string name;
 
     public AudioClip clip;
@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     //[Header("Audio Source")]
-    private AudioSource audioSource; // Fuente de audio única para reproducir sonidos
+    [SerializeField] public AudioSource audioSource; // Fuente de audio única para reproducir sonidos
 
     [Header("Audio Clips")]
     public Sound[] musicClips; // Arreglo de clips de música

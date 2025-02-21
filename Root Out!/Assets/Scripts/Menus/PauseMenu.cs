@@ -1,22 +1,21 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     GameObject pauseMenu;
     bool isPaused = false;
 
-    //CameraController cameraController;
-    //MovementController movementController;
+    [SerializeField] CameraFollow cameraController;
+    [SerializeField] PlayerMovement movementController;
+    [SerializeField] GameObject HUD;
 
     private void Start()
     {
-        //cameraController = FindAnyObjectByType<CameraController>();
-        //movementController = FindAnyObjectByType<MovementController>();
         pauseMenu.SetActive(false);
-
     }
+
     void Update()
     {
         HandlePause();
@@ -34,23 +33,49 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
-        void PauseGame()
-        {
-            //cameraController.enabled = false;
-            //movementController.enabled = false;
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-            isPaused = true;
-        }
-        void ResumeGame()
-        {
-            //cameraController.enabled = true;
-            //movementController.enabled = true;
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-            isPaused = false;
-        }
+    }
+    void PauseGame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        cameraController.enabled = false;
+        movementController.enabled = false;
+        HUD.SetActive(false);
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+    void ResumeGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        cameraController.enabled = true;
+        movementController.enabled = true;
+        HUD.SetActive(true);
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+    public void Settings()
+    {
+
+    }
+    public void VFX()
+    {
+
+    }
+    public void SFX()
+    {
+
+    }
+    public void Volumen()
+    {
+
     }
 }
+
+
 
 
