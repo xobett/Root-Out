@@ -35,7 +35,7 @@ public class MushroomBombShooter : WeaponsBase
     {
 
         // Posición por encima del jugador
-        Vector3 mortarPosition = player.position + Vector3.up * 8f;
+        Vector3 mortarPosition = player.position + Vector3.up * 12f;
 
         // Dirección aleatoria
         //Vector3 randomDirection = new Vector3(0, Random.Range(-1, 1), 0).normalized;
