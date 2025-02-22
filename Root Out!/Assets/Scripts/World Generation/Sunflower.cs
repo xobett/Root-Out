@@ -1,8 +1,6 @@
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Sunflower : MonoBehaviour, IInteractable
