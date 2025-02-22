@@ -10,7 +10,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     [Header("SPAWN SETTINGS")]
     public GameObject prefab;
 
-    [SerializeField] private GameObject[] terrainsToSpawnPrefabs;
+    [SerializeField] private GameObject[] terrainPrefabs;
 
     [Header("DETECTION SETTINGS")]
     [SerializeField] private float terrainDistanceSpawn = 11;
@@ -52,24 +52,16 @@ public class Sunflower : MonoBehaviour, IInteractable
             Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
             spawnPos.y = 0;
 
+            int randomTerrainType = GenerateRandomTerrainType();
+
             //Se genera un nuevo terreno en la posicion creada.
-            Instantiate(prefab, spawnPos, prefab.transform.rotation);
+            Instantiate(terrainPrefabs[randomTerrainType], spawnPos, terrainPrefabs[randomTerrainType].transform.rotation);
 
             //Tras instanciar el terreno, se autodestruye el girasol.
             Destroy(this.gameObject);
             
             activated = true;
         }
-    }
-
-    private void GenerateRandomTerrain()
-    {
-        Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
-        spawnPos.y = 0;
-
-        Instantiate(terrainsToSpawnPrefabs[GenerateRandomTerrainType()], spawnPos, Quaternion.identity);
-
-        Destroy(this.gameObject);
     }
 
     private void BugDetection()
@@ -117,7 +109,7 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     private int GenerateRandomTerrainType()
     {
-        return Random.Range(0, terrainsToSpawnPrefabs.Length);
+        return Random.Range(0, terrainPrefabs.Length);
     }
 
     private void UpdateLife()

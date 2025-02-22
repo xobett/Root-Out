@@ -23,7 +23,7 @@ public class SunflowerSpawner : MonoBehaviour
 
     private void SpawnSunflower()
     {
-        if (spawnPositions != null)
+        if (spawnPositions != null) 
         {
             StartCoroutine(AssignSpawnPosition());
         }
