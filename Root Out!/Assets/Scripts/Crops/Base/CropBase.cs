@@ -27,6 +27,12 @@ public abstract class CropBase : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log("Player found");
+    }
+
+    private void Update()
+    {
+        FollowPlayer();
     }
 
     protected abstract void Attack();
@@ -45,11 +51,11 @@ public abstract class CropBase : MonoBehaviour
         if (distance > 1)
         {
             transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
-            Debug.Log($"Moving and desired vector is: {desiredFollowingPos}");
+            //Debug.Log($"Moving and desired vector is: {desiredFollowingPos}");
         }
 
 
-        Debug.Log(desiredFollowingPos);
+        //Debug.Log(desiredFollowingPos);
 
 
     }
