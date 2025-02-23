@@ -14,7 +14,7 @@ public class SweetJack : CropBase
         FollowPlayer();
     }
 
-    protected override void Attack()
+    protected override void Ability()
     {
 
     }

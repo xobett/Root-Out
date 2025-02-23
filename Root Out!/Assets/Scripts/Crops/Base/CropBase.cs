@@ -35,7 +35,7 @@ public abstract class CropBase : MonoBehaviour
         FollowPlayer();
     }
 
-    protected abstract void Attack();
+    protected abstract void Ability();
 
     protected virtual void FollowPlayer()
     {
@@ -46,16 +46,11 @@ public abstract class CropBase : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, desiredFollowingPos);
 
-        Debug.Log(distance);
-
         if (distance > 1)
         {
             transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
-            //Debug.Log($"Moving and desired vector is: {desiredFollowingPos}");
         }
 
-
-        //Debug.Log(desiredFollowingPos);
 
 
     }
@@ -66,7 +61,7 @@ public abstract class CropBase : MonoBehaviour
 
         Quaternion lookAtPlayer = Quaternion.LookRotation(relativeDistance, Vector3.up);
 
-        Quaternion testAngle = Quaternion.Euler(0, lookAtPlayer.y, 0);
+        //Quaternion testAngle = Quaternion.Euler(0, lookAtPlayer.y, 0);
 
         float desiredRotation = Mathf.Lerp(transform.eulerAngles.y, lookAtPlayer.eulerAngles.y, lookAtPlayerSpeed * Time.deltaTime);
 
