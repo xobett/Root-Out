@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using Weapons;
 using System;
+using UnityEngine.UIElements;
 
 public class EnemyBullet : MonoBehaviour, IBullet
 {
-    [SerializeField] private float damageToPlayer; // Daño establecido en el inspector
+    private float damageToPlayer; // Daño establecido en el inspector
 
     public void SetDamage(float damageAmount)
     {

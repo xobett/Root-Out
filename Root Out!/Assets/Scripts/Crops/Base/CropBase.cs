@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public abstract class CropBase : MonoBehaviour
@@ -27,9 +27,15 @@ public abstract class CropBase : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log("Player found");
     }
 
-    protected abstract void Attack();
+    private void Update()
+    {
+        FollowPlayer();
+    }
+
+    protected abstract void Ability();
 
     protected virtual void FollowPlayer()
     {
@@ -40,16 +46,11 @@ public abstract class CropBase : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, desiredFollowingPos);
 
-        Debug.Log(distance);
-
         if (distance > 1)
         {
             transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
-            Debug.Log($"Moving and desired vector is: {desiredFollowingPos}");
         }
 
-
-        Debug.Log(desiredFollowingPos);
 
 
     }
@@ -60,7 +61,7 @@ public abstract class CropBase : MonoBehaviour
 
         Quaternion lookAtPlayer = Quaternion.LookRotation(relativeDistance, Vector3.up);
 
-        Quaternion testAngle = Quaternion.Euler(0, lookAtPlayer.y, 0);
+        //Quaternion testAngle = Quaternion.Euler(0, lookAtPlayer.y, 0);
 
         float desiredRotation = Mathf.Lerp(transform.eulerAngles.y, lookAtPlayer.eulerAngles.y, lookAtPlayerSpeed * Time.deltaTime);
 

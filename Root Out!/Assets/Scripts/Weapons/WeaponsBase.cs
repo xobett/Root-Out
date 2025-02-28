@@ -215,6 +215,11 @@ namespace Weapons
                     {
                         Debug.LogWarning("Bullet prefab does not have BulletDamage component.");
                     }
+                    // Inicia la corrutina de explosión en la bala
+                    if (bullet.TryGetComponent<Bullet>(out var bulletScript))
+                    {
+                       // bulletScript.StartCoroutine(bulletScript.Explosion());
+                    }
 
                     Destroy(bullet, lifeTimeBullets); // Destruye la bala después de que expire el tiempo de vida especificado.
                 }
