@@ -39,17 +39,17 @@ public abstract class CropBase : MonoBehaviour
 
     protected virtual void FollowPlayer()
     {
-        //LookAtPlayer();
+        LookAtPlayer();
 
-        Vector3 desiredFollowingPos = player.transform.position + followingOffset;
-        desiredFollowingPos.y = transform.position.y;
+        //Vector3 desiredFollowingPos = player.transform.position + followingOffset;
+        //desiredFollowingPos.y = transform.position.y;
 
-        float distance = Vector3.Distance(transform.position, desiredFollowingPos);
+        //float distance = Vector3.Distance(transform.position, desiredFollowingPos);
 
-        if (distance > 1)
-        {
-            transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
-        }
+        //if (distance > 1)
+        //{
+        //    transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
+        //}
 
 
 

@@ -5,8 +5,6 @@ public class InteractionHandler : MonoBehaviour
     [Header("INTERACTION SETTINGS")]
     [SerializeField] private float range;
 
-    [SerializeField] private Transform rayPoint;
-
     [SerializeField] private LayerMask whatIsInteraction;
 
     private RaycastHit outHit;
@@ -22,7 +20,7 @@ public class InteractionHandler : MonoBehaviour
         if (IsInteracting())
         {
             // Realiza un raycast desde la posición del objeto hacia adelante
-            if (Physics.Raycast(rayPoint.position, transform.forward * range, out outHit, range, whatIsInteraction))
+            if (Physics.Raycast(transform.position, transform.forward * range, out outHit, range, whatIsInteraction))
             {
                 Debug.Log("Interacting with: " + outHit.collider.name);
                 // Llama al método OnInteract del objeto con el que se ha colisionado
@@ -39,6 +37,6 @@ public class InteractionHandler : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(rayPoint.position, transform.forward * range);
+        Gizmos.DrawRay(transform.position, transform.forward * range);
     }
 }
