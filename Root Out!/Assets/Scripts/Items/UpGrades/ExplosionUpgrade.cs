@@ -11,17 +11,12 @@ public class ExplosionUpgrade : MonoBehaviour, IInteractable
     {
         weapon = FindFirstObjectByType<WeaponsBase>();
     }
+
     public void OnInteract()
     {
-        StartCoroutine(Explosion());
-        Destroy(gameObject);
-    }
-
-    IEnumerator Explosion()
-    {
-        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        weapon.damage = 100;
-
-        yield return new WaitForSeconds(3f);
+        weapon.damage += 100; // Aumenta el daño del jugador en 100
+        weapon.explosionPrefab = explosionPrefab; // Asigna el prefab de la explosión a las balas
+        weapon.StartCoroutine(weapon.InstantiateExplosionParticles()); // Inicia la corrutina para instanciar partículas de explosión
+        Destroy(gameObject); // Destruye el objeto de mejora
     }
 }

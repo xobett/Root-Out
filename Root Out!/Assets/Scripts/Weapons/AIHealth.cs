@@ -6,7 +6,7 @@ public class AIHealth : MonoBehaviour
     [SerializeField, Range(0, 100)] private float actualHealth;
     [SerializeField, Range(0, 100)] private float maxHealth;
     [SerializeField] private Image hUDLifeBar;
-
+  
 
     public void TakeDamage(float damage)
     {
@@ -22,6 +22,7 @@ public class AIHealth : MonoBehaviour
     }
     public void Death()
     {
+        
         Debug.Log("Mataste a " + name);
         Destroy(gameObject);
     }

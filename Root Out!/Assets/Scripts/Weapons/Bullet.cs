@@ -4,26 +4,33 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IBullet
 {
     private float damage;
+    [SerializeField] public GameObject explosionPrefab;
 
-    public void SetDamage(float damageAmount) 
+    public void SetDamage(float damageAmount)
     {
         damage = damageAmount;
     }
-
+    public void SetExplosionPrefab(GameObject prefab)
+    {
+        explosionPrefab = prefab;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth)) // Si el objeto colisionado tiene un componente AIHealth
         {
             aiHealth.TakeDamage(damage); // Aplicar daño al AIHealth
         }
+        if (explosionPrefab != null) // Si el prefab de la explosión no es nulo
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity); // Instanciar el prefab
 
-        // Destruir la bala al colisionar
-        Destroy(gameObject);
+            // Destruir la bala al colisionar
+            Destroy(gameObject);
+        }
     }
-    private IEnumerator Explosion()
+    public void Explosion()
     {
-        yield return new WaitForSeconds(3f); // Espera 3 segundos
-        Explosion(); // Llama al método Explosion
+       Debug.Log("Explosion");
     }
 
 }

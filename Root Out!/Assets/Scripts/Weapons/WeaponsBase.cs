@@ -31,6 +31,7 @@ namespace Weapons
 
         [Header("Tipo de Bala")]
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
+        [SerializeField] public GameObject explosionPrefab; // Prefab de la explosión
 
         [Header("Munición")]
         [SerializeField] protected int currentAmmo; // Munición actual
@@ -218,7 +219,7 @@ namespace Weapons
                     // Inicia la corrutina de explosión en la bala
                     if (bullet.TryGetComponent<Bullet>(out var bulletScript))
                     {
-                       // bulletScript.StartCoroutine(bulletScript.Explosion());
+                        bulletScript.SetExplosionPrefab(explosionPrefab);
                     }
 
                     Destroy(bullet, lifeTimeBullets); // Destruye la bala después de que expire el tiempo de vida especificado.
@@ -227,6 +228,21 @@ namespace Weapons
             else
             {
                 Debug.LogWarning("Bullet prefab not assigned!");
+            }
+        }
+        // Corrutina para instanciar partículas de explosión en las balas
+        public IEnumerator InstantiateExplosionParticles()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(2f); // Espera 2 segundos
+
+                // Encuentra todas las instancias de Bullet y asigna el prefab de la explosión
+                Bullet[] bullets = FindObjectsByType<Bullet>(FindObjectsSortMode.None);
+                foreach (Bullet bullet in bullets)
+                {
+                    bullet.SetExplosionPrefab(explosionPrefab);
+                }
             }
         }
 
