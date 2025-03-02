@@ -22,7 +22,6 @@ public class AIHealth : MonoBehaviour
     }
     public void Death()
     {
-        
         Debug.Log("Mataste a " + name);
         Destroy(gameObject);
     }

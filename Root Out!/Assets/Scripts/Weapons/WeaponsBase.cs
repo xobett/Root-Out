@@ -52,7 +52,8 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
 
-      
+        private bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
+        private bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
 
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
 
@@ -216,10 +217,21 @@ namespace Weapons
                     {
                         Debug.LogWarning("Bullet prefab does not have BulletDamage component.");
                     }
-                    // Inicia la corrutina de explosión en la bala
+
+                    // Asigna el prefab de la explosión a la bala y controla la instanciación
                     if (bullet.TryGetComponent<Bullet>(out var bulletScript))
                     {
-                        bulletScript.SetExplosionPrefab(explosionPrefab);
+                        bulletScript.SetExplosionPrefab(explosionPrefab); 
+                        if (explosionUpgradeActivated && canInstantiateExplosion) // Comprueba si la mejora de explosión está activada y si se puede instanciar
+                        {
+                            Debug.Log("Explosion upgrade activated!");
+                            bulletScript.SetCanInstantiateExplosion(true); // Activa la instanciación de la explosión
+                            StartCoroutine(ExplosionCooldown()); // Inicia la corrutina para controlar el tiempo de espera entre instanciaciones de explosión
+                        }
+                        else
+                        {
+                            bulletScript.SetCanInstantiateExplosion(false);
+                        }
                     }
 
                     Destroy(bullet, lifeTimeBullets); // Destruye la bala después de que expire el tiempo de vida especificado.
@@ -228,21 +240,6 @@ namespace Weapons
             else
             {
                 Debug.LogWarning("Bullet prefab not assigned!");
-            }
-        }
-        // Corrutina para instanciar partículas de explosión en las balas
-        public IEnumerator InstantiateExplosionParticles()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(2f); // Espera 2 segundos
-
-                // Encuentra todas las instancias de Bullet y asigna el prefab de la explosión
-                Bullet[] bullets = FindObjectsByType<Bullet>(FindObjectsSortMode.None);
-                foreach (Bullet bullet in bullets)
-                {
-                    bullet.SetExplosionPrefab(explosionPrefab);
-                }
             }
         }
 
@@ -310,5 +307,20 @@ namespace Weapons
                 }
             }
         }
+
+        // Corrutina para controlar el tiempo de espera entre instanciaciones de explosión
+        private IEnumerator ExplosionCooldown()
+        {
+            canInstantiateExplosion = false;
+            yield return new WaitForSeconds(3f); // Espera 10 segundos
+            canInstantiateExplosion = true;
+        }
+
+        // Método para activar la mejora de explosión
+        public void ActivateExplosionUpgrade()
+        {
+            explosionUpgradeActivated = true;
+        }
     }
+
 }
