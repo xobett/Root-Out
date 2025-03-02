@@ -24,6 +24,8 @@ public abstract class CropBase : MonoBehaviour
 
     private GameObject player;
 
+    private float turnSmooth;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -50,23 +52,32 @@ public abstract class CropBase : MonoBehaviour
         //{
         //    transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
         //}
-
-
-
     }
 
     private void LookAtPlayer()
     {
-        Vector3 relativeDistance = player.transform.position - transform.position;
+        //Vector3 relativeDistance = player.transform.position - transform.position;
 
-        Quaternion lookAtPlayer = Quaternion.LookRotation(relativeDistance, Vector3.up);
+        //Quaternion lookAtPlayer = Quaternion.LookRotation(relativeDistance, Vector3.up);
 
-        //Quaternion testAngle = Quaternion.Euler(0, lookAtPlayer.y, 0);
+        ////Quaternion testAngle = Quaternion.Euler(0, lookAtPlayer.y, 0);
 
-        float desiredRotation = Mathf.Lerp(transform.eulerAngles.y, lookAtPlayer.eulerAngles.y, lookAtPlayerSpeed * Time.deltaTime);
+        //float desiredRotation = Mathf.Lerp(transform.eulerAngles.y, lookAtPlayer.eulerAngles.y, lookAtPlayerSpeed * Time.deltaTime);
 
-        transform.rotation = Quaternion.Euler(0, desiredRotation, 0);
+        //transform.rotation = Quaternion.Euler(0, desiredRotation, 0);
 
+        //Vector3 lookRotation = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        //transform.LookAt(lookRotation, Vector3.up);
+
+        //Try player method of rotating
+
+        float targetAngle = Mathf.Atan2(transform.position.z, player.transform.position.z) * Mathf.Rad2Deg;
+
+        float targetRotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmooth, lookAtPlayerSpeed);
+
+        transform.rotation = Quaternion.Euler(0, targetRotation, 0);
+
+        Debug.Log(targetAngle);
 
     }
 
