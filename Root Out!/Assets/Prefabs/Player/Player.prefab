@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 899325197360027247}
   - component: {fileID: 4586612671284501607}
   - component: {fileID: 2757608878875399331}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_cola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7789493992181053158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bunny Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,6 +115,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7698606800758341308}
   - {fileID: 899325197360027247}
   - {fileID: 8290447531296171284}
   - {fileID: 6747584364052592422}
@@ -132,7 +133,7 @@ GameObject:
   - component: {fileID: 8290447531296171284}
   - component: {fileID: 8132036549052435130}
   - component: {fileID: 8169930214502511491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_conejo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,6 +208,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4558629746689552621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7698606800758341308}
+  m_Layer: 8
+  m_Name: RayPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7698606800758341308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558629746689552621}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.83, z: 0.47999954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7789493992181053158}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5942173957286576112
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +250,7 @@ GameObject:
   - component: {fileID: 7202168109511806714}
   - component: {fileID: 4663159439608881684}
   - component: {fileID: 3639322369992154653}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_dientes_arriba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +336,7 @@ GameObject:
   - component: {fileID: 4989501597596570049}
   - component: {fileID: 6238140726805344101}
   m_Layer: 0
-  m_Name: Interaction Handler
+  m_Name: Handlers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +384,7 @@ GameObject:
   - component: {fileID: 6747584364052592422}
   - component: {fileID: 1295026966945566554}
   - component: {fileID: 4606671036459012794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_dientes_abajo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +471,9 @@ GameObject:
   - component: {fileID: 1930166017689223707}
   - component: {fileID: 6395705153263472213}
   - component: {fileID: 120920905629084586}
-  m_Layer: 0
+  - component: {fileID: 2439334005778980448}
+  - component: {fileID: 1073991295686311600}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -502,17 +536,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa7a9d0b948f7244bbe71c84036ab46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
-  sprintSpeed: 4
+  walkSpeed: 5
+  sprintSpeed: 8
   turnSmoothVelocity: 0
-  turnSpeed: 0.15
-  chargedJumpForce: 0
-  gravityForce: 9.81
+  turnSpeed: 0.218
+  midAirSpeed: 15
+  forwardForce: 0
+  groundCheckRadius: 0.215
+  gravityForce: 12
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
   groundCheck: {fileID: 871767856956072941}
-  groundCheckRadius: 0.215
   gravity: {x: 0, y: 0}
 --- !u!114 &120920905629084586
 MonoBehaviour:
@@ -526,8 +561,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f2be7aa8e123a4289c2a1435469e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalChargeLimit: 18
-  currentChargedForce: 0
+  totalChargeLimit: 8
+--- !u!114 &2439334005778980448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155343336968990131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3bee8b4e438f14bbe93ce3ed0f3c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 100
+  playerLifeBar: {fileID: 0}
+--- !u!114 &1073991295686311600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155343336968990131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346265c64d5dc014e8340ccad60a1cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+  - {fileID: 11400000, guid: c97a2bb62138a104a9b46def82a717e5, type: 2}
+  - {fileID: 11400000, guid: a4d3a37f19e375a40ba3eb870cf74fcd, type: 2}
+  - {fileID: 11400000, guid: ea41f7986987d4e44b1c5b14528fe12a, type: 2}
+  - {fileID: 11400000, guid: 6895ffd162cf850438956876422c8a02, type: 2}
+  - {fileID: 11400000, guid: ff64e14196b74fb4bbc9654834a1c914, type: 2}
+  - {fileID: 11400000, guid: dbf050568e5138946bb430e80a8770e0, type: 2}
+  - {fileID: 11400000, guid: 10064221cef776849b747ce7595f7d3f, type: 2}
+  equippedItem: {fileID: 0}
 --- !u!1 &7535284339494267400
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 871767856956072941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -553,7 +622,7 @@ Transform:
   m_GameObject: {fileID: 7535284339494267400}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.502, z: 0}
+  m_LocalPosition: {x: 0, y: -0.459, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -567,6 +636,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1585821201999089465}
     m_Modifications:
+    - target: {fileID: 2491898095002134753, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.54
+      objectReference: {fileID: 0}
     - target: {fileID: 3670986462572352019, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
       propertyPath: m_Name
       value: Assault Rifle
@@ -581,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5600628031957535197, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.485
       objectReference: {fileID: 0}
     - target: {fileID: 5600628031957535197, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
       propertyPath: m_LocalRotation.w
@@ -642,13 +715,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiming: {fileID: 6664890278683480886}
-  weaponType: 3
+  weaponType: 1
   spreadAngle: 1
   horizontalSpread: 0
   autoFire: 0
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
+  explosionPrefab: {fileID: 5852023727157374342, guid: de4adb01b41df1a4b987995754062a6d, type: 3}
   currentAmmo: 350
   bulletReserve: 100
   maxAmmo: 350

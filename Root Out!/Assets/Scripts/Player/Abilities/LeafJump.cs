@@ -5,7 +5,7 @@ public class LeafJump : MonoBehaviour
 {
     [Header("GENERAL SETTINGS")]
     [SerializeField, Range(5, 20)] private float totalChargeLimit = 15f;
-    [SerializeField] private float currentChargedForce;
+    private float currentChargedForce;
 
     void Update()
     {

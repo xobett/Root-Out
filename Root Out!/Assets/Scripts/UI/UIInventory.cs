@@ -1,8 +1,13 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
+    private PlayerMovement playerMovement;
+    private LeafJump leafJump;
+    private CameraFollow cameraFollow;
+
     [Header("INVENTORY PANEL SETTINGS")]
     [SerializeField] private GameObject inventoryPanel;
 
@@ -21,6 +26,7 @@ public class UIInventory : MonoBehaviour
     void Start()
     {
         GetPlayerInventory();
+        GetInputReferences();
     }
 
     void Update()
@@ -36,72 +42,81 @@ public class UIInventory : MonoBehaviour
         isOpened = !isOpened;
         inventoryPanel.SetActive(isOpened);
 
-        //foreach (InventoryItemData inventoryItem in playerInventory.Inventory)
-        //{
-        //    Debug.Log("Is entering");
-        //    var image = new GameObject();
-        //    image.AddComponent<Image>();
-
-        //    switch (inventoryItem.ItemType)
-        //    {
-        //        case ItemType.Crop:
-        //            {
-        //                Instantiate(image, cropInventoryGrid.transform);
-        //                break;
-        //            }
-
-        //        case ItemType.Weapon:
-        //            {
-        //                Instantiate(image, weaponInventoryGrid.transform);
-        //                break;
-        //            }
-
-        //        case ItemType.Perk:
-        //            {
-        //                Instantiate(image, perkInventoryGrid.transform);
-        //                break;
-        //            }
-        //    }
-        //}
-
-        for (int i = itemsDisplayed; i < playerInventory.Inventory.Count; i++)
+        if (isOpened)
         {
-            var itemProt = new GameObject();
-            itemProt.AddComponent<Image>();
+            DeactivateInput();
 
-            switch (playerInventory.Inventory[i].ItemType)
+            for (int i = itemsDisplayed; i < playerInventory.Inventory.Count; i++)
             {
-                case ItemType.Crop:
-                    {
-                        Instantiate(itemProt, cropInventoryGrid.transform);
-                        break;
-                    }
+                var itemProt = new GameObject();
+                itemProt.AddComponent<Image>();
 
-                case ItemType.Weapon:
-                    {
-                        Instantiate(itemProt, weaponInventoryGrid.transform);
-                        break;
-                    }
+                switch (playerInventory.Inventory[i].ItemType)
+                {
+                    case ItemType.Crop:
+                        {
+                            Instantiate(itemProt, cropInventoryGrid.transform);
+                            break;
+                        }
 
-                case ItemType.Perk:
-                    {
-                        Instantiate(itemProt, perkInventoryGrid.transform);
-                        break;
-                    }
+                    case ItemType.Weapon:
+                        {
+                            Instantiate(itemProt, weaponInventoryGrid.transform);
+                            break;
+                        }
+
+                    case ItemType.Perk:
+                        {
+                            Instantiate(itemProt, perkInventoryGrid.transform);
+                            break;
+                        }
+                }
+
+                itemsDisplayed++;
+                Debug.Log($"Inventory item number : {i}");
             }
-
-            itemsDisplayed++;
-            Debug.Log($"Inventory item number : {i}");
+            
+        }
+        else
+        {
+            RegainInput();
         }
     }
 
-    private bool IsOpening()
+    private void DeactivateInput()
     {
-        return Input.GetKeyDown(KeyCode.I);
+        playerMovement.enabled = false;
+        leafJump.enabled = false;
+        cameraFollow.enabled = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+    }
+
+    private void RegainInput()
+    {
+        playerMovement.enabled = true;
+        leafJump.enabled = true;
+        cameraFollow.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
+    }
+
+    private void GetInputReferences()
+    {
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        leafJump = GameObject.FindGameObjectWithTag("Player").GetComponent<LeafJump>();
+        cameraFollow = Camera.main.GetComponent<CameraFollow>();
     }
 
     private void GetPlayerInventory()
     {
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHandler>();
     }
+    private bool IsOpening()
+    {
+        return Input.GetKeyDown(KeyCode.I);
+    }
+
 }

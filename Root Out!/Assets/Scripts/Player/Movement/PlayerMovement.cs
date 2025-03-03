@@ -13,7 +13,10 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController charController;
 
     [Header("JUMP SETTINGS")]
-    [SerializeField] private float chargedJumpForce;
+    [SerializeField] private float midAirSpeed;
+    [SerializeField] private float forwardForce;
+
+    [SerializeField, Range(0f, 1f)] private float groundCheckRadius = 0.2f;
 
     [Header("GRAVITY SETTINGS")]
     [SerializeField] private float gravityForce;
@@ -22,14 +25,14 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Transform groundCheck;
 
-    [SerializeField, Range(0f, 1f)] private float groundCheckRadius;
-
-    [SerializeField] public Vector2 gravity;
+    public Vector2 gravity;
 
     private Transform camRef;
 
     void Start()
     {
+        Application.targetFrameRate = 60;
+
         //Se consigue el componente de Character Controller.
         charController = GetComponent<CharacterController>();
 
@@ -45,10 +48,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovementCheck()
     {
-        if (IsAiming())
+        if (IsAiming() && IsTouching())
         {
             FaceForward();
             ZoomMovement();
+        }
+        else if (!IsTouching())
+        {
+            MidAirMovement();
         }
         else
         {
@@ -89,6 +96,13 @@ public class PlayerMovement : MonoBehaviour
             //Mueve al jugador hacia donde este rotado.
             charController.Move(Time.deltaTime * SpeedCheck() * moveDirection);
         }
+    }
+
+    private void MidAirMovement()
+    {
+            Vector3 airMovement = transform.forward * 1;
+
+            charController.Move(Time.deltaTime * midAirSpeed * airMovement);
     }
 
     private void FaceForward()
