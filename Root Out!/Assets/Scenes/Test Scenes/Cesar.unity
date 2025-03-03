@@ -7717,16 +7717,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTracker: {fileID: 7160635001148740260}
+  followPos: {fileID: 8912381198045142874}
   ySensitivity: 1
   xSensitivity: 1
   lookUpLimit: 15
   lookDownLimit: 0
+  rotationSpeed: 1
   zoomSpeed: 5
   zoomIn: 25
-  zoomHorizontalOffset: -3
-  followPos: {fileID: 8912381198045142874}
-  testBool: 0
-  testVelo: 2.5
+  zoomHorizontalOffset: -2.5
 --- !u!114 &1875133576795865546
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Se crea un Vector3 donde se almacenara en X el input de izquierda a derecha del jugador, y en Z el input de frente hacia atras del jugador.
         //Se crea de esta manera para que despues se pueda sacar un angulo entre el axis X y Z.
-        Vector3 move = new Vector3(HorizontalInput(), 0, ForwardInput());
+        Vector3 move = new Vector3(HorizontalInput(), 0, ForwardInput()).normalized;
 
         //Como constantemente se avanza hacia la rotacion del jugador, solamente se mueve el personaje si hay un input desigual a 0.
         if (move.magnitude != 0f)
@@ -100,9 +100,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void MidAirMovement()
     {
-            Vector3 airMovement = transform.forward * 1;
+        //Se crea un vector donde se guarda la direccion frente hacia el jugador.
+        Vector3 airMovement = transform.forward;
 
-            charController.Move(Time.deltaTime * midAirSpeed * airMovement);
+        //Mueve al jugador hacia delante multiplicado por la velocidad preestablecida.
+        charController.Move(Time.deltaTime * midAirSpeed * airMovement);
     }
 
     private void FaceForward()
