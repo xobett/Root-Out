@@ -23,38 +23,14 @@ public class InventoryItemData : ScriptableObject
 
     public string ItemName => itemName;
     public string ItemDescription => itemName;
+    public ItemType ItemType => itemType;
+    public Sprite ItemIcon => itemIcon;
+    public CropData CropData => CropData;
+    public WeaponData WeaponData => weaponData;
+    public PerksData PerksData => perksData;
 }
 
 public enum ItemType
 {
     None, Crop, Weapon, Perk
-}
-
-public class TestClass
-{
-    string Name;
-    int number;
-    float myFloat;
-
-    public TestClass()
-    {
-        string newName = Name;
-        int newNumber = number;
-        float newFloat = myFloat;
-    }
-
-    public string TestString { get; set; }
-
-    public int MyInt { get; set; }
-
-}
-
-public class Testttt : MonoBehaviour
-{
-    public TestClass newClass = new TestClass();
-
-    private void Start()
-    {
-        newClass.TestString = "Hola";
-    }
 }
