@@ -56,28 +56,21 @@ public abstract class CropBase : MonoBehaviour
 
     private void LookAtPlayer()
     {
-        //Vector3 relativeDistance = player.transform.position - transform.position;
+        //Gets direction to face
+        Vector3 direction = player.transform.position - transform.position;
 
-        //Quaternion lookAtPlayer = Quaternion.LookRotation(relativeDistance, Vector3.up);
+        //Creates a quaternion that will look at the direction set.
+        Quaternion lookAtPlayer = Quaternion.LookRotation(direction, Vector3.up);
 
-        ////Quaternion testAngle = Quaternion.Euler(0, lookAtPlayer.y, 0);
+        //Lerps the current Y rotation to the quaternion that will look at the player.
+        float desiredRotation = Mathf.Lerp(transform.eulerAngles.y, lookAtPlayer.eulerAngles.y, lookAtPlayerSpeed * Time.deltaTime);
 
-        //float desiredRotation = Mathf.Lerp(transform.eulerAngles.y, lookAtPlayer.eulerAngles.y, lookAtPlayerSpeed * Time.deltaTime);
+        //Sets the new rotation.
+        transform.rotation = Quaternion.Euler(0, desiredRotation, 0);
 
-        //transform.rotation = Quaternion.Euler(0, desiredRotation, 0);
+        float newAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
-        //Vector3 lookRotation = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        //transform.LookAt(lookRotation, Vector3.up);
-
-        //Try player method of rotating
-
-        float targetAngle = Mathf.Atan2(transform.position.z, player.transform.position.z) * Mathf.Rad2Deg;
-
-        float targetRotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmooth, lookAtPlayerSpeed);
-
-        transform.rotation = Quaternion.Euler(0, targetRotation, 0);
-
-        Debug.Log(targetAngle);
+        Debug.Log(newAngle);
 
     }
 

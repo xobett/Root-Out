@@ -9,9 +9,9 @@ public class CameraFollow : MonoBehaviour
 
     private GameObject player; // GameObject donde se referencia el jugador para poder rotarlo a la par de la camara.
 
-    private Vector3 offset = new Vector3(0, 2, -8); // Vector3 donde se almacena la distancia a mantener del jugador.
+    private Vector3 followOffset = new Vector3(0, 2, -8); // Vector3 donde se almacena la distancia a mantener del jugador.
 
-    [SerializeField] private Transform followPos; // Transform en el que se almacena la posicion que seguira la camara.
+    [SerializeField] private Transform defaultFollowPos; // Transform en el que se almacena la posicion que seguira la camara.
 
     [Header("CAMERA SENSITIVITY SETTINGS")]
     [SerializeField, Range(1, 5)] private float ySensitivity; // Float donde se almacena la sensibilidad del axis Y de la camara.
@@ -65,10 +65,9 @@ public class CameraFollow : MonoBehaviour
     {
         if (!IsAiming() && !isZooming && !aimed)
         {
-            transform.position = Vector3.Lerp(transform.position, followPos.position, 10f * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, defaultFollowPos.position, 3f * Time.deltaTime);
         }
     }
-
     private void CameraRotation()
     {
         //Checa si el jugador no esta haciendo zoom
@@ -77,7 +76,7 @@ public class CameraFollow : MonoBehaviour
             //Gira la camara alrededor del Player tracker, para evitar que la camara gire junto con el jugador.
             transform.RotateAround(playerTracker.transform.position, Vector3.up, MouseHorizontalInput());
             //Gira tambien la posicion de seguimiento de la camara alrededor del Player tracker.
-            followPos.transform.RotateAround(playerTracker.transform.position, Vector3.up, MouseHorizontalInput());
+            defaultFollowPos.transform.RotateAround(playerTracker.transform.position, Vector3.up, MouseHorizontalInput());
         }
 
         //Gira al jugador junto con la camara.
@@ -98,6 +97,7 @@ public class CameraFollow : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(transform.rotation, lookAtPlayer * upRotation, rotationSpeed * Time.deltaTime);
         }
+
     }
 
     private void Aim()
@@ -125,7 +125,7 @@ public class CameraFollow : MonoBehaviour
     private void SetCameraPosition(Transform targetPosition)
     {
         //Establece la posicion de seguimiento a la de el transform asignado mas un offset.
-        transform.position = targetPosition.position + offset;
+        transform.position = targetPosition.position + followOffset;
 
         //Se emparenta al transform asignado para seguirlo.
         transform.parent = playerTracker.transform;

@@ -6375,6 +6375,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3723825966451961134, guid: f43303dce11915647a8dba03b732d5c5, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6257096309789117324, guid: f43303dce11915647a8dba03b732d5c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.618793
@@ -6421,7 +6425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8089460597273917744, guid: f43303dce11915647a8dba03b732d5c5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7717,7 +7721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTracker: {fileID: 7160635001148740260}
-  followPos: {fileID: 8912381198045142874}
+  defaultFollowPos: {fileID: 8912381198045142874}
   ySensitivity: 1
   xSensitivity: 1
   lookUpLimit: 15
@@ -9376,10 +9380,10 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 3604358283773766497}
   - {fileID: 370985901}
   - {fileID: 1015044222}
   - {fileID: 7160635001148740260}
-  - {fileID: 3604358283773766497}
   - {fileID: 4069872113975061054}
   - {fileID: 6961081787889114170}
   - {fileID: 1906038125}
