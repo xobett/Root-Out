@@ -9,8 +9,9 @@ public class WeaponHandler : MonoBehaviour
 
     private void Update()
     {
-       WeaponChance();
+        WeaponChance();
     }
+
     void WeaponChance()
     {
         // Cambiar de arma usando las teclas 1, 2 y 3
@@ -27,6 +28,7 @@ public class WeaponHandler : MonoBehaviour
             SwitchWeapon(2);
         }
     }
+
     // Método para recoger un arma nueva
     public void PickUpWeapon(WeaponData newWeapon)
     {
