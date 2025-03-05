@@ -9,7 +9,7 @@ public class WeaponHandler : MonoBehaviour
 
     private void Update()
     {
-        WeaponChance();
+        WeaponChance(); // Llama al método para cambiar de arma
     }
 
     void WeaponChance()
@@ -17,15 +17,15 @@ public class WeaponHandler : MonoBehaviour
         // Cambiar de arma usando las teclas 1, 2 y 3
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SwitchWeapon(0);
+            SwitchWeapon(0); // Cambia al arma en el índice 0
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SwitchWeapon(1);
+            SwitchWeapon(1); // Cambia al arma en el índice 1
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SwitchWeapon(2);
+            SwitchWeapon(2); // Cambia al arma en el índice 2
         }
     }
 
