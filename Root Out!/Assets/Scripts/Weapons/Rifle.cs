@@ -4,6 +4,7 @@ using Weapons;
 
 public class Rifle : WeaponsBase
 {
+    //[SerializeField] private Transform weaponLocation; // Referencia al transform del arma
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
 
     protected override void Shoot()

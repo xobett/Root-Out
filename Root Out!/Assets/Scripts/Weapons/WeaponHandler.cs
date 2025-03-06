@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    [SerializeField] private WeaponData[] weapons = new WeaponData[maxWeapons]; // Arreglo para almacenar las armas
-    [SerializeField] private WeaponData currentWeapon; // Arma actual
-    private const int maxWeapons = 3; // Número máximo de armas que se pueden almacenar
+    [SerializeField] private GameObject[] weaponPrefabs = new GameObject[3]; // Arreglo para almacenar los prefabs de las armas
+    [SerializeField] private GameObject currentWeapon; // Arma actual
     private int weaponCount = 0; // Contador de armas recogidas
 
     private void Update()
@@ -12,6 +11,7 @@ public class WeaponHandler : MonoBehaviour
         WeaponChance(); // Llama al método para cambiar de arma
     }
 
+ 
     void WeaponChance()
     {
         // Cambiar de arma usando las teclas 1, 2 y 3
@@ -30,25 +30,26 @@ public class WeaponHandler : MonoBehaviour
     }
 
     // Método para recoger un arma nueva
-    public void PickUpWeapon(WeaponData newWeapon)
+    public void PickUpWeapon(GameObject newWeaponPrefab)
     {
-        if (weaponCount < maxWeapons)
+        if (weaponCount < 3)
         {
             // Añadir el arma al arreglo si no se ha alcanzado el máximo
-            weapons[weaponCount] = newWeapon;
+            weaponPrefabs[weaponCount] = newWeaponPrefab;
             weaponCount++;
         }
         else
         {
             // Si ya se tiene el máximo de armas, reemplazar la más antigua
-            for (int i = 1; i < maxWeapons; i++)
+            for (int i = 1; i < 3; i++)
             {
-                weapons[i - 1] = weapons[i];
+                weaponPrefabs[i - 1] = weaponPrefabs[i];
             }
-            weapons[maxWeapons - 1] = newWeapon;
+            weaponPrefabs[3 - 1] = newWeaponPrefab;
         }
-        currentWeapon = newWeapon; // Establecer el arma actual
-        Debug.Log("Picked up weapon: " + newWeapon.name);
+        currentWeapon = newWeaponPrefab; // Establecer el arma actual
+        Debug.Log("Picked up weapon: " + newWeaponPrefab.name);
+
     }
 
     // Método para cambiar de arma
@@ -56,7 +57,7 @@ public class WeaponHandler : MonoBehaviour
     {
         if (index < weaponCount)
         {
-            currentWeapon = weapons[index]; // Establecer el arma actual según el índice
+            currentWeapon = weaponPrefabs[index]; // Establecer el arma actual según el índice
             Debug.Log("Switched to weapon: " + currentWeapon.name);
         }
         else

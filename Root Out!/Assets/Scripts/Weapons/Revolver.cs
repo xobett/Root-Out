@@ -1,15 +1,19 @@
-using System;
 using TMPro;
 using UnityEngine;
 using Weapons;
-public class Revolver : WeaponsBase
+public class Revolver : WeaponsBase, IInteractable
 {
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
+    [SerializeField] private Transform weaponLocation; // Referencia al transform del arma
 
     protected override void Start()
     {
         base.Start();
         UpdateAmmoText(); // Actualiza el texto de munición al inicio
+    }
+    public void OnInteract()
+    {
+        transform.SetParent(weaponLocation); // Asigna el transform del arma como padre
     }
 
     protected override void Shoot()
