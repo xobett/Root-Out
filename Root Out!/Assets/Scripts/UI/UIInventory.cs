@@ -63,7 +63,6 @@ public class UIInventory : MonoBehaviour
         }
 
         totalCoinsText.alpha = Mathf.Lerp(totalCoinsText.alpha, targetValue, fadeSpeed * Time.deltaTime);
-        Debug.Log(totalCoinsText.alpha);
     }
 
     private void DisplayNotEnoughCoins()

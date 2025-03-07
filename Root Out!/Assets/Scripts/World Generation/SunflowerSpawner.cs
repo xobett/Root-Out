@@ -11,8 +11,6 @@ public class SunflowerSpawner : MonoBehaviour
 
     [SerializeField] private List<int> lastPositions = new List<int>();
 
-    //[SerializeField] private int[] usedPositions = new int[3];
-
     private int spawnPos;
 
     void Start()
@@ -27,7 +25,6 @@ public class SunflowerSpawner : MonoBehaviour
             StartCoroutine(AssignSpawnPosition());
         }
     }
-
 
     private bool VerifyUsedPositions(int positionToVerify)
     {
@@ -44,9 +41,7 @@ public class SunflowerSpawner : MonoBehaviour
     {
         for (int i = 0; i < sunflowersToSpawn; i++)
         {
-            Debug.Log($"Entrada numero {i + 1}");
             spawnPos = RandomPos();
-            Debug.Log($"Numero inicial: {spawnPos}");
 
             while (VerifyUsedPositions(spawnPos))
             {
@@ -56,15 +51,12 @@ public class SunflowerSpawner : MonoBehaviour
 
             GameObject clone = Instantiate(sunflowerPrefab, spawnPositions[spawnPos].position, spawnPositions[spawnPos].rotation);
             clone.transform.parent = gameObject.transform.parent;
-            Debug.Log($"Position {spawnPos} was used and added");
 
-            //usedPositions[i] = spawnPos;
             lastPositions.Add(spawnPos);
         }
 
         yield return null;
     }
-
 
     private int RandomPos()
     {
@@ -73,32 +65,5 @@ public class SunflowerSpawner : MonoBehaviour
         return spawnPos;
     }
 
-    //private bool VerifyLastPositions(int positionToVerify)
-    //{
-    //    bool zeroUsed = false;
-    //    bool positionUsed = false;
-
-    //    foreach (int usedPosition in usedPositions)
-    //    {
-    //        Debug.Log($"Number to verify {positionToVerify} and used position {usedPosition}");
-    //        if (positionToVerify == usedPosition)
-    //        {
-
-    //            positionUsed = true;
-    //            Debug.Log($"Position {usedPosition} was already used.");
-
-    //            if (positionToVerify == 0 && usedPosition == 0 && !zeroUsed)
-    //            {
-    //                Debug.Log("Aqui entra el 0 usado por primera vez");
-    //                zeroUsed = true;
-    //                positionUsed = false;
-    //            }
-
-    //        }
-
-    //        Debug.Log($"Regresa {positionUsed}");
-    //    }
-    //    return positionUsed;
-    //}
 }
 

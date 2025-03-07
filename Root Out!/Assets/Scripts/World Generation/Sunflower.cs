@@ -39,27 +39,46 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        TerrainSpawn();
+        var instance = GameManager.instance;
+        instance.GrowthSelectionEvent(this);
     }
 
-    private void TerrainSpawn()
+    public void GrowSunflower(GrowthSelection growthType)
     {
-        if (!activated)
+        switch (growthType)
         {
-            //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.
-            Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
-            spawnPos.y = 0;
+            case GrowthSelection.Marvelous:
+                {
+                    Debug.Log("Marvelous way used");
+                    break;
+                }
 
-            int randomTerrainType = GenerateRandomTerrainType();
+            case GrowthSelection.Genuine:
+                {
 
-            //Se genera un nuevo terreno en la posicion creada.
-            Instantiate(terrainPrefabs[randomTerrainType], spawnPos, terrainPrefabs[randomTerrainType].transform.rotation);
+                    break;
+                }
 
-            //Tras instanciar el terreno, se autodestruye el girasol.
-            Destroy(this.gameObject);
-            
-            activated = true;
+            case GrowthSelection.Compelling:
+                {
+
+                    break;
+                }
         }
+
+        //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.
+        //Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
+        //spawnPos.y = 0;
+
+        //int randomTerrainType = GenerateRandomTerrainType();
+
+        ////Se genera un nuevo terreno en la posicion creada.
+        //Instantiate(terrainPrefabs[randomTerrainType], spawnPos, terrainPrefabs[randomTerrainType].transform.rotation);
+
+        ////Tras instanciar el terreno, se autodestruye el girasol.
+        //Destroy(this.gameObject);
+
+        //activated = true;
     }
 
     private void BugDetection()
@@ -93,16 +112,10 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     }
 
-    private bool IsSpawning()
-    {
-        //Regresa si se esta spawneando un terreno.
-        return Input.GetKeyDown(KeyCode.Space);
-    }
-
     public void DamageSunFlower(float damage)
     {
         currentHealth -= damage;
-        UpdateLife(); 
+        UpdateLife();
     }
 
     private int GenerateRandomTerrainType()
