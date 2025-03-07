@@ -26,7 +26,8 @@ public class Shotgun : WeaponsBase, IInteractable
         {
             weaponHandler.PickUpWeapon(gameObject); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
-            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición y rotación local
+            transform.localPosition = Vector3.zero; // Resetea la posición local
+            transform.localRotation = Quaternion.identity; // Resetea la rotación local
         }
         else
         {
