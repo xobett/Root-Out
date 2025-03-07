@@ -4,14 +4,15 @@ using Weapons;
 
 public class Rifle : WeaponsBase
 {
-    //[SerializeField] private Transform weaponLocation; // Referencia al transform del arma
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
+    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
-    protected override void Shoot()
+    protected override void Start()
     {
-        base.Shoot();
-        UpdateAmmoText();
+        base.Start();
+        UpdateAmmoText(); // Actualiza el texto de munición al inicio
     }
+
     private void UpdateAmmoText() // Actualiza el texto de munición
     {
         if (bulletText != null)

@@ -4,16 +4,27 @@ using Weapons;
 public class Revolver : WeaponsBase, IInteractable
 {
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
-    [SerializeField] private Transform weaponLocation; // Referencia al transform del arma
+
+    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
     protected override void Start()
     {
         base.Start();
         UpdateAmmoText(); // Actualiza el texto de munición al inicio
     }
+
     public void OnInteract()
     {
-        transform.SetParent(weaponLocation); // Asigna el transform del arma como padre
+        if (weaponHandler != null)
+        {
+            weaponHandler.PickUpWeapon(gameObject); // Añade el arma al WeaponHandler
+            transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
+            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
+        }
+        else
+        {
+            Debug.LogWarning("WeaponHandler not found in the scene.");
+        }
     }
 
     protected override void Shoot()
@@ -33,5 +44,4 @@ public class Revolver : WeaponsBase, IInteractable
             Debug.LogWarning("Ammo text component is not assigned.");
         }
     }
-
 }

@@ -1,19 +1,42 @@
+using TMPro;
 using UnityEngine;
 using Weapons;
 public class Shotgun : WeaponsBase, IInteractable
 {
-    [SerializeField] int pelletsPerShot = 6; // Número de perdigones por disparo
-    [SerializeField] private Transform weaponLocation; // Referencia al transform del arma
+    [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el 
+    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
+    protected override void Start()
+    {
+        base.Start();
+        UpdateAmmoText(); // Actualiza el texto de munición al inicio
+    }
     public void OnInteract()
     {
-        transform.SetParent(weaponLocation); // Asigna el transform del arma como padre
+        if (weaponHandler != null)
+        {
+            weaponHandler.PickUpWeapon(gameObject); // Añade el arma al WeaponHandler
+            transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
+            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
+        }
+        else
+        {
+            Debug.LogWarning("WeaponHandler not found in the scene.");
+        }
+    }
+    private void UpdateAmmoText() // Actualiza el texto de munición
+    {
+        if (bulletText != null)
+        {
+            bulletText.text = $"{currentAmmo}/{maxAmmo}"; // Actualiza el texto con la munición actual y máxima
+        }
+        else
+        {
+            Debug.LogWarning("Ammo text component is not assigned.");
+        }
     }
 
-    // Sobrescribir el método para definir el número de balas a disparar
-    protected override int GetNumBullets()
-    {
-        return pelletsPerShot; // Número de perdigones por disparo
-    }
+
+
 }
 
