@@ -3,27 +3,38 @@ using UnityEngine;
 using Weapons;
 public class Shotgun : WeaponsBase, IInteractable
 {
-    [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el 
+    [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+    private int bulletsPerShot = 6; // Número de balas por disparo
 
-    protected override void Start()
+    protected override void Shoot()
     {
-        base.Start();
-        UpdateAmmoText(); // Actualiza el texto de munición al inicio
+        if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
+        {
+            FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
+            UpdateAmmoText(); // Actualiza el texto de munición después de disparar
+        }
+        else
+        {
+            Debug.LogWarning("Weapon is not in the WeaponHandler or is not the current weapon.");
+        }
     }
+
     public void OnInteract()
     {
         if (weaponHandler != null)
         {
             weaponHandler.PickUpWeapon(gameObject); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
-            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
+            transform.localPosition = Vector3.zero; // Resetea la posición local
+            transform.localRotation = Quaternion.identity; // Resetea la rotación local
         }
         else
         {
             Debug.LogWarning("WeaponHandler not found in the scene.");
         }
     }
+
     private void UpdateAmmoText() // Actualiza el texto de munición
     {
         if (bulletText != null)
@@ -35,8 +46,5 @@ public class Shotgun : WeaponsBase, IInteractable
             Debug.LogWarning("Ammo text component is not assigned.");
         }
     }
-
-
-
 }
 

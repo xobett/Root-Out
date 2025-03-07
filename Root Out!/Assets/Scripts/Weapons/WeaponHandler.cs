@@ -3,7 +3,7 @@ using UnityEngine;
 public class WeaponHandler : MonoBehaviour
 {
     [SerializeField] private GameObject[] weaponPrefabs = new GameObject[3]; // Arreglo para almacenar los prefabs de las armas
-    [SerializeField] private GameObject currentWeapon; // Arma actual
+    [SerializeField] public GameObject currentWeapon; // Arma actual
     [SerializeField] public Transform weaponHolder; // Transform donde se instanciará el arma
     private int weaponCount = 0; // Contador de armas recogidas
 

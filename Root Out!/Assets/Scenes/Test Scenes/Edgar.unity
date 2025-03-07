@@ -568,7 +568,7 @@ GameObject:
   m_Layer: 0
   m_Name: Weapon Location
   m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -581,7 +581,7 @@ Transform:
   m_GameObject: {fileID: 230613204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 0.6}
+  m_LocalPosition: {x: 0.25, y: -0.64, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2418,7 +2418,7 @@ GameObject:
   m_Layer: 9
   m_Name: Shootgun
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2505,7 +2505,7 @@ Transform:
   m_GameObject: {fileID: 942129621}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.06, y: 1.34, z: 13.9}
+  m_LocalPosition: {x: -5.17, y: 1.34, z: 13.9}
   m_LocalScale: {x: 0.53521, y: 0.41496, z: 2.571}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2526,19 +2526,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiming: {fileID: 249935756}
   weaponType: 0
-  spreadAngle: 17.06
-  horizontalSpread: 1
+  spreadAngle: 44.3
+  horizontalSpread: 0
   autoFire: 0
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 5852023727157374342, guid: de4adb01b41df1a4b987995754062a6d, type: 3}
   currentAmmo: 500
   bulletReserve: 500
   maxAmmo: 500
   damage: 5
   range: 2
-  fireRate: 2
+  fireRate: 8
   reloadTime: 1
   bulletForce: 20
   lifeTimeBullets: 2
@@ -2546,6 +2546,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   bulletText: {fileID: 1968219535}
   weaponHandler: {fileID: 2073657782}
 --- !u!1 &947285915
@@ -3876,6 +3878,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   detectionRange: 2
   sunFlower: {fileID: 4188914659594138278}
   _sunFlower: {fileID: 1341339357}
@@ -4401,7 +4405,7 @@ GameObject:
   m_Layer: 9
   m_Name: Revolver
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4488,7 +4492,7 @@ Transform:
   m_GameObject: {fileID: 1371294529}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0072781257, y: -0.0037706709, z: -0.00002746233, w: 0.9999664}
-  m_LocalPosition: {x: -0.003, y: 1.316, z: 13.07}
+  m_LocalPosition: {x: 1.46, y: 1.316, z: 13.07}
   m_LocalScale: {x: 0.22114897, y: 0.14766964, z: 1.2268014}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4515,7 +4519,7 @@ MonoBehaviour:
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 5852023727157374342, guid: de4adb01b41df1a4b987995754062a6d, type: 3}
   currentAmmo: 100
   bulletReserve: 100
   maxAmmo: 100
@@ -4529,6 +4533,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   bulletText: {fileID: 1968219535}
   weaponHandler: {fileID: 2073657782}
 --- !u!1 &1414369031
@@ -12569,6 +12575,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   player: {fileID: 1585821203151032566}
   sunFlower: {fileID: 1341339357}
   rangeGizmo: 10
@@ -12656,6 +12664,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   bulletText: {fileID: 1968219535}
   weaponHandler: {fileID: 2073657782}
 --- !u!1 &1715451779233437901
@@ -13169,7 +13179,7 @@ GameObject:
   m_Layer: 8
   m_Name: RayPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23269,7 +23279,7 @@ GameObject:
   m_Layer: 8
   m_Name: Ground Check
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23570,6 +23580,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   player: {fileID: 1585821203151032566}
   targetShooting: {fileID: 3026164163744036126, guid: 6a9feb9b591cb5c44b63fa84772771a9, type: 3}
 --- !u!114 &8337252604411168323
@@ -23794,6 +23806,10 @@ PrefabInstance:
       value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 3670986462572352019, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3670986462572352019, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
       propertyPath: m_Name
       value: Assault Rifle
       objectReference: {fileID: 0}
@@ -23811,7 +23827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5600628031957535197, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67
+      value: -1.58
       objectReference: {fileID: 0}
     - target: {fileID: 5600628031957535197, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
       propertyPath: m_LocalPosition.y

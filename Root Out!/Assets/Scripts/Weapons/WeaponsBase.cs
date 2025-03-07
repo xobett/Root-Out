@@ -15,7 +15,7 @@ namespace Weapons
         }
 
         [Header("Punto de Mira")]
-        [SerializeField] private Transform aiming; // Punto de Mira
+        [SerializeField] public Transform aiming; // Punto de Mira
 
         [Header("Tipo de Arma")]
         [SerializeField] public WeaponType weaponType; // Tipo de Arma
@@ -52,9 +52,8 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
 
-        private bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
-        private bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
-
+        public bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
+        public bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
 
         protected virtual void Start()
@@ -221,7 +220,7 @@ namespace Weapons
                     // Asigna el prefab de la explosión a la bala y controla la instanciación
                     if (bullet.TryGetComponent<Bullet>(out var bulletScript))
                     {
-                        bulletScript.SetExplosionPrefab(explosionPrefab); 
+                        bulletScript.SetExplosionPrefab(explosionPrefab);
                         if (explosionUpgradeActivated && canInstantiateExplosion) // Comprueba si la mejora de explosión está activada y si se puede instanciar
                         {
                             Debug.Log("Explosion upgrade activated!");
@@ -309,7 +308,7 @@ namespace Weapons
         }
 
         // Corrutina para controlar el tiempo de espera entre instanciaciones de explosión
-        private IEnumerator ExplosionCooldown()
+        public IEnumerator ExplosionCooldown()
         {
             canInstantiateExplosion = false;
             yield return new WaitForSeconds(3f); // Espera 10 segundos

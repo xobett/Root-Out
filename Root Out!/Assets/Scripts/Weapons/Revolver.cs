@@ -4,14 +4,8 @@ using Weapons;
 public class Revolver : WeaponsBase, IInteractable
 {
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
-
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
-    protected override void Start()
-    {
-        base.Start();
-        UpdateAmmoText(); // Actualiza el texto de munición al inicio
-    }
 
     public void OnInteract()
     {
@@ -29,8 +23,15 @@ public class Revolver : WeaponsBase, IInteractable
 
     protected override void Shoot()
     {
-        base.Shoot();
-        UpdateAmmoText(); // Actualiza el texto de munición después de disparar
+        if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
+        {
+            base.Shoot();
+            UpdateAmmoText(); // Actualiza el texto de munición después de disparar
+        }
+        else
+        {
+            Debug.LogWarning("Weapon is not in the WeaponHandler or is not the current weapon.");
+        }
     }
 
     private void UpdateAmmoText() // Actualiza el texto de munición
