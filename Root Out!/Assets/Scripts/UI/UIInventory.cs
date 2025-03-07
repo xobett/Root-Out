@@ -1,12 +1,19 @@
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
+    //Input scripts reference
     private PlayerMovement playerMovement;
     private LeafJump leafJump;
     private CameraFollow cameraFollow;
+
+    [Header("HUD SETTINGS")]
+    [SerializeField] private TextMeshProUGUI totalCoinsText;
+    [SerializeField] private TextMeshProUGUI generalMessage;
+    [SerializeField] private float fadeSpeed;
 
     [Header("INVENTORY PANEL SETTINGS")]
     [SerializeField] private GameObject inventoryPanel;
@@ -23,10 +30,13 @@ public class UIInventory : MonoBehaviour
 
     private bool isOpened;
 
+    private float targetValue;
+
     void Start()
     {
         GetPlayerInventory();
         GetInputReferences();
+        DisplayNotEnoughCoins();
     }
 
     void Update()
@@ -35,6 +45,30 @@ public class UIInventory : MonoBehaviour
         {
             OpenInventory();
         }
+
+        DisplayTotalCoins();
+    }
+
+    private void DisplayTotalCoins()
+    {
+        totalCoinsText.text = $"Total coins: {playerInventory.seedCoins}";
+
+        if (totalCoinsText.alpha >= 0.9f)
+        {
+            targetValue = 0;
+        }
+        else if (totalCoinsText.alpha <= 0.1f)
+        {
+            targetValue = 1;
+        }
+
+        totalCoinsText.alpha = Mathf.Lerp(totalCoinsText.alpha, targetValue, fadeSpeed * Time.deltaTime);
+        Debug.Log(totalCoinsText.alpha);
+    }
+
+    private void DisplayNotEnoughCoins()
+    {
+        generalMessage.text = "SELECT YOUR WAY OF SPAWNING THE SUNFLOWER";
     }
 
     private void OpenInventory()
