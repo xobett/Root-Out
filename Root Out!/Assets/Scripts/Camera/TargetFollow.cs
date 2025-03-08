@@ -6,12 +6,17 @@ public class TargetFollow : MonoBehaviour
 
     void Start()
     {
-      
+        GetPlayerReference();
     }
 
     private void LateUpdate()
     {
-        transform.LookAt(transform.position + target.position);
+        transform.position = target.position;
+    }
+
+    private void GetPlayerReference()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }
 

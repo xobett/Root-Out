@@ -118,8 +118,6 @@ public class GameManager : MonoBehaviour
         CloseActiveEvent();
     }
 
-    //Deactivate buttons upon selection
-
     #region InputMethods
     public void DeactivateInput()
     {
