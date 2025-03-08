@@ -64,13 +64,13 @@ public class GameManager : MonoBehaviour
 
     private void CloseActiveEvent()
     {
-        RegainInput();
-
         growthSelectionAnimator.SetBool("isActive", false);
         darkPanelAnimator.SetBool("isActive", false);
 
         growthSelectionAnimator.SetTrigger("Default");
         darkPanelAnimator.SetTrigger("Default");
+
+        RegainInput();
 
         activeEvent = false;
     }
@@ -114,7 +114,11 @@ public class GameManager : MonoBehaviour
         }
 
         sunflowerToGrow.GrowSunflower(growthSelection);
+
+        CloseActiveEvent();
     }
+
+    //Deactivate buttons upon selection
 
     #region InputMethods
     public void DeactivateInput()

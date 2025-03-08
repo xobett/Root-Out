@@ -55,13 +55,13 @@ public class Sunflower : MonoBehaviour, IInteractable
 
             case GrowthSelection.Genuine:
                 {
-
+                    Debug.Log("Genuine way used");
                     break;
                 }
 
             case GrowthSelection.Compelling:
                 {
-
+                    Debug.Log("Compelling way used");
                     break;
                 }
         }
