@@ -47,6 +47,16 @@ public class WeaponHandler : MonoBehaviour
             }
             weaponPrefabs[3 - 1] = newWeaponPrefab; // Reemplazar la última arma
         }
+
+        // Desactivar todas las armas antes de activar la nueva
+        foreach (var weapon in weaponPrefabs)
+        {
+            if (weapon != null)
+            {
+                weapon.SetActive(false);
+            }
+        }
+
         currentWeapon = newWeaponPrefab; // Establecer el arma actual
         Debug.Log("Picked up weapon: " + newWeaponPrefab.name);
 
@@ -67,8 +77,17 @@ public class WeaponHandler : MonoBehaviour
     {
         if (index < weaponCount) // Si el índice es menor que el número de armas recogidas
         {
+            // Desactivar todas las armas antes de activar la nueva
+            foreach (var weapon in weaponPrefabs)
+            {
+                if (weapon != null)
+                {
+                    weapon.SetActive(false);
+                }
+            }
+
             SetCurrentWeapon(weaponPrefabs[index]); // Establecer el arma actual según el índice
-            Debug.Log("Switched to weapon: " + currentWeapon.name); 
+            Debug.Log("Switched to weapon: " + currentWeapon.name);
         }
         else
         {

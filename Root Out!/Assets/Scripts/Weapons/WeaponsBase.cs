@@ -52,8 +52,9 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
 
-        public bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
-        public bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
+
+        [HideInInspector] public bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
+        [HideInInspector] public bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
 
         protected virtual void Start()
