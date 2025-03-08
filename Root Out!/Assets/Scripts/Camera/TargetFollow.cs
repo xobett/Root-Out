@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class TargetFollow : MonoBehaviour
 {
-    private GameObject target;
+    [SerializeField] private Transform target;
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+      
     }
 
     private void LateUpdate()
     {
-        transform.position = target.transform.position;
+        transform.LookAt(transform.position + target.position);
     }
 }
 

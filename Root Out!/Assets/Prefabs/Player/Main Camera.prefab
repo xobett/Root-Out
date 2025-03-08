@@ -246,13 +246,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTracker: {fileID: 0}
+  defaultFollowPos: {fileID: 0}
   ySensitivity: 1
   xSensitivity: 1
   lookUpLimit: 10
   lookDownLimit: 0
+  rotationSpeed: 1
   zoomSpeed: 5
   zoomIn: 25
   zoomHorizontalOffset: -3
-  followPos: {fileID: 0}
-  testBool: 0
-  testVelo: 2.5
