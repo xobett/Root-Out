@@ -239,6 +239,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7789493992181053158}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4668542675704820440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8723793114436876035}
+  m_Layer: 0
+  m_Name: Weapon Location (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8723793114436876035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668542675704820440}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
+  m_LocalPosition: {x: 0.53, y: -0.112999976, z: 0.24}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4989501597596570049}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &5611974019189757436
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4989501597596570049}
   - component: {fileID: 6238140726805344101}
+  - component: {fileID: 4502303870412876093}
   m_Layer: 0
   m_Name: Handlers
   m_TagString: Untagged
@@ -409,7 +441,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8723793114436876035}
   m_Father: {fileID: 1585821201999089465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6238140726805344101
@@ -428,6 +461,24 @@ MonoBehaviour:
   whatIsInteraction:
     serializedVersion: 2
     m_Bits: 2112
+--- !u!114 &4502303870412876093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944689527504147316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6c33c430ef9204d8235632edf560c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentWeapon: {fileID: 0}
+  weaponHolder: {fileID: 8723793114436876035}
 --- !u!1 &6141346610197472371
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assault Rifle
       objectReference: {fileID: 0}
+    - target: {fileID: 3670986462572352019, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5600628031957535197, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.306
@@ -807,7 +862,10 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   bulletText: {fileID: 0}
+  weaponHandler: {fileID: 0}
 --- !u!4 &6664890278683480886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2491898095002134753, guid: 536abe79bdb528b4ab632ce78cf13063, type: 3}

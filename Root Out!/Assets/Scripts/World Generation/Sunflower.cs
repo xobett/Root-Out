@@ -30,7 +30,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     [SerializeField] private bool activated;
 
     [Header("HEALTH SETTINGS")]
-    [SerializeField, Range(0, 100)] private float currentHealth;
+    [SerializeField, Range(0, 100)] public float currentHealth;
     private float maxHealth = 100f;
 
     [SerializeField] private TextMeshProUGUI porcentLife;

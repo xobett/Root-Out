@@ -1,18 +1,16 @@
 
-using Microsoft.Unity.VisualStudio.Editor;
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Weapons;
 
 public class MushroomBombShooter : WeaponsBase
 {
     [SerializeField] private Transform player;
-    [SerializeField] GameObject targetShooting;
-   // [SerializeField] float separationDistance = 1f;
+    [SerializeField] GameObject HUDTargetPoint;
+    [SerializeField] private float targetPointDistance;
+    // [SerializeField] float separationDistance = 1f;
 
     NavMeshAgent agent;
 
@@ -21,6 +19,12 @@ public class MushroomBombShooter : WeaponsBase
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(TargetPointCoroutine()); // Inicia la corrutina para instanciar targetShooting
     }
+
+    private void LateUpdate()
+    {
+        LookAtTarget(player); // Llama al método LookAtTarget
+    }
+    
 
     protected override void Shoot()
     {
@@ -32,7 +36,6 @@ public class MushroomBombShooter : WeaponsBase
     void Attack()
     {
         agent.SetDestination(player.position);
-        LookAtTarget(player);
     }
 
     void Mortar()
@@ -59,10 +62,10 @@ public class MushroomBombShooter : WeaponsBase
         {
             yield return new WaitForSeconds(1f / fireRate); // Espera el tiempo basado en la cadencia de disparo
 
-            Vector3 pointFloor = player.position + Vector3.down * 0f; // Posicio de la imagen
-            GameObject point = Instantiate(targetShooting, pointFloor,Quaternion.identity); // instanciar la imagen a la posicion
+            Vector3 pointFloor = player.position + Vector3.down * targetPointDistance; // Posicio de la imagen
+            GameObject point = Instantiate(HUDTargetPoint, pointFloor, Quaternion.identity); // instanciar la imagen a la posicion
 
-            Destroy(point,1.3f); // Destruye el punto
+            Destroy(point, 1.3f); // Destruye el punto
         }
     }
 

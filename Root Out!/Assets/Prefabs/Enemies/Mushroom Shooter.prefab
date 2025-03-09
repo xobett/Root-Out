@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: Aim
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b7b4a773a0f2449bc0707c5edbefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  cameraPlayer: {fileID: 0}
 --- !u!1 &249067136110184320
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b7b4a773a0f2449bc0707c5edbefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  cameraPlayer: {fileID: 0}
 --- !u!1 &1746716540563429218
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 9cb272a159628b24296395a1752c0d93, type: 3}
+  explosionPrefab: {fileID: 0}
   currentAmmo: 2147483647
   bulletReserve: 2147483647
   maxAmmo: 2147483647
@@ -407,6 +408,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   player: {fileID: 0}
   sunFlower: {fileID: 0}
   rangeGizmo: 10

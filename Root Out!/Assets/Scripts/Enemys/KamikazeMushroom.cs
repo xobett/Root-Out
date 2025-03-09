@@ -6,7 +6,7 @@ using Weapons;
 public class KamikazeMushroom : WeaponsBase
 {
     [SerializeField] private float detectionRange;
-    [SerializeField] Sunflower sunFlower;
+    [SerializeField] Sunflower sunFlowerScript;
     [SerializeField] Transform _sunFlower;
     NavMeshAgent agent;
 
@@ -31,8 +31,9 @@ public class KamikazeMushroom : WeaponsBase
             Debug.Log("1");
             yield return new WaitForSeconds(1f);
             Debug.Log("BOOM");
-            sunFlower.DamageSunFlower(damage);
+            sunFlowerScript.DamageSunFlower(damage);
             Destroy(gameObject);
+            Debug.Log($"Daño al girasol : " + sunFlowerScript.currentHealth);
 
 
         }

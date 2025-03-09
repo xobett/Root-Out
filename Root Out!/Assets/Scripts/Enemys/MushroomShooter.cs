@@ -17,10 +17,10 @@ public class MushroomShooter : WeaponsBase
     {
         agent = GetComponent<NavMeshAgent>();
     }
-    protected override void Update()
+    private void LateUpdate()
     {
-        base.Update();
         TargetToAtack();
+
     }
 
     protected override void Shoot()
@@ -30,18 +30,18 @@ public class MushroomShooter : WeaponsBase
 
     void TargetToAtack()
     {
-       if (Detection())
+        if (Detection())
         {
             agent.SetDestination(player.position);
             LookAtTarget(player);
         }
 
-       else
+        else
         {
             if (sunFlower != null)
             {
                 agent.SetDestination(sunFlower.position);
-                LookAtTarget(sunFlower); 
+                LookAtTarget(sunFlower);
             }
         }
     }
@@ -51,13 +51,13 @@ public class MushroomShooter : WeaponsBase
         Gizmos.DrawWireSphere(transform.position, rangeGizmo);
     }
     bool Detection()
-    { 
+    {
         return Physics.CheckSphere(transform.position, rangeGizmo, layer);
     }
     void LookAtTarget(Transform target)
     {
-        Vector3 direction = (target.position - transform.position).normalized; // Direction to the player
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Look rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f); // Smooth rotation
+        Vector3 direction = (target.position - transform.position).normalized; // Dirección hacia el jugador
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Rotación de mirada
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f); // Rotación suave
     }
 }
