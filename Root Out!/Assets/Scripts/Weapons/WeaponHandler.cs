@@ -48,23 +48,15 @@ public class WeaponHandler : MonoBehaviour
             weaponPrefabs[3 - 1] = newWeaponPrefab; // Reemplazar la última arma
         }
 
-        // Desactivar todas las armas antes de activar la nueva
-        foreach (var weapon in weaponPrefabs)
-        {
-            if (weapon != null)
-            {
-                weapon.SetActive(false);
-            }
-        }
-
         currentWeapon = newWeaponPrefab; // Establecer el arma actual
         Debug.Log("Picked up weapon: " + newWeaponPrefab.name);
 
         // Instanciar el prefab del arma en el Transform especificado
         if (weaponHolder != null && newWeaponPrefab != null) // Si el weaponHolder y el prefab del arma no estan vacios
         {
-            GameObject newWeapon = Instantiate(newWeaponPrefab, weaponHolder.position, weaponHolder.rotation, weaponHolder); // Instanciar el arma
-            SetCurrentWeapon(newWeapon); // Establecer el arma actual
+            newWeaponPrefab.transform.SetParent(weaponHolder); // Establecer el padre del arma
+            newWeaponPrefab.transform.SetLocalPositionAndRotation(weaponHolder.localPosition,weaponHolder.localRotation);
+            SetCurrentWeapon(newWeaponPrefab); // Establecer el arma actual
         }
         else
         {
@@ -77,15 +69,6 @@ public class WeaponHandler : MonoBehaviour
     {
         if (index < weaponCount) // Si el índice es menor que el número de armas recogidas
         {
-            // Desactivar todas las armas antes de activar la nueva
-            foreach (var weapon in weaponPrefabs)
-            {
-                if (weapon != null)
-                {
-                    weapon.SetActive(false);
-                }
-            }
-
             SetCurrentWeapon(weaponPrefabs[index]); // Establecer el arma actual según el índice
             Debug.Log("Switched to weapon: " + currentWeapon.name);
         }
@@ -98,11 +81,21 @@ public class WeaponHandler : MonoBehaviour
     // Método para establecer el arma actual y desactivar las otras armas
     private void SetCurrentWeapon(GameObject newWeapon)
     {
-        if (currentWeapon != null) // Si hay un arma actual
+        // Desactivar todas las armas antes de activar la nueva
+        foreach (var weapon in weaponPrefabs)
         {
-            currentWeapon.SetActive(false); // Desactivar el arma actual
+            if (weapon != null)
+            {
+                weapon.SetActive(false);
+            }
         }
+
         currentWeapon = newWeapon; // Establecer la nueva arma
         currentWeapon.SetActive(true); // Activar la nueva arma
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(weaponHolder.position, weaponHolder.forward * 100);
     }
 }
