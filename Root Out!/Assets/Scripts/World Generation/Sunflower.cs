@@ -5,14 +5,18 @@ using Random = UnityEngine.Random;
 
 public class Sunflower : MonoBehaviour, IInteractable
 {
-    [Header("SPAWN SETTINGS")]
+    [Header("TERRAIN SPAWN SETTINGS")]
     public GameObject prefab;
 
     [SerializeField] private GameObject[] terrainPrefabs;
 
+    [Header("FOG SPAWN SETTINGS")]
+    [SerializeField] private GameObject worldFog;
+    [SerializeField] private const float fogDistanceSpawn = 21;
+
     [Header("DETECTION SETTINGS")]
-    [SerializeField] private float terrainDistanceSpawn = 11;
-    [SerializeField] private float debugCubeDistance = 12;
+    [SerializeField] private const float terrainDistanceSpawn = 21;
+    [SerializeField] private const float debugCubeDistance = 22;
 
     [SerializeField] private LayerMask whatIsSunflower;
     [SerializeField] private LayerMask whatIsGround;
@@ -33,14 +37,35 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        SpawnFog();
+
         BugDetection();
         //UpdateLife(); //Actualiza la UI de vida.
     }
 
+    private void Update()
+    {
+
+    }
+
     public void OnInteract()
     {
-        var instance = GameManager.instance;
-        instance.GrowthSelectionEvent(this);
+        //var instance = GameManager.instance;
+        //instance.GrowthSelectionEvent(this);
+
+        //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.
+        Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
+        spawnPos.y = 0;
+
+        int randomTerrainType = GenerateRandomTerrainType();
+
+        ////Se genera un nuevo terreno en la posicion creada.
+        Instantiate(terrainPrefabs[randomTerrainType], spawnPos, terrainPrefabs[randomTerrainType].transform.rotation);
+
+        ////Tras instanciar el terreno, se autodestruye el girasol.
+        Destroy(this.gameObject);
+
+        activated = true;
     }
 
     public void GrowSunflower(GrowthSelection growthType)
@@ -66,19 +91,15 @@ public class Sunflower : MonoBehaviour, IInteractable
                 }
         }
 
-        //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.
-        //Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
-        //spawnPos.y = 0;
+        
+    }
 
-        //int randomTerrainType = GenerateRandomTerrainType();
+    private void SpawnFog()
+    {
+        Vector3 fogSpawnPos = transform.position + transform.forward * fogDistanceSpawn;
+        fogSpawnPos.y = 3.5f;
 
-        ////Se genera un nuevo terreno en la posicion creada.
-        //Instantiate(terrainPrefabs[randomTerrainType], spawnPos, terrainPrefabs[randomTerrainType].transform.rotation);
-
-        ////Tras instanciar el terreno, se autodestruye el girasol.
-        //Destroy(this.gameObject);
-
-        //activated = true;
+        Instantiate(worldFog, fogSpawnPos, Quaternion.identity);
     }
 
     private void BugDetection()
