@@ -1,4 +1,5 @@
 
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public abstract class CropBase : MonoBehaviour
@@ -8,18 +9,16 @@ public abstract class CropBase : MonoBehaviour
 
     [Header("MOVEMENT SETTINGS")]
     [SerializeField, Range(0f, 1f)] protected float cropWalkSpeed;
-    [SerializeField] protected float cropRunSpeed;
+    [SerializeField, Range(0f, 1f)] protected float cropRunSpeed;
 
     [SerializeField, Range(0.5f, 10f)] protected float lookAtPlayerSpeed;
 
     [Header("FOLLOW SETTINGS")]
-    [SerializeField, Range(0,5)] protected float stoppingDistance;
+    [SerializeField, Range(0, 5)] protected float stoppingDistance;
     [SerializeField] protected float backDistance;
     [SerializeField] protected float sideDistance;
-    
-    private Transform playerPos;
 
-    private Transform followTarget;
+    private Transform playerPos;
 
     private Vector3 velocityRef = Vector3.zero;
 
@@ -31,38 +30,54 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField] private float sphereDetectionRadius = 12f;
     [SerializeField] private LayerMask whatIsEnemy;
 
+    [SerializeField] private bool enemyDetected;
+    [SerializeField] private Transform enemyPos;
+
     [SerializeField] private float maxHitDistance;
-    [SerializeField] private float currentHitDistance;
 
     private RaycastHit hit;
 
 
     private void Start()
     {
-        GetReferemces();
+        GetReferences();
     }
 
 
     private void Update()
     {
-        FollowPlayer();
+        BehaviourCheck();
     }
 
-
-    protected virtual void FollowPlayer()
+    protected void BehaviourCheck()
     {
-        //Rota constantemente hacia el jugador mientras lo sigue.
-        LookAtPlayer();
-
-        if (EnemyDetection())
+        if (EnemyDetection() && !enemyDetected)
         {
-            currentHitDistance = hit.distance;
-            Debug.Log($"{hit.collider.name}");
+            enemyDetected = true;
+            enemyPos = hit.collider.transform;
+        }
+
+        if (!enemyDetected)
+        {
+            HeadToPlayer();
         }
         else
         {
-            currentHitDistance = maxHitDistance;
+            CropAttack();
         }
+    }
+
+    protected void HeadToEnemy()
+    {
+        Vector3 desiredFollowingPos = enemyPos.position;
+        desiredFollowingPos.y = transform.position.y;
+
+        SetDestination(desiredFollowingPos, cropRunSpeed);
+    }
+
+    private void HeadToPlayer()
+    {
+        LookAtPlayer();
 
         Vector3 desiredFollowingPos = playerPos.position + playerPos.forward * -backDistance + transform.right * sideDistance;
         desiredFollowingPos.y = transform.position.y;
@@ -71,38 +86,46 @@ public abstract class CropBase : MonoBehaviour
 
         if (distance > stoppingDistance)
         {
-            transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
+            SetDestination(desiredFollowingPos, cropWalkSpeed);
         }
     }
-    private void OnDrawGizmos()
+
+    private void SetDestination(Vector3 desiredFollowingPos, float speed)
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * currentHitDistance);
-        Gizmos.DrawWireSphere(transform.position + transform.forward * currentHitDistance, sphereDetectionRadius);
+        transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / speed);
     }
 
+    private void OnDrawGizmos()
+    {
+        //Cambia el color del gizmo a color azul
+        Gizmos.color = Color.blue;
+        //Traza una linea desde la planta hacia actual del Sphere Cast.
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * maxHitDistance);
+        //Crea la esfera visual al final de la distancia actual.
+        Gizmos.DrawWireSphere(transform.position + transform.forward * maxHitDistance, sphereDetectionRadius);
+    }
+
+    //Detecta al enemigo frente 
     private bool EnemyDetection() => Physics.SphereCast(transform.position, sphereDetectionRadius, transform.forward, out hit, maxHitDistance, whatIsEnemy);
 
     private void LookAtPlayer()
     {
-        //Gets direction to face
+        //Consigue la direccion donde se encuentra el jugador.
         Vector3 direction = playerPos.position - transform.position;
 
-        //Creates a quaternion that will look at the direction set.
+        //Se crea un Quaternion donde se almacena la rotacion que constantemente mira al jugador.
         Quaternion lookAtPlayer = Quaternion.LookRotation(direction, Vector3.up);
 
+        //Se crea un Quaternion nuevo donde se guardara en los grados Y la rotacion del Quaternion que ve al jugador.
+        //Se crea de esta manera para evitar que la planta gire en todos sus ejes, solamente en el Y girara.
         Quaternion newQuat = Quaternion.Euler(0, lookAtPlayer.eulerAngles.y, 0);
 
-        float newAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-
-        //Debug.Log(newAngle);
-
-        //Sets the new rotation.
+        //Se aplica la nueva rotacion.
         transform.rotation = newQuat;
 
     }
 
-    protected abstract void Ability();
+    protected abstract void CropAttack();
 
     protected void BeginCooldownTime(float cooldownTime)
     {
@@ -110,7 +133,7 @@ public abstract class CropBase : MonoBehaviour
     }
 
     #region Reference Methods
-    private void GetReferemces()
+    private void GetReferences()
     {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
     }

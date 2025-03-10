@@ -98,7 +98,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166156574476920716}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -129,8 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb203ab7fa07f4429a43f0ab7110683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropName: 
-  cropDescription: 
   cropType: 0
   cropWalkSpeed: 0.6
   cropRunSpeed: 0
@@ -140,9 +138,12 @@ MonoBehaviour:
   sideDistance: -1.5
   cooldownTime: 0
   damage: 0
+  sphereDetectionRadius: 12
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
+  maxHitDistance: 0
+  currentHitDistance: 0
 --- !u!1001 &8973855496924926813
 PrefabInstance:
   m_ObjectHideFlags: 0

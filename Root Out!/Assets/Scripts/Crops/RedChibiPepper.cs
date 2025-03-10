@@ -1,24 +1,18 @@
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class RedChibiPepper : CropBase
 {
-    [SerializeField] private TagField enemyTag;
-    [SerializeField] private bool enemyDetected;
-
-    protected override void Ability()
+    protected override void CropAttack()
     {
-        enemyDetected = true;
+        HeadToEnemy();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision enemy)
     {
-        if (enemyDetected)
+        if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.CompareTag("Mushroom Shooter") || collision.gameObject.CompareTag("Enemy"))
-            {
-                Debug.Log("Testing ability collision");
-            } 
+            enemy.gameObject.GetComponent<AIHealth>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

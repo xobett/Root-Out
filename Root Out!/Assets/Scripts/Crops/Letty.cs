@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Letty : CropBase
 {
-    protected override void Ability()
+    protected override void CropAttack()
     {
 
     }

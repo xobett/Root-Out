@@ -317,7 +317,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8089460597273917744}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -386,8 +386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df60e8ff017d8e2428be2d9482532556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropName: Corny Guy
-  cropDescription: Does damage rotating itself while shooting corns.
   cropType: 1
   cropWalkSpeed: 0.6
   cropRunSpeed: 0
@@ -397,9 +395,12 @@ MonoBehaviour:
   sideDistance: 1.5
   cooldownTime: 0
   damage: 0
+  sphereDetectionRadius: 12
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
+  maxHitDistance: 0
+  currentHitDistance: 0
 --- !u!1001 &8907287576156288778
 PrefabInstance:
   m_ObjectHideFlags: 0
