@@ -3,9 +3,10 @@ using UnityEngine;
 using Weapons;
 public class Shotgun : WeaponsBase, IInteractable
 {
+    [Header("SHOTGUN SETTINGS")]
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
-    private int bulletsPerShot = 6; // Número de balas por disparo
+    [SerializeField] private int bulletsPerShot = 6; // Número de balas por disparo
 
     protected override void Shoot()
     {
@@ -13,6 +14,7 @@ public class Shotgun : WeaponsBase, IInteractable
         {
             FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
             UpdateAmmoText(); // Actualiza el texto de munición después de disparar
+            base.Shoot();
         }
         else
         {
@@ -26,8 +28,7 @@ public class Shotgun : WeaponsBase, IInteractable
         {
             weaponHandler.PickUpWeapon(gameObject); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
-            transform.localPosition = Vector3.zero; // Resetea la posición local
-            transform.localRotation = Quaternion.identity; // Resetea la rotación local
+            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         }
         else
         {

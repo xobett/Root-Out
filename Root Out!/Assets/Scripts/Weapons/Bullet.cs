@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour, IBullet
         if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth)) // Si el objeto colisionado tiene un componente AIHealth
         {
             aiHealth.TakeDamage(damage); // Aplicar daño al AIHealth
+            Destroy(gameObject,0.1f); // Destruir la bala
         }
 
         if (canInstantiateExplosion && explosionPrefab != null) // Si se puede instanciar la explosión y el prefab no es nulo
@@ -34,8 +35,6 @@ public class Bullet : MonoBehaviour, IBullet
             Instantiate(explosionPrefab, transform.position, Quaternion.identity); // Instanciar el prefab
         }
 
-        // Destruir la bala al colisionar
-        Destroy(gameObject);
     }
 }
 
