@@ -520,6 +520,9 @@ MonoBehaviour:
   sideDistance: 1.3
   cooldownTime: 0
   damage: 0
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!114 &1995896442715653426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,3 +546,6 @@ MonoBehaviour:
   sideDistance: 0
   cooldownTime: 0
   damage: 0
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 5

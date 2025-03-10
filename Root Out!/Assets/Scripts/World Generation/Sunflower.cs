@@ -14,6 +14,8 @@ public class Sunflower : MonoBehaviour, IInteractable
     [SerializeField] private GameObject worldFog;
     [SerializeField] private const float fogDistanceSpawn = 21;
 
+    private GameObject cloneFog;
+
     [Header("DETECTION SETTINGS")]
     [SerializeField] private const float terrainDistanceSpawn = 21;
     [SerializeField] private const float debugCubeDistance = 22;
@@ -37,21 +39,18 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        SpawnFog();
-
         BugDetection();
         //UpdateLife(); //Actualiza la UI de vida.
     }
 
-    private void Update()
-    {
-
-    }
-
     public void OnInteract()
     {
-        //var instance = GameManager.instance;
-        //instance.GrowthSelectionEvent(this);
+        var instance = GameManager.instance;
+        instance.GrowthSelectionEvent(this);
+
+        var fogPs = cloneFog.GetComponent<ParticleSystem>();
+        var main = fogPs.main;
+        main.loop = false;
 
         //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.
         Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
@@ -90,8 +89,6 @@ public class Sunflower : MonoBehaviour, IInteractable
                     break;
                 }
         }
-
-        
     }
 
     private void SpawnFog()
@@ -99,7 +96,7 @@ public class Sunflower : MonoBehaviour, IInteractable
         Vector3 fogSpawnPos = transform.position + transform.forward * fogDistanceSpawn;
         fogSpawnPos.y = 3.5f;
 
-        Instantiate(worldFog, fogSpawnPos, Quaternion.identity);
+        cloneFog = Instantiate(worldFog, fogSpawnPos, Quaternion.identity);
     }
 
     private void BugDetection()
@@ -118,6 +115,10 @@ public class Sunflower : MonoBehaviour, IInteractable
         {
             //Tras detectar positivo, se autodestruye el girasol.
             Destroy(this.gameObject);
+        }
+        else
+        {
+            SpawnFog();
         }
     }
 

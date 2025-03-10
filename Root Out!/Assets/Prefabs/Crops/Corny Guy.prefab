@@ -370,7 +370,10 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
   bulletText: {fileID: 0}
+  weaponHandler: {fileID: 0}
 --- !u!114 &3961318389565383226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +397,9 @@ MonoBehaviour:
   sideDistance: 1.5
   cooldownTime: 0
   damage: 0
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1001 &8907287576156288778
 PrefabInstance:
   m_ObjectHideFlags: 0

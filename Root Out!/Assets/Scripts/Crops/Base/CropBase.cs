@@ -4,9 +4,6 @@ using UnityEngine;
 public abstract class CropBase : MonoBehaviour
 {
     [Header("GENERAL SETTINGS")]
-    [SerializeField] public string cropName;
-    [SerializeField] protected string cropDescription;
-
     [SerializeField] protected CropType cropType;
 
     [Header("MOVEMENT SETTINGS")]
@@ -29,6 +26,10 @@ public abstract class CropBase : MonoBehaviour
 
     private float turnSmooth;
 
+    private const float radiusTest = 12f;
+
+    [SerializeField] private LayerMask whatIsEnemy;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -40,10 +41,14 @@ public abstract class CropBase : MonoBehaviour
         FollowPlayer();
     }
 
-    protected abstract void Ability();
 
     protected virtual void FollowPlayer()
     {
+        if (EnemyDetected())
+        {
+
+        }
+
         LookAtPlayer();
 
         Vector3 desiredFollowingPos = player.transform.position + player.transform.forward * -backDistance + transform.right * sideDistance;
@@ -56,6 +61,8 @@ public abstract class CropBase : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
         }
     }
+
+    private bool EnemyDetected() => Physics.CheckSphere(transform.position, radiusTest, whatIsEnemy);
 
     private void LookAtPlayer()
     {
@@ -71,11 +78,17 @@ public abstract class CropBase : MonoBehaviour
 
         //Debug.Log(newAngle);
 
-
         //Sets the new rotation.
         transform.rotation = newQuat;
 
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, radiusTest);
+    }
+    protected abstract void Ability();
 
     protected void BeginCooldownTime(float cooldownTime)
     {
