@@ -16,25 +16,32 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField, Range(0,5)] protected float stoppingDistance;
     [SerializeField] protected float backDistance;
     [SerializeField] protected float sideDistance;
+    
+    private Transform playerPos;
+
+    private Transform followTarget;
+
     private Vector3 velocityRef = Vector3.zero;
 
     [Header("COMBAT SETTINGS")]
     [SerializeField] protected float cooldownTime;
     [SerializeField] protected float damage;
 
-    private GameObject player;
-
-    private float turnSmooth;
-
-    private const float radiusTest = 12f;
-
+    [Header("ENEMY DETECTION")]
+    [SerializeField] private float sphereDetectionRadius = 12f;
     [SerializeField] private LayerMask whatIsEnemy;
+
+    [SerializeField] private float maxHitDistance;
+    [SerializeField] private float currentHitDistance;
+
+    private RaycastHit hit;
+
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log("Player found");
+        GetReferemces();
     }
+
 
     private void Update()
     {
@@ -44,14 +51,20 @@ public abstract class CropBase : MonoBehaviour
 
     protected virtual void FollowPlayer()
     {
-        if (EnemyDetected())
-        {
-
-        }
-
+        //Rota constantemente hacia el jugador mientras lo sigue.
         LookAtPlayer();
 
-        Vector3 desiredFollowingPos = player.transform.position + player.transform.forward * -backDistance + transform.right * sideDistance;
+        if (EnemyDetection())
+        {
+            currentHitDistance = hit.distance;
+            Debug.Log($"{hit.collider.name}");
+        }
+        else
+        {
+            currentHitDistance = maxHitDistance;
+        }
+
+        Vector3 desiredFollowingPos = playerPos.position + playerPos.forward * -backDistance + transform.right * sideDistance;
         desiredFollowingPos.y = transform.position.y;
 
         float distance = Vector3.Distance(transform.position, desiredFollowingPos);
@@ -61,13 +74,19 @@ public abstract class CropBase : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / cropWalkSpeed);
         }
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * currentHitDistance);
+        Gizmos.DrawWireSphere(transform.position + transform.forward * currentHitDistance, sphereDetectionRadius);
+    }
 
-    private bool EnemyDetected() => Physics.CheckSphere(transform.position, radiusTest, whatIsEnemy);
+    private bool EnemyDetection() => Physics.SphereCast(transform.position, sphereDetectionRadius, transform.forward, out hit, maxHitDistance, whatIsEnemy);
 
     private void LookAtPlayer()
     {
         //Gets direction to face
-        Vector3 direction = player.transform.position - transform.position;
+        Vector3 direction = playerPos.position - transform.position;
 
         //Creates a quaternion that will look at the direction set.
         Quaternion lookAtPlayer = Quaternion.LookRotation(direction, Vector3.up);
@@ -83,15 +102,17 @@ public abstract class CropBase : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, radiusTest);
-    }
     protected abstract void Ability();
 
     protected void BeginCooldownTime(float cooldownTime)
     {
 
     }
+
+    #region Reference Methods
+    private void GetReferemces()
+    {
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+    #endregion
 }
