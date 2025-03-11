@@ -12,7 +12,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,10 +21,11 @@ Material:
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
+  - RayTracingPrepass
   - TransparentDepthPrepass
-  - TransparentDepthPostpass
   - TransparentBackface
   - MOTIONVECTORS
+  - TransparentDepthPostpass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -52,11 +54,11 @@ Material:
     - _AlphaSrcBlend: 1
     - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
-    - _CullMode: 2
-    - _CullModeForward: 2
+    - _CullMode: 1
+    - _CullModeForward: 1
     - _DepthOffsetEnable: 0
-    - _DisolverSlider1: 1.26
-    - _DisolverSlider2: 0.51
+    - _DisolverSlider1: 1.21
+    - _DisolverSlider2: -0.67
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
@@ -65,23 +67,34 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _OpaqueCullMode: 2
+    - _MaterialID: 1
+    - _MaterialTypeMask: 2
+    - _OpaqueCullMode: 1
     - _PerPixelSorting: 0
+    - _RayTracing: 0
+    - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
+    - _RefractionModel: 0
     - _RenderQueueType: 1
-    - _SmoothStep: 0.2
+    - _RequireSplitLighting: 0
+    - _SmoothStep: 0.12
     - _Speed: 1.4
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 1
     - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
     - _StencilRefMV: 33
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 15
     - _StencilWriteMaskMV: 43
+    - _SupportDecals: 1
     - _SurfaceType: 0
+    - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
-    - _TransparentCullMode: 2
+    - _TransparentCullMode: 1
     - _TransparentDepthPostpassEnable: 0
     - _TransparentDepthPrepassEnable: 0
     - _TransparentSortPriority: 0
@@ -89,10 +102,11 @@ Material:
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _DarkColor: {r: 0.40566033, g: 0.26381835, b: 0.116722964, a: 1}
+    - _DarkColor: {r: 0.4056603, g: 0.26381832, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FireColor: {r: 7.906699, g: 3.5765724, b: 0.6623411, a: 0}
