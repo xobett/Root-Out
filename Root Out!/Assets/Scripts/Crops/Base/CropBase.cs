@@ -11,14 +11,12 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField, Range(0f, 1f)] protected float cropWalkSpeed;
     [SerializeField, Range(0f, 1f)] protected float cropRunSpeed;
 
-    [SerializeField, Range(0.5f, 10f)] protected float lookAtPlayerSpeed;
-
     [Header("FOLLOW SETTINGS")]
     [SerializeField, Range(0, 5)] protected float stoppingDistance;
     [SerializeField] protected float backDistance;
     [SerializeField] protected float sideDistance;
 
-    private Transform playerPos;
+    protected Transform playerPos;
 
     private Vector3 velocityRef = Vector3.zero;
 
@@ -69,15 +67,24 @@ public abstract class CropBase : MonoBehaviour
 
     protected void HeadToEnemy()
     {
-        Vector3 desiredFollowingPos = enemyPos.position;
-        desiredFollowingPos.y = transform.position.y;
+        //En caso de que otra planta haya atacado y eliminado primero al enemigo a seguir, se checa que no sea nulo.
+        if (enemyPos != null)
+        {
+            LookAtTarget(enemyPos);
+            Vector3 desiredFollowingPos = enemyPos.position;
+            desiredFollowingPos.y = transform.position.y;
 
-        SetDestination(desiredFollowingPos, cropRunSpeed);
+            SetDestination(desiredFollowingPos, cropRunSpeed); 
+        }
+        else
+        {
+            HeadToPlayer();
+        }
     }
 
     private void HeadToPlayer()
     {
-        LookAtPlayer();
+        LookAtTarget(playerPos);
 
         Vector3 desiredFollowingPos = playerPos.position + playerPos.forward * -backDistance + transform.right * sideDistance;
         desiredFollowingPos.y = transform.position.y;
@@ -94,6 +101,23 @@ public abstract class CropBase : MonoBehaviour
     {
         transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / speed);
     }
+    private void LookAtTarget(Transform target)
+    {
+        //Consigue la direccion donde se encuentra el jugador.
+        Vector3 direction = target.position - transform.position;
+
+        //Se crea un Quaternion donde se almacena la rotacion que constantemente mira al jugador.
+        Quaternion lookAtTarget = Quaternion.LookRotation(direction, Vector3.up);
+
+        //Se crea un Quaternion nuevo donde se guardara en los grados Y la rotacion del Quaternion que ve al jugador.
+        //Se crea de esta manera para evitar que la planta gire en todos sus ejes, solamente en el Y girara.
+        Quaternion lookRotation = Quaternion.Euler(0, lookAtTarget.eulerAngles.y, 0);
+
+        //Se aplica la nueva rotacion.
+        transform.rotation = lookRotation;
+
+    }
+    protected abstract void CropAttack();
 
     private void OnDrawGizmos()
     {
@@ -107,25 +131,6 @@ public abstract class CropBase : MonoBehaviour
 
     //Detecta al enemigo frente 
     private bool EnemyDetection() => Physics.SphereCast(transform.position, sphereDetectionRadius, transform.forward, out hit, maxHitDistance, whatIsEnemy);
-
-    private void LookAtPlayer()
-    {
-        //Consigue la direccion donde se encuentra el jugador.
-        Vector3 direction = playerPos.position - transform.position;
-
-        //Se crea un Quaternion donde se almacena la rotacion que constantemente mira al jugador.
-        Quaternion lookAtPlayer = Quaternion.LookRotation(direction, Vector3.up);
-
-        //Se crea un Quaternion nuevo donde se guardara en los grados Y la rotacion del Quaternion que ve al jugador.
-        //Se crea de esta manera para evitar que la planta gire en todos sus ejes, solamente en el Y girara.
-        Quaternion newQuat = Quaternion.Euler(0, lookAtPlayer.eulerAngles.y, 0);
-
-        //Se aplica la nueva rotacion.
-        transform.rotation = newQuat;
-
-    }
-
-    protected abstract void CropAttack();
 
     protected void BeginCooldownTime(float cooldownTime)
     {

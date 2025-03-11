@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece13742992fb784e91c67b0b1cdbfc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastCheckpoint: {x: 0, y: 0, z: 0}
+  lastCheckpoint: {x: 0, y: 2, z: -8}
 --- !u!1 &425812360
 GameObject:
   m_ObjectHideFlags: 0
@@ -9041,6 +9041,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960717121}
   m_CullTransparentMesh: 1
+--- !u!1001 &2002950717
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1166156574476920716, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_Name
+      value: Letty
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166156574476920716, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603990298617543571, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: lettyShield
+      value: 
+      objectReference: {fileID: 8254129718523729923, guid: 95c325d1fd39df04dba740d658de0ab0, type: 3}
+    - target: {fileID: 6603990298617543571, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: maxHitDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603990298617543571, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: sphereDetectionRadius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.3650866
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5728908
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410765081376697767, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88586037be0a3a846a30420ad9b2b349, type: 3}
 --- !u!1 &2003074343
 GameObject:
   m_ObjectHideFlags: 0
@@ -9436,9 +9509,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom Bomb Shooter
       objectReference: {fileID: 0}
+    - target: {fileID: 4601248732316366986, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5078747472099110838, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078747472099110838, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
+      propertyPath: actualHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9489,6 +9570,87 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
+--- !u!1001 &2064909573
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2185886624618959910, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185886624618959910, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: cropRunSpeed
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185886624618959910, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: cropWalkSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185886624618959910, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: maxHitDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185886624618959910, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: sphereDetectionRadius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.935276
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.805
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.04858
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512141992786702970, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908772950532478030, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_Name
+      value: Red Chibi Pepper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908772950532478030, guid: d2469f839ad048d468cccca73521b334, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d2469f839ad048d468cccca73521b334, type: 3}
 --- !u!1 &2114815890
 GameObject:
   m_ObjectHideFlags: 0
@@ -10053,7 +10215,7 @@ GameObject:
   - component: {fileID: 2455046246079214927}
   m_Layer: 0
   m_Name: Player Tracker
-  m_TagString: Untagged
+  m_TagString: Player Tracker
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10142,7 +10304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11588,3 +11750,5 @@ SceneRoots:
   - {fileID: 6421368186889611602}
   - {fileID: 485250972}
   - {fileID: 2060122148}
+  - {fileID: 2064909573}
+  - {fileID: 2002950717}

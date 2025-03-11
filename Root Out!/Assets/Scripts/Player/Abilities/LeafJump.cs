@@ -18,7 +18,6 @@ public class LeafJump : MonoBehaviour
         //Checa si se dejo de presionar la barra espaciadora y si el jugador se encuentra en el suelo.
         if (Input.GetKeyUp(KeyCode.Space) && PlayerIsGrounded())
         {
-            Debug.Log("Is jumping");
             //Se agrega fuerza positiva sobre el Vector3 que constantemente ejerce gravedad.
             GetComponent<PlayerMovement>().gravity.y = currentChargedForce;
             Debug.Log(currentChargedForce);
@@ -34,7 +33,6 @@ public class LeafJump : MonoBehaviour
         {
             //Añade fuerza al salto cada frame.
             currentChargedForce += 0.25f;
-            Debug.Log(currentChargedForce);
         }
     }
 
