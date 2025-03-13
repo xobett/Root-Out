@@ -39,7 +39,7 @@ public class PistolaGuisantes : WeaponsBase , IInteractable
     {
         if (bulletText != null)
         {
-            bulletText.text = $"{currentAmmo}/{maxAmmo}"; // Actualiza el texto con la munición actual y máxima
+            bulletText.text = "Infinity"; // Actualiza el texto con la munición actual y máxima
         }
         else
         {

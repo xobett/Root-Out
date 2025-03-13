@@ -3,8 +3,11 @@ using UnityEngine;
 using Weapons;
 public class PistolaCalabaza : WeaponsBase, IInteractable
 {
+   
+    [Header("SHOTGUN SETTINGS")]
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+    [SerializeField] private int bulletsPerShot = 6; // Número de balas por disparo
 
 
     public void OnInteract()
@@ -20,13 +23,14 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
             Debug.LogWarning("WeaponHandler not found in the scene.");
         }
     }
-
+    
     protected override void Shoot()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
-            base.Shoot();
+            FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
             UpdateAmmoText(); // Actualiza el texto de munición después de disparar
+            base.Shoot();
         }
         else
         {
