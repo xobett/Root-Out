@@ -11,11 +11,11 @@ public class CropHandler : MonoBehaviour
     [SerializeField] private List<CropData> crops = new List<CropData>();
     [SerializeField] private CropData equippedCrop;
 
-    private const int maxLettyCrops = 4;
-    private const int maxSweetJackCrops = 2;
-    private const int maxPepeHabaneroCrops = 2;
-    private const int maxRedChibiCrops = 2;
-    private const int maxCornyGuyCrops = 2;
+    private const int maxDrop_LettyCrops = 4;
+    private const int maxDrop_SweetJackCrops = 2;
+    private const int maxDrop_PepeHabaneroCrops = 2;
+    private const int maxDrop_RedChibiCrops = 2;
+    private const int maxDrop_CornyGuyCrops = 2;
 
     [Header("TYPES OF CROPS DROPPED")]
     [SerializeField] private int droppedLettyCrops;
@@ -23,6 +23,13 @@ public class CropHandler : MonoBehaviour
     [SerializeField] private int droppedPepeHabaneroCrops;
     [SerializeField] private int droppedRedChibiCrops;
     [SerializeField] private int droppedCornyGuyCrops;
+
+    [Header("CROP TIMERS")]
+    [SerializeField] private float timer_LettyCrop;
+    [SerializeField] private float timer_SweetJackCrop;
+    [SerializeField] private float timer_PepeHabaneroCrop;
+    [SerializeField] private float timer_RedChibiCrop;
+    [SerializeField] private float timer_CornyGuyCrop;
 
     [Header("TOTAL CROPS DROPPED")]
     [SerializeField] private int totalCropsDropped;
@@ -53,6 +60,7 @@ public class CropHandler : MonoBehaviour
     {
         DropCrop();
         CropSelection();
+        PlayCropTimers();
     }
 
     private void DropCrop()
@@ -63,45 +71,60 @@ public class CropHandler : MonoBehaviour
             {
                 case "Letty":
                     {
-                        if (droppedLettyCrops >= maxLettyCrops) return;
+                        if (droppedLettyCrops >= maxDrop_LettyCrops || timer_LettyCrop > 0) return;
                         droppedLettyCrops++;
+                        timer_LettyCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
 
                 case "Corny Guy":
                     {
-                        if (droppedCornyGuyCrops >= maxCornyGuyCrops) return;
+                        if (droppedCornyGuyCrops >= maxDrop_CornyGuyCrops || timer_CornyGuyCrop > 0) return;
                         droppedCornyGuyCrops++;
+                        timer_CornyGuyCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
 
                 case "Red Chibi Pepper":
                     {
-                        if (droppedRedChibiCrops >= maxRedChibiCrops) return;
+                        if (droppedRedChibiCrops >= maxDrop_RedChibiCrops || timer_RedChibiCrop > 0) return;
                         droppedRedChibiCrops++;
+                        timer_RedChibiCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
 
                 case "Pepe Habanero":
                     {
-                        if (droppedPepeHabaneroCrops >= maxPepeHabaneroCrops) return;
+                        if (droppedPepeHabaneroCrops >= maxDrop_PepeHabaneroCrops || timer_PepeHabaneroCrop > 0) return;
                         droppedPepeHabaneroCrops++;
+                        timer_PepeHabaneroCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
 
                 case "Sweet Jack O Pumpkin":
                     {
-                        if (droppedSweetJackCrops >= maxSweetJackCrops) return;
+                        if (droppedSweetJackCrops >= maxDrop_SweetJackCrops || timer_SweetJackCrop > 0) return;
                         droppedSweetJackCrops++;
+                        timer_SweetJackCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
             }
+
+            Debug.Log($"Cooldown time of {equippedCrop.CropName} is {equippedCrop.CropCooldownTime}");
 
             Vector3 spawnPosition = transform.position + transform.forward * spawnDistance;
             spawnPosition.y += 1;
             GameObject clone = Instantiate(equippedCrop.CropPrefab, spawnPosition, transform.rotation);
             totalCropsDropped++;
         }
+    }
+    private void PlayCropTimers()
+    {
+        timer_CornyGuyCrop -= Time.deltaTime;
+        timer_LettyCrop -= Time.deltaTime;
+        timer_PepeHabaneroCrop -= Time.deltaTime;
+        timer_RedChibiCrop -= Time.deltaTime;
+        timer_SweetJackCrop -= Time.deltaTime;
     }
 
     private void CropSelection()

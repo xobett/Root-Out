@@ -5,7 +5,7 @@ public class LettyShield : MonoBehaviour
 {
     [SerializeField, Range(0f, 4f)] private float rotationSpeed;
     [SerializeField] private List<GameObject> lettuceLeafs = new List<GameObject>();
-    [SerializeField] private int indexToUse;
+    private int indexToUse;
 
     private Transform player;
 

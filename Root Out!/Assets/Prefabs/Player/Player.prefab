@@ -731,13 +731,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 62cb1642a18622d40b7708894fe01739, type: 2}
   - {fileID: 11400000, guid: 41fd113dc464ead489dca958a2b639fe, type: 2}
   equippedCrop: {fileID: 0}
-  droppedLettyCrops: 3
+  droppedLettyCrops: 0
   droppedSweetJackCrops: 0
   droppedPepeHabaneroCrops: 0
   droppedRedChibiCrops: 0
   droppedCornyGuyCrops: 0
+  timer_LettyCrop: 0
+  timer_SweetJackCrop: 0
+  timer_PepeHabaneroCrop: 0
+  timer_RedChibiCrop: 0
+  timer_CornyGuyCrop: 0
   totalCropsDropped: 0
   spawnDistance: 1
+  selectionWheel: {fileID: 0}
+  previousCropIcon: {fileID: 0}
+  equippedCropIcon: {fileID: 0}
+  nextCropIcon: {fileID: 0}
+  rotationSpeed: 3.5
+  wheelIsRotating: 0
 --- !u!114 &6156135237891892518
 MonoBehaviour:
   m_ObjectHideFlags: 0

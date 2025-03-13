@@ -19,8 +19,8 @@ public class CropData : ScriptableObject
 
     [Header("ABILITY SETTINGS")]
 
-    [SerializeField] private float cooldownTime;
-    [SerializeField] private float damage;
+    [SerializeField] private float cropCooldownTime;
+    [SerializeField] private float cropDamage;
 
     [Header("VISUAL ICON")]
 
@@ -34,6 +34,7 @@ public class CropData : ScriptableObject
     public string CropDescription => cropDescription;
     public GameObject CropPrefab => cropPrefab;
     public CropType Type => type;
+    public float CropCooldownTime => cropCooldownTime;
     public Sprite CropIcon => cropIcon;
 }
 

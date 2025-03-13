@@ -6,6 +6,7 @@ public class SunflowerSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private GameObject sunflowerPrefab;
+    [SerializeField] private GameObject fogSpawnerPrefab;
 
     [SerializeField] private int sunflowersToSpawn;
 
@@ -23,6 +24,15 @@ public class SunflowerSpawner : MonoBehaviour
         if (spawnPositions != null) 
         {
             StartCoroutine(AssignSpawnPosition());
+        }
+    }
+
+    private void SpawnFogSpawners()
+    {
+        foreach (Transform spawnPosition in spawnPositions)
+        {
+            GameObject fogSpawnerClone = Instantiate(fogSpawnerPrefab, spawnPosition.position, spawnPosition.rotation);
+            fogSpawnerClone.transform.parent = gameObject.transform.parent;
         }
     }
 
@@ -54,6 +64,8 @@ public class SunflowerSpawner : MonoBehaviour
 
             lastPositions.Add(spawnPos);
         }
+
+        SpawnFogSpawners();
 
         yield return null;
     }
