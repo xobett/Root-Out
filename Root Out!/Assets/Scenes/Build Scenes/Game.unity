@@ -326,37 +326,45 @@ PrefabInstance:
       propertyPath: movementController
       value: 
       objectReference: {fileID: 1819213753}
+    - target: {fileID: 673635961415519715, guid: 870f23df3cff782459093f8952b360d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1030606931194560628, guid: 870f23df3cff782459093f8952b360d2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: m_Color.b
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030606931194560628, guid: 870f23df3cff782459093f8952b360d2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030606931194560628, guid: 870f23df3cff782459093f8952b360d2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9622642
       objectReference: {fileID: 0}
     - target: {fileID: 2474978611337814044, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2474978611337814044, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2474978611337814044, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3526424386515563165, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3526424386515563165, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3533888601963165575, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_Name
       value: UI PAUSE
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533888601963165575, guid: 870f23df3cff782459093f8952b360d2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6734665219284069973, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_Pivot.x
@@ -440,23 +448,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8500659275673377968, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8500659275673377968, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8500659275673377968, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8741357204350111083, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8741357204350111083, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -985,33 +993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6145847a82001dc4f870b393c282ba3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: {fileID: 1767399185}
-  weaponType: 0
-  spreadAngle: 2
-  horizontalSpread: 0
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 5852023727157374342, guid: de4adb01b41df1a4b987995754062a6d, type: 3}
-  currentAmmo: 5
-  bulletReserve: 50
-  maxAmmo: 5
-  damage: 4
-  range: 4
-  fireRate: 1
-  reloadTime: 3
-  bulletForce: 20
-  lifeTimeBullets: 0.5
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 306359888}
-  weaponHandler: {fileID: 144117380}
-  bulletsPerShot: 4
 --- !u!65 &1102653077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1858,32 +1839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693d61d7c48b1594895ca520765c36b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: {fileID: 1790697457}
-  weaponType: 3
-  spreadAngle: 0.1
-  horizontalSpread: 0
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 5852023727157374342, guid: de4adb01b41df1a4b987995754062a6d, type: 3}
-  currentAmmo: 30
-  bulletReserve: 50
-  maxAmmo: 30
-  damage: 2
-  range: 3
-  fireRate: 6
-  reloadTime: 2
-  bulletForce: 20
-  lifeTimeBullets: 2
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 306359888}
-  weaponHandler: {fileID: 144117380}
 --- !u!65 &1883117275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1922,32 +1877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472b06a943dc8f748baf2b2324971c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: {fileID: 983925310}
-  weaponType: 2
-  spreadAngle: 0.1
-  horizontalSpread: 0
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 5852023727157374342, guid: de4adb01b41df1a4b987995754062a6d, type: 3}
-  currentAmmo: 12
-  bulletReserve: 50
-  maxAmmo: 12
-  damage: 1
-  range: 4
-  fireRate: 2
-  reloadTime: 2
-  bulletForce: 20
-  lifeTimeBullets: 2
-  bulletsPerBurst: 2
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 306359888}
-  weaponHandler: {fileID: 144117380}
 --- !u!65 &1968382144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2060,6 +1989,10 @@ PrefabInstance:
     - target: {fileID: 6701651539616085507, guid: 8943c22312bbbbd4aa4d0bfbacf28616, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701651539616085507, guid: 8943c22312bbbbd4aa4d0bfbacf28616, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

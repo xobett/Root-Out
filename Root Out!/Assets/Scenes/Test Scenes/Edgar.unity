@@ -813,32 +813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693d61d7c48b1594895ca520765c36b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: {fileID: 874933808}
-  weaponType: 1
-  spreadAngle: 0
-  horizontalSpread: 0
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 5852023727157374342, guid: de4adb01b41df1a4b987995754062a6d, type: 3}
-  currentAmmo: 10000
-  bulletReserve: 10000
-  maxAmmo: 10000
-  damage: 2
-  range: 5
-  fireRate: 8
-  reloadTime: 2
-  bulletForce: 20
-  lifeTimeBullets: 3
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 1968219535}
-  weaponHandler: {fileID: 1130294313}
 --- !u!65 &344103839
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1077,32 +1051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6145847a82001dc4f870b393c282ba3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: {fileID: 1488719926}
-  weaponType: 0
-  spreadAngle: 0
-  horizontalSpread: 0
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 0}
-  explosionPrefab: {fileID: 0}
-  currentAmmo: 0
-  bulletReserve: 0
-  maxAmmo: 0
-  damage: 0
-  range: 0
-  fireRate: 0
-  reloadTime: 0
-  bulletForce: 20
-  lifeTimeBullets: 0
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 0}
-  weaponHandler: {fileID: 0}
 --- !u!1 &443731762
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,17 +2463,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef4c7facc672dc44793553d252835415, type: 3}
---- !u!114 &1130294313 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
-  m_PrefabInstance: {fileID: 1130294311}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6c33c430ef9204d8235632edf560c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1130294315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
@@ -8818,33 +8755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472b06a943dc8f748baf2b2324971c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: {fileID: 221856597}
-  weaponType: 0
-  spreadAngle: 7
-  horizontalSpread: 1
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 0}
-  currentAmmo: 300
-  bulletReserve: 300
-  maxAmmo: 300
-  damage: 2
-  range: 5
-  fireRate: 1
-  reloadTime: 3
-  bulletForce: 20
-  lifeTimeBullets: 2
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 1968219535}
-  weaponHandler: {fileID: 1130294313}
-  bulletsPerShot: 3
 --- !u!1 &1904211184 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6701651539616085507, guid: 8943c22312bbbbd4aa4d0bfbacf28616, type: 3}
@@ -8959,32 +8869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693d61d7c48b1594895ca520765c36b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: {fileID: 1094186452}
-  weaponType: 0
-  spreadAngle: 0
-  horizontalSpread: 0
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 0}
-  explosionPrefab: {fileID: 0}
-  currentAmmo: 0
-  bulletReserve: 0
-  maxAmmo: 0
-  damage: 0
-  range: 0
-  fireRate: 0
-  reloadTime: 0
-  bulletForce: 20
-  lifeTimeBullets: 0
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 0}
-  weaponHandler: {fileID: 0}
 --- !u!1 &1958925119 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 837edf4369d33bc47a2610d925fe6669, type: 3}
@@ -9026,44 +8910,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 472b06a943dc8f748baf2b2324971c16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiming: {fileID: 1546025592}
-  weaponType: 0
-  spreadAngle: 5
-  horizontalSpread: 0
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 5852023727157374342, guid: de4adb01b41df1a4b987995754062a6d, type: 3}
-  currentAmmo: 1000
-  bulletReserve: 1000
-  maxAmmo: 1000
-  damage: 1
-  range: 4
-  fireRate: 1
-  reloadTime: 2
-  bulletForce: 80
-  lifeTimeBullets: 0.3
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 1968219535}
-  weaponHandler: {fileID: 1130294313}
-  bulletsPerShot: 6
---- !u!114 &1968219535 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 598742149418820756, guid: 8943c22312bbbbd4aa4d0bfbacf28616, type: 3}
-  m_PrefabInstance: {fileID: 7546599361274919961}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1976295336
@@ -9175,33 +9021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472b06a943dc8f748baf2b2324971c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: {fileID: 2106822670}
-  weaponType: 0
-  spreadAngle: 0
-  horizontalSpread: 0
-  autoFire: 0
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 0}
-  explosionPrefab: {fileID: 0}
-  currentAmmo: 0
-  bulletReserve: 0
-  maxAmmo: 0
-  damage: 0
-  range: 0
-  fireRate: 0
-  reloadTime: 0
-  bulletForce: 20
-  lifeTimeBullets: 0
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 0}
-  weaponHandler: {fileID: 0}
-  bulletsPerShot: 6
 --- !u!1 &2059097866
 GameObject:
   m_ObjectHideFlags: 0
