@@ -280,9 +280,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4960171811776983525}
   - component: {fileID: 5844480279980987699}
+  - component: {fileID: 3038434369683781718}
   m_Layer: 12
   m_Name: Coin Collector Collider
-  m_TagString: Untagged
+  m_TagString: Coin Collector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,14 +318,26 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.09
+  m_Radius: 0.56
+  m_Height: 1.28
   m_Direction: 2
   m_Center: {x: 0, y: 0.1, z: -0.06}
+--- !u!114 &3038434369683781718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611974019189757436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26bcedd9adc8ee848804cb167481ed7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5942173957286576112
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +593,7 @@ GameObject:
   - component: {fileID: 2439334005778980448}
   - component: {fileID: 1073991295686311600}
   - component: {fileID: 6837202042025227312}
+  - component: {fileID: 6156135237891892518}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -711,13 +725,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crops:
-  - {fileID: 11400000, guid: f04abf14eabb79749842ca9c8c70c1ab, type: 2}
-  - {fileID: 11400000, guid: 62cb1642a18622d40b7708894fe01739, type: 2}
-  - {fileID: 11400000, guid: 374db251a96af634c87ade11138a5dc6, type: 2}
   - {fileID: 11400000, guid: 7f628994f8057274bbbcccf8d23a26ea, type: 2}
+  - {fileID: 11400000, guid: f04abf14eabb79749842ca9c8c70c1ab, type: 2}
+  - {fileID: 11400000, guid: 374db251a96af634c87ade11138a5dc6, type: 2}
+  - {fileID: 11400000, guid: 62cb1642a18622d40b7708894fe01739, type: 2}
   - {fileID: 11400000, guid: 41fd113dc464ead489dca958a2b639fe, type: 2}
   equippedCrop: {fileID: 0}
+  droppedLettyCrops: 3
+  droppedSweetJackCrops: 0
+  droppedPepeHabaneroCrops: 0
+  droppedRedChibiCrops: 0
+  droppedCornyGuyCrops: 0
+  totalCropsDropped: 0
   spawnDistance: 1
+--- !u!114 &6156135237891892518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155343336968990131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece13742992fb784e91c67b0b1cdbfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastCheckpoint: {x: 0, y: 2, z: -8}
 --- !u!1 &7535284339494267400
 GameObject:
   m_ObjectHideFlags: 0

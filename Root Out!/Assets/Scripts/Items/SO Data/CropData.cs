@@ -33,6 +33,8 @@ public class CropData : ScriptableObject
     public string CropName => cropName;
     public string CropDescription => cropDescription;
     public GameObject CropPrefab => cropPrefab;
+    public CropType Type => type;
+    public Sprite CropIcon => cropIcon;
 }
 
 public enum CropType

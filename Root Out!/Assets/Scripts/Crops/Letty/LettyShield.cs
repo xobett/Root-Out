@@ -5,7 +5,8 @@ public class LettyShield : MonoBehaviour
 {
     [SerializeField, Range(0f, 4f)] private float rotationSpeed;
     [SerializeField] private List<GameObject> lettuceLeafs = new List<GameObject>();
-    [SerializeField] private List<int> lettuceIndexUsed = new List<int>();
+    [SerializeField] private int indexToUse;
+
     private Transform player;
 
     void Start()
@@ -18,6 +19,16 @@ public class LettyShield : MonoBehaviour
     {
         RotateShield();
         FollowPlayer();
+    }
+
+    [ContextMenu("Add leaf")]
+    public void AddShieldLeaf()
+    {
+        if (indexToUse < 3)
+        {
+            Debug.Log(lettuceLeafs.Count - 1);
+            lettuceLeafs[++indexToUse].SetActive(true);
+        }
     }
 
     private void RotateShield()
@@ -37,6 +48,4 @@ public class LettyShield : MonoBehaviour
     {
         player = playerPos;
     }
-
-
 }

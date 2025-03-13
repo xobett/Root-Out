@@ -10,17 +10,28 @@ public class Letty : CropBase
 
     protected override void CropAttack()
     {
-        SpawnShield();
+        Shield();
+    }
+
+    private void Shield()
+    {
+        GameObject lettyShield = GameObject.FindGameObjectWithTag("Letty Shield");
+
+        if (GameObject.FindGameObjectWithTag("Letty Shield") == null)
+        {
+            SpawnShield();
+            Destroy(gameObject);
+        }
+        else
+        {
+            lettyShield.GetComponent<LettyShield>().AddShieldLeaf();
+            Destroy(gameObject);
+        }
     }
 
     private void SpawnShield()
     {
-        if (GameObject.FindGameObjectWithTag("Letty Shield") == null)
-        {
-            Debug.Log("Should instantiate letty shield");
-
-            GameObject clone = Instantiate(lettyShield, playerPos.position, lettyShield.transform.rotation);
-            clone.GetComponent<LettyShield>().GetPlayerReference(playerPos);
-        }
+        GameObject clone = Instantiate(lettyShield, playerPos.position, lettyShield.transform.rotation);
+        clone.GetComponent<LettyShield>().GetPlayerReference(playerPos);
     }
 }
