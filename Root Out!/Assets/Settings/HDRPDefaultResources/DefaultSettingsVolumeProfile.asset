@@ -61,7 +61,7 @@ MonoBehaviour:
   active: 1
   opacity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   upperHemisphereOnly:
     m_OverrideState: 1
     m_Value: 1
@@ -104,7 +104,7 @@ MonoBehaviour:
       m_Value: 2000
     rotation:
       m_OverrideState: 1
-      m_Value: 0
+      m_Value: 204
     tint:
       m_OverrideState: 1
       m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -113,7 +113,7 @@ MonoBehaviour:
       m_Value: 0
     distortionMode:
       m_OverrideState: 1
-      m_Value: 0
+      m_Value: 1
     scrollOrientation:
       m_OverrideState: 1
       m_Value:
@@ -968,10 +968,10 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 1
-    m_Value: 0.09033138
+    m_Value: 0.9353417
   upperHemisphereLuxColor:
     m_OverrideState: 1
-    m_Value: {x: 0.3820268, y: 0.36953723, z: 0.5}
+    m_Value: {x: 0.18104552, y: 0.27842334, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 1
     m_Value: 20000
@@ -986,7 +986,7 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: 393dd4c82e2a04ec08ef9f57528230c6, type: 3}
+    m_Value: {fileID: 8900000, guid: e71fc492f440446b99875b8e1df890ba, type: 3}
   distortionMode:
     m_OverrideState: 1
     m_Value: 0
@@ -1466,10 +1466,10 @@ MonoBehaviour:
   active: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   cloudType:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   skyAmbientMode:
     m_OverrideState: 1
     m_Value: 1
@@ -1487,10 +1487,10 @@ MonoBehaviour:
     m_Value: {x: 0, y: -6378.1, z: 0}
   windOrientation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 45
   windSpeed:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 4.5
   fogType:
     m_OverrideState: 1
     m_Value: 0

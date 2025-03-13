@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using Weapons;
-public class Revolver : WeaponsBase, IInteractable
+public class PistolaCalabaza : WeaponsBase, IInteractable
 {
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
