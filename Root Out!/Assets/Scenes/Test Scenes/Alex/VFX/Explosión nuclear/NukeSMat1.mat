@@ -24,10 +24,9 @@ Material:
     MotionVector: User
     RenderType: Transparent
   disabledShaderPasses:
-  - MOTIONVECTORS
+  - RayTracingPrepass
   - TransparentDepthPostpass
   - TransparentBackface
-  - RayTracingPrepass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -90,6 +89,13 @@ Material:
     - _StencilWriteMaskMV: 41
     - _SupportDecals: 1
     - _SurfaceType: 1
+    - _TessellationBackFaceCullEpsilon: -0.25
+    - _TessellationFactorMaxDistance: 50
+    - _TessellationFactorMinDistance: 20
+    - _TessellationFactorTriangleSize: 100
+    - _TessellationMaxDisplacement: 0.3
+    - _TessellationMode: 0
+    - _TessellationShapeFactor: 0.736
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -106,7 +112,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1162.5491, g: 162.88303, b: 0, a: 1}
-    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _NoiseSpeed: {r: 0, g: -0.09, b: 0, a: 0}
     - _NoiseSpeed_1: {r: 0, g: -0.09, b: 0, a: 0}
