@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9043490112517853380
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51a78e223a2e504bb88a059b55229ea, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  temperature:
+    m_OverrideState: 1
+    m_Value: 0
+  tint:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-8853552144025447482
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -12,7 +31,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3b8214f75b354e9ba2caadd022259, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 1
     m_Value: 1
@@ -106,7 +125,7 @@ MonoBehaviour:
     m_Value: 0
   blueOutBlueIn:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 82
 --- !u!114 &-8413992787104743024
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -417,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88178bb13f64a54f90d6cd6ef7aa9a1, type: 3}
   m_Name: CloudLayer
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   opacity:
     m_OverrideState: 1
     m_Value: 1
@@ -993,7 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598e2d32e2c7b0c418e030c3236d663a, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 1
     m_Value: 1
@@ -1018,7 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6b00fcf518bb94a90b408492e07b44, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   type:
     m_OverrideState: 1
     m_Value: 0
@@ -1174,6 +1193,123 @@ MonoBehaviour:
   planetCenterPosition:
     m_OverrideState: 1
     m_Value: {x: 0, y: -6378100, z: 0}
+--- !u!114 &-2996393725151070168
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384c4d03a551c44448145f4093304119, type: 3}
+  m_Name: ScreenSpaceReflection
+  m_EditorClassIdentifier: 
+  active: 1
+  quality:
+    m_OverrideState: 1
+    m_Value: 1
+  enabled:
+    m_OverrideState: 1
+    m_Value: 1
+  enabledTransparent:
+    m_OverrideState: 1
+    m_Value: 1
+  tracing:
+    m_OverrideState: 1
+    m_Value: 1
+  m_MinSmoothness:
+    m_OverrideState: 1
+    m_Value: 0.9
+  m_SmoothnessFadeStart:
+    m_OverrideState: 1
+    m_Value: 0.9
+  reflectSky:
+    m_OverrideState: 1
+    m_Value: 1
+  usedAlgorithm:
+    m_OverrideState: 1
+    m_Value: 0
+  depthBufferThickness:
+    m_OverrideState: 1
+    m_Value: 0.01
+  screenFadeDistance:
+    m_OverrideState: 1
+    m_Value: 0.1
+  accumulationFactor:
+    m_OverrideState: 1
+    m_Value: 0.75
+  biasFactor:
+    m_OverrideState: 1
+    m_Value: 0.5
+  speedRejectionParam:
+    m_OverrideState: 1
+    m_Value: 0.5
+  speedRejectionScalerFactor:
+    m_OverrideState: 1
+    m_Value: 0.2
+  speedSmoothReject:
+    m_OverrideState: 1
+    m_Value: 0
+  speedSurfaceOnly:
+    m_OverrideState: 1
+    m_Value: 1
+  speedTargetOnly:
+    m_OverrideState: 1
+    m_Value: 1
+  enableWorldSpeedRejection:
+    m_OverrideState: 1
+    m_Value: 0
+  m_RayMaxIterations:
+    m_OverrideState: 1
+    m_Value: 32
+  rayMiss:
+    m_OverrideState: 1
+    m_Value: 3
+  lastBounceFallbackHierarchy:
+    m_OverrideState: 1
+    m_Value: 3
+  ambientProbeDimmer:
+    m_OverrideState: 1
+    m_Value: 1
+  layerMask:
+    m_OverrideState: 1
+    m_Value:
+      serializedVersion: 2
+      m_Bits: 4294967295
+  textureLodBias:
+    m_OverrideState: 1
+    m_Value: 1
+  m_RayLength:
+    m_OverrideState: 1
+    m_Value: 50
+  m_ClampValue:
+    m_OverrideState: 1
+    m_Value: 100
+  m_Denoise:
+    m_OverrideState: 1
+    m_Value: 1
+  m_DenoiserRadius:
+    m_OverrideState: 1
+    m_Value: 0.75
+  m_DenoiserAntiFlickeringStrength:
+    m_OverrideState: 1
+    m_Value: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
+  m_FullResolution:
+    m_OverrideState: 1
+    m_Value: 0
+  sampleCount:
+    m_OverrideState: 1
+    m_Value: 1
+  bounceCount:
+    m_OverrideState: 1
+    m_Value: 1
+  m_RayMaxIterationsRT:
+    m_OverrideState: 1
+    m_Value: 48
 --- !u!114 &-2632079889962423345
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1270,7 +1406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f077503be6ae942a1e1245dbd53ea9, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   quality:
     m_OverrideState: 1
     m_Value: 1
@@ -1279,7 +1415,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.166
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
@@ -1355,6 +1491,10 @@ MonoBehaviour:
   - {fileID: -3656450339732733508}
   - {fileID: 3386309740695181840}
   - {fileID: 6297231230018415336}
+  - {fileID: -2996393725151070168}
+  - {fileID: 9010092435200271932}
+  - {fileID: -9043490112517853380}
+  - {fileID: 7732296930672376710}
 --- !u!114 &242913215361368979
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1401,13 +1541,13 @@ MonoBehaviour:
   active: 1
   indirectDiffuseLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.8
   indirectDiffuseLightingLayers:
     m_OverrideState: 1
     m_Value: 65535
   reflectionLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.58
   reflectionLightingLayers:
     m_OverrideState: 1
     m_Value: 65535
@@ -1789,13 +1929,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf384b154398e341b6b29969c078198, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   quality:
     m_OverrideState: 1
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0
   maximumVelocity:
     m_OverrideState: 1
     m_Value: 200
@@ -1857,7 +1997,7 @@ MonoBehaviour:
   active: 1
   enable:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   cloudTiling:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1}
@@ -1869,7 +2009,7 @@ MonoBehaviour:
     m_Value: 1200
   altitudeRange:
     m_OverrideState: 1
-    m_Value: 2000
+    m_Value: 13155
   fadeInMode:
     m_OverrideState: 1
     m_Value: 0
@@ -1901,7 +2041,7 @@ MonoBehaviour:
     m_Value: 0
   m_CloudPreset:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 4
   cumulusMap:
     m_OverrideState: 1
     m_Value: {fileID: 0}
@@ -2037,7 +2177,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   scatteringTint:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 1, g: 0.8534628, b: 0, a: 1}
   powderEffectIntensity:
     m_OverrideState: 1
     m_Value: 0.25
@@ -2046,7 +2186,7 @@ MonoBehaviour:
     m_Value: 0.5
   densityMultiplier:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.319
   shapeFactor:
     m_OverrideState: 1
     m_Value: 0.9
@@ -2058,7 +2198,7 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0, z: 0}
   erosionFactor:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0
   erosionScale:
     m_OverrideState: 1
     m_Value: 107
@@ -2125,8 +2265,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   shadows:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 1
   shadowResolution:
     m_OverrideState: 1
     m_Value: 256
@@ -2173,7 +2313,9 @@ MonoBehaviour:
   active: 1
   diffusionProfiles:
     m_OverrideState: 1
-    m_Value: []
+    m_Value:
+    - {fileID: 11400000, guid: 404820c4cf36ad944862fa59c56064f0, type: 2}
+    - {fileID: 11400000, guid: 2384dbf2c1c420f45a792fbc315fbfb1, type: 2}
 --- !u!114 &6297231230018415336
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2229,7 +2371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31394aa05878563408489d5c1688f3a0, type: 3}
   m_Name: PathTracing
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enable:
     m_OverrideState: 1
     m_Value: 0
@@ -2274,7 +2416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1bfcd0f0fa7b8468f281d6bbbaf320, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0
@@ -2463,3 +2605,71 @@ MonoBehaviour:
   sampleCount:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &7732296930672376710
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd486065ce11414fa40e631affc4900, type: 3}
+  m_Name: ProbeVolumesOptions
+  m_EditorClassIdentifier: 
+  active: 1
+  normalBias:
+    m_OverrideState: 1
+    m_Value: 0.05
+  viewBias:
+    m_OverrideState: 1
+    m_Value: 0.1
+  scaleBiasWithMinProbeDistance:
+    m_OverrideState: 1
+    m_Value: 0
+  samplingNoise:
+    m_OverrideState: 1
+    m_Value: 0.1
+  animateSamplingNoise:
+    m_OverrideState: 1
+    m_Value: 1
+  leakReductionMode:
+    m_OverrideState: 1
+    m_Value: 2
+  minValidDotProductValue:
+    m_OverrideState: 1
+    m_Value: 0.1
+  occlusionOnlyReflectionNormalization:
+    m_OverrideState: 1
+    m_Value: 1
+  intensityMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  skyOcclusionIntensityMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  worldOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+--- !u!114 &9010092435200271932
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76fd08475e21554b8f284f723dd7cf8, type: 3}
+  m_Name: WaterRendering
+  m_EditorClassIdentifier: 
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  triangleSize:
+    m_OverrideState: 1
+    m_Value: 30
+  ambientProbeDimmer:
+    m_OverrideState: 1
+    m_Value: 0.5
