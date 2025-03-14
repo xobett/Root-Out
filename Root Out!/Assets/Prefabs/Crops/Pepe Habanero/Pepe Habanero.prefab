@@ -421,7 +421,6 @@ GameObject:
   - component: {fileID: 2501297601143742296}
   - component: {fileID: 6706080606073050684}
   - component: {fileID: 8727535043297964485}
-  - component: {fileID: 7733619784391463118}
   - component: {fileID: 1995896442715653426}
   m_Layer: 0
   m_Name: Pepe Habanero
@@ -497,33 +496,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &7733619784391463118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8955997720524101367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df60e8ff017d8e2428be2d9482532556, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cropType: 1
-  cropWalkSpeed: 0.6
-  cropRunSpeed: 0
-  stoppingDistance: 0
-  backDistance: 2.5
-  sideDistance: 1.3
-  cooldownTime: 0
-  damage: 0
-  sphereDetectionRadius: 12
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 8192
-  enemyDetected: 0
-  enemyPos: {fileID: 0}
-  maxHitDistance: 0
 --- !u!114 &1995896442715653426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,18 +508,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf8755156f93f746b40f3a20acd4602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropType: 0
+  cropData: {fileID: 11400000, guid: 374db251a96af634c87ade11138a5dc6, type: 2}
   cropWalkSpeed: 0.6
-  cropRunSpeed: 0
+  cropRunSpeed: 0.9
   stoppingDistance: 0
   backDistance: 0
   sideDistance: 0
   cooldownTime: 0
-  damage: 0
+  damage: 100
   sphereDetectionRadius: 0.3
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 5
+    m_Bits: 8192
   enemyDetected: 0
   enemyPos: {fileID: 0}
   maxHitDistance: 10
+  cropHandler: {fileID: 0}

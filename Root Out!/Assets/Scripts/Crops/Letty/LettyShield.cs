@@ -1,24 +1,30 @@
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class LettyShield : MonoBehaviour
 {
+    [Header("GENERAL SETTINGS")]
     [SerializeField, Range(0f, 4f)] private float rotationSpeed;
     [SerializeField] private List<GameObject> lettuceLeafs = new List<GameObject>();
-    private int indexToUse;
+    public int indexToUse = 0;
+
+    [Header("SHIELD TIMER")]
+    [SerializeField] private float shieldDuration;
+    [SerializeField] private float timer_LettyShield; 
 
     private Transform player;
 
-    void Start()
+    private void Start()
     {
-
+        timer_LettyShield = shieldDuration;
     }
 
-    // Update is called once per frame
     void Update()
     {
         RotateShield();
         FollowPlayer();
+        SetShieldTimer();
     }
 
     [ContextMenu("Add leaf")]
@@ -26,8 +32,10 @@ public class LettyShield : MonoBehaviour
     {
         if (indexToUse < 3)
         {
-            Debug.Log(lettuceLeafs.Count - 1);
-            lettuceLeafs[++indexToUse].SetActive(true);
+            indexToUse++;
+            Debug.Log(indexToUse);
+            lettuceLeafs[indexToUse].SetActive(true);
+            timer_LettyShield = shieldDuration;
         }
     }
 
@@ -42,6 +50,17 @@ public class LettyShield : MonoBehaviour
         {
             transform.position = player.position;
         }
+    }
+
+    private void SetShieldTimer()
+    {
+        timer_LettyShield -= Time.deltaTime;
+
+        if (timer_LettyShield < 0)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 
     public void GetPlayerReference(Transform playerPos)

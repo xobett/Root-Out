@@ -25,7 +25,7 @@ public class FogSpawner : MonoBehaviour
 
         if (SunflowerDetection() || GroundDetection() || FogDetection())
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -40,6 +40,8 @@ public class FogSpawner : MonoBehaviour
 
         GameObject fogClone = Instantiate(fogPrefab, fogSpawnPos, Quaternion.identity);
         fogClone.transform.parent = gameObject.transform.parent;
+
+        Destroy(this.gameObject);
     }
 
     private void SetDetectionCubePos()

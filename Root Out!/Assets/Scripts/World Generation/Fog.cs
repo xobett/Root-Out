@@ -4,17 +4,6 @@ public class Fog : MonoBehaviour
 {
     [SerializeField, Range(1f, 10f)] private float fogDetectionRadius;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Blocked Path Fog"))

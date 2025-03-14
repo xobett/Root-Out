@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df60e8ff017d8e2428be2d9482532556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropType: 1
+  cropData: {fileID: 11400000, guid: f04abf14eabb79749842ca9c8c70c1ab, type: 2}
   cropWalkSpeed: 0.6
   cropRunSpeed: 0
   stoppingDistance: 0
@@ -401,6 +401,7 @@ MonoBehaviour:
   enemyDetected: 0
   enemyPos: {fileID: 0}
   maxHitDistance: 10
+  cropHandler: {fileID: 0}
 --- !u!1001 &8907287576156288778
 PrefabInstance:
   m_ObjectHideFlags: 0

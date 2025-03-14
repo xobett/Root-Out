@@ -52,6 +52,9 @@ public class Sunflower : MonoBehaviour, IInteractable
         var main = fogPs.main;
         main.loop = false;
 
+        var fogCollider = cloneFog.transform.GetChild(0).gameObject;
+
+        Destroy(fogCollider, 4.5f);
         Destroy(cloneFog, 6);
 
         //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.

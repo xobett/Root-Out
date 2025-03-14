@@ -137,9 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f568f87d8b4ac25479dc219552fe797a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropType: 2
+  cropData: {fileID: 11400000, guid: 41fd113dc464ead489dca958a2b639fe, type: 2}
   cropWalkSpeed: 0.6
-  cropRunSpeed: 0
+  cropRunSpeed: 0.9
   stoppingDistance: 0
   backDistance: 2.5
   sideDistance: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   enemyDetected: 0
   enemyPos: {fileID: 0}
   maxHitDistance: 10
+  cropHandler: {fileID: 0}
 --- !u!1 &8531700995258327092
 GameObject:
   m_ObjectHideFlags: 0

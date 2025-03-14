@@ -20,7 +20,7 @@ public class LeafJump : MonoBehaviour
         {
             //Se agrega fuerza positiva sobre el Vector3 que constantemente ejerce gravedad.
             GetComponent<PlayerMovement>().gravity.y = currentChargedForce;
-            Debug.Log(currentChargedForce);
+
             //Tras saltar, se reinicia el valor del salto cargado.
             currentChargedForce = 0f;
         }

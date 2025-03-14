@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,18 +23,18 @@ public class CropHandler : MonoBehaviour
     [SerializeField] private int droppedCornyGuyCrops;
 
     [Header("CROP TIMERS")]
-    [SerializeField] private float timer_LettyCrop;
-    [SerializeField] private float timer_SweetJackCrop;
-    [SerializeField] private float timer_PepeHabaneroCrop;
-    [SerializeField] private float timer_RedChibiCrop;
-    [SerializeField] private float timer_CornyGuyCrop;
+    private float timer_LettyCrop;
+    private float timer_SweetJackCrop;
+    private float timer_PepeHabaneroCrop;
+    private float timer_RedChibiCrop;
+    private float timer_CornyGuyCrop;
 
     [Header("TOTAL CROPS DROPPED")]
     [SerializeField] private int totalCropsDropped;
     private const int maxCropsOnField = 15;
 
     [Header("SPAWN CROP SETTINGS")]
-    [SerializeField, Range(1, 5)] private float spawnDistance;
+    private const float spawnDistance = 1.5f;
 
     [Header("SELECTION WHEEL ICONS")]
     [SerializeField] private Image selectionWheel;
@@ -46,12 +44,12 @@ public class CropHandler : MonoBehaviour
 
     private const float rotationValue = 60f;
     [SerializeField, Range(0f, 5f)] private float rotationSpeed;
-    [SerializeField] private bool wheelIsRotating;
+    private bool wheelIsRotating;
 
 
     void Start()
     {
-        equippedCrop = crops[2];
+        equippedCrop = crops[3];
         SetUIIcons();
     }
 
@@ -71,7 +69,7 @@ public class CropHandler : MonoBehaviour
             {
                 case "Letty":
                     {
-                        if (droppedLettyCrops >= maxDrop_LettyCrops || timer_LettyCrop > 0) return;
+                        if (GetLettyShieldLeafs() == 3 || droppedLettyCrops >= maxDrop_LettyCrops || timer_LettyCrop > 0) return;
                         droppedLettyCrops++;
                         timer_LettyCrop = equippedCrop.CropCooldownTime;
                         break;
@@ -148,11 +146,9 @@ public class CropHandler : MonoBehaviour
     private IEnumerator RotateSelectionWheel(float targetValue)
     {
         wheelIsRotating = true;
-        var selectionWheelRect = selectionWheel.GetComponent<RectTransform>(); 
+        var selectionWheelRect = selectionWheel.GetComponent<RectTransform>();
 
-        Quaternion targetRotation = Quaternion.Euler(0,0, selectionWheel.transform.eulerAngles.z + targetValue);
-
-        Debug.Log(targetRotation.eulerAngles.z);
+        Quaternion targetRotation = Quaternion.Euler(0, 0, selectionWheel.transform.eulerAngles.z + targetValue);
 
         float time = 0f;
 
@@ -169,6 +165,42 @@ public class CropHandler : MonoBehaviour
         yield return null;
     }
 
+    public void UpdateDroppedCrop(string cropName)
+    {
+        switch (cropName)
+        {
+            case "Letty":
+                {
+                    droppedLettyCrops--;
+                    break;
+                }
+
+            case "Corny Guy":
+                {
+                    droppedCornyGuyCrops--;
+                    break;
+                }
+
+            case "Red Chibi Pepper":
+                {
+                    droppedRedChibiCrops--;
+                    break;
+                }
+
+            case "Pepe Habanero":
+                {
+                    droppedPepeHabaneroCrops--;
+                    break;
+                }
+
+            case "Sweet Jack O Pumpkin":
+                {
+                    droppedSweetJackCrops--;
+                    break;
+                }
+        }
+    }
+
     public void AddCrop(CropData crop)
     {
         crops.Add(crop);
@@ -180,6 +212,20 @@ public class CropHandler : MonoBehaviour
         previousCropIcon.sprite = equippedCrop == crops[0] ? crops[crops.Count - 1].CropIcon : crops[crops.IndexOf(equippedCrop) - 1].CropIcon;
         equippedCropIcon.sprite = equippedCrop.CropIcon;
         nextCropIcon.sprite = equippedCrop == crops[crops.Count - 1] ? crops[0].CropIcon : crops[crops.IndexOf(equippedCrop) + 1].CropIcon;
+    }
+
+    private int GetLettyShieldLeafs()
+    {
+        int currentShieldLeafs = 0;
+
+        if (GameObject.FindGameObjectWithTag("Letty Shield"))
+        {
+            LettyShield lettyShield = GameObject.FindGameObjectWithTag("Letty Shield").GetComponent<LettyShield>();
+
+            currentShieldLeafs = lettyShield.indexToUse;
+        }
+
+        return currentShieldLeafs;
     }
 
     #region Inputs

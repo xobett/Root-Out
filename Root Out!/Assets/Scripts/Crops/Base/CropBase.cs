@@ -1,11 +1,9 @@
-
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public abstract class CropBase : MonoBehaviour
 {
     [Header("GENERAL SETTINGS")]
-    [SerializeField] protected CropType cropType;
+    [SerializeField] protected CropData cropData;
 
     [Header("MOVEMENT SETTINGS")]
     [SerializeField, Range(0f, 1f)] protected float cropWalkSpeed;
@@ -34,6 +32,8 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField] private float maxHitDistance;
 
     private RaycastHit hit;
+
+    [SerializeField] private CropHandler cropHandler;
 
 
     private void Start()
@@ -74,7 +74,7 @@ public abstract class CropBase : MonoBehaviour
             Vector3 desiredFollowingPos = enemyPos.position;
             desiredFollowingPos.y = transform.position.y;
 
-            SetDestination(desiredFollowingPos, cropRunSpeed); 
+            SetDestination(desiredFollowingPos, cropRunSpeed);
         }
         else
         {
@@ -119,6 +119,9 @@ public abstract class CropBase : MonoBehaviour
     }
     protected abstract void CropAttack();
 
+    //Detecta al enemigo frente 
+    private bool EnemyDetection() => Physics.SphereCast(transform.position, sphereDetectionRadius, transform.forward, out hit, maxHitDistance, whatIsEnemy);
+
     private void OnDrawGizmos()
     {
         //Cambia el color del gizmo a color azul
@@ -129,18 +132,18 @@ public abstract class CropBase : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position + transform.forward * maxHitDistance, sphereDetectionRadius);
     }
 
-    //Detecta al enemigo frente 
-    private bool EnemyDetection() => Physics.SphereCast(transform.position, sphereDetectionRadius, transform.forward, out hit, maxHitDistance, whatIsEnemy);
-
-    protected void BeginCooldownTime(float cooldownTime)
+    private void OnDestroy()
     {
-
+        cropHandler.UpdateDroppedCrop(cropData.CropName);
     }
 
     #region Reference Methods
     private void GetReferences()
     {
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        playerPos = player.transform;
+        cropHandler = player.GetComponent<CropHandler>();
     }
     #endregion
 }

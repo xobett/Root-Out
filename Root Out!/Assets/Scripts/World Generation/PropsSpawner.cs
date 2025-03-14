@@ -8,10 +8,12 @@ public class PropsSpawner : MonoBehaviour
     [SerializeField] private GameObject[] simpleProps;
     [SerializeField] private GameObject[] coverProps;
 
-
     [Header("PROP SPAWN POSITION SETTINGS")]
     [SerializeField] private Transform[] simplePropsPos;
     [SerializeField] private Transform[] coverPropsPos;
+
+    [Header("PROP POSITIONS GROUPS")]
+    [SerializeField] private GameObject[] positionsGroups;
 
     private List<int> simplePropUsedPos = new List<int>();
     private List<int> coverPropUsedPos = new List<int>();
@@ -24,8 +26,6 @@ public class PropsSpawner : MonoBehaviour
 
     private IEnumerator SpawnProps()
     {
-        Debug.Log("Entra");
-
         for (int i = 0; i < simplePropsPos.Length; i++)
         {
             int randomSimpleProp = GenerateRandomProp("Simple");
@@ -60,6 +60,8 @@ public class PropsSpawner : MonoBehaviour
 
             coverPropUsedPos.Add(randomCoverPropPos);
         }
+
+        ClearUnusedElements();
 
         yield return null;
     }
@@ -115,5 +117,15 @@ public class PropsSpawner : MonoBehaviour
         }
 
         return randomPosNumber;
+    }
+
+    private void ClearUnusedElements()
+    {
+        for (int i = 0; i < positionsGroups.Length; i++)
+        {
+            Destroy(positionsGroups[i]);
+        }
+
+        Destroy(this.gameObject);
     }
 }
