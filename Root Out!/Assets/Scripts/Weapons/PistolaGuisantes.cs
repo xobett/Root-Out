@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using Weapons;
 
-public class PistolaGuisantes : WeaponsBase , IInteractable
+public class PistolaGuisantes : WeaponsBase, IInteractable
 {
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
@@ -13,6 +13,8 @@ public class PistolaGuisantes : WeaponsBase , IInteractable
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
             base.Shoot();
+            AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
+
             UpdateAmmoText(); // Actualiza el texto de munición después de disparar
         }
         else
