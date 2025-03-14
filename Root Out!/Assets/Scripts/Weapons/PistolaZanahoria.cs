@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 using Weapons;
-public class PistolaHuevos : WeaponsBase, IInteractable
+
+public class PistolaZanahoria : WeaponsBase, IInteractable
 {
-    [Header("Pistola Huevos Ref")]
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
@@ -57,4 +57,5 @@ public class PistolaHuevos : WeaponsBase, IInteractable
         }
     }
 }
+
 

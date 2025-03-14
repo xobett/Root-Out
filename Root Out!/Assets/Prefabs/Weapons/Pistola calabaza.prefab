@@ -92,6 +92,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_Name
       value: Pistola calabaza
       objectReference: {fileID: 0}
@@ -162,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiming: {fileID: 7279786509918256495}
   weaponType: 0
-  spreadAngle: 0.1
+  spreadAngle: 5
   horizontalSpread: 0
   autoFire: 0
   shootUpwards: 0
@@ -176,14 +180,16 @@ MonoBehaviour:
   range: 3
   fireRate: 1
   reloadTime: 3
-  bulletForce: 20
+  bulletForce: 100
   lifeTimeBullets: 0.5
   bulletsPerBurst: 3
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  rechargeAnimation: {fileID: 0}
+  rechargeCanvas: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   bulletText: {fileID: 0}
   weaponHandler: {fileID: 0}
-  bulletsPerShot: 10
+  bulletsPerShot: 4

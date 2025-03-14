@@ -96,6 +96,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d6e22e6b84e4f9f47b85d45029b50ace, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6e22e6b84e4f9f47b85d45029b50ace, type: 3}
       propertyPath: m_Name
       value: Pistola bellota
       objectReference: {fileID: 0}
@@ -194,6 +198,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  rechargeAnimation: {fileID: 0}
+  rechargeCanvas: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   bulletText: {fileID: 0}

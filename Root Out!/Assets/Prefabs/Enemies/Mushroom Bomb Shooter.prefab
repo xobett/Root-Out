@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5485512315322609294}
-  - component: {fileID: 7453348104078533591}
   m_Layer: 0
   m_Name: Aim
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -26,25 +25,12 @@ Transform:
   m_GameObject: {fileID: 4147673311644008337}
   serializedVersion: 2
   m_LocalRotation: {x: 0.02361325, y: 0.00000008940697, z: 0.010435037, w: 0.99966675}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.415, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6629645737722985113}
   m_LocalEulerAnglesHint: {x: 2.706, y: 0.028, z: 1.197}
---- !u!114 &7453348104078533591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4147673311644008337}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47b7b4a773a0f2449bc0707c5edbefd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraPlayer: {fileID: 0}
 --- !u!1 &4441185322437126753
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,9 +251,9 @@ MonoBehaviour:
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 397fa4485e1bf7d4bb5de13b088cef74, type: 3}
   explosionPrefab: {fileID: 0}
-  currentAmmo: 5000
-  bulletReserve: 5000
-  maxAmmo: 5000
+  currentAmmo: 2147483647
+  bulletReserve: 2147483647
+  maxAmmo: 2147483647
   damage: 2.5
   range: 5
   fireRate: 1
@@ -295,8 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58870259d8f0af14b98d0f7493347613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualHealth: 15
-  maxHealth: 0
+  actualHealth: 50
+  maxHealth: 50
   hUDLifeBar: {fileID: 3400777871220660004}
 --- !u!1 &7933623372582787262
 GameObject:

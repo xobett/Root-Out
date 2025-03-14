@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Weapons
 {
-
     public class WeaponsBase : MonoBehaviour
     {
         public enum WeaponType
@@ -52,6 +51,9 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
 
+        [Header("Recarga Imagen")]
+        [SerializeField] public Animation rechargeAnimation;
+        [SerializeField] private GameObject rechargeCanvas;
 
         [HideInInspector] public bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
         [HideInInspector] public bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
@@ -60,6 +62,7 @@ namespace Weapons
         protected virtual void Start()
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
+            rechargeCanvas.SetActive(false);
         }
 
         protected virtual void Update()
@@ -105,7 +108,10 @@ namespace Weapons
                     Debug.Log("No ammo left!"); // Mensaje de depuración si no se puede disparar
                 }
             }
-
+            ReloadCorotine();
+        }
+        protected virtual void ReloadCorotine()
+        {
             // Detecta si se presiona la tecla de recarga (R)
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -148,10 +154,24 @@ namespace Weapons
         }
 
         // Corrutina que maneja la lógica de recarga
-        private IEnumerator ReloadCoroutine()
+        protected virtual IEnumerator ReloadCoroutine()
         {
             Debug.Log("Reloading...");
+            // Iniciar la animación de recarga si existe
+            if (rechargeAnimation != null)
+            {
+                rechargeCanvas.SetActive(true);
+                rechargeAnimation.Play();
+            }
+
             yield return new WaitForSeconds(reloadTime); // Espera el tiempo de recarga
+
+            // Detener la animación de recarga si existe
+            if (rechargeAnimation != null)
+            {
+                rechargeCanvas.SetActive(false);
+                rechargeAnimation.Stop();
+            }
 
             // Calcula cuántas balas se necesitan para recargar completamente
             int bulletsToReload = maxAmmo - currentAmmo;

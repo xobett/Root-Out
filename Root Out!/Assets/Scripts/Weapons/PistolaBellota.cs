@@ -33,6 +33,14 @@ public class PistolaBellota : WeaponsBase, IInteractable
         }
     }
 
+    protected override void ReloadCorotine()
+    {
+        if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
+        {
+            base.ReloadCorotine();
+        }
+    }
+
     private void UpdateAmmoText() // Actualiza el texto de munición
     {
         if (bulletText != null)
