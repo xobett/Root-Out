@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4053309363105967471}
   - component: {fileID: 1411380977557865012}
   - component: {fileID: 4370318675421518112}
-  m_Layer: 14
-  m_Name: World Fog
-  m_TagString: Fog
+  m_Layer: 15
+  m_Name: Blocked Path Fog
+  m_TagString: Blocked Path Fog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4879,9 +4879,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fogDetectionRadius: 8.93
-  whatIsFog:
-    serializedVersion: 2
-    m_Bits: 16384
 --- !u!65 &1411380977557865012
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -915,43 +915,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &177196164 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2517574174693961282, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
-  m_PrefabInstance: {fileID: 6961081787889114170}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &177196169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177196164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 496816f1df3675f40a32db5fe3e2db70, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!1 &208732137
 GameObject:
   m_ObjectHideFlags: 0
@@ -10196,6 +10159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7945986348599625994, guid: d141478b6acfde343a6ed4b2499c45ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11372,33 +11339,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2029225297079586839, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2255820739984647757, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
       propertyPath: m_Name
       value: Main Hub
-      objectReference: {fileID: 0}
-    - target: {fileID: 2255820739984647757, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369811941788541364, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
-      propertyPath: fogSpawnerPrefab
-      value: 
-      objectReference: {fileID: 7945986348599625994, guid: d141478b6acfde343a6ed4b2499c45ed, type: 3}
-    - target: {fileID: 4708621723783968196, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7296156867126926291, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7296156867126926291, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7983066331561553639, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11443,10 +11386,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2517574174693961282, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 177196169}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbd4b6809071aeb49a00dd66e0f7fd39, type: 3}
 --- !u!4 &7160635001148740260
 Transform:

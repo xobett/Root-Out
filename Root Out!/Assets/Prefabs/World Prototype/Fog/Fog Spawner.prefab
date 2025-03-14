@@ -44,8 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bfc2ce3764ac649a822efeb73cde7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fogPrefab: {fileID: 0}
+  fogPrefab: {fileID: 7755707530198357774, guid: 65ed036af64d98444895cae2a4d3ee1a, type: 3}
   sunflowerDetectionRadius: 1
   whatIsSunflower:
     serializedVersion: 2
     m_Bits: 64
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  whatIsFog:
+    serializedVersion: 2
+    m_Bits: 49152

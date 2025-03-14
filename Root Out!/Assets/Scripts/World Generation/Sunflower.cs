@@ -45,12 +45,14 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        var instance = GameManager.instance;
-        instance.GrowthSelectionEvent(this);
+        //var instance = GameManager.instance;
+        //instance.GrowthSelectionEvent(this);
 
         var fogPs = cloneFog.GetComponent<ParticleSystem>();
         var main = fogPs.main;
         main.loop = false;
+
+        Destroy(cloneFog, 6);
 
         //Se crea un vector donde se almacenara la position donde se generara nuevo terreno.
         Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
@@ -97,6 +99,7 @@ public class Sunflower : MonoBehaviour, IInteractable
         fogSpawnPos.y = 3.5f;
 
         cloneFog = Instantiate(worldFog, fogSpawnPos, Quaternion.identity);
+        cloneFog.transform.parent = gameObject.transform.parent;
     }
 
     private void BugDetection()

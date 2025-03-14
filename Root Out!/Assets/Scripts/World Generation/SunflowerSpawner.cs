@@ -5,6 +5,7 @@ using UnityEngine;
 public class SunflowerSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPositions;
+
     [SerializeField] private GameObject sunflowerPrefab;
     [SerializeField] private GameObject fogSpawnerPrefab;
 

@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 2283893448668581879}
   - component: {fileID: 5108364089162955625}
   - component: {fileID: 7669945474108485707}
+  - component: {fileID: 347313346381936162}
   m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
@@ -208,6 +209,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &347313346381936162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2517574174693961282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 496816f1df3675f40a32db5fe3e2db70, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &3902646675271525079
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 3902646675271525079}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: -4}
+  m_LocalPosition: {x: 0, y: 3.5, z: -2.5}
   m_LocalScale: {x: 2.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -400,6 +433,7 @@ MonoBehaviour:
   - {fileID: 2981999570327140686}
   - {fileID: 8109366063190846254}
   sunflowerPrefab: {fileID: 4588228208413234034, guid: a2719715f8fff0447bcd7a87be767c42, type: 3}
+  fogSpawnerPrefab: {fileID: 7945986348599625994, guid: d141478b6acfde343a6ed4b2499c45ed, type: 3}
   sunflowersToSpawn: 3
   lastPositions: 
 --- !u!1 &5553149008151805032
@@ -430,7 +464,7 @@ Transform:
   m_GameObject: {fileID: 5553149008151805032}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.7071079}
-  m_LocalPosition: {x: 0, y: 3.5, z: -4}
+  m_LocalPosition: {x: 0, y: 3.5, z: -2.5}
   m_LocalScale: {x: 2.4999998, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -570,7 +604,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 8, y: 5, z: 8}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6626101205474750785}
