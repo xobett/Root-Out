@@ -10,6 +10,9 @@ public class MushroomBombShooter : WeaponsBase
     [SerializeField] private Transform player;
     [SerializeField] GameObject HUDTargetPoint;
     [SerializeField] private float targetPointDistance;
+    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+
+    private int cancel = 0;
     // [SerializeField] float separationDistance = 1f;
 
     NavMeshAgent agent;
@@ -25,7 +28,6 @@ public class MushroomBombShooter : WeaponsBase
         LookAtTarget(player); // Llama al método LookAtTarget
     }
     
-
     protected override void Shoot()
     {
         Mortar(); // Llama al método Mortar
@@ -33,6 +35,13 @@ public class MushroomBombShooter : WeaponsBase
         Attack(); // Llama al método Attack
     }
 
+    protected override void ReloadCorotine()
+    {
+        if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
+        {
+            base.ReloadCorotine();
+        }
+    }
     void Attack()
     {
         agent.SetDestination(player.position);

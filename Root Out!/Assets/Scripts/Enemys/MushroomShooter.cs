@@ -11,6 +11,8 @@ public class MushroomShooter : WeaponsBase
     [SerializeField] private Transform sunFlower;
     [SerializeField] private float rangeGizmo;
     [SerializeField] LayerMask layer;
+    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+
 
 
     protected override void Start()
@@ -23,6 +25,13 @@ public class MushroomShooter : WeaponsBase
 
     }
 
+    protected override void ReloadCorotine()
+    {
+        if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
+        {
+            base.ReloadCorotine();
+        }
+    }
     protected override void Shoot()
     {
         base.Shoot();

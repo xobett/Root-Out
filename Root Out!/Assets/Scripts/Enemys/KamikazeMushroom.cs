@@ -8,6 +8,7 @@ public class KamikazeMushroom : WeaponsBase
     [SerializeField] private float detectionRange;
     [SerializeField] Sunflower sunFlowerScript;
     [SerializeField] Transform _sunFlower;
+    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
     NavMeshAgent agent;
 
     protected override void Start()
@@ -36,6 +37,13 @@ public class KamikazeMushroom : WeaponsBase
             Debug.Log($"Daño al girasol : " + sunFlowerScript.currentHealth);
 
 
+        }
+    }
+    protected override void ReloadCorotine()
+    {
+        if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
+        {
+            base.ReloadCorotine();
         }
     }
     bool Detection()
