@@ -1,20 +1,18 @@
 using TMPro;
 using UnityEngine;
 using Weapons;
-public class Shotgun : WeaponsBase, IInteractable
+public class PistolaHuevos : WeaponsBase, IInteractable
 {
-    [Header("SHOTGUN SETTINGS")]
+    
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
-    [SerializeField] private int bulletsPerShot = 6; // Número de balas por disparo
 
     protected override void Shoot()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
-            FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
-            UpdateAmmoText(); // Actualiza el texto de munición después de disparar
             base.Shoot();
+            UpdateAmmoText(); // Actualiza el texto de munición después de disparar
         }
         else
         {
@@ -36,11 +34,11 @@ public class Shotgun : WeaponsBase, IInteractable
         }
     }
 
-    private void UpdateAmmoText() // Actualiza el texto de munición
+    private void UpdateAmmoText() // Actualize el text de munición
     {
         if (bulletText != null)
         {
-            bulletText.text = $"{currentAmmo}/{maxAmmo}"; // Actualiza el texto con la munición actual y máxima
+            bulletText.text = $"{currentAmmo}/{maxAmmo}"; // Actualize el text con la munición actual y máxima
         }
         else
         {
