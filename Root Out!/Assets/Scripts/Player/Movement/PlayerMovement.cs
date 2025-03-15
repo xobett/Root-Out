@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    [Header("ANIMATION SETTINGS")]
+    [SerializeField] private Animator playerAnimCtrlr;
+
     [Header("MOVEMENT SETTINGS")]
     [SerializeField] public float walkSpeed;
     [SerializeField] public float sprintSpeed;
@@ -28,9 +32,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 gravity;
 
     private Transform camRef;
-
-    [Header("ANIMATION SETTINGS")]
-    [SerializeField] private Animator playerAnimCtrlr;
 
     void Start()
     {

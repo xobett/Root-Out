@@ -5,6 +5,9 @@ public abstract class CropBase : MonoBehaviour
     [Header("GENERAL SETTINGS")]
     [SerializeField] protected CropData cropData;
 
+    [Header("ANIMATION SETTINGS")]
+    [SerializeField] protected Animator cropAnimCtrlr;
+
     [Header("MOVEMENT SETTINGS")]
     [SerializeField, Range(0f, 1f)] protected float cropWalkSpeed;
     [SerializeField, Range(0f, 1f)] protected float cropRunSpeed;
@@ -19,22 +22,18 @@ public abstract class CropBase : MonoBehaviour
     private Vector3 velocityRef = Vector3.zero;
 
     [Header("COMBAT SETTINGS")]
-    [SerializeField] protected float cooldownTime;
     [SerializeField] protected float damage;
 
     [Header("ENEMY DETECTION")]
     [SerializeField] private float sphereDetectionRadius = 12f;
     [SerializeField] private LayerMask whatIsEnemy;
-
-    [SerializeField] private bool enemyDetected;
-    [SerializeField] private Transform enemyPos;
-
     [SerializeField] private float maxHitDistance;
-
     private RaycastHit hit;
 
-    [SerializeField] private CropHandler cropHandler;
+    private bool enemyDetected;
+    private Transform enemyPos;
 
+    private CropHandler cropHandler;
 
     private void Start()
     {
