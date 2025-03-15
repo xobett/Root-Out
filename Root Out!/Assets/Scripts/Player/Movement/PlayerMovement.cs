@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform camRef;
 
+    [Header("ANIMATION SETTINGS")]
+    [SerializeField] private Animator playerAnimCtrlr;
+
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -50,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsAiming() && IsTouching())
         {
+            playerAnimCtrlr.SetBool("isZooming", true);
+
             FaceForward();
             ZoomMovement();
         }
@@ -59,12 +64,17 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            playerAnimCtrlr.SetBool("isZooming", false);
+
             NormalMovement();
         }
     }
 
     private void ZoomMovement()
     {
+        playerAnimCtrlr.SetInteger("horizontalMovement", Mathf.FloorToInt(HorizontalInput()));
+        playerAnimCtrlr.SetInteger("forwardMovement", Mathf.FloorToInt(ForwardInput()));
+
         //Mueve al jugador de izquierda a derecha, de frente hacia atras sin rotar a la direccion a la que camina.
         //Se usa al apuntar para fijar la mira del personaje al disparar.
         Vector3 zoomMovement = transform.right * HorizontalInput() + transform.forward * ForwardInput();
@@ -82,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
         //Como constantemente se avanza hacia la rotacion del jugador, solamente se mueve el personaje si hay un input desigual a 0.
         if (move.magnitude != 0f)
         {
+            playerAnimCtrlr.SetBool("isWalking", true);
+
             //Obtiene un angulo en radianes creado entre el axis X y Z, lo convierte en grados y suma la rotacion frontal de la camara.
             //El angulo total que se obtiene es para rotar al jugador hacia la direccion donde camina y hacia la camara.
             float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + camRef.eulerAngles.y;
@@ -95,6 +107,10 @@ public class PlayerMovement : MonoBehaviour
 
             //Mueve al jugador hacia donde este rotado.
             charController.Move(Time.deltaTime * SpeedCheck() * moveDirection);
+        }
+        else
+        {
+            playerAnimCtrlr.SetBool("isWalking", false);
         }
     }
 
@@ -123,8 +139,14 @@ public class PlayerMovement : MonoBehaviour
         //Checa si esta tocando el suelo y la velocidad ejercida en Y es menor a 0.
         if (IsTouching() && gravity.y < 0)
         {
+            playerAnimCtrlr.SetBool("isJumping", false);
+
             //Si el condicional es cierto, se deja de restar valor al Vector3 en su axis Y.
             gravity.y = 0;
+        }
+        else
+        {
+            playerAnimCtrlr.SetBool("isJumping", true);
         }
 
         //Aplica constantemente la fuerza de gravedad.
