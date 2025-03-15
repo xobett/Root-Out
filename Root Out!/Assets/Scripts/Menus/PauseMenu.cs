@@ -88,6 +88,7 @@ public class PauseMenu : MonoBehaviour
         settings.SetActive(false); // Desactiva el menú de configuración
         mainMenu.SetActive(false); // Desactiva el menú principal
         panelControls.SetActive(false); // Desactiva el panel de controles
+        panelResume.SetActive(false);
         vfx.SetActive(true); // Activa el menú de efectos visuales
         back.SetActive(true); // Activa el botón de retroceso
         volumen.SetActive(true); // Activa el menú de volumen
@@ -113,6 +114,7 @@ public class PauseMenu : MonoBehaviour
         mainMenu.SetActive(true); // Activa el menú principal
         settings.SetActive(true); // Activa el menú de configuración
         panelControls.SetActive(true); // Activa el panel de controles
+        panelResume.SetActive(true);
     }
 
     // Método para actualizar el volumen de los VFX

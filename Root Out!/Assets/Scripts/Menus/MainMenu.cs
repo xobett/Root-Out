@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void Game()
     {
-        SceneManager.LoadScene("Cesar");
+        SceneManager.LoadScene("Game");
     }
 }
 
