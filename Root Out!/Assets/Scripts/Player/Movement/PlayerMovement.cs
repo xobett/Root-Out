@@ -140,14 +140,8 @@ public class PlayerMovement : MonoBehaviour
         //Checa si esta tocando el suelo y la velocidad ejercida en Y es menor a 0.
         if (IsTouching() && gravity.y < 0)
         {
-            playerAnimCtrlr.SetBool("isJumping", false);
-
             //Si el condicional es cierto, se deja de restar valor al Vector3 en su axis Y.
             gravity.y = 0;
-        }
-        else
-        {
-            playerAnimCtrlr.SetBool("isJumping", true);
         }
 
         //Aplica constantemente la fuerza de gravedad.
@@ -175,6 +169,9 @@ public class PlayerMovement : MonoBehaviour
     public bool IsTouching()
     {
         bool isTouching = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
+
+        playerAnimCtrlr.SetBool("isGrounded", isTouching);
+
         return isTouching;
     }
 

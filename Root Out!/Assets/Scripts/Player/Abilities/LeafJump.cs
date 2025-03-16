@@ -7,6 +7,9 @@ public class LeafJump : MonoBehaviour
     [SerializeField, Range(5, 20)] private float totalChargeLimit = 15f;
     private float currentChargedForce;
 
+    [Header("ANIMATION SETTINGS")]
+    [SerializeField] private Animator playerAnimCtrlr;
+
     void Update()
     {
         ChargeJump();
@@ -16,7 +19,7 @@ public class LeafJump : MonoBehaviour
     private void Jump()
     {
         //Checa si se dejo de presionar la barra espaciadora y si el jugador se encuentra en el suelo.
-        if (Input.GetKeyUp(KeyCode.Space) && PlayerIsGrounded())
+        if (IsJumping() && PlayerIsGrounded())
         {
             //Se agrega fuerza positiva sobre el Vector3 que constantemente ejerce gravedad.
             GetComponent<PlayerMovement>().gravity.y = currentChargedForce;
@@ -39,5 +42,14 @@ public class LeafJump : MonoBehaviour
     private bool PlayerIsGrounded()
     {
         return gameObject.GetComponent<PlayerMovement>().IsTouching();
+    }
+
+    private bool IsJumping()
+    {
+        bool isJumping = Input.GetKeyUp(KeyCode.Space);
+
+        playerAnimCtrlr.SetBool("isJumping", isJumping);
+
+        return isJumping;
     }
 }
