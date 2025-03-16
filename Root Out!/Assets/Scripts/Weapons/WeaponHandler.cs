@@ -82,7 +82,10 @@ public class WeaponHandler : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(weaponHolder.position, weaponHolder.forward * 100);
+        if (weaponHolder != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(weaponHolder.position, weaponHolder.forward * 100); 
+        }
     }
 }
