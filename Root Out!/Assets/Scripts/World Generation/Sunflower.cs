@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,6 +32,9 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     [SerializeField] private bool activated;
 
+    [Header("NAVMESH SETTINGS")]
+    [SerializeField] private NavMeshSurface navMeshSurface;
+
     [Header("HEALTH SETTINGS")]
     [SerializeField, Range(0, 100)] public float currentHealth;
     private float maxHealth = 100f;
@@ -39,6 +43,7 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        GetNavMeshSurface();
         BugDetection();
         //UpdateLife(); //Actualiza la UI de vida.
     }
@@ -48,6 +53,11 @@ public class Sunflower : MonoBehaviour, IInteractable
         //var instance = GameManager.instance;
         //instance.GrowthSelectionEvent(this);
 
+        SpawnNewTerrain();
+    }
+
+    private void SpawnNewTerrain()
+    {
         var fogPs = cloneFog.GetComponent<ParticleSystem>();
         var main = fogPs.main;
         main.loop = false;
@@ -66,10 +76,11 @@ public class Sunflower : MonoBehaviour, IInteractable
         ////Se genera un nuevo terreno en la posicion creada.
         Instantiate(terrainPrefabs[randomTerrainType], spawnPos, terrainPrefabs[randomTerrainType].transform.rotation);
 
+        //Se actualiza el navmesh surface para que los enemigos naveguen por el.
+        navMeshSurface.BuildNavMesh();
+
         ////Tras instanciar el terreno, se autodestruye el girasol.
         Destroy(this.gameObject);
-
-        activated = true;
     }
 
     public void GrowSunflower(GrowthSelection growthType)
@@ -138,6 +149,11 @@ public class Sunflower : MonoBehaviour, IInteractable
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(transform.position + transform.forward * debugCubeDistance, groundCollisionCube);
 
+    }
+
+    private void GetNavMeshSurface()
+    {
+        navMeshSurface = GameObject.FindGameObjectWithTag("Main Floor").GetComponent<NavMeshSurface>();
     }
 
     public void DamageSunFlower(float damage)

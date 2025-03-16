@@ -140,21 +140,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cropData: {fileID: 11400000, guid: 41fd113dc464ead489dca958a2b639fe, type: 2}
+  cropAnimCtrlr: {fileID: 3169223575801757391}
   cropWalkSpeed: 0.6
   cropRunSpeed: 0.9
   stoppingDistance: 0
   backDistance: 2.5
   sideDistance: 0
-  cooldownTime: 0
   damage: 0
   sphereDetectionRadius: 0.3
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
-  enemyDetected: 0
-  enemyPos: {fileID: 0}
   maxHitDistance: 10
-  cropHandler: {fileID: 0}
 --- !u!1 &8531700995258327092
 GameObject:
   m_ObjectHideFlags: 0
