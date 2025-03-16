@@ -3,30 +3,54 @@ using UnityEngine;
 
 public class Logros : MonoBehaviour
 {
-    [SerializeField] private WeaponHandler weaponHandler;
-    [SerializeField] Animation primeraArma;
-    [SerializeField] Animation logoXP;
+    [Header("Primera Arma")]
+    [SerializeField] GameObject logroCanvas;
+    [SerializeField] WeaponHandler scriptWeaponHandler;
+    [SerializeField] Animation animacionPrimeraArma;
 
+    [Header("Enemigos Derrotados")]
+    [SerializeField] int enemiesDefeat;
+    [SerializeField] Animation animacion10Enemigos;
+    [SerializeField] GameObject canvas10Enemigos;
 
     private void Start()
     {
-        primeraArma.Stop();
-        logoXP.Stop();
+        animacionPrimeraArma.Stop();
+        logroCanvas.SetActive(false);
+        animacion10Enemigos.Stop();
+        canvas10Enemigos.SetActive(false);
     }
+
     private void Update()
     {
-       StartCoroutine(PrimeraArma());
+        StartCoroutine(PrimeraArma());
+        StartCoroutine(NumberEnemmiesDefeat());
     }
 
     public IEnumerator PrimeraArma()
     {
-        if (weaponHandler != null && weaponHandler.currentWeapon != null)
+        if (scriptWeaponHandler.currentWeapon != null)
         {
-            primeraArma.Play();
-            logoXP.Play();
+            animacionPrimeraArma.Play();
+            logroCanvas.SetActive(true);
             yield return new WaitForSeconds(4f);
-            primeraArma.Stop(); 
-            logoXP.Stop();
+            animacionPrimeraArma.Stop();
+            logroCanvas.SetActive(false);
+            StopCoroutine(PrimeraArma());
+        }
+    }
+
+    public IEnumerator NumberEnemmiesDefeat()
+    {
+        enemiesDefeat = AIHealth.enemiesDefeated; // Obtiene el contador de enemigos derrotados
+        if (enemiesDefeat == 10)
+        {
+            animacion10Enemigos.Play();
+            canvas10Enemigos.SetActive(true);
+            yield return new WaitForSeconds(4f);
+            animacion10Enemigos.Stop();
+            canvas10Enemigos.SetActive(false);
+            StopCoroutine(NumberEnemmiesDefeat());
         }
     }
 }

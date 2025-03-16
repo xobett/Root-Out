@@ -12,9 +12,6 @@ public class MushroomBombShooter : WeaponsBase
     [SerializeField] private float targetPointDistance;
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
-    private int cancel = 0;
-    // [SerializeField] float separationDistance = 1f;
-
     NavMeshAgent agent;
 
     protected override void Start()
