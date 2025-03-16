@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &795760356391937464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510468268873343577}
+  m_Layer: 0
+  m_Name: Aim
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510468268873343577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795760356391937464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6257096309789117324}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1125322674503588084
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,8 +289,8 @@ GameObject:
   - component: {fileID: 6257096309789117324}
   - component: {fileID: 6521391671028748085}
   - component: {fileID: 3723825966451961134}
-  - component: {fileID: 4681742737139429051}
   - component: {fileID: 3961318389565383226}
+  - component: {fileID: 5563750098599496366}
   m_Layer: 0
   m_Name: Corny Guy
   m_TagString: Untagged
@@ -280,6 +311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 510468268873343577}
   - {fileID: 8941813114735087841}
   - {fileID: 4065112819001204519}
   - {fileID: 8542531587618410470}
@@ -336,44 +368,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4681742737139429051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8089460597273917744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 693d61d7c48b1594895ca520765c36b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiming: {fileID: 4065112819001204519}
-  weaponType: 1
-  spreadAngle: 1
-  horizontalSpread: 0
-  autoFire: 1
-  shootUpwards: 0
-  shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 0}
-  currentAmmo: 350
-  bulletReserve: 100
-  maxAmmo: 350
-  damage: 5
-  range: 10
-  fireRate: 5
-  reloadTime: 2
-  bulletForce: 20
-  lifeTimeBullets: 7
-  bulletsPerBurst: 3
-  burstRate: 0.1
-  burstDistance: 0.1
-  burstPause: 0.5
-  canInstantiateExplosion: 1
-  explosionUpgradeActivated: 0
-  bulletText: {fileID: 0}
-  weaponHandler: {fileID: 0}
 --- !u!114 &3961318389565383226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,21 +381,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cropData: {fileID: 11400000, guid: f04abf14eabb79749842ca9c8c70c1ab, type: 2}
+  cropAnimCtrlr: {fileID: 0}
   cropWalkSpeed: 0.6
   cropRunSpeed: 0
   stoppingDistance: 0
   backDistance: 3
   sideDistance: 1.5
-  cooldownTime: 0
   damage: 0
+  shootingDistance: 1
   sphereDetectionRadius: 0.3
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
-  enemyDetected: 0
-  enemyPos: {fileID: 0}
   maxHitDistance: 10
-  cropHandler: {fileID: 0}
+  rotation: {x: 0, y: 3, z: 0}
+--- !u!114 &5563750098599496366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8089460597273917744}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b50970ee707164a9d1d3d4b10ec67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiming: {fileID: 510468268873343577}
+  weaponType: 1
+  spreadAngle: 0.1
+  horizontalSpread: 0
+  autoFire: 1
+  shootUpwards: 0
+  shootDownwards: 0
+  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
+  explosionPrefab: {fileID: 0}
+  currentAmmo: 2000
+  bulletReserve: 2000
+  maxAmmo: 2000
+  damage: 2
+  range: 3
+  fireRate: 4
+  reloadTime: 1
+  bulletForce: 20
+  lifeTimeBullets: 3
+  bulletsPerBurst: 3
+  burstRate: 0.1
+  burstDistance: 0.1
+  burstPause: 0.5
+  rechargeAnimation: {fileID: 0}
+  rechargeCanvas: {fileID: 0}
+  canInstantiateExplosion: 1
+  explosionUpgradeActivated: 0
 --- !u!1001 &8907287576156288778
 PrefabInstance:
   m_ObjectHideFlags: 0

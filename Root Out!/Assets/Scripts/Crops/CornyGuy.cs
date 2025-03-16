@@ -5,7 +5,7 @@ using UnityEngine;
 public class CornyGuy : CropBase
 {
     [Header("CORNY GUY ATTACK")]
-    [SerializeField] private Vector3 rotation = new Vector3(0,3,0);
+    [SerializeField] private Vector3 rotation = new Vector3(0, 3, 0);
 
     protected override void CropAttack()
     {
@@ -18,8 +18,11 @@ public class CornyGuy : CropBase
         //Aqui rota constantemente.
         transform.Rotate(rotation);
 
-        PistolaBellota pistolaBellota = GetComponent<PistolaBellota>();
-        //Hacer que dispare activando su booleano.
+        if (TryGetComponent<WeaponCoryGuy>(out WeaponCoryGuy weaponCoryGuy))
+        {
+            weaponCoryGuy.enabled = true;
+            Debug.Log("Arma activada");
+        }
 
         Destroy(gameObject, 10);
     }

@@ -51,7 +51,7 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
 
-        [Header("Recarga Imagen")]
+        [Header("Recarga Imagen (Opcional)")]
         [SerializeField] public Animation rechargeAnimation;
         [SerializeField] private GameObject rechargeCanvas;
 
@@ -62,7 +62,10 @@ namespace Weapons
         protected virtual void Start()
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
-            rechargeCanvas.SetActive(false);
+            if (rechargeCanvas != null)
+            {
+                rechargeCanvas.SetActive(false);
+            }
         }
 
         protected virtual void Update()
@@ -160,7 +163,10 @@ namespace Weapons
             // Iniciar la animación de recarga si existe
             if (rechargeAnimation != null)
             {
-                rechargeCanvas.SetActive(true);
+                if (rechargeCanvas != null)
+                {
+                    rechargeCanvas.SetActive(true);
+                }
                 rechargeAnimation.Play();
             }
 
@@ -169,8 +175,11 @@ namespace Weapons
             // Detener la animación de recarga si existe
             if (rechargeAnimation != null)
             {
-                rechargeCanvas.SetActive(false);
                 rechargeAnimation.Stop();
+                if (rechargeCanvas != null)
+                {
+                    rechargeCanvas.SetActive(false);
+                }
             }
 
             // Calcula cuántas balas se necesitan para recargar completamente
