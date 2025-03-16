@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class CropBase : MonoBehaviour
@@ -23,6 +24,7 @@ public abstract class CropBase : MonoBehaviour
 
     [Header("COMBAT SETTINGS")]
     [SerializeField] protected float damage;
+    [SerializeField] protected float shootingDistance;
 
     [Header("ENEMY DETECTION")]
     [SerializeField] private float sphereDetectionRadius = 12f;
@@ -39,7 +41,6 @@ public abstract class CropBase : MonoBehaviour
     {
         GetReferences();
     }
-
 
     private void Update()
     {
@@ -93,6 +94,27 @@ public abstract class CropBase : MonoBehaviour
         if (distance > stoppingDistance)
         {
             SetDestination(desiredFollowingPos, cropWalkSpeed);
+        }
+    }
+    
+    protected void HeadToShootingPos()
+    {
+        if (enemyPos != null)
+        {
+            LookAtTarget(enemyPos);
+            Vector3 desiredShootingPos = enemyPos.transform.position + enemyPos.transform.forward * shootingDistance;
+            desiredShootingPos.y = transform.position.y;
+
+            float distance = Vector3.Distance(transform.position, desiredShootingPos);
+
+            if (distance > 1)
+            {
+                SetDestination(desiredShootingPos, cropRunSpeed);
+            }
+        }
+        else
+        {
+            HeadToPlayer();
         }
     }
 

@@ -8,11 +8,10 @@ public class PlayerHealth : MonoBehaviour
     private float maxHealth = 100;
     [SerializeField, Range(0, 100)] public float currentHealth;
     [SerializeField] private Image playerLifeBar;
-
     public void TakeDamagePlayer(float damage)
     {
         currentHealth -= damage;
-        //playerLifeBar.fillAmount = currentHealth / maxHealth; // Calcula el fillAmount basado en la vida actual y máxima
+        playerLifeBar.fillAmount = currentHealth / maxHealth; // Calcula el fillAmount basado en la vida actual y máxima
         Debug.Log("Vida del jugador: " + currentHealth);
 
         if (currentHealth <= 0)
@@ -24,6 +23,13 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("El jugador ha muerto.");
+
+        var playerCharacterCtrlr = gameObject.GetComponent<CharacterController>();
+        var lastCheckpointSaved = gameObject.GetComponent<CheckpointUpdater>().lastCheckpoint;
+
+        playerCharacterCtrlr.enabled = false;
+        gameObject.transform.position = lastCheckpointSaved;
+        playerCharacterCtrlr.enabled = true;
     }
     internal void TryGetComponent<T>()
     {
