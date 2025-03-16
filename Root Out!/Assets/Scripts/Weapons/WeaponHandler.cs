@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> weaponPrefabs = new List<GameObject>(); // Lista para almacenar los prefabs de las armas
+    [SerializeField] public List<GameObject> weaponPrefabs = new List<GameObject>(); // Lista para almacenar los prefabs de las armas
     [SerializeField] public GameObject currentWeapon; // Arma actual
     [SerializeField] public Transform weaponHolder; // Transform donde se instanciará el arma
 

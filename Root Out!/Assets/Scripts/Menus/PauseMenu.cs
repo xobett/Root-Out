@@ -13,7 +13,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject vfx; // Referencia al menú de efectos visuales
     [SerializeField] GameObject back; // Referencia al botón de retroceso
     [SerializeField] GameObject volumen; // Referencia al menú de volumen
-    //[SerializeField] GameObject sfx; // Referencia a los efectos de sonido
 
     [SerializeField] CameraFollow cameraController; // Referencia al controlador de la cámara
     [SerializeField] PlayerMovement movementController; // Referencia al controlador de movimiento del jugador

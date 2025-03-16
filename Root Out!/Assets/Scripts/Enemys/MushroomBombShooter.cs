@@ -7,9 +7,11 @@ using Weapons;
 
 public class MushroomBombShooter : WeaponsBase
 {
-    [SerializeField] private Transform player;
-    [SerializeField] GameObject HUDTargetPoint;
-    [SerializeField] private float targetPointDistance;
+    [Header("Mushroom Bomb Shooter Settings")]
+    [SerializeField] private Transform player; // Objetivo a disparar
+    [SerializeField] GameObject HUDTargetPoint; // prefab del HUD taget point que es la imagen tiro al blanco en el piso
+    [SerializeField] private float targetPointDistance; // Distancia de la imagen "tiro al blanco"
+    [SerializeField] private float heightSecondBullet = 12f; // Mide la altura de la bala que aparece arriba del player
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
     NavMeshAgent agent;
@@ -47,7 +49,7 @@ public class MushroomBombShooter : WeaponsBase
     void Mortar()
     {
         // Posición por encima del jugador
-        Vector3 mortarPosition = player.position + Vector3.up * 12f;
+        Vector3 mortarPosition = player.position + Vector3.up * heightSecondBullet;
 
         // Instancia del proyectil
         GameObject mortar = Instantiate(bulletPrefab, mortarPosition, Quaternion.identity);

@@ -1,5 +1,5 @@
 using System.Collections;
-using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Logros : MonoBehaviour
@@ -8,6 +8,7 @@ public class Logros : MonoBehaviour
     [SerializeField] GameObject logroCanvas;
     [SerializeField] WeaponHandler scriptWeaponHandler;
     [SerializeField] Animation animacionPrimeraArma;
+    private bool primeraArmaLogroMostrado = false; // Variable para controlar si el logro ya se mostró
 
     [Header("Enemigos Derrotados")]
     [SerializeField] Animation animacion10Enemigos;
@@ -16,29 +17,34 @@ public class Logros : MonoBehaviour
 
     private void Start()
     {
+        if (!primeraArmaLogroMostrado)
+        {
+            AudioManager.instance.PlaySFX("Logros");
+            StartCoroutine(PrimeraArma());
+        }
+        StartCoroutine(NumberEnemmiesDefeat());
+
         animacionPrimeraArma.Stop();
         logroCanvas.SetActive(false);
         animacion10Enemigos.Stop();
         canvas10Enemigos.SetActive(false);
     }
-
+    
     private void Update()
     {
-        StartCoroutine(PrimeraArma());
-        StartCoroutine(NumberEnemmiesDefeat());
+       
     }
 
     public IEnumerator PrimeraArma()
     {
-        if (scriptWeaponHandler.currentWeapon != null)
+        if (scriptWeaponHandler.weaponPrefabs.Count == 0) // Verificar si hay exactamente una arma en scriptWeaponHandler
         {
-            AudioManager.instance.PlaySFX("Logros");
             animacionPrimeraArma.Play();
             logroCanvas.SetActive(true);
             yield return new WaitForSeconds(4f);
             animacionPrimeraArma.Stop();
             logroCanvas.SetActive(false);
-            StopCoroutine(PrimeraArma());
+            primeraArmaLogroMostrado = true; // Marcar el logro como mostrado
         }
     }
 
