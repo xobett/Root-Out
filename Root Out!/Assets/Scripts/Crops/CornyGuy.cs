@@ -1,7 +1,6 @@
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
-using Weapons;
 
 public class CornyGuy : CropBase
 {
