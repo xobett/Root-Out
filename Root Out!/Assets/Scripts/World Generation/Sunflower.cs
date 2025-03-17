@@ -7,33 +7,30 @@ using Random = UnityEngine.Random;
 public class Sunflower : MonoBehaviour, IInteractable
 {
     [Header("TERRAIN SPAWN SETTINGS")]
-    public GameObject prefab;
-
     [SerializeField] private GameObject[] terrainPrefabs;
 
     [Header("FOG SPAWN SETTINGS")]
     [SerializeField] private GameObject worldFog;
-    [SerializeField] private const float fogDistanceSpawn = 21;
 
     private GameObject cloneFog;
+    
+    private const float fogDistanceSpawn = 21;
 
     [Header("DETECTION SETTINGS")]
-    [SerializeField] private const float terrainDistanceSpawn = 21;
-    [SerializeField] private const float debugCubeDistance = 22;
-
     [SerializeField] private LayerMask whatIsSunflower;
     [SerializeField] private LayerMask whatIsGround;
 
-    [SerializeField] private Vector3 sunflowerCollisionCube = new Vector3(22, 2, 22);
-    [SerializeField] private Vector3 groundCollisionCube = new Vector3(5, 2, 5);
+    private const float terrainDistanceSpawn = 21;
+    private const float debugCubeDistance = 22;
+
+    private Vector3 sunflowerCollisionCube = new Vector3(42, 2, 42);
+    private Vector3 groundCollisionCube = new Vector3(10, 2, 10);
 
     private bool sunflowerColliding;
     private bool groundColliding;
 
-    [SerializeField] private bool activated;
-
     [Header("NAVMESH SETTINGS")]
-    [SerializeField] private NavMeshSurface navMeshSurface;
+    private NavMeshSurface navMeshSurface;
 
     [Header("HEALTH SETTINGS")]
     [SerializeField, Range(0, 100)] public float currentHealth;
@@ -41,9 +38,12 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     [SerializeField] private TextMeshProUGUI porcentLife;
 
+    [Header("SUNFLOWER VISUAL GROWTH OPTIONS SETTINGS")]
+    private SunflowerGrower sunflowerGrower;
+
     private void Start()
     {
-        GetNavMeshSurface();
+        GetReferences();
         BugDetection();
         //UpdateLife(); //Actualiza la UI de vida.
     }
@@ -51,9 +51,8 @@ public class Sunflower : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         //var instance = GameManager.instance;
-        //instance.GrowthSelectionEvent(this);
 
-        SpawnNewTerrain();
+        //SpawnNewTerrain();
     }
 
     private void SpawnNewTerrain()
@@ -81,30 +80,6 @@ public class Sunflower : MonoBehaviour, IInteractable
 
         ////Tras instanciar el terreno, se autodestruye el girasol.
         Destroy(this.gameObject);
-    }
-
-    public void GrowSunflower(GrowthSelection growthType)
-    {
-        switch (growthType)
-        {
-            case GrowthSelection.Marvelous:
-                {
-                    Debug.Log("Marvelous way used");
-                    break;
-                }
-
-            case GrowthSelection.Genuine:
-                {
-                    Debug.Log("Genuine way used");
-                    break;
-                }
-
-            case GrowthSelection.Compelling:
-                {
-                    Debug.Log("Compelling way used");
-                    break;
-                }
-        }
     }
 
     private void SpawnFog()
@@ -151,9 +126,10 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     }
 
-    private void GetNavMeshSurface()
+    private void GetReferences()
     {
         navMeshSurface = GameObject.FindGameObjectWithTag("Main Floor").GetComponent<NavMeshSurface>();
+        sunflowerGrower = transform.GetChild(1).GetComponent<SunflowerGrower>();
     }
 
     public void DamageSunFlower(float damage)

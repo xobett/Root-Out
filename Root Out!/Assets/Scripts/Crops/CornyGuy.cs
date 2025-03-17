@@ -9,7 +9,7 @@ public class CornyGuy : CropBase
 
     protected override void CropAttack()
     {
-        base.HeadToShootingPos();
+        //base.HeadToShootingPos();
         ShootAround();
     }
 
