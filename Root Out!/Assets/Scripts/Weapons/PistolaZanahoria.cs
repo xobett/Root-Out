@@ -4,18 +4,28 @@ using Weapons;
 
 public class PistolaZanahoria : WeaponsBase, IInteractable
 {
+    [Header("Pistola Zanahoria")]
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
-    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+    WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
+    protected override void Start()
+    {
+        base.Start();
+        weaponHandler = FindFirstObjectByType<WeaponHandler>();
+    }
+    protected override void Update()
+    {
+        base.Update();
+        UpdateAmmoText(); // Actualiza el texto de munición 
+    }
 
     protected override void Shoot()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
             base.Shoot();
-           // AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
+            // AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
 
-            UpdateAmmoText(); // Actualiza el texto de munición después de disparar
         }
         else
         {
@@ -28,6 +38,7 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
         {
             base.ReloadCorotine();
+
         }
     }
 
@@ -49,7 +60,7 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
     {
         if (bulletText != null)
         {
-            bulletText.text = $"{currentAmmo / maxAmmo}"; // Actualiza el texto con la munición actual y máxima
+            bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
         }
         else
         {

@@ -4,9 +4,20 @@ using Weapons;
 
 public class PistolaBellota : WeaponsBase, IInteractable
 {
+    [Header("Pistola Bellota")]
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
-    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+    WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
+    protected override void Start()
+    {
+        base.Start();
+        weaponHandler = FindFirstObjectByType<WeaponHandler>();
+    }
+    protected override void Update()
+    {
+        base.Update();
+        UpdateAmmoText(); // Actualiza el texto de munición después de disparar
+    }
     public void OnInteract()
     {
         if (weaponHandler != null)
@@ -25,7 +36,6 @@ public class PistolaBellota : WeaponsBase, IInteractable
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
             base.Shoot();
-            UpdateAmmoText(); // Actualiza el texto de munición después de disparar
         }
         else
         {
@@ -45,7 +55,7 @@ public class PistolaBellota : WeaponsBase, IInteractable
     {
         if (bulletText != null)
         {
-            bulletText.text = $"{currentAmmo}/{maxAmmo}"; // Actualiza el texto con la munición actual y máxima
+            bulletText.text = $"{currentAmmo}/{bulletReserve}"; // Actualiza el texto con la munición actual y máxima
         }
         else
         {

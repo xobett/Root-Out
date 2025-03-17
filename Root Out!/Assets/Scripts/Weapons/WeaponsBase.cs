@@ -34,8 +34,9 @@ namespace Weapons
 
         [Header("Munición")]
         [SerializeField] public int currentAmmo; // Munición actual
-        [SerializeField] protected int bulletReserve; // Reserva de balas
         [SerializeField] public int maxAmmo; // Capacidad máxima de munición
+        [SerializeField] public int bulletReserve; // Reserva de balas
+        [SerializeField] public int maxBulletReserve; // necesito esta variable para que el upgrade haga effecto correctamente
 
         [Header("Estadísticas")]
         [SerializeField] public float damage; // Daño 
@@ -62,6 +63,7 @@ namespace Weapons
         protected virtual void Start()
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
+            bulletReserve = maxBulletReserve;
             if (rechargeCanvas != null)
             {
                 rechargeCanvas.SetActive(false);

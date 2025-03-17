@@ -5,9 +5,19 @@ using Weapons;
 public class PistolaManzana : WeaponsBase, IInteractable
 {
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
-    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+    WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
+    protected override void Start()
+    {
+        base.Start();
+        weaponHandler = FindFirstObjectByType<WeaponHandler>();
+    }
 
+    protected override void Update()
+    {
+        base.Update();
+        UpdateAmmoText(); // Actualiza el texto de munición después de disparar
+    }
     protected override void Shoot()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
@@ -15,7 +25,6 @@ public class PistolaManzana : WeaponsBase, IInteractable
             base.Shoot();
             //AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
 
-            UpdateAmmoText(); // Actualiza el texto de munición después de disparar
         }
         else
         {
@@ -49,7 +58,7 @@ public class PistolaManzana : WeaponsBase, IInteractable
     {
         if (bulletText != null)
         {
-            bulletText.text = "Infinity"; // Actualiza el texto con la munición actual y máxima
+            bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
         }
         else
         {
