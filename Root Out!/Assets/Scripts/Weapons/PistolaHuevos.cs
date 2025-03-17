@@ -12,16 +12,25 @@ public class PistolaHuevos : WeaponsBase, IInteractable
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
     }
+
     protected override void Update()
     {
         base.Update();
         UpdateAmmoText(); // Actualiza el texto de munición después de disparar
     }
+
     protected override void Shoot()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
-            base.Shoot();
+            if (weaponType == WeaponType.BurstFire)
+            {
+                StartCoroutine(FireBurst());
+            }
+            else
+            {
+                base.Shoot();
+            }
             // AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
         }
         else

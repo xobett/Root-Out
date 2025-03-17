@@ -174,8 +174,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
   explosionPrefab: {fileID: 6322684346280968154, guid: d8d67ca5dc64e0848a0f5d16f092d3c8, type: 3}
   currentAmmo: 50
-  bulletReserve: 100
   maxAmmo: 50
+  bulletReserve: 100
+  maxBulletReserve: 100
   damage: 1
   range: 3
   fireRate: 1
@@ -191,5 +192,4 @@ MonoBehaviour:
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   bulletText: {fileID: 0}
-  weaponHandler: {fileID: 0}
   bulletsPerShot: 4

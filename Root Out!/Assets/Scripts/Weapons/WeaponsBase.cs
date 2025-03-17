@@ -96,7 +96,7 @@ namespace Weapons
                 // Detecta si se presiona el botón y si es posible disparar en ráfagas
                 if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
                 {
-                    StartCoroutine(FireBurst()); // Llama al método FireBurst para disparar en ráfagas
+                    Shoot();
                 }
             }
             else
@@ -140,7 +140,7 @@ namespace Weapons
         }
 
         // Método para disparar en ráfagas
-        private IEnumerator FireBurst()
+        public IEnumerator FireBurst()
         {
             for (int i = 0; i < bulletsPerBurst; i++)
             {

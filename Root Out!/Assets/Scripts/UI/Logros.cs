@@ -39,7 +39,7 @@ public class Logros : MonoBehaviour
             primeraArmaLogroMostrado = true; // Marcar el logro como mostrado
             animacionPrimeraArma.Play();
             logroCanvas.SetActive(true);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(7f);
             animacionPrimeraArma.Stop();
             logroCanvas.SetActive(false);
         }
@@ -56,7 +56,7 @@ public class Logros : MonoBehaviour
                 AudioManager.instance.PlaySFX("Logros");
                 animacion10Enemigos.Play();
                 canvas10Enemigos.SetActive(true);
-                yield return new WaitForSeconds(4f);
+                yield return new WaitForSeconds(7f);
                 animacion10Enemigos.Stop();
                 canvas10Enemigos.SetActive(false);
                 StopCoroutine(NumberEnemmiesDefeat());
