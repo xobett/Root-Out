@@ -135,7 +135,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     public void DamageSunFlower(float damage)
     {
         currentHealth -= damage;
-        UpdateLife();
+        //UpdateLife();
     }
 
     private int GenerateRandomTerrainType()
@@ -143,8 +143,8 @@ public class Sunflower : MonoBehaviour, IInteractable
         return Random.Range(0, terrainPrefabs.Length);
     }
 
-    private void UpdateLife()
-    {
-        porcentLife.text = $"{currentHealth}%";
-    }
+    //private void UpdateLife()
+    //{
+    //    porcentLife.text = $"{currentHealth}%";
+    //}
 }

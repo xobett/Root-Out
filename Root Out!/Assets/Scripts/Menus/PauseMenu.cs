@@ -57,6 +57,7 @@ public class PauseMenu : MonoBehaviour
 
     void PauseGame()
     {
+        AudioManager.instance.SetAudioVolume(0.1f);
         Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
         cameraController.enabled = false; // Desactiva el controlador de la cámara
         movementController.enabled = false; // Desactiva el controlador de movimiento del jugador
@@ -68,6 +69,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        AudioManager.instance.SetAudioVolume(0.3f);
         Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
         cameraController.enabled = true; // Activa el controlador de la cámara
         movementController.enabled = true; // Activa el controlador de movimiento del jugador

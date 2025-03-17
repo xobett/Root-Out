@@ -45,7 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  musicClips: []
+  musicClips:
+  - name: Pausa
+    clip: {fileID: 8300000, guid: 568bf2be9633b944392ff62a55a0172c, type: 3}
+    volume: 0.44
+    pitch: 0
+    loop: 1
   sfxClips:
   - name: Pistola Guisantes
     clip: {fileID: 8300000, guid: 76cb4efbc90536448bd287fa870dc271, type: 3}
@@ -55,6 +60,11 @@ MonoBehaviour:
   - name: Logros
     clip: {fileID: 8300000, guid: 25acc7d889bfdde4ea8995a6ed1b342f, type: 3}
     volume: 1
+    pitch: 0.1
+    loop: 0
+  - name: Entrada
+    clip: {fileID: 8300000, guid: baf3299ad06f4c14d8f9e77dfede37f4, type: 3}
+    volume: 0.72
     pitch: 0.1
     loop: 0
   randomClips: []
