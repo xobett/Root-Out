@@ -49,7 +49,7 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
     {
         if (bulletText != null)
         {
-            bulletText.text = "Infinity"; // Actualiza el texto con la munición actual y máxima
+            bulletText.text = $"{currentAmmo / maxAmmo}"; // Actualiza el texto con la munición actual y máxima
         }
         else
         {

@@ -33,9 +33,9 @@ namespace Weapons
         [SerializeField] public GameObject explosionPrefab; // Prefab de la explosión
 
         [Header("Munición")]
-        [SerializeField] protected int currentAmmo; // Munición actual
+        [SerializeField] public int currentAmmo; // Munición actual
         [SerializeField] protected int bulletReserve; // Reserva de balas
-        [SerializeField] protected int maxAmmo; // Capacidad máxima de munición
+        [SerializeField] public int maxAmmo; // Capacidad máxima de munición
 
         [Header("Estadísticas")]
         [SerializeField] public float damage; // Daño 

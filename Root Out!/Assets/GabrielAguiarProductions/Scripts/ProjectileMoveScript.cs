@@ -10,8 +10,6 @@ public class ProjectileMoveScript : MonoBehaviour {
 	public float fireRate;
 	public GameObject muzzlePrefab;
 	public GameObject hitPrefab;
-	public AudioClip shotSFX;
-	public AudioClip hitSFX;
 	public List<GameObject> trails;
 
 	private float speedRandomness;
@@ -54,10 +52,6 @@ public class ProjectileMoveScript : MonoBehaviour {
 				Destroy (muzzleVFX, psChild.main.duration);
 			}
 		}
-
-		if (shotSFX != null && GetComponent<AudioSource>()) {
-			GetComponent<AudioSource> ().PlayOneShot (shotSFX);
-		}
 	}
 
 	void FixedUpdate () {	
@@ -69,9 +63,6 @@ public class ProjectileMoveScript : MonoBehaviour {
 		if (co.gameObject.tag != "Bullet" && !collided) {
 			collided = true;
 			
-			if (shotSFX != null && GetComponent<AudioSource>()) {
-				GetComponent<AudioSource> ().PlayOneShot (hitSFX);
-			}
 
 			if (trails.Count > 0) {
 				for (int i = 0; i < trails.Count; i++) {
@@ -94,8 +85,7 @@ public class ProjectileMoveScript : MonoBehaviour {
 			if (hitPrefab != null) {
 				var hitVFX = Instantiate (hitPrefab, pos, rot) as GameObject;
 
-				var ps = hitVFX.GetComponent<ParticleSystem> ();
-				if (ps == null) {
+				if (!hitVFX.TryGetComponent<ParticleSystem>(out var ps)) {
 					var psChild = hitVFX.transform.GetChild (0).GetComponent<ParticleSystem> ();
 					Destroy (hitVFX, psChild.main.duration);
 				} else

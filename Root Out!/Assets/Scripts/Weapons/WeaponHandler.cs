@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> weaponPrefabs = new List<GameObject>(); // Lista para almacenar los prefabs de las armas
+    [SerializeField] public List<GameObject> weapons = new List<GameObject>(); // Lista para almacenar los prefabs de las armas
     [SerializeField] public GameObject currentWeapon; // Arma actual
     [SerializeField] public Transform weaponHolder; // Transform donde se instanciará el arma
 
@@ -32,7 +32,7 @@ public class WeaponHandler : MonoBehaviour
     // Método para recoger un arma nueva
     public void PickUpWeapon(GameObject newWeapon) // Recibe el GameObject del arma
     {
-        weaponPrefabs.Add(newWeapon); // Añadir el arma a la lista
+        weapons.Add(newWeapon); // Añadir el arma a la lista
 
         currentWeapon = newWeapon; // Establecer el arma actual
         Debug.Log("Picked up weapon: " + newWeapon.name);
@@ -53,9 +53,9 @@ public class WeaponHandler : MonoBehaviour
     // Método para cambiar de arma
     private void SwitchWeapon(int index)
     {
-        if (index < weaponPrefabs.Count) // Si el índice es menor que el número de armas recogidas
+        if (index < weapons.Count) // Si el índice es menor que el número de armas recogidas
         {
-            SetCurrentWeapon(weaponPrefabs[index]); // Establecer el arma actual según el índice
+            SetCurrentWeapon(weapons[index]); // Establecer el arma actual según el índice
             Debug.Log("Switched to weapon: " + currentWeapon.name);
         }
         else
@@ -68,7 +68,7 @@ public class WeaponHandler : MonoBehaviour
     private void SetCurrentWeapon(GameObject newWeapon)
     {
         // Desactivar todas las armas antes de activar la nueva
-        foreach (var weapon in weaponPrefabs)
+        foreach (var weapon in weapons)
         {
             if (weapon != null) 
             {

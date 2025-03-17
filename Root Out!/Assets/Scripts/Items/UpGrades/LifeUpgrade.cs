@@ -3,11 +3,13 @@ using UnityEngine;
 public class LifeUpgrade : MonoBehaviour, IInteractable
 {
 
-    [SerializeField] PlayerHealth scriptPlayerHealth;
-    [SerializeField] InteractionHandler scriptInteractionHandler;
-    //[SerializeField] PerksData _lifeUpgrade;
+    PlayerHealth scriptPlayerHealth;
     [SerializeField] private float lifeUpgrade;
 
+    private void Start()
+    {
+        scriptPlayerHealth = FindFirstObjectByType<PlayerHealth>();
+    }
     public void OnInteract()
     {
         scriptPlayerHealth.currentHealth += lifeUpgrade;

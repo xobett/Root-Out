@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Logros : MonoBehaviour
@@ -17,34 +16,32 @@ public class Logros : MonoBehaviour
 
     private void Start()
     {
-        if (!primeraArmaLogroMostrado)
-        {
-            AudioManager.instance.PlaySFX("Logros");
-            StartCoroutine(PrimeraArma());
-        }
-        StartCoroutine(NumberEnemmiesDefeat());
-
         animacionPrimeraArma.Stop();
         logroCanvas.SetActive(false);
         animacion10Enemigos.Stop();
         canvas10Enemigos.SetActive(false);
     }
-    
+
     private void Update()
     {
-       
+        if (!primeraArmaLogroMostrado)
+        {
+            StartCoroutine(PrimeraArma());
+        }
+        StartCoroutine(NumberEnemmiesDefeat());
     }
 
     public IEnumerator PrimeraArma()
     {
-        if (scriptWeaponHandler.weaponPrefabs.Count == 0) // Verificar si hay exactamente una arma en scriptWeaponHandler
+        if (scriptWeaponHandler.weapons.Count == 1) // Verificar si hay exactamente una arma en scriptWeaponHandler
         {
+            AudioManager.instance.PlaySFX("Logros");
+            primeraArmaLogroMostrado = true; // Marcar el logro como mostrado
             animacionPrimeraArma.Play();
             logroCanvas.SetActive(true);
             yield return new WaitForSeconds(4f);
             animacionPrimeraArma.Stop();
             logroCanvas.SetActive(false);
-            primeraArmaLogroMostrado = true; // Marcar el logro como mostrado
         }
     }
 
