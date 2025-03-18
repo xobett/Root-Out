@@ -7,14 +7,20 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
     [SerializeField] public bool playerIsNear;
     [SerializeField] private bool selectionMade;
 
+    [Header("GROWTH SELECTION CANVAS SETTINGS")]
     [SerializeField] private GameObject marvelousGrowthCanvas;
     [SerializeField] private GameObject genuineGrowthCanvas;
     [SerializeField] private GameObject compellingGrowthCanvas;
     [SerializeField] private GameObject sunflowerLifebarCanvas;
 
+    [Header("GROWTH SELECTION ANIMATOR SETTINGS")]
     [SerializeField] private Animator marvelousCanvasAnimator;
     [SerializeField] private Animator genuineCanvasAnimator;
     [SerializeField] private Animator compellingCanvasAnimator;
+
+    [Header("SUNFLOWER ANIMATOR SETTINGS")]
+    [SerializeField] private Animator sunflowerLifebarAnimator;
+    [SerializeField] private Animator sunflowerAnimator;
 
     private Transform mainCamera;
 
@@ -47,7 +53,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
                 marvelousCanvasAnimator.SetTrigger("Outro State");
                 compellingCanvasAnimator.SetTrigger("Outro State");
 
-                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Genuine, sunflowerToUnlock);
+                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Genuine, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
                 selectionMade = true;
             }
             else if (IsPressingTwo())
@@ -56,7 +62,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
                 genuineCanvasAnimator.SetTrigger("Outro State");
                 compellingCanvasAnimator.SetTrigger("Outro State");
 
-                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Marvelous, sunflowerToUnlock);
+                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Marvelous, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
                 selectionMade = true;
             }
             else if (IsPressingThree())
@@ -65,7 +71,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
                 genuineCanvasAnimator.SetTrigger("Outro State");
                 marvelousCanvasAnimator.SetTrigger("Outro State");
 
-                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Compelling, sunflowerToUnlock);
+                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Compelling, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
                 selectionMade = true;
             }
         }

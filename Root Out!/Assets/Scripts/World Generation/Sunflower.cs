@@ -42,6 +42,8 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        currentHealth = maxHealth;
+
         GetReferences();
         BugDetection();
         //UpdateLife(); //Actualiza la UI de vida.
@@ -54,7 +56,7 @@ public class Sunflower : MonoBehaviour, IInteractable
         SpawnNewTerrain();
     }
 
-    private void SpawnNewTerrain()
+    public void SpawnNewTerrain()
     {
         var fogPs = cloneFog.GetComponent<ParticleSystem>();
         var main = fogPs.main;
@@ -77,8 +79,8 @@ public class Sunflower : MonoBehaviour, IInteractable
         //Se actualiza el navmesh surface para que los enemigos naveguen por el.
         navMeshSurface.BuildNavMesh();
 
-        ////Tras instanciar el terreno, se autodestruye el girasol.
-        Destroy(this.gameObject);
+        //Tras instanciar el terreno, se autodestruye el girasol.
+        //Destroy(this.gameObject);
     }
 
     private void SpawnFog()
