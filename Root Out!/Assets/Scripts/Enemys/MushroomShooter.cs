@@ -13,8 +13,6 @@ public class MushroomShooter : WeaponsBase
     [SerializeField] LayerMask layer;
     [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
-
-
     protected override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -23,6 +21,13 @@ public class MushroomShooter : WeaponsBase
     {
         TargetToAtack();
 
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        GetActiveSunflower();
     }
 
     protected override void ReloadCorotine()
@@ -52,6 +57,15 @@ public class MushroomShooter : WeaponsBase
                 agent.SetDestination(sunFlower.position);
                 LookAtTarget(sunFlower);
             }
+        }
+    }
+
+    private void GetActiveSunflower()
+    {
+        if (GameManager.instance.activeSunflower != null)
+        {
+            GameObject activeSunflower = GameManager.instance.activeSunflower.gameObject;
+            sunFlower = activeSunflower.transform; 
         }
     }
     private new void OnDrawGizmos()

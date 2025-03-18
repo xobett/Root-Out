@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 4989501597596570049}
   - component: {fileID: 6238140726805344101}
   - component: {fileID: 4502303870412876093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Handlers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ MonoBehaviour:
   range: 7
   whatIsInteraction:
     serializedVersion: 2
-    m_Bits: 2624
+    m_Bits: 133632
 --- !u!114 &4502303870412876093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,15 +387,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5944689527504147316}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e6c33c430ef9204d8235632edf560c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  weapons: []
   currentWeapon: {fileID: 0}
   weaponHolder: {fileID: 8723793114436876035}
 --- !u!1 &6155343336968990131
@@ -1050,6 +1047,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2765910850179332147, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8620ae26c1f301a4eb1dca345df2c2dc, type: 2}
     - target: {fileID: -2509222838204253549, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -13.533447
@@ -1182,6 +1183,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 131.9622
       objectReference: {fileID: 0}
+    - target: {fileID: -868274674006700470, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 103deaa698c75a840be7207003186344, type: 2}
     - target: {fileID: -784567744306888314, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 10.302787
@@ -1270,6 +1275,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -23.66747
       objectReference: {fileID: 0}
+    - target: {fileID: 388362159221682853, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d7d40435a65937d449b1345a0e4c3fd2, type: 2}
     - target: {fileID: 593709858004518329, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -6.05581

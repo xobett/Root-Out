@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq.Expressions;
 using TMPro;
 using UnityEngine;
@@ -20,7 +21,11 @@ public class GameManager : MonoBehaviour
 
     [Header("SUNFLOWER UNLOCK EVENT SETTINGS")]
     [SerializeField] private Sunflower currentSunflower;
-    [SerializeField] private Animator currentSunflowerAnimator;
+
+    public Sunflower activeSunflower => currentSunflower;
+
+    [SerializeField] private Animator currentSunflowerAnimator; 
+    [SerializeField] private Animator currentSunflowerLifebarAnimator;
 
     [SerializeField] private TextMeshProUGUI timerText;
     private float countdownTimer;
@@ -71,7 +76,9 @@ public class GameManager : MonoBehaviour
 
         activeEvent = true;
         timerText.gameObject.SetActive(true);
-        currentSunflowerAnimator.SetTrigger("Intro State");
+
+        currentSunflowerAnimator.SetTrigger("Begin Charge");
+        currentSunflowerLifebarAnimator.SetTrigger("Intro State");
 
     }
 
@@ -79,16 +86,22 @@ public class GameManager : MonoBehaviour
     {
         activeEvent = false;
         timerText.gameObject.SetActive(false);
-        currentSunflowerAnimator.SetTrigger("Outro State");
+
+        currentSunflowerLifebarAnimator.SetTrigger("Outro State");
+        currentSunflowerAnimator.SetTrigger("Charge Completed");
+
+        currentSunflower.SpawnNewTerrain();
+        Destroy(currentSunflower, 3f);
     }
 
-    public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower)
+    public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerGrowerAinmator)
     {
 
         //Grab active sunflower to unlock, depending on the growth option what should do, FIRST CREATE THE TIMER
 
         currentSunflower = sunflower;
-        currentSunflowerAnimator = sunflower.transform.GetChild(0).GetComponent<Animator>();
+        currentSunflowerAnimator = sunflowerAnimator;
+        currentSunflowerLifebarAnimator = sunflowerGrowerAinmator;
 
         StartEvent();
 

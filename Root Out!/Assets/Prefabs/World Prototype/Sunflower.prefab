@@ -881,11 +881,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3363239822708038414}
+  - {fileID: 4632687371585699572}
   - {fileID: 1927021590212780899}
   - {fileID: 6376574572365040728}
   - {fileID: 8113713278019826263}
-  - {fileID: 4632687371585699572}
+  - {fileID: 3363239822708038414}
   - {fileID: 7820155007492957415}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -938,7 +938,7 @@ MonoBehaviour:
     m_Bits: 1024
   currentHealth: 0
   porcentLife: {fileID: 0}
-  sunflowerLifebar: {fileID: 0}
+  sunflowerLifebar: {fileID: 86253666475666074}
 --- !u!1 &4630091041157368700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1326,8 @@ MonoBehaviour:
   marvelousCanvasAnimator: {fileID: 3122181293392545297}
   genuineCanvasAnimator: {fileID: 8172145166150779408}
   compellingCanvasAnimator: {fileID: 7136011863483721370}
+  sunflowerLifebarAnimator: {fileID: 2087479051078147003}
+  sunflowerAnimator: {fileID: 6331995336362673510}
 --- !u!1 &7486952645388967319
 GameObject:
   m_ObjectHideFlags: 0

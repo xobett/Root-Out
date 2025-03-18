@@ -20,6 +20,17 @@ public class KamikazeMushroom : WeaponsBase
     {
         StartCoroutine(Attack());
         agent.SetDestination(_sunFlower.position);
+        GetActiveSunflower();
+    }
+
+    private void GetActiveSunflower()
+    {
+        if (GameManager.instance.activeSunflower != null)
+        {
+            GameObject activeSunflower = GameManager.instance.activeSunflower.gameObject;
+            sunFlowerScript = activeSunflower.GetComponent<Sunflower>();
+            _sunFlower = activeSunflower.transform; 
+        }
     }
     IEnumerator Attack()
     {
