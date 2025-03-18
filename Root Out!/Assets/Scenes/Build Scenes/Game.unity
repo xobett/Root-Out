@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 170816306}
   - component: {fileID: 170816305}
   m_Layer: 5
-  m_Name: Next Weapon Icon
+  m_Name: Weapon Icon 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2234,7 +2234,7 @@ GameObject:
   - component: {fileID: 1456209667}
   - component: {fileID: 1456209666}
   m_Layer: 5
-  m_Name: Previous Weapon Icon
+  m_Name: Weapon Icon 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2973,7 +2973,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2036437026}
-  - component: {fileID: 2036437027}
   - component: {fileID: 2036437028}
   m_Layer: 5
   m_Name: Weapon Selection HUD
@@ -3005,22 +3004,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1059, y: -306}
   m_SizeDelta: {x: 706, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2036437027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036437025}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93d3977f3eb38a40987fcdb4f0ebd62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponIcons: []
-  weaponNames: []
-  weaponDataArray: []
-  weaponInfoDisplay: {fileID: 0}
 --- !u!114 &2036437028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3033,8 +3016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181f7e15b32a3e34296c2f4097fb8975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponImagePrefab: {fileID: 0}
-  canvasTransform: {fileID: 0}
+  weaponImagePrefab: {fileID: 3639505087975811388, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+  canvasCurrentWeapon: {fileID: 2105915360}
 --- !u!1 &2041294389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,7 +3278,7 @@ GameObject:
   - component: {fileID: 2105915362}
   - component: {fileID: 2105915361}
   m_Layer: 5
-  m_Name: 'Weapon Icon '
+  m_Name: Weapon Icon  1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3327,7 +3310,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105915359}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3576,6 +3559,10 @@ PrefabInstance:
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
+    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: weaponInfoDisplay
+      value: 
+      objectReference: {fileID: 2036437028}
     - target: {fileID: 5014879619776171729, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.379
@@ -4249,11 +4236,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3698
+      value: -97
       objectReference: {fileID: 0}
     - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 744
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

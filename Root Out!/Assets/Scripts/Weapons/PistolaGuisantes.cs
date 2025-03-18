@@ -6,13 +6,14 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
 {
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
-    [SerializeField] private WeaponInfoDisplay weaponInfoDisplay; // Referencia al script de visualización de información del arma
+    WeaponInfoDisplay weaponInfoDisplay; // Referencia al script de visualización de información del arma
     WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
     protected override void Start()
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
+        weaponInfoDisplay = FindFirstObjectByType<WeaponInfoDisplay>();
     }
 
     protected override void Update()
