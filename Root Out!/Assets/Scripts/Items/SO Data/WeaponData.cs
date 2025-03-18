@@ -5,23 +5,23 @@ using Weapons;
 public class WeaponData : ScriptableObject
 {
     [Header("GENERAL INFORMATION SETTINGS")]
-    [SerializeField] private string weaponName;
-    [SerializeField] private string weaponDescription;
-    [SerializeField] private WeaponsBase.WeaponType weaponType;
+    [SerializeField] public string weaponName;
+    [SerializeField] public string weaponDescription;
+    [SerializeField] public WeaponsBase.WeaponType weaponType;
 
     [Header("STATISTICS SETTINGS")]
-    [SerializeField] private int damage;
-    [SerializeField] private float range;
-    [SerializeField] private float fireRate;
+    [SerializeField] public int damage;
+    [SerializeField] public float range;
+    [SerializeField] public float fireRate;
 
     [Header("AMMO SETTINGS")]
-    [SerializeField] private float reloadTime;
-    [SerializeField] private int maxAmmo;
+    [SerializeField] public float reloadTime;
+    [SerializeField] public int maxAmmo;
 
     [Header("VISUAL ICON")]
-    [SerializeField] private Sprite weaponIcon;
+    [SerializeField] public Sprite weaponIcon;
 
     [Header("PREFAB")]
-    [SerializeField] private GameObject weaponPrefab;
+    [SerializeField] public GameObject weaponPrefab;
 
 }
