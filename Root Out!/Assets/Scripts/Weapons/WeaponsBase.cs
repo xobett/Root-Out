@@ -342,7 +342,7 @@ namespace Weapons
         public IEnumerator ExplosionCooldown()
         {
             canInstantiateExplosion = false;
-            yield return new WaitForSeconds(0.5f); 
+            yield return new WaitForSeconds(1f); 
             canInstantiateExplosion = true;
             Debug.Log("Exploto");
         }
