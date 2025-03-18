@@ -6,12 +6,15 @@ public class PistolaBellota : WeaponsBase, IInteractable
 {
     [Header("Pistola Bellota")]
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
+    [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
+    WeaponInfoDisplay weaponInfoDisplay; // Referencia al script de visualización de información del arma
     WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
     protected override void Start()
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
+        weaponInfoDisplay = FindFirstObjectByType<WeaponInfoDisplay>();
     }
     protected override void Update()
     {
@@ -25,6 +28,16 @@ public class PistolaBellota : WeaponsBase, IInteractable
             weaponHandler.PickUpWeapon(gameObject); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
+
+            // Mostrar la imagen del arma en el canvas
+            if (weaponInfoDisplay != null && weaponData != null)
+            {
+                weaponInfoDisplay.DisplayWeaponImage(weaponData.weaponIcon);
+            }
+            else
+            {
+                Debug.LogWarning("WeaponInfoDisplay or WeaponData is not assigned.");
+            }
         }
         else
         {

@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 33624e52aadcaa141a5867e6841357ed, type: 3}
       propertyPath: m_Name
-      value: Pistola manzana v2
+      value: Pistola manzana
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 33624e52aadcaa141a5867e6841357ed, type: 3}
       propertyPath: m_Layer
@@ -207,6 +207,7 @@ MonoBehaviour:
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   bulletText: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: c18b4b97f856bff46a76d879629c972f, type: 2}
 --- !u!65 &3646421563276720771
 BoxCollider:
   m_ObjectHideFlags: 0
