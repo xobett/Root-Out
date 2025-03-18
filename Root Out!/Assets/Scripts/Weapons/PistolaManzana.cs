@@ -30,10 +30,6 @@ public class PistolaManzana : WeaponsBase, IInteractable
             //AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
 
         }
-        else
-        {
-            Debug.LogWarning("Weapon is not in the WeaponHandler or is not the current weapon.");
-        }
     }
 
     protected override void ReloadCorotine()

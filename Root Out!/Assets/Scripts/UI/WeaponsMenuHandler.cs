@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponsMenu : MonoBehaviour
+public class WeaponsMenuHandler : MonoBehaviour
 {
     public Image[] weaponIcons; // Los iconos en la rueda
     public string[] weaponNames; // Los nombres de las armas

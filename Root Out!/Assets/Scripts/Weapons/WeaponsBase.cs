@@ -342,8 +342,9 @@ namespace Weapons
         public IEnumerator ExplosionCooldown()
         {
             canInstantiateExplosion = false;
-            yield return new WaitForSeconds(3f); // Espera 10 segundos
+            yield return new WaitForSeconds(0.5f); 
             canInstantiateExplosion = true;
+            Debug.Log("Exploto");
         }
 
         // Método para activar la mejora de explosión

@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour, IBullet
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity); // Instanciar el prefab
         }
-        Destroy(gameObject, 0.2f); // Destruir la bala
+        Destroy(gameObject, 1f); // Destruir la bala
 
 
     }
