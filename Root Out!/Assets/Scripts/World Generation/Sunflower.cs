@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Sunflower : MonoBehaviour, IInteractable
@@ -13,7 +14,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     [SerializeField] private GameObject worldFog;
 
     private GameObject cloneFog;
-    
+
     private const float fogDistanceSpawn = 21;
 
     [Header("DETECTION SETTINGS")]
@@ -37,6 +38,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     private float maxHealth = 100f;
 
     [SerializeField] private TextMeshProUGUI porcentLife;
+    [SerializeField] private Image sunflowerLifebar;
 
     [Header("SUNFLOWER VISUAL GROWTH OPTIONS SETTINGS")]
     private SunflowerGrower sunflowerGrower;
@@ -123,7 +125,6 @@ public class Sunflower : MonoBehaviour, IInteractable
         //Dibuja el cuadro de deteccion de terreno en area de generacion de terreno.
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(transform.position + transform.forward * debugCubeDistance, groundCollisionCube);
-
     }
 
     private void GetReferences()
@@ -135,6 +136,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     public void DamageSunFlower(float damage)
     {
         currentHealth -= damage;
+        sunflowerLifebar.fillAmount = currentHealth / maxHealth;
         //UpdateLife();
     }
 

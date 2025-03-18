@@ -1,43 +1,35 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GrowthSelection
 {
+    //Enum creado para clasificar tipo de crecimiento de girasol.
     Compelling, Genuine, Marvelous
 }
 
 public class GameManager : MonoBehaviour
 {
-    //Enum creado para clasificar tipo de crecimiento de girasol.
-
     //Gamem Manager estatico para acceder a el desde cualquier script.
     public static GameManager instance;
-
-    [Header("UI PANEL SETTINGS")]
-    //Panel de UI de Seleccion de Crecimiento.
-    [SerializeField] private GameObject uiGrowthSelectionPanel;
-    //Panel de UI de fondo negro.
-    [SerializeField] private GameObject uiDarkPanel;
 
     //Inputs referenciados para desactivar en un evento activo u activar al final de uno.
     private PlayerMovement playerMovement;
     private LeafJump leafJump;
     private CameraFollow cameraFollow;
 
-    //Animators usados para activar y desactivar condiciionales.
-    private Animator growthSelectionAnimator;
-    private Animator darkPanelAnimator;
+    [Header("SUNFLOWER UNLOCK EVENT SETTINGS")]
+    [SerializeField] private Sunflower sunflowerToGrow;
 
-    //Enum usado para decidir metodo de generacion de mundo.
-    private GrowthSelection growthSelection;
+    [SerializeField] private TextMeshProUGUI countdownTimerText;
+    private float countdownTime = 60;
 
     //Bool usado para cerrar un evento activo.
     private bool activeEvent;
 
     //Sunflower referenciado actualmente para crecer
-    [SerializeField] private Sunflower sunflowerToGrow;
     
     void Start()
     {
@@ -51,7 +43,45 @@ public class GameManager : MonoBehaviour
         }
 
         GetInputReferences();
-        GetAnimatorReferences();
+    }
+
+    private void Update()
+    {
+        countdownTime -= Time.deltaTime;
+
+        countdownTimerText.text = string.Format("{0:00}", countdownTime);
+    }
+
+    public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower)
+    {
+
+        //Grab active sunflower to unlock, depending on the growth option what should do, FIRST CREATE THE TIMER
+
+        sunflowerToGrow = sunflower;
+
+        switch (growthType)
+        {
+            case GrowthSelection.Marvelous:
+                {
+                    Debug.Log("Marvelous way used");
+
+                    break;
+                }
+
+            case GrowthSelection.Genuine:
+                {
+                    Debug.Log("Genuine way used");
+
+                    break;
+                }
+
+            case GrowthSelection.Compelling:
+                {
+                    Debug.Log("Compelling way used");
+
+                    break;
+                }
+        }
     }
 
     #region InputMethods
@@ -80,11 +110,6 @@ public class GameManager : MonoBehaviour
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         leafJump = GameObject.FindGameObjectWithTag("Player").GetComponent<LeafJump>();
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
-    }
-    private void GetAnimatorReferences()
-    {
-        growthSelectionAnimator = uiGrowthSelectionPanel.GetComponent<Animator>();
-        darkPanelAnimator = uiDarkPanel.GetComponent<Animator>();
     }
     #endregion
 }

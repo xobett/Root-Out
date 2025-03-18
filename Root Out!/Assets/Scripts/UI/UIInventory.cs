@@ -35,7 +35,6 @@ public class UIInventory : MonoBehaviour
     {
         GetPlayerInventory();
         GetInputReferences();
-        DisplayNotEnoughCoins();
     }
 
     void Update()
