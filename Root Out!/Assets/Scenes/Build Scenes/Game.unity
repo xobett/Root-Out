@@ -3012,7 +3012,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036437025}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a93d3977f3eb38a40987fcdb4f0ebd62, type: 3}
   m_Name: 
@@ -3020,7 +3020,7 @@ MonoBehaviour:
   weaponIcons: []
   weaponNames: []
   weaponDataArray: []
-  weaponInfoDisplay: {fileID: 0}
+  weaponImageDisplay: {fileID: 0}
 --- !u!114 &2036437028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3033,10 +3033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181f7e15b32a3e34296c2f4097fb8975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponNameText: {fileID: 0}
-  weaponDescriptionText: {fileID: 0}
-  weaponStatsText: {fileID: 0}
-  weaponIconImage: {fileID: 0}
+  weaponImagePrefab: {fileID: 0}
+  canvasTransform: {fileID: 0}
 --- !u!1 &2041294389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3578,6 +3576,14 @@ PrefabInstance:
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
+    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: b1946ab0424699049aa3bc4854c0a255, type: 2}
+    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: weaponInfoDisplay
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5014879619776171729, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.379
@@ -4177,6 +4183,103 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &7603068456124204161
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3639505087975811388, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_Name
+      value: WeaponImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3698
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 744
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774811696886791157, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05f024e32bb35574bb2c3744c916e221, type: 3}
 --- !u!222 &7772464892461049872
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4525,3 +4628,4 @@ SceneRoots:
   - {fileID: 826741021}
   - {fileID: 680381932}
   - {fileID: 812003303}
+  - {fileID: 7603068456124204161}

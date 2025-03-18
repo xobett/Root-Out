@@ -7,11 +7,17 @@ public class WeaponsMenu : MonoBehaviour
     public Image[] weaponIcons; // Los iconos en la rueda
     public string[] weaponNames; // Los nombres de las armas
     public WeaponData[] weaponDataArray; // Array de Scriptable Objects de armas
-    public WeaponInfoDisplay weaponInfoDisplay; // Referencia al script de visualización de información del arma
+    public WeaponInfoDisplay weaponInfoDisplay; // Referencia al script de visualización de la imagen del arma
     private int selectedWeaponIndex = 0;
 
     void Update()
     {
+        if (weaponIcons.Length == 0)
+        {
+            Debug.LogWarning("No hay iconos de armas asignados.");
+            return;
+        }
+
         // Rotar entre las secciones (usa el eje vertical del mouse o el joystick)
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
@@ -37,8 +43,15 @@ public class WeaponsMenu : MonoBehaviour
 
     void SelectWeapon(int index)
     {
-        Debug.Log("Seleccionaste: " + weaponNames[index]);
-        weaponInfoDisplay.DisplayWeaponImage(weaponDataArray[index].weaponIcon);
-        // Aquí puedes cambiar el arma activa en tu juego
+        if (index >= 0 && index < weaponNames.Length && index < weaponDataArray.Length)
+        {
+            Debug.Log("Seleccionaste: " + weaponNames[index]);
+            weaponInfoDisplay.DisplayWeaponImage(weaponDataArray[index].weaponIcon);
+            // cambiar el arma activa en tu juego
+        }
+        else
+        {
+            Debug.LogWarning("Índice fuera de los límites de los arrays.");
+        }
     }
 }
