@@ -327,8 +327,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 170378819388794420, guid: 9cb272a159628b24296395a1752c0d93, type: 3}
   explosionPrefab: {fileID: 0}
   currentAmmo: 2147483647
-  bulletReserve: 2147483647
   maxAmmo: 2147483647
+  bulletReserve: 2147483647
+  maxBulletReserve: 0
   damage: 20
   range: 1
   fireRate: 1
@@ -410,14 +411,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7736116462613863872, guid: f2fc73794ca89e84fa1f6ef6c3f0fb00, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7736116462613863872, guid: f2fc73794ca89e84fa1f6ef6c3f0fb00, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b6ab58cfb69581c4c81b76d9ee98c6c3, type: 2}
+    - target: {fileID: -4602972708164447557, guid: f2fc73794ca89e84fa1f6ef6c3f0fb00, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4602972708164447557, guid: f2fc73794ca89e84fa1f6ef6c3f0fb00, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f6bcfafc707216744af2b444ea742363, type: 2}
+      objectReference: {fileID: 2100000, guid: b6ab58cfb69581c4c81b76d9ee98c6c3, type: 2}
     - target: {fileID: -2950854558808954072, guid: f2fc73794ca89e84fa1f6ef6c3f0fb00, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2c5051b6aec126046a088a6255fa3066, type: 2}
+      objectReference: {fileID: 2100000, guid: b6ab58cfb69581c4c81b76d9ee98c6c3, type: 2}
     - target: {fileID: 919132149155446097, guid: f2fc73794ca89e84fa1f6ef6c3f0fb00, type: 3}
       propertyPath: m_Name
       value: Kamikaze Mushroom
@@ -425,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 3510285433321976879, guid: f2fc73794ca89e84fa1f6ef6c3f0fb00, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 085cf58d8f0b0a0418bcb64d0a6e9b28, type: 2}
+      objectReference: {fileID: 2100000, guid: b6ab58cfb69581c4c81b76d9ee98c6c3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

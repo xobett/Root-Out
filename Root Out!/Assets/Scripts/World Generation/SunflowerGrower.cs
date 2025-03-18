@@ -10,6 +10,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
     [SerializeField] private GameObject marvelousGrowthCanvas;
     [SerializeField] private GameObject genuineGrowthCanvas;
     [SerializeField] private GameObject compellingGrowthCanvas;
+    [SerializeField] private GameObject sunflowerLifebarCanvas;
 
     [SerializeField] private Animator marvelousCanvasAnimator;
     [SerializeField] private Animator genuineCanvasAnimator;
@@ -105,6 +106,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
         marvelousGrowthCanvas.transform.rotation = lookRotation;
         genuineGrowthCanvas.transform.rotation = lookRotation;
         compellingGrowthCanvas.transform.rotation = lookRotation;
+        sunflowerLifebarCanvas.transform.rotation = lookRotation;
 
     }
     private void GetReferences()

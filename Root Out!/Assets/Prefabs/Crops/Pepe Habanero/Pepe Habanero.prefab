@@ -137,6 +137,7 @@ MonoBehaviour:
   backDistance: 0
   sideDistance: 0
   damage: 100
+  shootingDistance: 0
   sphereDetectionRadius: 0.3
   whatIsEnemy:
     serializedVersion: 2
@@ -150,6 +151,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2501297601143742296}
     m_Modifications:
+    - target: {fileID: -8976276354384712869, guid: e97fef7e3bdf2924991a0b05ce966474, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 57342b2f46b607844b12122002dc5a7f, type: 2}
     - target: {fileID: -8679921383154817045, guid: e97fef7e3bdf2924991a0b05ce966474, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -190,10 +195,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6743277857258158673, guid: e97fef7e3bdf2924991a0b05ce966474, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 57342b2f46b607844b12122002dc5a7f, type: 2}
     - target: {fileID: 919132149155446097, guid: e97fef7e3bdf2924991a0b05ce966474, type: 3}
       propertyPath: m_Name
       value: Habanero animaciones (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6401921805877103382, guid: e97fef7e3bdf2924991a0b05ce966474, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 57342b2f46b607844b12122002dc5a7f, type: 2}
+    - target: {fileID: 7125939897310770425, guid: e97fef7e3bdf2924991a0b05ce966474, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 57342b2f46b607844b12122002dc5a7f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

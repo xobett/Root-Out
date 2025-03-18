@@ -40,9 +40,6 @@ public class Sunflower : MonoBehaviour, IInteractable
     [SerializeField] private TextMeshProUGUI porcentLife;
     [SerializeField] private Image sunflowerLifebar;
 
-    [Header("SUNFLOWER VISUAL GROWTH OPTIONS SETTINGS")]
-    private SunflowerGrower sunflowerGrower;
-
     private void Start()
     {
         GetReferences();
@@ -54,7 +51,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     {
         //var instance = GameManager.instance;
 
-        //SpawnNewTerrain();
+        SpawnNewTerrain();
     }
 
     private void SpawnNewTerrain()
@@ -130,7 +127,6 @@ public class Sunflower : MonoBehaviour, IInteractable
     private void GetReferences()
     {
         navMeshSurface = GameObject.FindGameObjectWithTag("Main Floor").GetComponent<NavMeshSurface>();
-        sunflowerGrower = transform.GetChild(1).GetComponent<SunflowerGrower>();
     }
 
     public void DamageSunFlower(float damage)

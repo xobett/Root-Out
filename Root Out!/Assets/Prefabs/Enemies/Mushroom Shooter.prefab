@@ -382,8 +382,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 170378819388794420, guid: 9cb272a159628b24296395a1752c0d93, type: 3}
   explosionPrefab: {fileID: 0}
   currentAmmo: 2147483647
-  bulletReserve: 2147483647
   maxAmmo: 2147483647
+  bulletReserve: 2147483647
+  maxBulletReserve: 0
   damage: 1
   range: 15
   fireRate: 2
@@ -394,6 +395,8 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  rechargeAnimation: {fileID: 0}
+  rechargeCanvas: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   player: {fileID: 0}
@@ -402,6 +405,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 256
+  weaponHandler: {fileID: 0}
 --- !u!114 &4687620691336130384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,11 +472,11 @@ PrefabInstance:
     - target: {fileID: -5189695054736984236, guid: a00859e9f0e13c543959b18939b88319, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 72f1d08e5a4946545b8925e639e82214, type: 2}
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
     - target: {fileID: -1380456747019870589, guid: a00859e9f0e13c543959b18939b88319, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2c5051b6aec126046a088a6255fa3066, type: 2}
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
     - target: {fileID: 919132149155446097, guid: a00859e9f0e13c543959b18939b88319, type: 3}
       propertyPath: m_Name
       value: Hongo disparador placeholder
@@ -480,11 +484,11 @@ PrefabInstance:
     - target: {fileID: 3802093091633155882, guid: a00859e9f0e13c543959b18939b88319, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 4bdc161bcbc16504ca7b81e4e1fabe9e, type: 2}
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
     - target: {fileID: 6603009444753306600, guid: a00859e9f0e13c543959b18939b88319, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9a2abf081e318f54bb97478400fe863f, type: 2}
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

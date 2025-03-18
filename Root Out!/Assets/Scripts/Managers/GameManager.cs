@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Runtime.CompilerServices;
+using System.Linq.Expressions;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GrowthSelection
@@ -21,16 +19,18 @@ public class GameManager : MonoBehaviour
     private CameraFollow cameraFollow;
 
     [Header("SUNFLOWER UNLOCK EVENT SETTINGS")]
-    [SerializeField] private Sunflower sunflowerToGrow;
+    [SerializeField] private Sunflower currentSunflower;
+    [SerializeField] private Animator currentSunflowerAnimator;
 
-    [SerializeField] private TextMeshProUGUI countdownTimerText;
-    private float countdownTime = 60;
+    [SerializeField] private TextMeshProUGUI timerText;
+    private float countdownTimer;
+    private float timeToCountdown = 10f;
 
     //Bool usado para cerrar un evento activo.
     private bool activeEvent;
 
     //Sunflower referenciado actualmente para crecer
-    
+
     void Start()
     {
         if (instance == null)
@@ -47,9 +47,39 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        countdownTime -= Time.deltaTime;
+        EventTimer();
+    }
 
-        countdownTimerText.text = string.Format("{0:00}", countdownTime);
+    private void EventTimer()
+    {
+        if (activeEvent)
+        {
+            countdownTimer -= Time.deltaTime;
+
+            timerText.text = string.Format("{0:00}", countdownTimer);
+
+            if (countdownTimer <= 0)
+            {
+                EndEvent();
+            } 
+        }
+    }
+
+    private void StartEvent()
+    {
+        countdownTimer = timeToCountdown;
+
+        activeEvent = true;
+        timerText.gameObject.SetActive(true);
+        currentSunflowerAnimator.SetTrigger("Intro State");
+
+    }
+
+    private void EndEvent()
+    {
+        activeEvent = false;
+        timerText.gameObject.SetActive(false);
+        currentSunflowerAnimator.SetTrigger("Outro State");
     }
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower)
@@ -57,7 +87,11 @@ public class GameManager : MonoBehaviour
 
         //Grab active sunflower to unlock, depending on the growth option what should do, FIRST CREATE THE TIMER
 
-        sunflowerToGrow = sunflower;
+        currentSunflower = sunflower;
+        currentSunflowerAnimator = sunflower.transform.GetChild(0).GetComponent<Animator>();
+
+        StartEvent();
+
 
         switch (growthType)
         {

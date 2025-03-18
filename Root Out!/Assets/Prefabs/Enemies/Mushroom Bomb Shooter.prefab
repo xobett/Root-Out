@@ -252,8 +252,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 170378819388794420, guid: 397fa4485e1bf7d4bb5de13b088cef74, type: 3}
   explosionPrefab: {fileID: 0}
   currentAmmo: 2147483647
-  bulletReserve: 2147483647
   maxAmmo: 2147483647
+  bulletReserve: 2147483647
+  maxBulletReserve: 0
   damage: 2.5
   range: 5
   fireRate: 1
@@ -264,11 +265,15 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  rechargeAnimation: {fileID: 0}
+  rechargeCanvas: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   player: {fileID: 0}
   HUDTargetPoint: {fileID: 3026164163744036126, guid: 6a9feb9b591cb5c44b63fa84772771a9, type: 3}
   targetPointDistance: 0.5
+  heightSecondBullet: 12
+  weaponHandler: {fileID: 0}
 --- !u!114 &5078747472099110838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,11 +415,11 @@ PrefabInstance:
     - target: {fileID: -7787034384672098243, guid: e394b20975b7a194bb9db03e9352cab8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f6bcfafc707216744af2b444ea742363, type: 2}
+      objectReference: {fileID: 2100000, guid: e1eb5c41b9038e34c89fc6911ad5f1b9, type: 2}
     - target: {fileID: -817242627527273379, guid: e394b20975b7a194bb9db03e9352cab8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 4bdc161bcbc16504ca7b81e4e1fabe9e, type: 2}
+      objectReference: {fileID: 2100000, guid: e1eb5c41b9038e34c89fc6911ad5f1b9, type: 2}
     - target: {fileID: 919132149155446097, guid: e394b20975b7a194bb9db03e9352cab8, type: 3}
       propertyPath: m_Name
       value: Hongo mortero placeholder
@@ -422,19 +427,19 @@ PrefabInstance:
     - target: {fileID: 2912633149890950189, guid: e394b20975b7a194bb9db03e9352cab8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 4bdc161bcbc16504ca7b81e4e1fabe9e, type: 2}
+      objectReference: {fileID: 2100000, guid: e1eb5c41b9038e34c89fc6911ad5f1b9, type: 2}
     - target: {fileID: 6448496723457255086, guid: e394b20975b7a194bb9db03e9352cab8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: bb0453d5eb959794b8ffcf0610b13ff3, type: 2}
+      objectReference: {fileID: 2100000, guid: e1eb5c41b9038e34c89fc6911ad5f1b9, type: 2}
     - target: {fileID: 6741520287002005120, guid: e394b20975b7a194bb9db03e9352cab8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f6bcfafc707216744af2b444ea742363, type: 2}
+      objectReference: {fileID: 2100000, guid: e1eb5c41b9038e34c89fc6911ad5f1b9, type: 2}
     - target: {fileID: 8382393021950568048, guid: e394b20975b7a194bb9db03e9352cab8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9a2abf081e318f54bb97478400fe863f, type: 2}
+      objectReference: {fileID: 2100000, guid: e1eb5c41b9038e34c89fc6911ad5f1b9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
