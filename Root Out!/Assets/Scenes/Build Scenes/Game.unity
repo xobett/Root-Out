@@ -3020,7 +3020,7 @@ MonoBehaviour:
   weaponIcons: []
   weaponNames: []
   weaponDataArray: []
-  weaponImageDisplay: {fileID: 0}
+  weaponInfoDisplay: {fileID: 0}
 --- !u!114 &2036437028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3576,14 +3576,6 @@ PrefabInstance:
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
-    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: weaponData
-      value: 
-      objectReference: {fileID: 11400000, guid: b1946ab0424699049aa3bc4854c0a255, type: 2}
-    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: weaponInfoDisplay
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5014879619776171729, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.379
@@ -4332,17 +4324,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7045698031813691097}
     - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: bulletReserve
-      value: 350
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: rechargeCanvas
       value: 
       objectReference: {fileID: 769637872}
-    - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: maxBulletReserve
-      value: 350
-      objectReference: {fileID: 0}
     - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: rechargeAnimation
       value: 
@@ -4549,10 +4533,6 @@ PrefabInstance:
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
-    - target: {fileID: 7240532743973914911, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: weaponType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7240532743973914911, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: rechargeCanvas
       value: 
