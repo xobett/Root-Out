@@ -101,7 +101,7 @@ MonoBehaviour:
   active: 1
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 75
+    m_Value: 87
   redOutGreenIn:
     m_OverrideState: 1
     m_Value: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
     m_Value: 0
   greenOutGreenIn:
     m_OverrideState: 1
-    m_Value: 75
+    m_Value: 83
   greenOutBlueIn:
     m_OverrideState: 1
     m_Value: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
     m_Value: 0
   blueOutBlueIn:
     m_OverrideState: 1
-    m_Value: 82
+    m_Value: 86
 --- !u!114 &-8413992787104743024
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f086a068d4c5889438831b3ae9afc11c, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 2
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b709909182ba0943abef2c49ed59205, type: 3}
   m_Name: PaniniProjection
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   distance:
     m_OverrideState: 1
     m_Value: 0
@@ -302,16 +302,16 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 1
-    m_Value: 0.39388838
+    m_Value: 0.39388832
   upperHemisphereLuxColor:
     m_OverrideState: 1
-    m_Value: {x: 0.007365645, y: 0.12655412, z: 0.5}
+    m_Value: {x: 0.007365646, y: 0.12655409, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 1
     m_Value: 20000
   updateMode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   updatePeriod:
     m_OverrideState: 1
     m_Value: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
     m_Value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.24716817}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.007830853}
   gain:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0}
@@ -605,7 +605,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 31.5
+    m_Value: 14.9
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -614,7 +614,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 26
+    m_Value: 14.5
 --- !u!114 &-5567953167034598772
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81bcacc415a1f743bfdf703afc52027, type: 3}
   m_Name: GradientSky
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   rotation:
     m_OverrideState: 1
     m_Value: 0
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953beb541740ddc499d005ee80c9ff29, type: 3}
   m_Name: Fog
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 1
     m_Value: 1
@@ -776,7 +776,7 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   meteringMode:
     m_OverrideState: 1
     m_Value: 2
@@ -785,16 +785,16 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 14.487805
   compensation:
     m_OverrideState: 1
     m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: -1
+    m_Value: 15
   limitMax:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 14.414635
   curveMap:
     m_OverrideState: 1
     m_Value:
@@ -804,16 +804,16 @@ MonoBehaviour:
         time: -10
         value: -10
         inSlope: 0
-        outSlope: 1
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 20
-        value: 20
+        time: 12.375
+        value: 14.1981125
         inSlope: 1
-        outSlope: 0
+        outSlope: 1
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
@@ -853,10 +853,10 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: -10
-        value: -8
+        time: -8.125
+        value: -1.7028198
         inSlope: 0
-        outSlope: 1
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
@@ -865,7 +865,7 @@ MonoBehaviour:
         time: 20
         value: 22
         inSlope: 1
-        outSlope: 0
+        outSlope: 1
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
@@ -875,7 +875,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   adaptationMode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   adaptationSpeedDarkToLight:
     m_OverrideState: 1
     m_Value: 3
@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b145d2b9ee1ac4f846968484e7485a, type: 3}
   m_Name: ContactShadows
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 1
     m_Value: 1
@@ -1370,45 +1370,45 @@ MonoBehaviour:
   - {fileID: -2632079889962423345}
   - {fileID: -7666147463223848280}
   - {fileID: -4189700348376237202}
-  - {fileID: -2051672182696995271}
   - {fileID: 4303601604641567966}
-  - {fileID: -8413992787104743024}
   - {fileID: -7777682922012920251}
   - {fileID: 335509691167907638}
   - {fileID: -5333963329357101680}
-  - {fileID: 5688909847514535607}
   - {fileID: -5567953167034598772}
   - {fileID: -5791046626754371021}
+  - {fileID: -7990366274217186244}
+  - {fileID: 5800101471817604106}
+  - {fileID: -4613753328770710347}
+  - {fileID: -8284338284424935212}
+  - {fileID: -8844806629669092977}
+  - {fileID: -7544757175930236882}
+  - {fileID: 7178178340964031334}
+  - {fileID: -1986552335682404454}
+  - {fileID: 5436150676341907274}
+  - {fileID: 3386309740695181840}
+  - {fileID: 6297231230018415336}
+  - {fileID: 7732296930672376710}
+  - {fileID: -1863006514865310813}
+  - {fileID: 7842476351148080219}
+  - {fileID: 8464679017223326196}
+  - {fileID: -2051672182696995271}
+  - {fileID: -8413992787104743024}
+  - {fileID: 5688909847514535607}
   - {fileID: -6375161260531396467}
   - {fileID: 3772739388020047443}
   - {fileID: 4111130600120327675}
   - {fileID: 7491458468867161613}
   - {fileID: -3061137159169834797}
-  - {fileID: -7990366274217186244}
   - {fileID: 7226536770156737680}
-  - {fileID: 5800101471817604106}
-  - {fileID: -4613753328770710347}
   - {fileID: -3091565554566810419}
   - {fileID: 7054123606441529229}
-  - {fileID: -8284338284424935212}
   - {fileID: -8853552144025447482}
   - {fileID: -3293910535167887728}
   - {fileID: 6676406874691672330}
-  - {fileID: -8844806629669092977}
   - {fileID: 6290598864983575585}
-  - {fileID: -7544757175930236882}
-  - {fileID: 7178178340964031334}
-  - {fileID: -1986552335682404454}
   - {fileID: 1139141390048988785}
-  - {fileID: 5436150676341907274}
   - {fileID: -3656450339732733508}
-  - {fileID: 3386309740695181840}
-  - {fileID: 6297231230018415336}
   - {fileID: -9043490112517853380}
-  - {fileID: 7732296930672376710}
-  - {fileID: -1863006514865310813}
-  - {fileID: 7842476351148080219}
-  - {fileID: 8464679017223326196}
 --- !u!114 &335509691167907638
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1639,7 +1639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b24b200358312b4fa1004e2431c2f1f, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 0
     m_Value: {x: 0.88738596, y: 1, z: 0.9179284, w: 0}
@@ -1812,7 +1812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf384b154398e341b6b29969c078198, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 1
     m_Value: 1
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9e4ed5a6f56fb4ebd693e39684f36f, type: 3}
   m_Name: VolumetricClouds
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enable:
     m_OverrideState: 1
     m_Value: 1
