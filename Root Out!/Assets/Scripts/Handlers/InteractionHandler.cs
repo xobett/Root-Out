@@ -22,7 +22,6 @@ public class InteractionHandler : MonoBehaviour
             // Realiza un raycast desde la posición del objeto hacia adelante
             if (Physics.Raycast(transform.position, transform.forward * range, out outHit, range, whatIsInteraction))
             {
-                Debug.Log("Interacting with: " + outHit.collider.name);
                 // Llama al método OnInteract del objeto con el que se ha colisionado
                 outHit.collider.GetComponent<IInteractable>().OnInteract();
             }

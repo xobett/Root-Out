@@ -21,11 +21,15 @@ public class GameManager : MonoBehaviour
 
     [Header("SUNFLOWER UNLOCK EVENT SETTINGS")]
     [SerializeField] private Sunflower currentSunflower;
-
-    public Sunflower activeSunflower => currentSunflower;
-
     [SerializeField] private Animator currentSunflowerAnimator; 
     [SerializeField] private Animator currentSunflowerLifebarAnimator;
+
+    [SerializeField] private Sunflower currentSecondSunflower;
+    [SerializeField] private Animator currentSecondSunflowerAnimator;
+    [SerializeField] private Animator currentSecondSunflowerLifebarAnimator;
+
+    //Change it to a method where depending on the type of event, will give a sunflower.
+    public Sunflower activeSunflower => currentSunflower;
 
     [SerializeField] private TextMeshProUGUI timerText;
     private float countdownTimer;
@@ -96,36 +100,44 @@ public class GameManager : MonoBehaviour
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerGrowerAinmator)
     {
+        var playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHandler>();
 
-        currentSunflower = sunflower;
-        currentSunflowerAnimator = sunflowerAnimator;
-        currentSunflowerLifebarAnimator = sunflowerGrowerAinmator;
-
-        StartEvent();
-
-
-        switch (growthType)
+        if (playerInventory.seedCoins >= 50)
         {
-            case GrowthSelection.Marvelous:
-                {
-                    Debug.Log("Marvelous way used");
+            currentSunflower = sunflower;
+            currentSunflowerAnimator = sunflowerAnimator;
+            currentSunflowerLifebarAnimator = sunflowerGrowerAinmator;
 
-                    break;
-                }
+            StartEvent();
 
-            case GrowthSelection.Genuine:
-                {
-                    Debug.Log("Genuine way used");
 
-                    break;
-                }
+            switch (growthType)
+            {
+                case GrowthSelection.Marvelous:
+                    {
+                        Debug.Log("Marvelous way used");
 
-            case GrowthSelection.Compelling:
-                {
-                    Debug.Log("Compelling way used");
+                        break;
+                    }
 
-                    break;
-                }
+                case GrowthSelection.Genuine:
+                    {
+                        Debug.Log("Genuine way used");
+
+                        break;
+                    }
+
+                case GrowthSelection.Compelling:
+                    {
+                        Debug.Log("Compelling way used");
+
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            Debug.Log("You dont have enough coins!");
         }
     }
 
