@@ -9,7 +9,7 @@ public class PepeHabanero : CropBase
 
     protected override void SetAnimatorParameters()
     {
-        throw new System.NotImplementedException();
+        base.SetAnimatorParameters();
     }
 
     private void OnCollisionEnter(Collision enemy)

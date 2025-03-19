@@ -15,7 +15,7 @@ public class CornyGuy : CropBase
 
     protected override void SetAnimatorParameters()
     {
-        throw new System.NotImplementedException();
+        base.SetAnimatorParameters();
     }
 
     private void ShootAround()

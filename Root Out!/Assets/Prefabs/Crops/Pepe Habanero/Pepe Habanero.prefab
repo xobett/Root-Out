@@ -133,7 +133,7 @@ MonoBehaviour:
   cropAnimCtrlr: {fileID: 5775742508545743361}
   cropWalkSpeed: 0.6
   cropRunSpeed: 0.9
-  stoppingDistance: 0.5
+  stoppingDistance: 1.5
   backDistance: 0
   sideDistance: 0
   damage: 100
@@ -143,6 +143,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   maxHitDistance: 10
+  enemyDetected: 0
+  isFollowingPlayer: 0
 --- !u!1001 &5230912870682836596
 PrefabInstance:
   m_ObjectHideFlags: 0

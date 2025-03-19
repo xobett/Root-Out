@@ -48,6 +48,7 @@ public abstract class CropBase : MonoBehaviour
     protected virtual void Update()
     {
         BehaviourCheck();
+        SetAnimatorParameters();
     }
 
     protected void BehaviourCheck()
@@ -150,7 +151,17 @@ public abstract class CropBase : MonoBehaviour
 
     }
     protected abstract void CropAttack();
-    protected abstract void SetAnimatorParameters();
+    protected virtual void SetAnimatorParameters()
+    {
+        if (isFollowingPlayer)
+        {
+            cropAnimCtrlr.SetBool("isWalking", true);
+        }
+        else
+        {
+            cropAnimCtrlr.SetBool("isWalking", false);
+        }
+    }
 
     //Detecta al enemigo frente 
     private bool EnemyDetection() => Physics.SphereCast(transform.position, sphereDetectionRadius, transform.forward, out hit, maxHitDistance, whatIsEnemy);

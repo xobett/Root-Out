@@ -81,6 +81,7 @@ public class UIInventory : MonoBehaviour
             {
                 var itemProt = new GameObject();
                 itemProt.AddComponent<Image>();
+                itemProt.GetComponent<Image>().sprite = playerInventory.Inventory[i].ItemIcon;
 
                 switch (playerInventory.Inventory[i].ItemType)
                 {

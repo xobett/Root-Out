@@ -10,11 +10,6 @@ public class InventoryHandler : MonoBehaviour
 
     public List<InventoryItemData> Inventory => itemsInventory;
 
-    private void Update()
-    {
-
-    }
-
     public void AddItem(InventoryItemData itemToAdd)
     {
         itemsInventory.Add(itemToAdd);
@@ -28,10 +23,5 @@ public class InventoryHandler : MonoBehaviour
     public bool HasItem(InventoryItemData itemToVerify)
     {
         return itemsInventory.Contains(itemToVerify);
-    }
-
-    public void EquipItem(InventoryItemData itemToEquip)
-    {
-        equippedItem = itemToEquip;
     }
 }

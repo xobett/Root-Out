@@ -97,8 +97,6 @@ public class GameManager : MonoBehaviour
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerGrowerAinmator)
     {
 
-        //Grab active sunflower to unlock, depending on the growth option what should do, FIRST CREATE THE TIMER
-
         currentSunflower = sunflower;
         currentSunflowerAnimator = sunflowerAnimator;
         currentSunflowerLifebarAnimator = sunflowerGrowerAinmator;

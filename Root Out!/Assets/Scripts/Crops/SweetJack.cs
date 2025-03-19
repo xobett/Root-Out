@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class SweetJack : CropBase
 {
-
     protected override void SetAnimatorParameters()
     {
-        throw new System.NotImplementedException();
+        base.SetAnimatorParameters();
     }
 
     protected override void CropAttack()
