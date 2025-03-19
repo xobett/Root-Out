@@ -5,7 +5,7 @@ public class FogSpawner : MonoBehaviour
     [Header("FOG SPAWN SETTINGS")]
     [SerializeField] private GameObject fogPrefab;
 
-    private const float fogDistanceSpawn = 21f;
+    private const float fogDistanceSpawn = 22f;
 
     [Header("DETECTION SETTINGS")]
     [SerializeField, Range(1f, 5f)] private float sunflowerDetectionRadius;
@@ -14,9 +14,9 @@ public class FogSpawner : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsFog;
 
-    private const float detectionCubeDistance = 22;
+    private const float detectionCubeDistance = 23f;
 
-    private Vector3 detectionCube = new Vector3(5, 2, 5);
+    private Vector3 detectionCube = new Vector3(6, 2, 6);
     private Vector3 detectionCubePos;
 
     void Start()

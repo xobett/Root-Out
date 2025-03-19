@@ -15,17 +15,17 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     private GameObject cloneFog;
 
-    private const float fogDistanceSpawn = 21;
+    private const float fogDistanceSpawn = 22;
 
     [Header("DETECTION SETTINGS")]
     [SerializeField] private LayerMask whatIsSunflower;
     [SerializeField] private LayerMask whatIsGround;
 
-    private const float terrainDistanceSpawn = 21;
-    private const float debugCubeDistance = 22;
+    private const float terrainDistanceSpawn = 22;
+    private const float debugCubeDistance = 23;
 
-    private Vector3 sunflowerCollisionCube = new Vector3(42, 2, 42);
-    private Vector3 groundCollisionCube = new Vector3(10, 2, 10);
+    private Vector3 sunflowerCollisionCube = new Vector3(43, 2, 43);
+    private Vector3 groundCollisionCube = new Vector3(11, 2, 11);
 
     private bool sunflowerColliding;
     private bool groundColliding;

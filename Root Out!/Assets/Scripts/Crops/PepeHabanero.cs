@@ -7,6 +7,11 @@ public class PepeHabanero : CropBase
         HeadToEnemy();
     }
 
+    protected override void SetAnimatorParameters()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void OnCollisionEnter(Collision enemy)
     {
         if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy"))

@@ -13,6 +13,11 @@ public class CornyGuy : CropBase
         ShootAround();
     }
 
+    protected override void SetAnimatorParameters()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void ShootAround()
     {
         //Aqui rota constantemente.

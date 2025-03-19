@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         currentSunflowerAnimator.SetTrigger("Charge Completed");
 
         currentSunflower.SpawnNewTerrain();
-        Destroy(currentSunflower, 3f);
+        Destroy(currentSunflower.gameObject, 4.8f);
     }
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerGrowerAinmator)

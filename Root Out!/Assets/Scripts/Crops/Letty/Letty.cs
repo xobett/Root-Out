@@ -13,6 +13,11 @@ public class Letty : CropBase
         Shield();
     }
 
+    protected override void SetAnimatorParameters()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Shield()
     {
         GameObject lettyShield = GameObject.FindGameObjectWithTag("Letty Shield");

@@ -30,9 +30,12 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField] private float sphereDetectionRadius = 12f;
     [SerializeField] private LayerMask whatIsEnemy;
     [SerializeField] private float maxHitDistance;
+
+    [SerializeField] protected bool enemyDetected;
+    [SerializeField] protected bool isFollowingPlayer;
+
     private RaycastHit hit;
 
-    private bool enemyDetected;
     private Transform enemyPos;
 
     private CropHandler cropHandler;
@@ -42,7 +45,7 @@ public abstract class CropBase : MonoBehaviour
         GetReferences();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         BehaviourCheck();
     }
@@ -78,7 +81,7 @@ public abstract class CropBase : MonoBehaviour
         }
         else
         {
-            HeadToPlayer();
+            enemyDetected = false;
         }
     }
 
@@ -93,7 +96,12 @@ public abstract class CropBase : MonoBehaviour
 
         if (distance > stoppingDistance)
         {
+            isFollowingPlayer = true;
             SetDestination(desiredFollowingPos, cropWalkSpeed);
+        }
+        else
+        {
+            isFollowingPlayer = false;
         }
     }
     
@@ -114,13 +122,16 @@ public abstract class CropBase : MonoBehaviour
         }
         else
         {
-            HeadToPlayer();
+            enemyDetected = false;
         }
     }
 
     private void SetDestination(Vector3 desiredFollowingPos, float speed)
     {
         transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / speed);
+
+        //Lerp on a fixed value for better following.
+
     }
     private void LookAtTarget(Transform target)
     {
@@ -139,6 +150,7 @@ public abstract class CropBase : MonoBehaviour
 
     }
     protected abstract void CropAttack();
+    protected abstract void SetAnimatorParameters();
 
     //Detecta al enemigo frente 
     private bool EnemyDetection() => Physics.SphereCast(transform.position, sphereDetectionRadius, transform.forward, out hit, maxHitDistance, whatIsEnemy);

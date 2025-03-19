@@ -19,7 +19,10 @@ public class KamikazeMushroom : WeaponsBase
     protected override void Update()
     {
         StartCoroutine(Attack());
-        agent.SetDestination(_sunFlower.position);
+        if (_sunFlower != null)
+        {
+            agent.SetDestination(_sunFlower.position); 
+        }
         GetActiveSunflower();
     }
 
@@ -29,7 +32,7 @@ public class KamikazeMushroom : WeaponsBase
         {
             GameObject activeSunflower = GameManager.instance.activeSunflower.gameObject;
             sunFlowerScript = activeSunflower.GetComponent<Sunflower>();
-            _sunFlower = activeSunflower.transform; 
+            _sunFlower = activeSunflower.transform;
         }
     }
     IEnumerator Attack()
