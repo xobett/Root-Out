@@ -15,9 +15,11 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] public Transform weaponHolder;
 
     // Iconos en la rueda
-    public List<Image> weaponIcons = new List<Image>();
+    [SerializeField] private List<Image> weaponIcons = new List<Image>();
     // Script que muestra la imagen del arma seleccionada
-    public WeaponInfoDisplay weaponInfoDisplay;
+    [SerializeField] private WeaponInfoDisplay weaponInfoDisplay;
+    // Canvas de la rueda de armas
+    [SerializeField] private RectTransform weaponWheelCanvas;
 
     // Índice de la selección actual en la rueda de armas
     private int selectedWeaponIndex = 0;
@@ -26,6 +28,8 @@ public class WeaponHandler : MonoBehaviour
     private float lastWeaponChangeTime = 0f;
     // Cooldown de 0.5 segundos
     private const float weaponChangeCooldown = 0.5f;
+    // Velocidad de rotación del canvas
+    [SerializeField] private float rotationSpeed = 100f;
 
     private void Update()
     {
@@ -35,6 +39,8 @@ public class WeaponHandler : MonoBehaviour
         UpdateWeaponIcons();
         // Maneja la selección de arma al hacer clic
         HandleWeaponSelection();
+        // Gira el canvas de la rueda de armas
+        RotateWeaponWheelCanvas();
     }
 
     // Maneja la rotación de la rueda del ratón para cambiar de arma
@@ -64,6 +70,16 @@ public class WeaponHandler : MonoBehaviour
         }
     }
 
+    // Gira el canvas de la rueda de armas
+    private void RotateWeaponWheelCanvas()
+    {
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollInput != 0f && weaponWheelCanvas != null)
+        {
+            weaponWheelCanvas.Rotate(0f, 0f, scrollInput * rotationSpeed);
+        }
+    }
+
     // Actualiza los iconos de las armas
     private void UpdateWeaponIcons()
     {
@@ -72,7 +88,7 @@ public class WeaponHandler : MonoBehaviour
             if (i < weaponDataList.Count)
             {
                 weaponIcons[i].sprite = weaponDataList[i].weaponIcon;
-                weaponIcons[i].color = (i == selectedWeaponIndex) ? Color.yellow : Color.white;
+                weaponIcons[i].enabled = true; // Asegurarse de que el icono esté habilitado
             }
             else
             {
@@ -93,29 +109,39 @@ public class WeaponHandler : MonoBehaviour
     // Método para recoger un arma nueva
     public void PickUpWeapon(GameObject newWeapon, WeaponData newWeaponData) // Recibe el GameObject del arma y sus datos
     {
-        weapons.Add(newWeapon); // Añadir el arma a la lista
-        weaponDataList.Add(newWeaponData); // Añadir los datos del arma a la lista
-
-        currentWeapon = newWeapon; // Establecer el arma actual
-        Debug.Log("Picked up weapon: " + newWeapon.name);
-
-        // Establecer el GameObject del arma en el Transform especificado
-        if (weaponHolder != null && newWeapon != null) // Si el weaponHolder y el GameObject del arma no están vacíos
+        if (weapons.Count < 6) // Limitar el número de armas a 6
         {
-            newWeapon.transform.SetParent(weaponHolder); // Establecer el padre del arma
-            newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
-            SetCurrentWeapon(newWeapon); // Establecer el arma actual
+            weapons.Add(newWeapon); // Añadir el arma a la lista
+            weaponDataList.Add(newWeaponData); // Añadir los datos del arma a la lista
 
-            // Actualizar la imagen del arma en WeaponInfoDisplay
-            int weaponDataIndex = weapons.IndexOf(newWeapon);
-            if (weaponInfoDisplay != null && weaponDataIndex < weaponDataList.Count && weaponDataList[weaponDataIndex] != null)
+            currentWeapon = newWeapon; // Establecer el arma actual
+            Debug.Log("Picked up weapon: " + newWeapon.name);
+
+            // Establecer el GameObject del arma en el Transform especificado
+            if (weaponHolder != null && newWeapon != null) // Si el weaponHolder y el GameObject del arma no están vacíos
             {
-                weaponInfoDisplay.DisplayWeaponImage(weaponDataList[weaponDataIndex].weaponIcon); // Actualizar el icono del arma
+                newWeapon.transform.SetParent(weaponHolder); // Establecer el padre del arma
+                newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
+                SetCurrentWeapon(newWeapon); // Establecer el arma actual
+
+                // Actualizar la imagen del arma en WeaponInfoDisplay
+                int weaponDataIndex = weapons.IndexOf(newWeapon);
+                if (weaponInfoDisplay != null && weaponDataIndex < weaponDataList.Count && weaponDataList[weaponDataIndex] != null)
+                {
+                    weaponInfoDisplay.DisplayWeaponImage(weaponDataList[weaponDataIndex].weaponIcon); // Actualizar el icono del arma
+                }
             }
+            else
+            {
+                Debug.LogWarning("Weapon holder or weapon GameObject is not assigned.");
+            }
+
+            // Actualizar los iconos de las armas
+            UpdateWeaponIcons();
         }
         else
         {
-            Debug.LogWarning("Weapon holder or weapon GameObject is not assigned.");
+            Debug.LogWarning("Cannot pick up more than 6 weapons.");
         }
     }
 
@@ -154,15 +180,15 @@ public class WeaponHandler : MonoBehaviour
     }
 
     // Seleccionar un arma según el índice
-    void SelectWeapon(int index)
+    void SelectWeapon(int index) // Recibe el índice del arma
     {
-        if (IsValidIndex(index))
+        if (IsValidIndex(index)) // Verificar si el índice es válido
         {
-            if (weaponInfoDisplay != null && index < weaponDataList.Count && weaponDataList[index] != null)
+            if (weaponInfoDisplay != null && index < weaponDataList.Count && weaponDataList[index] != null) // Actualizar el icono del arma
             {
-                weaponInfoDisplay.DisplayWeaponImage(weaponDataList[index].weaponIcon);
+                weaponInfoDisplay.DisplayWeaponImage(weaponDataList[index].weaponIcon);  // Actualizar el icono del arma
             }
-            SwitchWeapon(index);
+            SwitchWeapon(index); // Cambiar al arma seleccionada
         }
         else
         {
@@ -171,9 +197,9 @@ public class WeaponHandler : MonoBehaviour
     }
 
     // Verificar si el índice es válido
-    private bool IsValidIndex(int index)
+    private bool IsValidIndex(int index) // Recibe el índice del arma
     {
-        return index >= 0 && index < weapons.Count;
+        return index >= 0 && index < weapons.Count; // Verificar si el índice está dentro de los límites de los arrays
     }
 
     // Dibujar gizmos en el editor para visualizar el weaponHolder

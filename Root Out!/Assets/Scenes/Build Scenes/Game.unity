@@ -184,6 +184,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2036437028}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: weaponWheelCanvas
+      value: 
+      objectReference: {fileID: 700630584}
+    - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: weaponIcons.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -1502,6 +1506,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &700630584 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 502834556098022018, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
+  m_PrefabInstance: {fileID: 5277021501074031554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &769637872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 491348470511416735, guid: ef4c7facc672dc44793553d252835415, type: 3}
@@ -2436,6 +2445,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 98981001}
   weaponIcons: []
   weaponInfoDisplay: {fileID: 0}
+  weaponWheelCanvas: {fileID: 0}
 --- !u!114 &1797874812 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6395705153263472213, guid: ef4c7facc672dc44793553d252835415, type: 3}
