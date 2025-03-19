@@ -222,27 +222,27 @@ PrefabInstance:
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: 'weaponDataArray.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: b1946ab0424699049aa3bc4854c0a255, type: 2}
+      objectReference: {fileID: 11400000, guid: 633c15f8fb1312748a943db93c4f606e, type: 2}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: 'weaponDataArray.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 5f577ec40c7487d4cb0d6f3f9335d230, type: 2}
+      objectReference: {fileID: 11400000, guid: 633c15f8fb1312748a943db93c4f606e, type: 2}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: 'weaponDataArray.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 32d6781e21717494a87a6cd5aac035b2, type: 2}
+      objectReference: {fileID: 11400000, guid: 633c15f8fb1312748a943db93c4f606e, type: 2}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: 'weaponDataArray.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: d7925107ad7f48e41a80215726566f6d, type: 2}
+      objectReference: {fileID: 11400000, guid: 633c15f8fb1312748a943db93c4f606e, type: 2}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: 'weaponDataArray.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: c18b4b97f856bff46a76d879629c972f, type: 2}
+      objectReference: {fileID: 11400000, guid: 633c15f8fb1312748a943db93c4f606e, type: 2}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: 'weaponDataArray.Array.data[5]'
       value: 
-      objectReference: {fileID: 11400000, guid: d27121a2275c91d4283f076b7d7c55e5, type: 2}
+      objectReference: {fileID: 11400000, guid: 633c15f8fb1312748a943db93c4f606e, type: 2}
     - target: {fileID: 4668542675704820440, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_Name
       value: Weapon Holder
@@ -2431,10 +2431,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  weaponDataList: []
   currentWeapon: {fileID: 0}
   weaponHolder: {fileID: 98981001}
   weaponIcons: []
-  weaponDataArray: []
   weaponInfoDisplay: {fileID: 0}
 --- !u!114 &1797874812 stripped
 MonoBehaviour:
