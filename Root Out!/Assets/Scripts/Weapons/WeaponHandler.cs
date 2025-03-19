@@ -51,7 +51,7 @@ public class WeaponHandler : MonoBehaviour
     }
 
     // Método para cambiar de arma
-    private void SwitchWeapon(int index)
+    public void SwitchWeapon(int index)
     {
         if (index < weapons.Count) // Si el índice es menor que el número de armas recogidas
         {
