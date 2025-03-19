@@ -10608,7 +10608,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: b917766ca1e5b8d489b22b2c34840f17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12063,13 +12063,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321088423}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16681658, y: 0.5005479, z: -0.8471658, w: -0.062722884}
+  m_LocalRotation: {x: -0.011404752, y: 0.5274911, z: -0.81884265, w: 0.22609685}
   m_LocalPosition: {x: 182, y: 80, z: 233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 55.809, y: -37.93, z: -209.097}
+  m_LocalEulerAnglesHint: {x: 59.172, y: 30.126, z: -131.754}
 --- !u!114 &1321088426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27797,6 +27797,63 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!1001 &1764189106
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 827630455997267969, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_Name
+      value: Sweet Jack O Pumpkin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -100.179634
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.992
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 58.567135
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580413831967559294, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8b192791753eeb43a152f1fce340f77, type: 3}
 --- !u!1001 &1856426775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38771,3 +38828,4 @@ SceneRoots:
   - {fileID: 702124707}
   - {fileID: 610666711}
   - {fileID: 977846028}
+  - {fileID: 1764189106}
