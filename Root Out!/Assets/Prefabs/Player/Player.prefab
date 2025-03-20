@@ -393,8 +393,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  weaponDataList: []
   currentWeapon: {fileID: 0}
   weaponHolder: {fileID: 8723793114436876035}
+  weaponIcons: []
+  weaponInfoDisplay: {fileID: 0}
+  weaponWheelCanvas: {fileID: 0}
+  rotationSpeed: 100
 --- !u!1 &6155343336968990131
 GameObject:
   m_ObjectHideFlags: 0

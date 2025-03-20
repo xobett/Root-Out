@@ -277,15 +277,15 @@ PrefabInstance:
       objectReference: {fileID: 910513087}
     - target: {fileID: 8723793114436876035, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.427
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 8723793114436876035, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.044
+      value: -0.183
       objectReference: {fileID: 0}
     - target: {fileID: 8723793114436876035, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.407
+      value: 0.339
       objectReference: {fileID: 0}
     - target: {fileID: 8723793114436876035, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2446,6 +2446,7 @@ MonoBehaviour:
   weaponIcons: []
   weaponInfoDisplay: {fileID: 0}
   weaponWheelCanvas: {fileID: 0}
+  rotationSpeed: 100
 --- !u!114 &1797874812 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6395705153263472213, guid: ef4c7facc672dc44793553d252835415, type: 3}
