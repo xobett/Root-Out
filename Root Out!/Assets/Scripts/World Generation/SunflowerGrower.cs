@@ -4,8 +4,9 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
 {
     private Sunflower sunflowerToUnlock;
 
-    [SerializeField] public bool playerIsNear;
-    [SerializeField] private bool selectionMade;
+    [SerializeField] private bool playerIsNear;
+    [SerializeField] public bool selectionMade;
+    [SerializeField] private bool selectionActive;
 
     [Header("GROWTH SELECTION CANVAS SETTINGS")]
     [SerializeField] private GameObject marvelousGrowthCanvas;
@@ -39,13 +40,30 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
     {
         if (playerIsNear && !selectionMade)
         {
-            ActivateOptionsCanvas();
+            switch (GameManager.instance.MarvelousEventActive)
+            {
+                case true:
+                    {
+                        Debug.Log("Here is where i will send the second sunflower");
+
+                        GameManager.instance.GetSecondSunflower(sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
+
+                        break;
+                    }
+
+                case false:
+                    {
+                        ActivateOptionsCanvas();
+                        selectionActive = true;
+                        break;
+                    }
+            }
         }
     }
 
     private void HandleGrowthSelection()
     {
-        if (playerIsNear && !selectionMade)
+        if (playerIsNear && !selectionMade && selectionActive)
         {
             if (IsPressingOne())
             {
@@ -85,6 +103,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
     private void OnTriggerExit(Collider other)
     {
         playerIsNear = false;
+        selectionActive = false;
 
         DeactivateOptionsCanvas();
     }

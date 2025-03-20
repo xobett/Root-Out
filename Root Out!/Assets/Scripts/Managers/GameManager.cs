@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq.Expressions;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GrowthSelection
@@ -28,17 +29,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator currentSecondSunflowerAnimator;
     [SerializeField] private Animator currentSecondSunflowerLifebarAnimator;
 
+    [Header("MARVELOUS GROWTH EVENT SETTINGS")]
+    [SerializeField] private bool marvelousEventActive;
+    public bool MarvelousEventActive => marvelousEventActive;
+
     //Change it to a method where depending on the type of event, will give a sunflower.
     public Sunflower activeSunflower => currentSunflower;
 
+    [Header("GROWTH EVENT TIMER SETTINGS")]
     [SerializeField] private TextMeshProUGUI timerText;
     private float countdownTimer;
     private float timeToCountdown = 10f;
 
     //Bool usado para cerrar un evento activo.
     private bool activeEvent;
-
-    //Sunflower referenciado actualmente para crecer
 
     void Start()
     {
@@ -57,6 +61,15 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         EventTimer();
+        MarvelousGrowth();
+    }
+
+    private void MarvelousGrowth()
+    {
+        if (marvelousEventActive)
+        {
+            
+        }
     }
 
     private void EventTimer()
@@ -98,6 +111,13 @@ public class GameManager : MonoBehaviour
         Destroy(currentSunflower.gameObject, 4.8f);
     }
 
+    public void GetSecondSunflower(Sunflower secondSunflower, Animator secondSunflowerAnimator, Animator SecondSunflowerGrowerAnimator)
+    {
+        currentSecondSunflower = secondSunflower;
+        currentSecondSunflowerAnimator = secondSunflowerAnimator;
+        currentSecondSunflowerLifebarAnimator = SecondSunflowerGrowerAnimator;
+    }
+
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerGrowerAinmator)
     {
         var playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHandler>();
@@ -108,7 +128,7 @@ public class GameManager : MonoBehaviour
             currentSunflowerAnimator = sunflowerAnimator;
             currentSunflowerLifebarAnimator = sunflowerGrowerAinmator;
 
-            StartEvent();
+            //StartEvent();
 
 
             switch (growthType)
@@ -116,6 +136,8 @@ public class GameManager : MonoBehaviour
                 case GrowthSelection.Marvelous:
                     {
                         Debug.Log("Marvelous way used");
+
+                        marvelousEventActive = true;
 
                         break;
                     }
