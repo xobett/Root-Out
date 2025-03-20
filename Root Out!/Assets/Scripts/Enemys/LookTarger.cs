@@ -14,7 +14,7 @@ public class LookTarger : MonoBehaviour
     }
     void LookAtTarget(Transform target)
     {
-        transform.LookAt(cameraPlayer.position);
+        transform.LookAt(Camera.main.transform.position);
     }
 }
 

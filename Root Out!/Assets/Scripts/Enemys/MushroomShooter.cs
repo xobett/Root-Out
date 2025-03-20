@@ -16,11 +16,12 @@ public class MushroomShooter : WeaponsBase
     protected override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        SetPlayerReference();
     }
     private void LateUpdate()
     {
         TargetToAtack();
-
     }
 
     protected override void Update()
@@ -84,5 +85,9 @@ public class MushroomShooter : WeaponsBase
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f); // Rotación suave
     }
 
+    private void SetPlayerReference()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     
 }

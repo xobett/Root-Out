@@ -118,7 +118,14 @@ public class GameManager : MonoBehaviour
         currentSecondSunflowerLifebarAnimator = SecondSunflowerGrowerAnimator;
     }
 
-    public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerGrowerAinmator)
+    private IEnumerator MarvelousEvent()
+    {
+        yield return new WaitUntil(() => currentSunflower != null && currentSecondSunflower != null);
+
+        Debug.Log("Both Sunflowers have been obtained");
+    }
+
+    public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator)
     {
         var playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHandler>();
 
@@ -126,7 +133,7 @@ public class GameManager : MonoBehaviour
         {
             currentSunflower = sunflower;
             currentSunflowerAnimator = sunflowerAnimator;
-            currentSunflowerLifebarAnimator = sunflowerGrowerAinmator;
+            currentSunflowerLifebarAnimator = sunflowerLifeBarAnimator;
 
             //StartEvent();
 
@@ -135,10 +142,7 @@ public class GameManager : MonoBehaviour
             {
                 case GrowthSelection.Marvelous:
                     {
-                        Debug.Log("Marvelous way used");
-
-                        marvelousEventActive = true;
-
+                        StartCoroutine(MarvelousEvent());
                         break;
                     }
 
@@ -161,6 +165,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("You dont have enough coins!");
         }
+    }
+
+    private IEnumerator NormalEvent()
+    {
+        yield return new WaitUntil(() => currentSunflower != null);
     }
 
     #region InputMethods
