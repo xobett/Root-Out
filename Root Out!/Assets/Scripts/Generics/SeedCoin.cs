@@ -11,7 +11,7 @@ public class SeedCoin : MonoBehaviour, IInteractable
 
     private void AddCoin()
     {
-        var playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHandler>();
+        var playerInventory = GameManager.instance.playerInventoryHandler;
         playerInventory.seedCoins += coinsToAdd;
 
         Destroy(gameObject);

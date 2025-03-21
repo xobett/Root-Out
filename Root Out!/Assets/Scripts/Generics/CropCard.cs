@@ -8,10 +8,8 @@ public class CropCard : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        var cropHandler = player.GetComponent<CropHandler>();
-        var inventoryHandler = player.GetComponent<InventoryHandler>();
+        var cropHandler = GameManager.instance.playerCropHandler;
+        var inventoryHandler = GameManager.instance.playerInventoryHandler;
 
         cropHandler.AddCrop(cropToAdd);
         inventoryHandler.AddItem(inventoryItemToAdd);

@@ -18,9 +18,13 @@ public class GameManager : MonoBehaviour
     private LeafJump leafJump;
     private CameraFollow cameraFollow;
 
+    [Header("PLAYER SETTINGS")]
+    public InventoryHandler playerInventoryHandler;
+    public CropHandler playerCropHandler;
+
     [Header("SUNFLOWER GROWTH COSTS")]
-    [SerializeField] private float marvelousGrowthCost;
-    [SerializeField] private float genuineGrowthCost;
+    [SerializeField] private int marvelousGrowthCost;
+    [SerializeField] private int genuineGrowthCost;
 
     [Header("FIRST SUNFLOWER TO UNLOCK EVENT SETTINGS")]
     [SerializeField] private Sunflower currentSunflower;
@@ -34,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     [Header("MARVELOUS GROWTH EVENT SETTINGS")]
     [SerializeField] private bool marvelousEventActive;
+    [SerializeField] private bool normalEventActive;
     public bool MarvelousEventActive => marvelousEventActive;
 
     //Change it to a method where depending on the type of event, will give a sunflower.
@@ -59,12 +64,15 @@ public class GameManager : MonoBehaviour
         }
 
         GetInputReferences();
+        GetPlayerReferences();
     }
+
 
     private void Update()
     {
         EventTimer();
         MarvelousGrowth();
+        SunflowerHealthCheck();
     }
 
     private void MarvelousGrowth()
@@ -85,27 +93,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void StartTimer()
-    {
-        countdownTimer = timeToCountdown;
-
-        timerIsActive = true;
-        timerText.gameObject.SetActive(true);
-
-    }
-
-    private void EndTimer()
-    {
-        countdownTimer = 0;
-        timerIsActive = false;
-        timerText.gameObject.SetActive(false);
-    }
-
     public void GetSecondSunflower(Sunflower secondSunflower, Animator secondSunflowerAnimator, Animator SecondSunflowerGrowerAnimator)
     {
-        currentSecondSunflower = secondSunflower;
-        currentSecondSunflowerAnimator = secondSunflowerAnimator;
-        currentSecondSunflowerLifebarAnimator = SecondSunflowerGrowerAnimator;
+        if (playerInventoryHandler.seedCoins >= marvelousGrowthCost)
+        {
+            currentSecondSunflower = secondSunflower;
+            currentSecondSunflowerAnimator = secondSunflowerAnimator;
+            currentSecondSunflowerLifebarAnimator = SecondSunflowerGrowerAnimator;
+        }
+        else
+        {
+
+        }
     }
 
 
@@ -114,25 +113,32 @@ public class GameManager : MonoBehaviour
         if (marvelousEventActive && (currentSunflower.currentHealth <= 0 || currentSecondSunflower.currentHealth <= 0))
         {
             StopCoroutine(MarvelousEvent());
-
-
+            SetGrowthFailedAnimations();
+            marvelousEventActive = false;
+        }
+        else if (normalEventActive && currentSunflower.currentHealth <= 0)
+        {
+            StopCoroutine(NormalEvent());
+            SetGrowthFailedAnimations();
+            normalEventActive = false;
         }
     }
 
     private IEnumerator MarvelousEvent()
     {
+        marvelousEventActive = true;
+
+
+
         //Se espera hasta que se haya elegido un segundo girasol para crecer.
         yield return new WaitUntil(() => currentSunflower != null && currentSecondSunflower != null);
 
-        countdownTimer = timeToCountdown;
-
-        timerIsActive = true;
-        timerText.gameObject.SetActive(true);
-
+        StartTimer();
         StartSunflowerAnimations();
 
         yield return new WaitUntil(() => countdownTimer <= 0);
 
+        EndTimer();
         SetGrowthSuccessAnimations();
 
         currentSunflower.SpawnNewTerrain();
@@ -146,16 +152,23 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator NormalEvent()
     {
+        normalEventActive = true;
+
+        StartTimer();
+        StartSunflowerAnimations();
+
         yield return new WaitUntil(() => countdownTimer <= 0);
+
+        EndTimer();
+        SetGrowthSuccessAnimations();
 
         currentSunflower.SpawnNewTerrain();
         Destroy(currentSunflower.gameObject, 4.8f);
+
     }
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator)
     {
-        var playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHandler>();
-
         currentSunflower = sunflower;
         currentSunflowerAnimator = sunflowerAnimator;
         currentSunflowerLifebarAnimator = sunflowerLifeBarAnimator;
@@ -164,23 +177,24 @@ public class GameManager : MonoBehaviour
         {
             case GrowthSelection.Marvelous:
                 {
-                    if (playerInventory.seedCoins >= marvelousGrowthCost)
+                    if (playerInventoryHandler.seedCoins >= marvelousGrowthCost)
                     {
-                        marvelousEventActive = true;
-                        StartCoroutine(MarvelousEvent()); 
+                        playerInventoryHandler.seedCoins -= marvelousGrowthCost;
+                        StartCoroutine(MarvelousEvent());
                     }
                     else
                     {
 
                     }
-                        break;
+                    break;
                 }
 
             case GrowthSelection.Genuine:
                 {
-                    if (playerInventory.seedCoins >= genuineGrowthCost)
+                    if (playerInventoryHandler.seedCoins >= genuineGrowthCost)
                     {
-
+                        playerInventoryHandler.seedCoins -= genuineGrowthCost;
+                        StartCoroutine(NormalEvent());
                     }
                     else
                     {
@@ -191,11 +205,26 @@ public class GameManager : MonoBehaviour
 
             case GrowthSelection.Compelling:
                 {
-
+                    StartCoroutine(NormalEvent());
                     break;
                 }
         }
     }
+
+    #region Timer Event Methods
+    private void StartTimer()
+    {
+        countdownTimer = timeToCountdown;
+        timerIsActive = true;
+        timerText.gameObject.SetActive(true);
+    }
+    private void EndTimer()
+    {
+        countdownTimer = 0;
+        timerIsActive = false;
+        timerText.gameObject.SetActive(false);
+    }
+    #endregion
 
     #region Animations
     private void StartSunflowerAnimations()
@@ -222,14 +251,19 @@ public class GameManager : MonoBehaviour
     }
     private void SetGrowthFailedAnimations()
     {
-        currentSunflowerAnimator.SetTrigger("Charge Completed");
+        currentSunflowerAnimator.SetTrigger("Return to Idle");
         currentSunflowerLifebarAnimator.SetTrigger("Outro State");
 
         if (marvelousEventActive)
         {
-            currentSecondSunflowerAnimator.SetTrigger("Charge Completed");
+            currentSecondSunflowerAnimator.SetTrigger("Return to Idle");
             currentSecondSunflowerLifebarAnimator.SetTrigger("Outro State");
         }
+    }
+
+    private void DisplayNotEnoughMoneyText()
+    {
+
     }
     #endregion
 
@@ -259,6 +293,13 @@ public class GameManager : MonoBehaviour
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         leafJump = GameObject.FindGameObjectWithTag("Player").GetComponent<LeafJump>();
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
+    }
+    private void GetPlayerReferences()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        playerInventoryHandler = player.GetComponent<InventoryHandler>();
+        playerCropHandler = player.GetComponent<CropHandler>();
     }
     #endregion
 }

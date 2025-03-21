@@ -144,7 +144,7 @@ public class UIInventory : MonoBehaviour
 
     private void GetPlayerInventory()
     {
-        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHandler>();
+        playerInventory = GameManager.instance.playerInventoryHandler;
     }
     private bool IsOpening()
     {
