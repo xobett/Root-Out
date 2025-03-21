@@ -188,6 +188,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 994753103}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: rotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: lastWeaponIcon
       value: 
       objectReference: {fileID: 0}
@@ -2234,13 +2238,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499024673}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.92227364, y: -0.32003102, z: 0.124212064, w: -0.17765956}
+  m_LocalRotation: {x: -0.54085803, y: 0.02407118, z: 0.5315907, w: -0.6513866}
   m_LocalPosition: {x: 0.87, y: 3, z: 11.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 24.029, y: -172.741, z: 143.273}
+  m_LocalEulerAnglesHint: {x: 42.767, y: -55.691, z: 258.191}
 --- !u!114 &1499024676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2478,6 +2482,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 98981001}
   weaponIcons: []
   weaponSelectionWheel: {fileID: 0}
+  rotationSpeed: 100
 --- !u!114 &1797874812 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6395705153263472213, guid: ef4c7facc672dc44793553d252835415, type: 3}
@@ -2847,6 +2852,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistola manzana
       objectReference: {fileID: 0}
+    - target: {fileID: 3646421563276720771, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646421563276720771, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
+      propertyPath: m_Size.y
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604045601593984137, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604045601593984137, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.463
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604045601593984137, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.006
+      objectReference: {fileID: 0}
     - target: {fileID: 5521406512364880590, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
       propertyPath: bulletText
       value: 
@@ -3002,6 +3027,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistola guisantes
       objectReference: {fileID: 0}
+    - target: {fileID: 7009687132939657512, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.588
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009687132939657512, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.136
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009687132939657512, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.109
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159407334731054315, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159407334731054315, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.59
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3081,6 +3126,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
+    - target: {fileID: 4755046102783221918, guid: 34044fc0c020f72408c38442517737d4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755046102783221918, guid: 34044fc0c020f72408c38442517737d4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.59
+      objectReference: {fileID: 0}
     - target: {fileID: 5635957317709180901, guid: 34044fc0c020f72408c38442517737d4, type: 3}
       propertyPath: bulletText
       value: 
@@ -3141,6 +3194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Pistola zanahoria '
       objectReference: {fileID: 0}
+    - target: {fileID: 8681059446760794111, guid: 34044fc0c020f72408c38442517737d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.832
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3164,6 +3221,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
+    - target: {fileID: 2777941035736229040, guid: cf245403e7c521c43b6729815de93009, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777941035736229040, guid: cf245403e7c521c43b6729815de93009, type: 3}
+      propertyPath: m_Size.y
+      value: 0.59
+      objectReference: {fileID: 0}
     - target: {fileID: 5077107983995887419, guid: cf245403e7c521c43b6729815de93009, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.12
@@ -3223,6 +3288,14 @@ PrefabInstance:
     - target: {fileID: 5565976775888962945, guid: cf245403e7c521c43b6729815de93009, type: 3}
       propertyPath: m_Name
       value: Pistola calabaza
+      objectReference: {fileID: 0}
+    - target: {fileID: 7279786509918256495, guid: cf245403e7c521c43b6729815de93009, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7279786509918256495, guid: cf245403e7c521c43b6729815de93009, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3406,6 +3479,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -115
       objectReference: {fileID: 0}
+    - target: {fileID: 5647264791549765245, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6253455845258161216, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -30
@@ -3416,7 +3493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7260888681136649775, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7260888681136649775, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
       propertyPath: m_Color.g
@@ -3424,7 +3501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7260888681136649775, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
       propertyPath: m_Color.r
-      value: 0.50446224
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8162959705790366827, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3718,6 +3795,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8350717646878126901, guid: be5a35ee4783b984a818864a85638784, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350717646878126901, guid: be5a35ee4783b984a818864a85638784, type: 3}
+      propertyPath: m_Size.y
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459949569436135217, guid: be5a35ee4783b984a818864a85638784, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.936
+      objectReference: {fileID: 0}
     - target: {fileID: 8918381668964958531, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: m_Name
       value: Pistola bellota
@@ -3872,6 +3961,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
+    - target: {fileID: 1495437155140525817, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495437155140525817, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
+      propertyPath: m_Size.y
+      value: 0.59
+      objectReference: {fileID: 0}
     - target: {fileID: 7190973760464605668, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_Name
       value: Pistola huevos
@@ -3931,6 +4028,10 @@ PrefabInstance:
     - target: {fileID: 7530203457036585822, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471408064952643036, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.725
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

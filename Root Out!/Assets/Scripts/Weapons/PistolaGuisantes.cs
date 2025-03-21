@@ -14,6 +14,10 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
         weaponInfoDisplay = FindFirstObjectByType<WeaponInfoDisplay>();
+        if (bulletText != null)
+        {
+            bulletText.gameObject.SetActive(false); // Desactivar el texto de munición al inicio
+        }
     }
 
     protected override void Update()
@@ -50,18 +54,22 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
             weaponHandler.PickUpWeapon(gameObject, weaponData); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
+            if (bulletText != null)
+            {
+                bulletText.gameObject.SetActive(true); // Activar el texto de munición al recoger el arma
+            }
         }
     }
 
     private void UpdateAmmoText() // Actualiza el texto de munición
     {
-        if (bulletText != null)
+        if (bulletText != null && bulletText.gameObject.activeSelf)
         {
             bulletText.text = "Infinity"; // Actualiza el texto con la munición actual y máxima
         }
         else
         {
-            Debug.LogWarning("Ammo text component is not assigned.");
+            Debug.LogWarning("Ammo text component is not assigned or not active.");
         }
     }
 }

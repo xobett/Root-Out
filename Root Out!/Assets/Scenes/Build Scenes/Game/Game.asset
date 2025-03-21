@@ -160,7 +160,7 @@ MonoBehaviour:
     m_Value: 2
   useFullACES:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   toeStrength:
     m_OverrideState: 1
     m_Value: 0
@@ -1295,13 +1295,13 @@ MonoBehaviour:
     m_Value: 3
   threshold:
     m_OverrideState: 1
-    m_Value: 1.31
+    m_Value: 0.54
   intensity:
     m_OverrideState: 1
-    m_Value: 0.893
+    m_Value: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.78
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -1310,7 +1310,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 143.3
   anamorphic:
     m_OverrideState: 1
     m_Value: 1
@@ -2209,7 +2209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877a03bef431a847adca8ab343db3e1, type: 3}
   m_Name: RayTracingSettings
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   rayBias:
     m_OverrideState: 1
     m_Value: 0.001
@@ -2273,6 +2273,21 @@ MonoBehaviour:
   maximumIntensity:
     m_OverrideState: 1
     m_Value: 10
+  denoising:
+    m_OverrideState: 1
+    m_Value: 0
+  useAOVs:
+    m_OverrideState: 1
+    m_Value: 1
+  temporal:
+    m_OverrideState: 1
+    m_Value: 0
+  separateVolumetrics:
+    m_OverrideState: 1
+    m_Value: 0
+  asyncDenoising:
+    m_OverrideState: 1
+    m_Value: 1
   skyImportanceSampling:
     m_OverrideState: 1
     m_Value: 0

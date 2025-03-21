@@ -31,10 +31,13 @@ public class WeaponHandler : MonoBehaviour
     private const float weaponChangeCooldown = 0.2f;
 
     // Velocidad de rotación de la rueda de armas
-    private float rotationSpeed = 100f;
+    [SerializeField] float rotationSpeed = 100f;
     private bool wheelIsRotating = false;
 
-
+    private void Start()
+    {
+        weaponSelectionWheel.gameObject.SetActive(false);
+    }
     private void Update()
     {
         // Maneja la rotación de la rueda del ratón para cambiar de arma
@@ -43,6 +46,19 @@ public class WeaponHandler : MonoBehaviour
         UpdateWeaponIcons();
         // Maneja la selección de arma al hacer clic
         HandleWeaponSelection();
+        OpenMenu();
+    }
+
+    private void OpenMenu()
+    {
+        if(Input.GetKey(KeyCode.Tab))
+        {
+            weaponSelectionWheel.gameObject.SetActive(true);
+        }
+        else
+        {
+            weaponSelectionWheel.gameObject.SetActive(false);
+        }
     }
 
     // Maneja la rotación de la rueda del ratón para cambiar de arma
