@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,9 +18,9 @@ public class WeaponHandler : MonoBehaviour
     // Iconos en la rueda
     [SerializeField] private List<Image> weaponIcons = new List<Image>();
     // Script que muestra la imagen del arma seleccionada
-    [SerializeField] private WeaponInfoDisplay weaponInfoDisplay;
+
     // Canvas de la rueda de armas
-    [SerializeField] private RectTransform weaponWheelCanvas;
+    [SerializeField] private RectTransform weaponSelectionWheel;
 
     // Índice de la selección actual en la rueda de armas
     private int selectedWeaponIndex = 0;
@@ -27,24 +28,25 @@ public class WeaponHandler : MonoBehaviour
     // Variable para rastrear el tiempo del último cambio de arma
     private float lastWeaponChangeTime = 0f;
     // Cooldown de 0.5 segundos
-    private const float weaponChangeCooldown = 0.5f;
-    // Velocidad de rotación del canvas
-    [SerializeField] private float rotationSpeed = 100f;
+    private const float weaponChangeCooldown = 0.2f;
+
+    // Velocidad de rotación de la rueda de armas
+    private float rotationSpeed = 100f;
+    private bool wheelIsRotating = false;
+
 
     private void Update()
     {
         // Maneja la rotación de la rueda del ratón para cambiar de arma
-        HandleWeaponWheelRotation();
+        HandleMouseScroll();
         // Actualiza los iconos de las armas
         UpdateWeaponIcons();
         // Maneja la selección de arma al hacer clic
         HandleWeaponSelection();
-        // Gira el canvas de la rueda de armas
-        RotateWeaponWheelCanvas();
     }
 
     // Maneja la rotación de la rueda del ratón para cambiar de arma
-    private void HandleWeaponWheelRotation()
+    private void HandleMouseScroll()
     {
         if (weapons.Count <= 1)
         {
@@ -56,28 +58,43 @@ public class WeaponHandler : MonoBehaviour
             return; // No permitir cambio de arma si el cooldown no ha terminado
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollInput > 0f) // Si el ratón se desplaza hacia arriba
         {
+            StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia ar
             selectedWeaponIndex = (selectedWeaponIndex + 1) % weapons.Count;
             SwitchWeapon(selectedWeaponIndex);
             lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        else if (scrollInput < 0f) // Si el ratón se desplaza hacia abajo
         {
+            StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
             selectedWeaponIndex = (selectedWeaponIndex - 1 + weapons.Count) % weapons.Count;
             SwitchWeapon(selectedWeaponIndex);
             lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
         }
     }
 
-    // Gira el canvas de la rueda de armas
-    private void RotateWeaponWheelCanvas()
+    private IEnumerator RotateWeaponSelectionWheel(float targetValue)
     {
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        if (scrollInput != 0f && weaponWheelCanvas != null)
+        wheelIsRotating = true; // Marcar que la rueda está rotando
+        var selectionWheelRect = weaponSelectionWheel.GetComponent<RectTransform>(); // Obtener el RectTransform de la rueda
+
+        Quaternion targetRotation = Quaternion.Euler(0, 0, weaponSelectionWheel.transform.eulerAngles.z + targetValue); // Calcular la rotación objetivo
+
+        float time = 0f;
+
+        while (time < 1)
         {
-            weaponWheelCanvas.Rotate(0f, 0f, scrollInput * rotationSpeed);
+            selectionWheelRect.rotation = Quaternion.Slerp(selectionWheelRect.rotation, targetRotation, time);
+            time += Time.deltaTime * rotationSpeed;
+            yield return null;
         }
+        selectionWheelRect.rotation = targetRotation;
+
+        wheelIsRotating = false;
+
+        yield return null;
     }
 
     // Actualiza los iconos de las armas
@@ -123,13 +140,6 @@ public class WeaponHandler : MonoBehaviour
                 newWeapon.transform.SetParent(weaponHolder); // Establecer el padre del arma
                 newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
                 SetCurrentWeapon(newWeapon); // Establecer el arma actual
-
-                // Actualizar la imagen del arma en WeaponInfoDisplay
-                int weaponDataIndex = weapons.IndexOf(newWeapon);
-                if (weaponInfoDisplay != null && weaponDataIndex < weaponDataList.Count && weaponDataList[weaponDataIndex] != null)
-                {
-                    weaponInfoDisplay.DisplayWeaponImage(weaponDataList[weaponDataIndex].weaponIcon); // Actualizar el icono del arma
-                }
             }
             else
             {
@@ -138,10 +148,33 @@ public class WeaponHandler : MonoBehaviour
 
             // Actualizar los iconos de las armas
             UpdateWeaponIcons();
+            UpdateWeaponPositions();
+
+            // Asignar el icono del arma al slot correspondiente
+            int weaponIndex = weapons.Count - 1; // Obtener el índice del arma recién añadida
+            if (weaponIndex < weaponIcons.Count)
+            {
+                weaponIcons[weaponIndex].sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
+                weaponIcons[weaponIndex].enabled = true; // Asegurarse de que el icono esté habilitado
+                weaponIcons[weaponIndex].transform.localPosition = weaponIcons[weaponIndex].transform.localPosition; // Mantener la posición local del icono
+            }
         }
         else
         {
             Debug.LogWarning("Cannot pick up more than 6 weapons.");
+        }
+    }
+
+    private void UpdateWeaponPositions()
+    {
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            if (i < weaponIcons.Count)
+            {
+                // Asignar la posición del icono en el canvas
+                weaponIcons[i].transform.SetParent(weaponSelectionWheel);
+                weaponIcons[i].transform.localPosition = weaponIcons[i].transform.localPosition;
+            }
         }
     }
 
@@ -151,11 +184,6 @@ public class WeaponHandler : MonoBehaviour
         if (index < weapons.Count) // Verificar que el índice sea válido para todas las armas
         {
             SetCurrentWeapon(weapons[index]); // Establecer el arma actual según el índice
-            if (weaponInfoDisplay != null && index < weaponDataList.Count && weaponDataList[index] != null)
-            {
-                weaponInfoDisplay.DisplayWeaponImage(weaponDataList[index].weaponIcon); // Actualizar el icono del arma
-            }
-            Debug.Log("Switched to weapon: " + currentWeapon.name);
         }
         else
         {
@@ -184,10 +212,6 @@ public class WeaponHandler : MonoBehaviour
     {
         if (IsValidIndex(index)) // Verificar si el índice es válido
         {
-            if (weaponInfoDisplay != null && index < weaponDataList.Count && weaponDataList[index] != null) // Actualizar el icono del arma
-            {
-                weaponInfoDisplay.DisplayWeaponImage(weaponDataList[index].weaponIcon);  // Actualizar el icono del arma
-            }
             SwitchWeapon(index); // Cambiar al arma seleccionada
         }
         else
