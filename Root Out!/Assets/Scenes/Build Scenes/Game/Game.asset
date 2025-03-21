@@ -1292,16 +1292,16 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 3
   threshold:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2.54
   intensity:
     m_OverrideState: 1
-    m_Value: 0.115
+    m_Value: 0.767
   scatter:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.924
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -1369,23 +1369,16 @@ MonoBehaviour:
   components:
   - {fileID: -2632079889962423345}
   - {fileID: -7666147463223848280}
-  - {fileID: -4189700348376237202}
   - {fileID: 4303601604641567966}
   - {fileID: -7777682922012920251}
   - {fileID: 335509691167907638}
-  - {fileID: -5333963329357101680}
-  - {fileID: -5567953167034598772}
   - {fileID: -5791046626754371021}
-  - {fileID: -7990366274217186244}
   - {fileID: 5800101471817604106}
   - {fileID: -4613753328770710347}
-  - {fileID: -8284338284424935212}
   - {fileID: -8844806629669092977}
   - {fileID: -7544757175930236882}
   - {fileID: 7178178340964031334}
   - {fileID: -1986552335682404454}
-  - {fileID: 5436150676341907274}
-  - {fileID: 3386309740695181840}
   - {fileID: 6297231230018415336}
   - {fileID: 7732296930672376710}
   - {fileID: -1863006514865310813}
@@ -1409,6 +1402,13 @@ MonoBehaviour:
   - {fileID: 1139141390048988785}
   - {fileID: -3656450339732733508}
   - {fileID: -9043490112517853380}
+  - {fileID: -4189700348376237202}
+  - {fileID: -5333963329357101680}
+  - {fileID: -5567953167034598772}
+  - {fileID: -7990366274217186244}
+  - {fileID: -8284338284424935212}
+  - {fileID: 5436150676341907274}
+  - {fileID: 3386309740695181840}
 --- !u!114 &335509691167907638
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9e4ed5a6f56fb4ebd693e39684f36f, type: 3}
   m_Name: VolumetricClouds
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enable:
     m_OverrideState: 1
     m_Value: 1
@@ -1968,8 +1968,8 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.15
-        value: 1
+        time: 0.23000184
+        value: 0.64712524
         inSlope: 0
         outSlope: 0
         tangentMode: 0
