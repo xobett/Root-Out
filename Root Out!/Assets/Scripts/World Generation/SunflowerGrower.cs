@@ -38,7 +38,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        if (playerIsNear && !selectionMade)
+        if (playerIsNear && !selectionMade && !GameManager.instance.GrowthEventActive)
         {
             switch (GameManager.instance.MarvelousEventActive)
             {
@@ -68,8 +68,8 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
                 marvelousCanvasAnimator.SetTrigger("Outro State");
                 compellingCanvasAnimator.SetTrigger("Outro State");
 
-                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Genuine, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
                 selectionMade = true;
+                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Genuine, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator, ref selectionMade);
             }
             else if (IsPressingTwo())
             {
@@ -77,8 +77,8 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
                 genuineCanvasAnimator.SetTrigger("Outro State");
                 compellingCanvasAnimator.SetTrigger("Outro State");
 
-                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Marvelous, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
                 selectionMade = true;
+                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Marvelous, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator, ref selectionMade);
             }
             else if (IsPressingThree())
             {
@@ -86,8 +86,8 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
                 genuineCanvasAnimator.SetTrigger("Outro State");
                 marvelousCanvasAnimator.SetTrigger("Outro State");
 
-                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Compelling, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
                 selectionMade = true;
+                GameManager.instance.GrowSunflowerEvent(GrowthSelection.Compelling, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator, ref selectionMade);
             }
         }
     }

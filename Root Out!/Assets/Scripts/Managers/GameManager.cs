@@ -40,17 +40,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool marvelousEventActive;
     [SerializeField] private bool normalEventActive;
     public bool MarvelousEventActive => marvelousEventActive;
+    public bool GrowthEventActive => normalEventActive || marvelousEventActive;
 
     //Change it to a method where depending on the type of event, will give a sunflower.
     public Sunflower activeSunflower => currentSunflower;
 
+    [Header("MESSAGE TEXT SETTINGS")]
+    [SerializeField] private TextMeshProUGUI messageText;
+    [SerializeField] private Animator messageTextAnimator;
+
     [Header("GROWTH EVENT TIMER SETTINGS")]
     [SerializeField] private TextMeshProUGUI timerText;
-    private float countdownTimer;
-    private float timeToCountdown = 10f;
-
-    //Bool usado para cerrar un evento activo.
-    private bool timerIsActive;
+    private float timer;
+    [SerializeField] private float timeToCountdown = 10f;
+    private bool eventTimerisActive;
 
     void Start()
     {
@@ -71,25 +74,17 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         EventTimer();
-        MarvelousGrowth();
         SunflowerHealthCheck();
     }
 
-    private void MarvelousGrowth()
-    {
-        if (marvelousEventActive)
-        {
-            Debug.Log("Choose next sunflower!");
-        }
-    }
 
     private void EventTimer()
     {
-        if (timerIsActive)
+        if (eventTimerisActive)
         {
-            countdownTimer -= Time.deltaTime;
+            timer -= Time.deltaTime;
 
-            timerText.text = string.Format("{0:00}", countdownTimer);
+            timerText.text = string.Format("{0:00}", timer);
         }
     }
 
@@ -103,24 +98,38 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            StopCoroutine(MarvelousEvent());
+            marvelousEventActive = false;
 
+            messageTextAnimator.SetTrigger("Exit Sunflower selection");
+            DisplayMessage("You don't have enough Seeds!");
         }
     }
 
 
     private void SunflowerHealthCheck()
     {
-        if (marvelousEventActive && (currentSunflower.currentHealth <= 0 || currentSecondSunflower.currentHealth <= 0))
+        if (eventTimerisActive)
         {
-            StopCoroutine(MarvelousEvent());
-            SetGrowthFailedAnimations();
-            marvelousEventActive = false;
-        }
-        else if (normalEventActive && currentSunflower.currentHealth <= 0)
-        {
-            StopCoroutine(NormalEvent());
-            SetGrowthFailedAnimations();
-            normalEventActive = false;
+            if (marvelousEventActive && (currentSunflower.currentHealth <= 0 || currentSecondSunflower.currentHealth <= 0))
+            {
+                StopCoroutine(MarvelousEvent());
+                SetGrowthFailedAnimations();
+                EndTimer();
+                marvelousEventActive = false;
+
+                currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
+                currentSecondSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
+            }
+            else if (normalEventActive && currentSunflower.currentHealth <= 0)
+            {
+                StopCoroutine(NormalEvent());
+                SetGrowthFailedAnimations();
+                EndTimer();
+                normalEventActive = false;
+
+                currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
+            } 
         }
     }
 
@@ -128,15 +137,18 @@ public class GameManager : MonoBehaviour
     {
         marvelousEventActive = true;
 
-
+        DisplayMessage("Select a second Sunflower to grow!");
+        messageTextAnimator.SetBool("secondSunflowerNotChosen", true);
 
         //Se espera hasta que se haya elegido un segundo girasol para crecer.
         yield return new WaitUntil(() => currentSunflower != null && currentSecondSunflower != null);
 
+        messageTextAnimator.SetBool("secondSunflowerNotChosen", false);
+
         StartTimer();
         StartSunflowerAnimations();
 
-        yield return new WaitUntil(() => countdownTimer <= 0);
+        yield return new WaitUntil(() => timer <= 0);
 
         EndTimer();
         SetGrowthSuccessAnimations();
@@ -157,7 +169,7 @@ public class GameManager : MonoBehaviour
         StartTimer();
         StartSunflowerAnimations();
 
-        yield return new WaitUntil(() => countdownTimer <= 0);
+        yield return new WaitUntil(() => timer <= 0);
 
         EndTimer();
         SetGrowthSuccessAnimations();
@@ -167,7 +179,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator)
+
+    public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator, ref bool selectionMade)
     {
         currentSunflower = sunflower;
         currentSunflowerAnimator = sunflowerAnimator;
@@ -184,7 +197,8 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     {
-
+                        DisplayMessage("You don't have enough Seeds!");
+                        selectionMade = false;
                     }
                     break;
                 }
@@ -198,7 +212,8 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     {
-
+                        DisplayMessage("You don't have enough Seeds!");
+                        selectionMade = false;
                     }
                     break;
                 }
@@ -214,14 +229,13 @@ public class GameManager : MonoBehaviour
     #region Timer Event Methods
     private void StartTimer()
     {
-        countdownTimer = timeToCountdown;
-        timerIsActive = true;
+        timer = timeToCountdown;
+        eventTimerisActive = true;
         timerText.gameObject.SetActive(true);
     }
     private void EndTimer()
     {
-        countdownTimer = 0;
-        timerIsActive = false;
+        eventTimerisActive = false;
         timerText.gameObject.SetActive(false);
     }
     #endregion
@@ -260,10 +274,10 @@ public class GameManager : MonoBehaviour
             currentSecondSunflowerLifebarAnimator.SetTrigger("Outro State");
         }
     }
-
-    private void DisplayNotEnoughMoneyText()
+    private void DisplayMessage(string message)
     {
-
+        messageText.text = message;
+        messageTextAnimator.SetTrigger("Show Message");
     }
     #endregion
 
