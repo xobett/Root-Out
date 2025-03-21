@@ -61,17 +61,23 @@ public class WeaponHandler : MonoBehaviour
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         if (scrollInput > 0f) // Si el ratón se desplaza hacia arriba
         {
-            StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia ar
-            selectedWeaponIndex = (selectedWeaponIndex + 1) % weapons.Count;
-            SwitchWeapon(selectedWeaponIndex);
-            lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+            if (selectedWeaponIndex < weapons.Count - 1) // Verificar si no se ha alcanzado el límite superior
+            {
+                StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia arriba
+                selectedWeaponIndex = (selectedWeaponIndex + 1) % weapons.Count;
+                SwitchWeapon(selectedWeaponIndex);
+                lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+            }
         }
         else if (scrollInput < 0f) // Si el ratón se desplaza hacia abajo
         {
-            StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
-            selectedWeaponIndex = (selectedWeaponIndex - 1 + weapons.Count) % weapons.Count;
-            SwitchWeapon(selectedWeaponIndex);
-            lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+            if (selectedWeaponIndex > 0) // Verificar si no se ha alcanzado el límite inferior
+            {
+                StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
+                selectedWeaponIndex = (selectedWeaponIndex - 1 + weapons.Count) % weapons.Count;
+                SwitchWeapon(selectedWeaponIndex);
+                lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+            }
         }
     }
 
@@ -157,6 +163,14 @@ public class WeaponHandler : MonoBehaviour
                 weaponIcons[weaponIndex].sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
                 weaponIcons[weaponIndex].enabled = true; // Asegurarse de que el icono esté habilitado
                 weaponIcons[weaponIndex].transform.localPosition = weaponIcons[weaponIndex].transform.localPosition; // Mantener la posición local del icono
+            }
+            else
+            {
+                // Si no hay suficientes slots de iconos, crear uno nuevo
+                Image newIcon = Instantiate(weaponIcons[0], weaponSelectionWheel); // Instanciar un nuevo icono basado en el primer icono
+                newIcon.sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
+                newIcon.enabled = true; // Asegurarse de que el icono esté habilitado
+                weaponIcons.Add(newIcon); // Añadir el nuevo icono a la lista
             }
         }
         else
