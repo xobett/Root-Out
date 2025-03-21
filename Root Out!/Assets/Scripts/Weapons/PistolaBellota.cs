@@ -28,20 +28,6 @@ public class PistolaBellota : WeaponsBase, IInteractable
             weaponHandler.PickUpWeapon(gameObject, weaponData); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
-
-            // Mostrar la imagen del arma en el canvas
-            if (weaponInfoDisplay != null && weaponData != null)
-            {
-                weaponInfoDisplay.DisplayWeaponImage(weaponData.weaponIcon);
-            }
-            else
-            {
-                Debug.LogWarning("WeaponInfoDisplay or WeaponData is not assigned.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("WeaponHandler not found in the scene.");
         }
     }
     protected override void Shoot()
