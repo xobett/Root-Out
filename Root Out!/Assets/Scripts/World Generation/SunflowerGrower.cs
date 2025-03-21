@@ -47,7 +47,6 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
                         Debug.Log("Here is where i will send the second sunflower");
 
                         GameManager.instance.GetSecondSunflower(sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
-
                         break;
                     }
 

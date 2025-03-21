@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Linq.Expressions;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GrowthSelection
@@ -20,11 +18,12 @@ public class GameManager : MonoBehaviour
     private LeafJump leafJump;
     private CameraFollow cameraFollow;
 
-    [Header("SUNFLOWER UNLOCK EVENT SETTINGS")]
+    [Header("FIRST SUNFLOWER TO UNLOCK EVENT SETTINGS")]
     [SerializeField] private Sunflower currentSunflower;
-    [SerializeField] private Animator currentSunflowerAnimator; 
+    [SerializeField] private Animator currentSunflowerAnimator;
     [SerializeField] private Animator currentSunflowerLifebarAnimator;
 
+    [Header("SECOND SUNFLOWER TO UNLOCK EVENT SETTINGS")]
     [SerializeField] private Sunflower currentSecondSunflower;
     [SerializeField] private Animator currentSecondSunflowerAnimator;
     [SerializeField] private Animator currentSecondSunflowerLifebarAnimator;
@@ -42,7 +41,7 @@ public class GameManager : MonoBehaviour
     private float timeToCountdown = 10f;
 
     //Bool usado para cerrar un evento activo.
-    private bool activeEvent;
+    private bool timerIsActive;
 
     void Start()
     {
@@ -68,22 +67,17 @@ public class GameManager : MonoBehaviour
     {
         if (marvelousEventActive)
         {
-            
+
         }
     }
 
     private void EventTimer()
     {
-        if (activeEvent)
+        if (timerIsActive)
         {
             countdownTimer -= Time.deltaTime;
 
             timerText.text = string.Format("{0:00}", countdownTimer);
-
-            if (countdownTimer <= 0)
-            {
-                EndEvent();
-            } 
         }
     }
 
@@ -91,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         countdownTimer = timeToCountdown;
 
-        activeEvent = true;
+        timerIsActive = true;
         timerText.gameObject.SetActive(true);
 
         currentSunflowerAnimator.SetTrigger("Begin Charge");
@@ -101,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     private void EndEvent()
     {
-        activeEvent = false;
+        timerIsActive = false;
         timerText.gameObject.SetActive(false);
 
         currentSunflowerLifebarAnimator.SetTrigger("Outro State");
@@ -122,7 +116,35 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitUntil(() => currentSunflower != null && currentSecondSunflower != null);
 
-        Debug.Log("Both Sunflowers have been obtained");
+        countdownTimer = timeToCountdown;
+
+        timerIsActive = true;
+        timerText.gameObject.SetActive(true);
+
+        currentSunflowerAnimator.SetTrigger("Begin Charge");
+        currentSunflowerLifebarAnimator.SetTrigger("Intro State");
+
+        currentSecondSunflowerAnimator.SetTrigger("Begin Charge");
+        currentSecondSunflowerLifebarAnimator.SetTrigger("Intro State");
+
+        yield return new WaitUntil(() => countdownTimer <= 0);
+
+        currentSunflowerAnimator.SetTrigger("Charge Completed");
+        currentSunflowerLifebarAnimator.SetTrigger("Outro State");
+
+        currentSecondSunflowerAnimator.SetTrigger("Charge Completed");
+        currentSecondSunflowerLifebarAnimator.SetTrigger("Outro State");
+
+        currentSunflower.SpawnNewTerrain();
+        currentSecondSunflower.SpawnNewTerrain();
+
+        Destroy(currentSunflower.gameObject, 4.8f);
+        Destroy(currentSecondSunflower.gameObject, 4.8f);
+
+        Debug.Log("Test reach");
+
+        marvelousEventActive = false;
+
     }
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator)
@@ -142,6 +164,8 @@ public class GameManager : MonoBehaviour
             {
                 case GrowthSelection.Marvelous:
                     {
+                        marvelousEventActive = true;
+
                         StartCoroutine(MarvelousEvent());
                         break;
                     }

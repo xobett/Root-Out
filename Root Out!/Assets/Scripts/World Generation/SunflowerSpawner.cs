@@ -66,6 +66,9 @@ public class SunflowerSpawner : MonoBehaviour
             lastPositions.Add(spawnPos);
         }
 
+        //Waits less than a second until all sunflowers are done with their bug detection.
+        yield return new WaitForSeconds(0.3f);
+
         SpawnFogSpawners();
 
         yield return null;
