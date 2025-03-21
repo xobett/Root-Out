@@ -56,6 +56,11 @@ public class Sunflower : MonoBehaviour, IInteractable
         SpawnNewTerrain();
     }
 
+    private void Update()
+    {
+        sunflowerLifebar.fillAmount = currentHealth / maxHealth;
+    }
+
     public void SpawnNewTerrain()
     {
         var fogPs = cloneFog.GetComponent<ParticleSystem>();
