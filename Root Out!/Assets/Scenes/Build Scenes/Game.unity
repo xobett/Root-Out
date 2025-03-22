@@ -641,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7288848714663631868, guid: fef70c9861f2e4341be6d088dfd2925f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.55
+      value: 1.5499878
       objectReference: {fileID: 0}
     - target: {fileID: 7288848714663631868, guid: fef70c9861f2e4341be6d088dfd2925f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2545,11 +2545,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1422090840}
     - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: stopNaNs
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: dithering
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: TAAQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
       propertyPath: antialiasing
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
       propertyPath: clearColorMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: taaSharpenMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
@@ -2565,8 +2581,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: fullscreenPassthrough
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: taaAntiHistoryRinging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
       propertyPath: allowDynamicResolution
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: volumeLayerMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: customRenderingSettings
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3444299237348201868, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2610,6 +2642,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5934946271422344657, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934946271422344657, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: m_OcclusionCulling
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5934946271422344657, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
