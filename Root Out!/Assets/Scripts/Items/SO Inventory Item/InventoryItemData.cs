@@ -19,6 +19,9 @@ public class InventoryItemData : ScriptableObject
     [SerializeField] private WeaponData weaponData;
     [SerializeField] private PerksData perksData;
 
+    [Header("ITEM PREFAB")]
+    [SerializeField] private GameObject itemPrefab;
+
     public string ItemName => itemName;
     public string ItemDescription => itemName;
     public ItemType ItemType => itemType;
@@ -26,6 +29,7 @@ public class InventoryItemData : ScriptableObject
     public CropData CropData => CropData;
     public WeaponData WeaponData => weaponData;
     public PerksData PerksData => perksData;
+    public GameObject ItemPrefab => itemPrefab;
 }
 
 public enum ItemType

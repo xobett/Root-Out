@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool marvelousEventActive;
     [SerializeField] private bool normalEventActive;
     public bool MarvelousEventActive => marvelousEventActive;
-    public bool GrowthEventActive => normalEventActive || marvelousEventActive;
 
     //Change it to a method where depending on the type of event, will give a sunflower.
     public Sunflower activeSunflower => currentSunflower;
@@ -53,7 +52,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     private float timer;
     [SerializeField] private float timeToCountdown = 10f;
-    private bool eventTimerisActive;
+    public bool eventTimerisActive;
 
     void Start()
     {
@@ -274,7 +273,7 @@ public class GameManager : MonoBehaviour
             currentSecondSunflowerLifebarAnimator.SetTrigger("Outro State");
         }
     }
-    private void DisplayMessage(string message)
+    public void DisplayMessage(string message)
     {
         messageText.text = message;
         messageTextAnimator.SetTrigger("Show Message");
