@@ -43,10 +43,6 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
             FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
             base.Shoot();
         }
-        else
-        {
-            Debug.LogWarning("Weapon is not in the WeaponHandler or is not the current weapon.");
-        }
     }
 
     protected override void Reload()
