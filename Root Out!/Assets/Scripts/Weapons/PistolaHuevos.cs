@@ -12,17 +12,6 @@ public class PistolaHuevos : WeaponsBase, IInteractable
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
-
-        if (bulletText != null)
-        {
-            bulletText.gameObject.SetActive(false); // Desactivar el texto de munición al inicio
-        }
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        UpdateAmmoText(); // Actualiza el texto de munición después de disparar
     }
 
     protected override void Shoot()
@@ -59,18 +48,6 @@ public class PistolaHuevos : WeaponsBase, IInteractable
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
         }
-    }
-
-    private void UpdateAmmoText() // Actualiza el texto de munición
-    {
-        if (bulletText != null)
-        {
-            bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
-        }
-        //else
-        //{
-        //    Debug.LogWarning("Ammo text component is not assigned.");
-        //}
     }
 }
 

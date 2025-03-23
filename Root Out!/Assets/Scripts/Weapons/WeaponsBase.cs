@@ -79,6 +79,7 @@ namespace Weapons
 
             if (bulletText != null)
             {
+                bulletText.gameObject.SetActive(false); // Desactivar el texto de munición al inicio
                 bulletText = GameObject.Find("BulletText").GetComponent<TextMeshProUGUI>(); // Buscar el objeto con el nombre "BulletText" y obtener el componente TextMeshProUGUI
             }
         }
@@ -86,6 +87,7 @@ namespace Weapons
         protected virtual void Update()
         {
             FireNReload(); // Método que controla el disparo y la recarga
+            UpdateAmmoText(); // Actualiza el texto de munición
         }
 
         protected void SetNewAimState()
@@ -369,6 +371,14 @@ namespace Weapons
         public void ActivateExplosionUpgrade()
         {
             explosionUpgradeActivated = true;
+        }
+
+        protected void UpdateAmmoText() // Actualiza el texto de munición
+        {
+            if (bulletText != null)
+            {
+                bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
+            }
         }
     }
 

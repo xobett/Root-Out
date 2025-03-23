@@ -13,17 +13,6 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
-
-
-        if (bulletText != null)
-        {
-            bulletText.gameObject.SetActive(false); // Desactivar el texto de munición al inicio
-        }
-    }
-    protected override void Update()
-    {
-        base.Update();
-        UpdateAmmoText(); // Actualiza el texto de munición 
     }
 
     protected override void Shoot()
@@ -54,14 +43,6 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
             weaponHandler.PickUpWeapon(gameObject, weaponData); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
-        }
-    }
-
-    private void UpdateAmmoText() // Actualiza el texto de munición
-    {
-        if (bulletText != null)
-        {
-            bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
         }
     }
 }

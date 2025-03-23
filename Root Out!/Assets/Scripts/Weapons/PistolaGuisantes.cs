@@ -11,18 +11,6 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
-
-
-        if (bulletText != null)
-        {
-            bulletText.gameObject.SetActive(false); // Desactivar el texto de munición al inicio
-        }
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        UpdateAmmoText(); // Actualiza el texto de munición después de disparar
     }
 
     protected override void Shoot()
@@ -58,12 +46,4 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
         }
     }
 
-    private void UpdateAmmoText() // Actualiza el texto de munición
-    {
-        if (bulletText != null && bulletText.gameObject.activeSelf)
-        {
-            bulletText.text = "Infinity"; // Actualiza el texto con la munición actual y máxima
-        }
-       
-    }
 }
