@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,13 +27,13 @@ public class CornyGuy : CropBase
 
             float distance = Vector3.Distance(transform.position, desiredShootingPos);
 
-            if (distance > 1)
+            if (distance > 1 && !arrivedToShootingPosition)
             {
                 SetDestination(desiredShootingPos, cropRunSpeed);
             }
             else
             {
-                Debug.Log("Arrived to shooting pos");
+                arrivedToShootingPosition = true;
             }
         }
         else
@@ -41,6 +42,8 @@ public class CornyGuy : CropBase
         }
     }
 
+
+
     protected override void SetAnimatorParameters()
     {
         base.SetAnimatorParameters();
@@ -48,10 +51,12 @@ public class CornyGuy : CropBase
 
     private void ShootAround()
     {
-        //Aqui rota constantemente.
-        shootPivot.transform.Rotate(rotation);
+        if (arrivedToShootingPosition)
+        {
+            shootPivot.transform.Rotate(rotation);
 
-        GetComponent<WeaponCoryGuy>().enabled = true;
+            GetComponent<WeaponCoryGuy>().enabled = true; 
+        }
 
         //Destroy(gameObject, 10);
     }

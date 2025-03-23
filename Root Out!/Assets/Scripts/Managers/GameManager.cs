@@ -76,7 +76,6 @@ public class GameManager : MonoBehaviour
         SunflowerHealthCheck();
     }
 
-
     private void EventTimer()
     {
         if (eventTimerisActive)
@@ -255,6 +254,8 @@ public class GameManager : MonoBehaviour
     {
         currentSunflowerAnimator.SetTrigger("Charge Completed");
         currentSunflowerLifebarAnimator.SetTrigger("Outro State");
+
+        Debug.Log("Should set success animations");
 
         if (marvelousEventActive)
         {

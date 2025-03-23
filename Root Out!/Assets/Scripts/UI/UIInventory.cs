@@ -47,6 +47,8 @@ public class UIInventory : MonoBehaviour
         {
             OpenInventory();
         }
+
+        DisplayTotalCoins();
     }
 
     private void DisplayTotalCoins()
