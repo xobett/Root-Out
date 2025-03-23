@@ -17,22 +17,24 @@ public class MushroomBombShooter : WeaponsBase
 
     private Vector3 pointFloor; // Posición de la imagen
     private GameObject point; // Imagen
-    private Transform groundCheck;
+    private Transform bombMark;
 
     NavMeshAgent agent;
 
     protected override void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por la etiqueta
-        groundCheck = GameObject.Find("Ground Check").transform; // Busca el objeto por el nombre
+        bombMark = GameObject.Find("BombMark").transform;
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
         agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(TargetPointCoroutine()); // Inicia la corrutina para instanciar targetShooting
     }
 
     protected override void Update()
     {
         base.Update();
-        StartCoroutine(TargetPointCoroutine()); // Inicia la corrutina para instanciar targetShooting
+        // Mantener la posición en Y de bombMark constante
+        bombMark.position = new Vector3(player.position.x, 0.6f, player.position.z);
     }
 
     private void LateUpdate()
@@ -83,9 +85,9 @@ public class MushroomBombShooter : WeaponsBase
         {
             yield return new WaitForSeconds(1f / fireRate); // Espera el tiempo basado en la cadencia de disparo
 
-            pointFloor = groundCheck.position + Vector3.down * targetPointDistance; // Posición de la imagen
+            pointFloor = bombMark.position + Vector3.down * targetPointDistance; // Posición de la imagen
             point = Instantiate(HUDTargetPoint, pointFloor, Quaternion.identity); // Instancia de la imagen
-            Destroy(point, 1.5f); // Destruye la imagen
+            Destroy(point, 1.5f); // Destruye la imagen después de 0.5 segundos
         }
     }
 
