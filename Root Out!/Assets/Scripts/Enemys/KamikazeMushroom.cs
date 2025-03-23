@@ -18,7 +18,8 @@ public class KamikazeMushroom : WeaponsBase
     {
         sunFlowerScript = FindAnyObjectByType<Sunflower>();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
-        sunFlowerGameObject = GameObject.FindGameObjectWithTag("Sunflower").transform;
+        //Para que no aparezca error comente esta linea... como quiera en el metodo del update esta buscando constantemente un girasol activo, con eso agarra uno.
+        //sunFlowerGameObject = GameObject.FindGameObjectWithTag("Sunflower").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 

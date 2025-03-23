@@ -59,9 +59,9 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
         {
             bulletText.text = $"{currentAmmo}/{bulletReserve}"; // Actualiza el texto con la munición actual y máxima
         }
-        else
-        {
-            Debug.LogWarning("Ammo text component is not assigned.");
-        }
+        //else
+        //{
+        //    Debug.LogWarning("Ammo text component is not assigned.");
+        //}
     }
 }

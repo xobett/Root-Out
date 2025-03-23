@@ -20,26 +20,27 @@ public abstract class CropBase : MonoBehaviour
 
     protected Transform playerPos;
 
-    private Vector3 velocityRef = Vector3.zero;
+    protected Vector3 velocityRef = Vector3.zero;
 
     [Header("COMBAT SETTINGS")]
     [SerializeField] protected float damage;
     [SerializeField] protected float frontShootingDistance;
     [SerializeField] protected float sideShootingDistance;
 
+
     [Header("ENEMY DETECTION")]
-    [SerializeField] private float sphereDetectionRadius = 12f;
-    [SerializeField] private LayerMask whatIsEnemy;
-    [SerializeField] private float maxHitDistance;
+    [SerializeField] protected float sphereDetectionRadius = 12f;
+    [SerializeField] protected LayerMask whatIsEnemy;
+    [SerializeField] protected float maxHitDistance;
 
     [SerializeField] protected bool enemyDetected;
     [SerializeField] protected bool isFollowingPlayer;
 
-    private RaycastHit hit;
+    protected RaycastHit hit;
 
-    private Transform enemyPos;
+    protected Transform enemyPos;
 
-    private CropHandler cropHandler;
+    protected CropHandler cropHandler;
 
     private void Start()
     {
@@ -107,7 +108,7 @@ public abstract class CropBase : MonoBehaviour
         }
     }
     
-    protected void HeadToShootingPos()
+    protected virtual void HeadToShootingPos()
     {
         if (enemyPos != null)
         {
@@ -128,14 +129,14 @@ public abstract class CropBase : MonoBehaviour
         }
     }
 
-    private void SetDestination(Vector3 desiredFollowingPos, float speed)
+    protected void SetDestination(Vector3 desiredFollowingPos, float speed)
     {
         transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / speed);
 
         //Lerp on a fixed value for better following.
 
     }
-    private void LookAtTarget(Transform target)
+    protected void LookAtTarget(Transform target)
     {
         //Consigue la direccion donde se encuentra el jugador.
         Vector3 direction = target.position - transform.position;
