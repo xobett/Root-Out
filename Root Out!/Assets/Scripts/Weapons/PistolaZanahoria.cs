@@ -10,17 +10,11 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
-    private GameObject canvasRecarga;
-    private Animation animacionRecarga;
 
     protected override void Start()
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
-        canvasRecarga = GameObject.Find("Recarga");
-        animacionRecarga = canvasRecarga.GetComponent<Animation>();
-
-        canvasRecarga.SetActive(false); // Desactivar la imagen de recarga al inicio
 
         if (bulletText != null)
         {
@@ -54,31 +48,6 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
             base.Reload();
 
         }
-    }
-
-    protected override IEnumerator ReloadCoroutine()
-    {
-        if (canvasRecarga != null)
-        {
-            canvasRecarga.SetActive(true); // Activar la imagen de recarga
-        }
-        if (animacionRecarga != null)
-        {
-            animacionRecarga.Play(); // Reproducir la animación de recarga
-        }
-
-        yield return new WaitForSeconds(reloadTime); // Espera el tiempo de recarga
-
-        if (animacionRecarga != null)
-        {
-            animacionRecarga.Stop(); // Detener la animación de recarga
-        }
-        if (canvasRecarga != null)
-        {
-            canvasRecarga.SetActive(false); // Desactivar la imagen de recarga
-        }
-
-        StartCoroutine(base.ReloadCoroutine());
     }
 
     public void OnInteract()

@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using Weapons;
@@ -9,17 +8,11 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
 
-    private GameObject canvasRecarga;
-    private Animation animacionRecarga;
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
     protected override void Start()
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
-        canvasRecarga = GameObject.Find("Recarga");
-        animacionRecarga = canvasRecarga.GetComponent<Animation>();
-
-        canvasRecarga.SetActive(false); // Desactivar la imagen de recarga al inicio
 
         if (bulletText != null)
         {
@@ -60,31 +53,6 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
         {
             base.Reload();
         }
-    }
-
-    protected override IEnumerator ReloadCoroutine()
-    {
-        if (canvasRecarga != null)
-        {
-            canvasRecarga.SetActive(true); // Activar la imagen de recarga
-        }
-        if (animacionRecarga != null)
-        {
-            animacionRecarga.Play(); // Reproducir la animación de recarga
-        }
-
-        yield return new WaitForSeconds(reloadTime); // Espera el tiempo de recarga
-
-        if (animacionRecarga != null)
-        {
-            animacionRecarga.Stop(); // Detener la animación de recarga
-        }
-        if (canvasRecarga != null)
-        {
-            canvasRecarga.SetActive(false); // Desactivar la imagen de recarga
-        }
-
-        StartCoroutine(base.ReloadCoroutine());
     }
 
     private void UpdateAmmoText() // Actualiza el texto de munición

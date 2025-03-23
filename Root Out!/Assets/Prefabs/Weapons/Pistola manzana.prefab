@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 7287354861099801352}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.17, y: 0.58, z: 0.041}
+  m_LocalPosition: {x: 0.743, y: 0.463, z: 0.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33624e52aadcaa141a5867e6841357ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32999998
+      value: -0.061
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33624e52aadcaa141a5867e6841357ed, type: 3}
       propertyPath: m_LocalPosition.z
@@ -187,7 +187,7 @@ MonoBehaviour:
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 6322684346280968154, guid: d8d67ca5dc64e0848a0f5d16f092d3c8, type: 3}
+  explosionPrefab: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
   currentAmmo: 400
   maxAmmo: 400
   bulletReserve: 800
@@ -202,12 +202,12 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  rechargeAnimation: {fileID: 0}
-  rechargeCanvas: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   bulletText: {fileID: 0}
   weaponData: {fileID: 11400000, guid: c18b4b97f856bff46a76d879629c972f, type: 2}
+  canvasRecarga: {fileID: 0}
+  animacionRecarga: {fileID: 0}
 --- !u!65 &3646421563276720771
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -227,5 +227,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.78, y: 0.79, z: 0.55285895}
+  m_Size: {x: 0.6, y: 0.59, z: 0.55285895}
   m_Center: {x: 0.20999998, y: 0.649997, z: -0.08357088}

@@ -336,10 +336,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom Bomb Shooter
       objectReference: {fileID: 0}
-    - target: {fileID: 4601248732316366986, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.2
@@ -379,30 +375,6 @@ PrefabInstance:
     - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6877164462081190046, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6877164462081190046, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: fireRate
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6877164462081190046, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: weaponHandler
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6877164462081190046, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: rechargeCanvas
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6877164462081190046, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: rechargeAnimation
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6877164462081190046, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: heightSecondBullet
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1551,21 +1523,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 287881778}
     - target: {fileID: 694872422705124965, guid: 62015e164ef71f740973ad659e69eded, type: 3}
-      propertyPath: weaponHandler
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 694872422705124965, guid: 62015e164ef71f740973ad659e69eded, type: 3}
-      propertyPath: rechargeCanvas
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 694872422705124965, guid: 62015e164ef71f740973ad659e69eded, type: 3}
       propertyPath: sunFlowerScript
       value: 
       objectReference: {fileID: 287881777}
-    - target: {fileID: 694872422705124965, guid: 62015e164ef71f740973ad659e69eded, type: 3}
-      propertyPath: rechargeAnimation
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6000692407331309984, guid: 62015e164ef71f740973ad659e69eded, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.2
@@ -1614,10 +1574,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom Kamikaze
       objectReference: {fileID: 0}
-    - target: {fileID: 8273410966226516354, guid: 62015e164ef71f740973ad659e69eded, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1627,11 +1583,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6000692407331309984, guid: 62015e164ef71f740973ad659e69eded, type: 3}
   m_PrefabInstance: {fileID: 893522206}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &958954958 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 491348470511416735, guid: ef4c7facc672dc44793553d252835415, type: 3}
-  m_PrefabInstance: {fileID: 2026462684}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1052963813 stripped
 Transform:
@@ -1690,34 +1641,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom Shooter
       objectReference: {fileID: 0}
-    - target: {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6523026974905630056, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: cameraPlayer
       value: 
       objectReference: {fileID: 837251088}
     - target: {fileID: 8040456011349735739, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8040456011349735739, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: sunFlower
       value: 
       objectReference: {fileID: 287881778}
-    - target: {fileID: 8040456011349735739, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: weaponHandler
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8040456011349735739, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: rechargeCanvas
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8040456011349735739, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: rechargeAnimation
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2143,11 +2074,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 502834556098022018, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
   m_PrefabInstance: {fileID: 5277021501074031554}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &1711912701 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 1242201768001229092, guid: ef4c7facc672dc44793553d252835415, type: 3}
-  m_PrefabInstance: {fileID: 2026462684}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1791147703 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1326602859400049688, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
@@ -2342,6 +2268,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 491348470511416735, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292405496495748138, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.6
@@ -2382,6 +2316,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2089683457755613265, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: cameraPlayer
+      value: 
+      objectReference: {fileID: 837251088}
     - target: {fileID: 2439334005778980448, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: playerLifeBar
       value: 
@@ -2446,7 +2384,16 @@ PrefabInstance:
       propertyPath: previousCropIcon
       value: 
       objectReference: {fileID: 1468230362}
-    m_RemovedComponents: []
+    - target: {fileID: 6840670482356824514, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842912475283561048, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6840670482356824514, guid: ef4c7facc672dc44793553d252835415, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2648,42 +2595,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistola manzana
       objectReference: {fileID: 0}
-    - target: {fileID: 3646421563276720771, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646421563276720771, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
-      propertyPath: m_Size.y
-      value: 0.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 4604045601593984137, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.743
-      objectReference: {fileID: 0}
-    - target: {fileID: 4604045601593984137, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.463
-      objectReference: {fileID: 0}
-    - target: {fileID: 4604045601593984137, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.006
+    - target: {fileID: 828288686953402353, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5521406512364880590, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
-    - target: {fileID: 5521406512364880590, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
-      propertyPath: rechargeCanvas
-      value: 
-      objectReference: {fileID: 958954958}
-    - target: {fileID: 5521406512364880590, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
-      propertyPath: explosionPrefab
-      value: 
-      objectReference: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
-    - target: {fileID: 5521406512364880590, guid: 7159875e011d26a4ba8a68e6ccbd64db, type: 3}
-      propertyPath: rechargeAnimation
-      value: 
-      objectReference: {fileID: 1711912701}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2771,14 +2690,6 @@ PrefabInstance:
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
-    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: explosionPrefab
-      value: 
-      objectReference: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
-    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: weaponInfoDisplay
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5014879619776171729, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.379
@@ -2823,25 +2734,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistola guisantes
       objectReference: {fileID: 0}
-    - target: {fileID: 7009687132939657512, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.588
-      objectReference: {fileID: 0}
-    - target: {fileID: 7009687132939657512, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.136
-      objectReference: {fileID: 0}
-    - target: {fileID: 7009687132939657512, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.109
-      objectReference: {fileID: 0}
-    - target: {fileID: 9159407334731054315, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9159407334731054315, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: m_Size.y
-      value: 0.59
+    - target: {fileID: 5680093412022981739, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2922,30 +2817,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
-    - target: {fileID: 4755046102783221918, guid: 34044fc0c020f72408c38442517737d4, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4755046102783221918, guid: 34044fc0c020f72408c38442517737d4, type: 3}
-      propertyPath: m_Size.y
-      value: 0.59
-      objectReference: {fileID: 0}
     - target: {fileID: 5635957317709180901, guid: 34044fc0c020f72408c38442517737d4, type: 3}
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
-    - target: {fileID: 5635957317709180901, guid: 34044fc0c020f72408c38442517737d4, type: 3}
-      propertyPath: rechargeCanvas
-      value: 
-      objectReference: {fileID: 958954958}
-    - target: {fileID: 5635957317709180901, guid: 34044fc0c020f72408c38442517737d4, type: 3}
-      propertyPath: explosionPrefab
-      value: 
-      objectReference: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
-    - target: {fileID: 5635957317709180901, guid: 34044fc0c020f72408c38442517737d4, type: 3}
-      propertyPath: rechargeAnimation
-      value: 
-      objectReference: {fileID: 1711912701}
     - target: {fileID: 7324639930854181520, guid: 34044fc0c020f72408c38442517737d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.89
@@ -2990,9 +2865,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Pistola zanahoria '
       objectReference: {fileID: 0}
-    - target: {fileID: 8681059446760794111, guid: 34044fc0c020f72408c38442517737d4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.832
+    - target: {fileID: 7993196204823728170, guid: 34044fc0c020f72408c38442517737d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3017,14 +2892,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
-    - target: {fileID: 2777941035736229040, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2777941035736229040, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: m_Size.y
-      value: 0.59
-      objectReference: {fileID: 0}
     - target: {fileID: 5077107983995887419, guid: cf245403e7c521c43b6729815de93009, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.12
@@ -3069,29 +2936,13 @@ PrefabInstance:
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
-    - target: {fileID: 5107453697389840959, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: rechargeCanvas
-      value: 
-      objectReference: {fileID: 958954958}
-    - target: {fileID: 5107453697389840959, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: explosionPrefab
-      value: 
-      objectReference: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
-    - target: {fileID: 5107453697389840959, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: rechargeAnimation
-      value: 
-      objectReference: {fileID: 1711912701}
     - target: {fileID: 5565976775888962945, guid: cf245403e7c521c43b6729815de93009, type: 3}
       propertyPath: m_Name
       value: Pistola calabaza
       objectReference: {fileID: 0}
-    - target: {fileID: 7279786509918256495, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7279786509918256495, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.011
+    - target: {fileID: 5565976775888962945, guid: cf245403e7c521c43b6729815de93009, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3530,18 +3381,6 @@ PrefabInstance:
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
-    - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: rechargeCanvas
-      value: 
-      objectReference: {fileID: 958954958}
-    - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: explosionPrefab
-      value: 
-      objectReference: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
-    - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: rechargeAnimation
-      value: 
-      objectReference: {fileID: 1711912701}
     - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.92
@@ -3584,15 +3423,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8350717646878126901, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: m_Size.x
-      value: 0.6
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 8350717646878126901, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: m_Size.y
-      value: 0.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459949569436135217, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.936
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 8918381668964958531, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: m_Name
@@ -3748,34 +3583,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
-    - target: {fileID: 1495437155140525817, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495437155140525817, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: m_Size.y
-      value: 0.59
-      objectReference: {fileID: 0}
     - target: {fileID: 7190973760464605668, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_Name
       value: Pistola huevos
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190973760464605668, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7240532743973914911, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: bulletText
       value: 
       objectReference: {fileID: 7045698031813691097}
-    - target: {fileID: 7240532743973914911, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: rechargeCanvas
-      value: 
-      objectReference: {fileID: 958954958}
-    - target: {fileID: 7240532743973914911, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: explosionPrefab
-      value: 
-      objectReference: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
-    - target: {fileID: 7240532743973914911, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: rechargeAnimation
-      value: 
-      objectReference: {fileID: 1711912701}
     - target: {fileID: 7530203457036585822, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.73
@@ -3815,10 +3634,6 @@ PrefabInstance:
     - target: {fileID: 7530203457036585822, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8471408064952643036, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.725
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

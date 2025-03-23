@@ -254,10 +254,10 @@ MonoBehaviour:
   currentAmmo: 2147483647
   maxAmmo: 2147483647
   bulletReserve: 2147483647
-  maxBulletReserve: 0
+  maxBulletReserve: 2147483647
   damage: 2.5
   range: 5
-  fireRate: 1
+  fireRate: 0.4
   reloadTime: 0
   bulletForce: 10
   lifeTimeBullets: 10
@@ -265,15 +265,11 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  rechargeAnimation: {fileID: 0}
-  rechargeCanvas: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
-  player: {fileID: 0}
   HUDTargetPoint: {fileID: 3026164163744036126, guid: 6a9feb9b591cb5c44b63fa84772771a9, type: 3}
   targetPointDistance: 0.5
-  heightSecondBullet: 12
-  weaponHandler: {fileID: 0}
+  heightSecondBullet: 15
 --- !u!114 &5078747472099110838
 MonoBehaviour:
   m_ObjectHideFlags: 0

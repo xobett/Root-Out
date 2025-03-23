@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b7b4a773a0f2449bc0707c5edbefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPlayer: {fileID: 3444299237348201868, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+  cameraPlayer: {fileID: 0}
 --- !u!1 &4801973620045500767
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,8 +340,6 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  rechargeAnimation: {fileID: 0}
-  rechargeCanvas: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   detectionRange: 2

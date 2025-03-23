@@ -8,17 +8,19 @@ using Weapons;
 public class MushroomBombShooter : WeaponsBase
 {
     [Header("Mushroom Bomb Shooter Settings")]
-    [SerializeField] private Transform player; // Objetivo a disparar
-    [SerializeField] GameObject HUDTargetPoint; // prefab del HUD taget point que es la imagen tiro al blanco en el piso
+    [SerializeField] private GameObject HUDTargetPoint; // prefab del HUD taget point que es la imagen tiro al blanco en el piso
     [SerializeField] private float targetPointDistance; // Distancia de la imagen "tiro al blanco"
     [SerializeField] private float heightSecondBullet = 12f; // Mide la altura de la bala que aparece arriba del player
-    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+
+    private Transform player; // Objetivo a disparar
+    private WeaponHandler weaponHandler; // Referencia al WeaponHandler
 
     NavMeshAgent agent;
 
     protected override void Start()
     {
-        SetPlayerReference();
+        player = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por la etiqueta
+        weaponHandler = FindFirstObjectByType<WeaponHandler>();
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(TargetPointCoroutine()); // Inicia la corrutina para instanciar targetShooting
     }
@@ -27,7 +29,7 @@ public class MushroomBombShooter : WeaponsBase
     {
         LookAtTarget(player); // Llama al método LookAtTarget
     }
-    
+
     protected override void Shoot()
     {
         Mortar(); // Llama al método Mortar
@@ -35,13 +37,13 @@ public class MushroomBombShooter : WeaponsBase
         Attack(); // Llama al método Attack
     }
 
-    protected override void Reload()
+    protected override void Reload() 
     {
-        if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
+        if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Este metodo evita que la imagen de recarga se active
         {
             base.Reload();
         }
-    }
+    } 
     void Attack()
     {
         agent.SetDestination(player.position);
@@ -65,7 +67,7 @@ public class MushroomBombShooter : WeaponsBase
         mortar.GetComponent<Rigidbody>().AddForce(Vector3.down * bulletForce, ForceMode.Impulse);
     }
 
-    IEnumerator TargetPointCoroutine()
+    IEnumerator TargetPointCoroutine() // Corrutina para instanciar targetShooting
     {
         while (true)
         {
@@ -78,14 +80,11 @@ public class MushroomBombShooter : WeaponsBase
         }
     }
 
-    void LookAtTarget(Transform target)
+    void LookAtTarget(Transform target) // Método para mirar al jugador
     {
         Vector3 direction = (target.position - transform.position).normalized; // Dirección hacia el jugador
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Rotación de mirada
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f); // Rotación suave
     }
-    private void SetPlayerReference()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+   
 }

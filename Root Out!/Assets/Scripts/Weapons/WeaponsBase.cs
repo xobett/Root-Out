@@ -52,22 +52,23 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
 
-        //[Header("Recarga Imagen (Opcional)")]
-        //[SerializeField] public Animation rechargeAnimation;
-        //[SerializeField] private GameObject rechargeCanvas;
-
         [HideInInspector] public bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
         [HideInInspector] public bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
+
+        protected GameObject canvasRecarga;
+        protected Animation animacionRecarga;
 
         protected virtual void Start()
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
             bulletReserve = maxBulletReserve;
-            //if (rechargeCanvas != null)
-            //{
-            //    rechargeCanvas.SetActive(false);
-            //}
+            canvasRecarga = GameObject.Find("Recarga");
+            if (canvasRecarga != null)
+            {
+                animacionRecarga = canvasRecarga.GetComponent<Animation>();
+                canvasRecarga.SetActive(false); // Desactivar la imagen de recarga al inicio
+            }
         }
 
         protected virtual void Update()
@@ -115,6 +116,7 @@ namespace Weapons
             }
             Reload();
         }
+
         protected virtual void Reload()
         {
             // Detecta si se presiona la tecla de recarga (R)
@@ -161,28 +163,25 @@ namespace Weapons
         // Corrutina que maneja la lógica de recarga
         protected virtual IEnumerator ReloadCoroutine()
         {
-            Debug.Log("Reloading...");
-            //// Iniciar la animación de recarga si existe
-            //if (rechargeAnimation != null)
-            //{
-            //    if (rechargeCanvas != null)
-            //    {
-            //        rechargeCanvas.SetActive(true);
-            //    }
-            //    rechargeAnimation.Play();
-            //}
+            if (canvasRecarga != null)
+            {
+                canvasRecarga.SetActive(true); // Activar la imagen de recarga
+            }
+            if (animacionRecarga != null)
+            {
+                animacionRecarga.Play(); // Reproducir la animación de recarga
+            }
 
             yield return new WaitForSeconds(reloadTime); // Espera el tiempo de recarga
 
-            //// Detener la animación de recarga si existe
-            //if (rechargeAnimation != null)
-            //{
-            //    rechargeAnimation.Stop();
-            //    if (rechargeCanvas != null)
-            //    {
-            //        rechargeCanvas.SetActive(false);
-            //    }
-            //}
+            if (animacionRecarga != null)
+            {
+                animacionRecarga.Stop(); // Detener la animación de recarga
+            }
+            if (canvasRecarga != null)
+            {
+                canvasRecarga.SetActive(false); // Desactivar la imagen de recarga
+            }
 
             // Calcula cuántas balas se necesitan para recargar completamente
             int bulletsToReload = maxAmmo - currentAmmo;
@@ -342,7 +341,7 @@ namespace Weapons
         public IEnumerator ExplosionCooldown()
         {
             canInstantiateExplosion = false;
-            yield return new WaitForSeconds(1f); 
+            yield return new WaitForSeconds(1f);
             canInstantiateExplosion = true;
             Debug.Log("Exploto");
         }
