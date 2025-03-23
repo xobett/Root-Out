@@ -6,6 +6,7 @@ namespace Weapons
 {
     public class WeaponsBase : MonoBehaviour
     {
+        #region Enum Weapon Type 
         public enum WeaponType
         {
             SpreadShot,
@@ -13,6 +14,10 @@ namespace Weapons
             BurstFire,
             SingleShot
         }
+
+        #endregion
+
+        #region Weapons Variables
 
         [Header("Tipo de apuntado")]
         [SerializeField] private PlayerAimState tipoDeApuntado;
@@ -43,7 +48,7 @@ namespace Weapons
         [SerializeField] public int maxBulletReserve; // necesito esta variable para que el upgrade haga effecto correctamente
 
         [Header("Estadísticas")]
-        [SerializeField] public float damage; // Daño 
+        [SerializeField] public float damage;// Daño 
         [SerializeField] protected float range; // Alcance 
         [SerializeField] protected float fireRate; // Cadencia de disparo
         [SerializeField] public float reloadTime; // Recargar
@@ -55,16 +60,25 @@ namespace Weapons
         [SerializeField] protected float burstRate = 0.1f; // Tiempo entre disparos en una ráfaga
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
+        protected float nextTimeToFire = 0f;  // Tiempo entre disparos
+
+        #endregion
+
+        #region Explosive Bullets Boolean
 
         [HideInInspector] public bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
         [HideInInspector] public bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
-        protected float nextTimeToFire = 0f;  // Tiempo entre disparos
+        #endregion
+
+        #region References
 
         protected GameObject canvasRecarga;
         protected Animation animacionRecarga;
-
         protected TextMeshProUGUI bulletText;
 
+        #endregion
+
+        #region Start & Update
         protected virtual void Start()
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
@@ -77,26 +91,30 @@ namespace Weapons
                 canvasRecarga.SetActive(false); // Desactivar la imagen de recarga al inicio
             }
 
+            bulletText = GameObject.Find("BulletText").GetComponent<TextMeshProUGUI>(); // Buscar el objeto con el nombre "BulletText" y obtener el componente TextMeshProUGUI
             if (bulletText != null)
             {
                 bulletText.gameObject.SetActive(false); // Desactivar el texto de munición al inicio
-                bulletText = GameObject.Find("BulletText").GetComponent<TextMeshProUGUI>(); // Buscar el objeto con el nombre "BulletText" y obtener el componente TextMeshProUGUI
             }
         }
-
         protected virtual void Update()
         {
             FireNReload(); // Método que controla el disparo y la recarga
             UpdateAmmoText(); // Actualiza el texto de munición
         }
 
-        protected void SetNewAimState()
+        #endregion
+
+        #region Aim State
+        protected void SetNewAimState() // Establece el nuevo estado de apuntado
         {
             var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
-            playerMovement.SetAnimationState(tipoDeApuntado);
+            playerMovement.SetAnimationState(tipoDeApuntado); // Llama al método SetAnimationState en el script PlayerMovement
         }
+        #endregion
 
+        #region Fire & Reload
         void FireNReload()
         {
             if (autoFire && CanShoot())
@@ -137,52 +155,10 @@ namespace Weapons
             }
             Reload();
         }
+        #endregion
 
-        protected virtual void Reload()
-        {
-            // Detecta si se presiona la tecla de recarga (R)
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (bulletReserve > 0)
-                {
-                    StartCoroutine(ReloadCoroutine()); // Inicia la recarga si hay balas en la reserva
-                }
-                else
-                {
-                    Debug.Log("No bullets left in reserve!"); // Mensaje de depuración si no hay balas en la reserva
-                }
-            }
-        }
-
-        // Método virtual que será sobrescrito por las clases derivadas para manejar el disparo específico
-        protected virtual void Shoot()
-        {
-            int numberBullets = weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Obtener el número de balas a disparar
-            UseAmmo(numberBullets); // Reduce la munición actual
-            FireBullet(numberBullets); // Dispara una bala (instancia el prefab)
-        }
-
-        // Método para disparar en ráfagas
-        public IEnumerator FireBurst()
-        {
-            for (int i = 0; i < bulletsPerBurst; i++)
-            {
-                if (CanShoot())
-                {
-                    FireBullet(1, i); // Dispara una bala por ráfaga
-                    UseAmmo(1); // Reduce la munición actual
-                    yield return new WaitForSeconds(burstRate); // Espera el tiempo entre disparos en una ráfaga
-                }
-                else
-                {
-                    break;
-                }
-            }
-            nextTimeToFire = Time.time + burstPause; // Añade una pausa después de la ráfaga
-        }
-
-        // Corrutina que maneja la lógica de recarga
-        protected virtual IEnumerator ReloadCoroutine()
+        #region Logic Reload
+        protected virtual IEnumerator ReloadCoroutine()  // Corrutina que maneja la lógica de recarga
         {
             if (canvasRecarga != null)
             {
@@ -220,22 +196,40 @@ namespace Weapons
 
             Debug.Log("Reloaded. Ammo: " + currentAmmo + ", Bullets in Reserve: " + bulletReserve);
         }
+        protected virtual void Reload() // Método que maneja la recarga
+        {
+            // Detecta si se presiona la tecla de recarga (R)
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (bulletReserve > 0)
+                {
+                    StartCoroutine(ReloadCoroutine()); // Inicia la recarga si hay balas en la reserva
+                }
+                else
+                {
+                    Debug.Log("No bullets left in reserve!"); // Mensaje de depuración si no hay balas en la reserva
+                }
+            }
+        }
+        #endregion
 
-        // Método que verifica si es posible disparar
-        protected bool CanShoot()
+        #region Logic Fire
+        protected virtual void Shoot()
+        {
+            int numberBullets = weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Obtener el número de balas a disparar
+            UseAmmo(numberBullets); // Reduce la munición actual
+            FireBullet(numberBullets); // Dispara una bala (instancia el prefab)
+        }
+        protected bool CanShoot() // Método que verifica si es posible disparar
         {
             // Comprueba que haya pasado suficiente tiempo desde el último disparo y que haya munición disponible
             return Time.time >= nextTimeToFire && currentAmmo > 0;
         }
-
-        // Método que reduce la munición actual al disparar
-        protected void UseAmmo(int numberBullets)
+        protected void UseAmmo(int numberBullets)  // Método que reduce la munición actual al disparar
         {
             currentAmmo -= numberBullets;
         }
-
-        // Método que dispara una bala (instancia el prefab)
-        protected virtual void FireBullet(int numberBullets, int burstIndex = 0)
+        protected virtual void FireBullet(int numberBullets, int burstIndex = 0)   // Método que dispara una bala (instancia el prefab)
         {
             if (bulletPrefab != null)
             {
@@ -292,9 +286,10 @@ namespace Weapons
                 Debug.LogWarning("Bullet prefab not assigned!");
             }
         }
+        #endregion
 
-        // Método para obtener una dirección con dispersión
-        private Vector3 GetSpreadDirection(Vector3 baseDirection)
+        #region Spread & NonSpread Direction
+        private Vector3 GetSpreadDirection(Vector3 baseDirection) // Método para obtener una dirección con dispersión
         {
             float spreadRadius = Mathf.Tan(spreadAngle * Mathf.Deg2Rad); // Convertir ángulo a radianes y calcular el radio de dispersión
             Vector2 randomPoint = Random.insideUnitCircle * spreadRadius; // Generar un punto aleatorio dentro del círculo de dispersión
@@ -325,13 +320,68 @@ namespace Weapons
             Quaternion rotation = Quaternion.Euler(0, angle, 0); // Crea una rotación basada en el ángulo
             return rotation * baseDirection; // Aplica la rotación a la dirección base
         }
+        #endregion
 
-        // Método virtual para obtener el número de balas, será sobrescrito en las clases derivadas
-        protected virtual int GetNumBullets()
+        #region FireBurst
+        public IEnumerator FireBurst()
+        {
+            for (int i = 0; i < bulletsPerBurst; i++)
+            {
+                if (CanShoot())
+                {
+                    FireBullet(1, i); // Dispara una bala por ráfaga
+                    UseAmmo(1); // Reduce la munición actual
+                    yield return new WaitForSeconds(burstRate); // Espera el tiempo entre disparos en una ráfaga
+                }
+                else
+                {
+                    break;
+                }
+            }
+            nextTimeToFire = Time.time + burstPause; // Añade una pausa después de la ráfaga
+        }
+        protected virtual int GetNumBullets() // Método virtual para obtener el número de balas, será sobrescrito en las clases derivadas
         {
             return weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Valor predeterminado
         }
+        #endregion
 
+        #region Explosive Bullets
+        public IEnumerator ExplosionCooldown()  // Corrutina para controlar el tiempo de espera entre instanciaciones de explosión
+        {
+            canInstantiateExplosion = false;
+            yield return new WaitForSeconds(1f);
+            canInstantiateExplosion = true;
+            Debug.Log("Exploto");
+        }
+
+        // Método para activar la mejora de explosión
+        public void ActivateExplosionUpgrade()
+        {
+            explosionUpgradeActivated = true;
+        }
+        #endregion
+
+        #region Ammo Text
+        protected void UpdateAmmoText() // Actualiza el texto de munición
+        {
+            if (bulletText != null)
+            {
+                bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
+            }
+        }
+
+        protected virtual void ActivateBulletText()
+        {
+            if (bulletText != null)
+            {
+                bulletText.gameObject.SetActive(true); // Activar el texto de munición
+                UpdateAmmoText(); // Actualizar el texto de munición
+            }
+        }
+        #endregion
+
+        #region Gizmos
         protected void OnDrawGizmos()
         {
             Gizmos.color = Color.red; // Establece el color de los Gizmos a rojo.
@@ -357,29 +407,6 @@ namespace Weapons
                 }
             }
         }
-
-        // Corrutina para controlar el tiempo de espera entre instanciaciones de explosión
-        public IEnumerator ExplosionCooldown()
-        {
-            canInstantiateExplosion = false;
-            yield return new WaitForSeconds(1f);
-            canInstantiateExplosion = true;
-            Debug.Log("Exploto");
-        }
-
-        // Método para activar la mejora de explosión
-        public void ActivateExplosionUpgrade()
-        {
-            explosionUpgradeActivated = true;
-        }
-
-        protected void UpdateAmmoText() // Actualiza el texto de munición
-        {
-            if (bulletText != null)
-            {
-                bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
-            }
-        }
+        #endregion
     }
-
 }

@@ -19,6 +19,7 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
         {
             base.Shoot();
             AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
+            
         }
     }
 
