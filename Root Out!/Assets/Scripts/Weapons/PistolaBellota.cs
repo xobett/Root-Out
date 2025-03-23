@@ -1,12 +1,10 @@
-using System.Collections;
-using TMPro;
+
 using UnityEngine;
 using Weapons;
 
 public class PistolaBellota : WeaponsBase, IInteractable
 {
     [Header("Pistola Bellota")]
-    [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
@@ -15,6 +13,7 @@ public class PistolaBellota : WeaponsBase, IInteractable
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
+
 
         if (bulletText != null)
         {

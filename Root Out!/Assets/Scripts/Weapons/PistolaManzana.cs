@@ -1,12 +1,10 @@
-using System.Collections;
-using TMPro;
+
 using UnityEngine;
 using Weapons;
 
 public class PistolaManzana : WeaponsBase, IInteractable
 {
     [Header("PistolaManzana Settings")]
-    [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
@@ -64,10 +62,6 @@ public class PistolaManzana : WeaponsBase, IInteractable
         {
             bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
         }
-        //else
-        //{
-        //    Debug.LogWarning("Ammo text component is not assigned.");
-        //}
     }
 }
 

@@ -2264,7 +2264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.37
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3136,9 +3136,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5075215124919407475, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
+      propertyPath: m_Name
+      value: BulletText
+      objectReference: {fileID: 0}
     - target: {fileID: 5488347408868732121, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647264791549765245, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647264791549765245, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
+      propertyPath: m_margin.z
+      value: -176.73224
       objectReference: {fileID: 0}
     - target: {fileID: 5647264791549765245, guid: 2a2a508e3d0904f41b98191635bf4f1b, type: 3}
       propertyPath: m_isRightToLeft

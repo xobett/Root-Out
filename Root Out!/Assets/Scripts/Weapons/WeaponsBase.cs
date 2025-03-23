@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 namespace Weapons
@@ -14,7 +15,7 @@ namespace Weapons
         }
 
         [Header("Tipo de apuntado")]
-        [SerializeField] private PlayerAimState tipoDeApuntado; 
+        [SerializeField] private PlayerAimState tipoDeApuntado;
 
         [Header("Punto de Mira")]
         [SerializeField] public Transform aiming; // Punto de Mira
@@ -62,15 +63,23 @@ namespace Weapons
         protected GameObject canvasRecarga;
         protected Animation animacionRecarga;
 
+        protected TextMeshProUGUI bulletText;
+
         protected virtual void Start()
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
             bulletReserve = maxBulletReserve;
+
             canvasRecarga = GameObject.Find("Recarga");
             if (canvasRecarga != null)
             {
                 animacionRecarga = canvasRecarga.GetComponent<Animation>();
                 canvasRecarga.SetActive(false); // Desactivar la imagen de recarga al inicio
+            }
+
+            if (bulletText != null)
+            {
+                bulletText = GameObject.Find("BulletText").GetComponent<TextMeshProUGUI>(); // Buscar el objeto con el nombre "BulletText" y obtener el componente TextMeshProUGUI
             }
         }
 

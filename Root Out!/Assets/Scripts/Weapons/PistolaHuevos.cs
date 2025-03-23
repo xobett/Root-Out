@@ -1,11 +1,9 @@
-using System.Collections;
-using TMPro;
+
 using UnityEngine;
 using Weapons;
 public class PistolaHuevos : WeaponsBase, IInteractable
 {
     [Header("Pistola Huevos")]
-    [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler

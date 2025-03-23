@@ -1,4 +1,4 @@
-using TMPro;
+
 using UnityEngine;
 using Weapons;
 public class PistolaCalabaza : WeaponsBase, IInteractable
@@ -6,13 +6,13 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
     [Header("SHOTGUN SETTINGS")]
     [SerializeField] private int bulletsPerShot = 6; // Número de balas por disparo
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
-    [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
     protected override void Start()
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
+
 
         if (bulletText != null)
         {
