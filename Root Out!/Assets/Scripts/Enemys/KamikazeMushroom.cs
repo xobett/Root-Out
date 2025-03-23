@@ -53,11 +53,11 @@ public class KamikazeMushroom : WeaponsBase
 
         }
     }
-    protected override void ReloadCorotine()
+    protected override void Reload()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
         {
-            base.ReloadCorotine();
+            base.Reload();
         }
     }
     bool Detection()

@@ -31,11 +31,11 @@ public class MushroomShooter : WeaponsBase
         GetActiveSunflower();
     }
 
-    protected override void ReloadCorotine()
+    protected override void Reload()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
         {
-            base.ReloadCorotine();
+            base.Reload();
         }
     }
     protected override void Shoot()

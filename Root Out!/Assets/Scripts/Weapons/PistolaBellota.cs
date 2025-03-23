@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using Weapons;
@@ -7,14 +8,25 @@ public class PistolaBellota : WeaponsBase, IInteractable
     [Header("Pistola Bellota")]
     [SerializeField] private TextMeshProUGUI bulletText; // Referencia al componente de texto en el canvas
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
-    WeaponInfoDisplay weaponInfoDisplay; // Referencia al script de visualización de información del arma
-    WeaponHandler weaponHandler; // Referencia al WeaponHandler
+
+    private GameObject canvasRecarga;
+    private Animation animacionRecarga;
+    private WeaponHandler weaponHandler; // Referencia al WeaponHandler
+
 
     protected override void Start()
     {
         base.Start();
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
-        weaponInfoDisplay = FindFirstObjectByType<WeaponInfoDisplay>();
+        canvasRecarga = GameObject.Find("Recarga");
+        animacionRecarga = canvasRecarga.GetComponent<Animation>();
+
+        canvasRecarga.SetActive(false); // Desactivar la imagen de recarga al inicio
+
+        if (bulletText != null)
+        {
+            bulletText.gameObject.SetActive(false); // Desactivar el texto de munición al inicio
+        }
     }
     protected override void Update()
     {
@@ -42,12 +54,37 @@ public class PistolaBellota : WeaponsBase, IInteractable
         }
     }
 
-    protected override void ReloadCorotine()
+    protected override void Reload()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
         {
-            base.ReloadCorotine();
+            base.Reload();
         }
+    }
+
+    protected override IEnumerator ReloadCoroutine()
+    {
+        if (canvasRecarga != null)
+        {
+            canvasRecarga.SetActive(true); // Activar la imagen de recarga
+        }
+        if (animacionRecarga != null)
+        {
+            animacionRecarga.Play(); // Reproducir la animación de recarga
+        }
+
+        yield return new WaitForSeconds(reloadTime); // Espera el tiempo de recarga
+
+        if (animacionRecarga != null)
+        {
+            animacionRecarga.Stop(); // Detener la animación de recarga
+        }
+        if (canvasRecarga != null)
+        {
+            canvasRecarga.SetActive(false); // Desactivar la imagen de recarga
+        }
+
+        StartCoroutine(base.ReloadCoroutine());
     }
 
     private void UpdateAmmoText() // Actualiza el texto de munición

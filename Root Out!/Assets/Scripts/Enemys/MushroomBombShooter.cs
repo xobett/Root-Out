@@ -35,11 +35,11 @@ public class MushroomBombShooter : WeaponsBase
         Attack(); // Llama al método Attack
     }
 
-    protected override void ReloadCorotine()
+    protected override void Reload()
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
         {
-            base.ReloadCorotine();
+            base.Reload();
         }
     }
     void Attack()

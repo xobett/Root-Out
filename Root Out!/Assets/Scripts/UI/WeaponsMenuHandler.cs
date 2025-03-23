@@ -7,7 +7,6 @@ public class WeaponsMenuHandler : MonoBehaviour
     public Image[] weaponIcons; // Iconos en la rueda
     public string[] weaponNames; // Nombres de las armas (para debug o visualización)
     public WeaponData[] weaponDataArray; // Datos (por ejemplo, iconos ampliados) de las armas
-    public WeaponInfoDisplay weaponInfoDisplay; // Script que muestra la imagen del arma seleccionada
 
     // Referencia al WeaponHandler para comunicar el cambio de arma
     public WeaponHandler weaponHandler;
@@ -59,7 +58,6 @@ public class WeaponsMenuHandler : MonoBehaviour
         if (index >= 0 && index < weaponNames.Length && index < weaponDataArray.Length)
         {
             Debug.Log("WeaponsMenuHandler: Seleccionaste: " + weaponNames[index]);
-            weaponInfoDisplay.DisplayWeaponImage(weaponDataArray[index].weaponIcon);
 
             // Notificar a WeaponHandler para cambiar el arma según el índice seleccionado
             if (weaponHandler != null)

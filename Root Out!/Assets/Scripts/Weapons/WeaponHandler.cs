@@ -6,18 +6,15 @@ using UnityEngine.UI;
 
 public class WeaponHandler : MonoBehaviour
 {
-    // Lista para almacenar los prefabs de las armas
-    [SerializeField] public List<GameObject> weapons = new List<GameObject>();
-    // Lista para almacenar los datos de las armas
-    [SerializeField] public List<WeaponData> weaponDataList = new List<WeaponData>();
     // Arma actual
     [SerializeField] public GameObject currentWeapon;
     // Transform donde se instanciará el arma
     [SerializeField] public Transform weaponHolder;
 
+    // Lista para almacenar las armas
+    [SerializeField] public List<GameObject> weapons = new List<GameObject>();
     // Iconos en la rueda
     [SerializeField] private List<Image> weaponIcons = new List<Image>();
-    // Script que muestra la imagen del arma seleccionada
 
     // Canvas de la rueda de armas
     [SerializeField] private RectTransform weaponSelectionWheel;
@@ -42,8 +39,6 @@ public class WeaponHandler : MonoBehaviour
     {
         // Maneja la rotación de la rueda del ratón para cambiar de arma
         HandleMouseScroll();
-        // Actualiza los iconos de las armas
-        UpdateWeaponIcons();
         // Maneja la selección de arma al hacer clic
         HandleWeaponSelection();
         OpenMenu();
@@ -119,22 +114,6 @@ public class WeaponHandler : MonoBehaviour
         yield return null;
     }
 
-    // Actualiza los iconos de las armas
-    private void UpdateWeaponIcons()
-    {
-        for (int i = 0; i < weaponIcons.Count; i++)
-        {
-            if (i < weaponDataList.Count)
-            {
-                weaponIcons[i].sprite = weaponDataList[i].weaponIcon;
-                weaponIcons[i].enabled = true; // Asegurarse de que el icono esté habilitado
-            }
-            else
-            {
-                weaponIcons[i].enabled = false; // Desactivar iconos que no tienen un arma correspondiente
-            }
-        }
-    }
 
     // Maneja la selección de arma al hacer clic
     private void HandleWeaponSelection()
@@ -151,7 +130,6 @@ public class WeaponHandler : MonoBehaviour
         if (weapons.Count < 6) // Limitar el número de armas a 6
         {
             weapons.Add(newWeapon); // Añadir el arma a la lista
-            weaponDataList.Add(newWeaponData); // Añadir los datos del arma a la lista
 
             currentWeapon = newWeapon; // Establecer el arma actual
             Debug.Log("Picked up weapon: " + newWeapon.name);
@@ -168,8 +146,7 @@ public class WeaponHandler : MonoBehaviour
                 Debug.LogWarning("Weapon holder or weapon GameObject is not assigned.");
             }
 
-            // Actualizar los iconos de las armas
-            UpdateWeaponIcons();
+            // Actualizar los iconos de las 
             UpdateWeaponPositions();
 
             // Asignar el icono del arma al slot correspondiente
