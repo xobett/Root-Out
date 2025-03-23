@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void GetSecondSunflower(Sunflower secondSunflower, Animator secondSunflowerAnimator, Animator SecondSunflowerGrowerAnimator)
     {
-        if (playerInventoryHandler.seedCoins >= marvelousGrowthCost)
+        if (playerInventoryHandler.SeedCoins >= marvelousGrowthCost)
         {
             currentSecondSunflower = secondSunflower;
             currentSecondSunflowerAnimator = secondSunflowerAnimator;
@@ -189,9 +189,9 @@ public class GameManager : MonoBehaviour
         {
             case GrowthSelection.Marvelous:
                 {
-                    if (playerInventoryHandler.seedCoins >= marvelousGrowthCost)
+                    if (playerInventoryHandler.SeedCoins >= marvelousGrowthCost)
                     {
-                        playerInventoryHandler.seedCoins -= marvelousGrowthCost;
+                        playerInventoryHandler.PaySeedCoins(marvelousGrowthCost);
                         StartCoroutine(MarvelousEvent());
                     }
                     else
@@ -204,9 +204,9 @@ public class GameManager : MonoBehaviour
 
             case GrowthSelection.Genuine:
                 {
-                    if (playerInventoryHandler.seedCoins >= genuineGrowthCost)
+                    if (playerInventoryHandler.SeedCoins >= genuineGrowthCost)
                     {
-                        playerInventoryHandler.seedCoins -= genuineGrowthCost;
+                        playerInventoryHandler.PaySeedCoins(genuineGrowthCost);
                         StartCoroutine(NormalEvent());
                     }
                     else

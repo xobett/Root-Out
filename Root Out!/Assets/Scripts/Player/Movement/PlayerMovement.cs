@@ -1,18 +1,27 @@
 
+using System.Collections;
 using UnityEngine;
 
+public enum PlayerState
+{
+    ps_NoAim,
+    ps_RifleAim,
+    ps_SingleHandAim
+}
 public class PlayerMovement : MonoBehaviour
 {
-
     [Header("ANIMATION SETTINGS")]
     [SerializeField] private Animator playerAnimCtrlr;
+    [SerializeField, Range(2, 5)] private float stateTransitionSpeed;
+
+    [SerializeField] private PlayerState ps_State;
 
     [Header("MOVEMENT SETTINGS")]
     [SerializeField] public float walkSpeed;
     [SerializeField] public float sprintSpeed;
 
-    [SerializeField] private float turnSmoothVelocity;
     [Range(0, 1)] public float turnSpeed;
+    private float turnSmoothVelocity;
 
     private CharacterController charController;
 
@@ -48,6 +57,99 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementCheck();
         Gravity();
+
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            StartCoroutine(ChangePlayerAimState(ps_State));
+        }
+    }
+
+    private IEnumerator ChangePlayerAimState(PlayerState aimState)
+    {
+        float time = 0;
+
+        switch (aimState)
+        {
+            case PlayerState.ps_NoAim:
+                {
+
+                    if (playerAnimCtrlr.GetLayerWeight(1) == 1)
+                    {
+                        while (time < 1)
+                        {
+                            playerAnimCtrlr.SetLayerWeight(1, (1 - time));
+                            time += Time.deltaTime * stateTransitionSpeed;
+                            yield return null;
+                        }
+                    }
+
+                    time = 0;
+
+                    if (playerAnimCtrlr.GetLayerWeight(2) == 1)
+                    {
+                        while (time < 1)
+                        {
+                            playerAnimCtrlr.SetLayerWeight(2, (1 - time));
+                            time += Time.deltaTime * stateTransitionSpeed;
+                            yield return null;
+                        }
+                    }
+
+                    break;
+                }
+
+            case PlayerState.ps_RifleAim:
+                {
+                    if (playerAnimCtrlr.GetLayerWeight(2) == 1)
+                    {
+                        while (time < 1)
+                        {
+                            playerAnimCtrlr.SetLayerWeight(2, (1 - time));
+                            time += Time.deltaTime * stateTransitionSpeed;
+                            yield return null;
+                        }
+                    }
+
+                    time = 0;
+
+                    while (time < 1)
+                    {
+                        playerAnimCtrlr.SetLayerWeight(1, time);
+                        time += Time.deltaTime * stateTransitionSpeed;
+                        yield return null;
+                    }
+
+                    playerAnimCtrlr.SetLayerWeight(1, 1);
+
+                    break;
+                }
+
+            case PlayerState.ps_SingleHandAim:
+                {
+                    if (playerAnimCtrlr.GetLayerWeight(1) == 1)
+                    {
+                        while (time < 1)
+                        {
+                            playerAnimCtrlr.SetLayerWeight(1, (1 - time));
+                            time += Time.deltaTime * stateTransitionSpeed;
+                            yield return null;
+                        }
+                    }
+
+                    time = 0;
+
+                    while (time < 1)
+                    {
+                        playerAnimCtrlr.SetLayerWeight(2, time);
+                        time += Time.deltaTime * stateTransitionSpeed;
+                        yield return null;
+                    }
+
+                    playerAnimCtrlr.SetLayerWeight(2, 1);
+
+                    break;
+                }
+        }
     }
 
     private void MovementCheck()

@@ -8,10 +8,14 @@ public class UIInventory : MonoBehaviour
     private PlayerMovement playerMovement;
     private LeafJump leafJump;
     private CameraFollow cameraFollow;
+    private CropHandler cropHandler;
 
     [Header("HUD SETTINGS")]
+    [SerializeField] private GameObject hudCanvas;
+
     [SerializeField] private TextMeshProUGUI totalCoinsText;
     [SerializeField] private TextMeshProUGUI generalMessage;
+
     [SerializeField] private float fadeSpeed;
 
     [Header("INVENTORY PANEL SETTINGS")]
@@ -43,13 +47,11 @@ public class UIInventory : MonoBehaviour
         {
             OpenInventory();
         }
-
-        DisplayTotalCoins();
     }
 
     private void DisplayTotalCoins()
     {
-        totalCoinsText.text = $"Total coins: {playerInventory.seedCoins}";
+        totalCoinsText.text = $"Total coins: {playerInventory.SeedCoins}";
 
         if (totalCoinsText.alpha >= 0.9f)
         {
@@ -61,11 +63,6 @@ public class UIInventory : MonoBehaviour
         }
 
         totalCoinsText.alpha = Mathf.Lerp(totalCoinsText.alpha, targetValue, fadeSpeed * Time.deltaTime);
-    }
-
-    private void DisplayNotEnoughCoins()
-    {
-        generalMessage.text = "SELECT YOUR WAY OF SPAWNING THE SUNFLOWER";
     }
 
     private void OpenInventory()
@@ -120,6 +117,9 @@ public class UIInventory : MonoBehaviour
         playerMovement.enabled = false;
         leafJump.enabled = false;
         cameraFollow.enabled = false;
+        cropHandler.enabled = false;
+
+        hudCanvas.SetActive(false);
 
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
@@ -130,6 +130,9 @@ public class UIInventory : MonoBehaviour
         playerMovement.enabled = true;
         leafJump.enabled = true;
         cameraFollow.enabled = true;
+        cropHandler.enabled = true;
+
+        hudCanvas.SetActive(true);
 
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
@@ -137,8 +140,12 @@ public class UIInventory : MonoBehaviour
 
     private void GetInputReferences()
     {
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        leafJump = GameObject.FindGameObjectWithTag("Player").GetComponent<LeafJump>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        playerMovement = player.GetComponent<PlayerMovement>();
+        leafJump = player.GetComponent<LeafJump>();
+        cropHandler = player.GetComponent<CropHandler>();
+
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
     }
 

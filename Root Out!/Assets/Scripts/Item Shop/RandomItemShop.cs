@@ -20,7 +20,7 @@ public class RandomItemShop : MonoBehaviour
 
     private void BuyRandomItem()
     {
-        if (GameManager.instance.playerInventoryHandler.seedCoins >= shopItemCost)
+        if (GameManager.instance.playerInventoryHandler.SeedCoins >= shopItemCost)
         {
             Instantiate(GetRandomShopItem().ItemPrefab, itemSpawnPosition.position, Quaternion.identity);
         }

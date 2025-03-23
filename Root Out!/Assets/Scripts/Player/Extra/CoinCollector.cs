@@ -9,7 +9,7 @@ public class CoinCollector : MonoBehaviour
         if (other.CompareTag("Seed Coin"))
         {
             var playerInventory = GameManager.instance.playerInventoryHandler;
-            playerInventory.seedCoins += coinsToAdd;
+            playerInventory.AddSeedCoins(coinsToAdd);
 
             Destroy(other.gameObject);
         }
