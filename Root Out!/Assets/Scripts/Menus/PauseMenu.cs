@@ -14,8 +14,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject back; // Referencia al botón de retroceso
     [SerializeField] GameObject volumen; // Referencia al menú de volumen
 
-    [SerializeField] CameraFollow cameraController; // Referencia al controlador de la cámara
-    [SerializeField] PlayerMovement movementController; // Referencia al controlador de movimiento del jugador
+    private CameraFollow cameraController; // Referencia al controlador de la cámara
+    private PlayerMovement movementController; // Referencia al controlador de movimiento del jugador
     [SerializeField] Slider vfxVolumeSlider; // Referencia al slider de volumen de efectos visuales
     [SerializeField] Slider mainVolumeSlider; // Referencia al slider de volumen principal
     [SerializeField] AudioSource audioSourceMain; // Referencia al AudioSource principal
@@ -24,6 +24,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        cameraController = FindFirstObjectByType<CameraFollow>(); // Busca el controlador de la cámara en la escena
+        movementController = FindFirstObjectByType<PlayerMovement>(); // Busca el controlador de movimiento del jugador en la escena
         pauseMenu.SetActive(false);
         vfx.SetActive(false);
         back.SetActive(false);

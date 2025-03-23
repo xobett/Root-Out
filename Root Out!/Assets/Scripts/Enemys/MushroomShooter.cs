@@ -2,22 +2,23 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Weapons;
-
+using System;
 public class MushroomShooter : WeaponsBase
 {
-    private NavMeshAgent agent;
     [Header("MushroomShooter")]
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform sunFlower;
-    [SerializeField] private float rangeGizmo;
-    [SerializeField] LayerMask layer;
-    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
+    [SerializeField] private float detectionPlayer;
+
+    private WeaponHandler weaponHandler;
+    private Transform player;
+    private Transform sunFlower;
+    private NavMeshAgent agent;
 
     protected override void Start()
     {
+        weaponHandler = FindFirstObjectByType<WeaponHandler>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        sunFlower = GameObject.FindGameObjectWithTag("Sunflower").transform;
         agent = GetComponent<NavMeshAgent>();
-
-        SetPlayerReference();
     }
     private void LateUpdate()
     {
@@ -72,22 +73,18 @@ public class MushroomShooter : WeaponsBase
     private new void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, rangeGizmo);
+        Gizmos.DrawWireSphere(transform.position, detectionPlayer);
     }
     bool Detection()
     {
-        return Physics.CheckSphere(transform.position, rangeGizmo, layer);
+        LayerMask layerMask = LayerMask.GetMask("Player");
+        return Physics.CheckSphere(transform.position, detectionPlayer, layerMask);
     }
     void LookAtTarget(Transform target)
     {
         Vector3 direction = (target.position - transform.position).normalized; // Dirección hacia el jugador
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Rotación de mirada
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f); // Rotación suave
-    }
-
-    private void SetPlayerReference()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     
 }

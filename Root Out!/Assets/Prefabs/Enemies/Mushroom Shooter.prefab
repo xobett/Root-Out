@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b7b4a773a0f2449bc0707c5edbefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPlayer: {fileID: 0}
 --- !u!1 &1746716540563429218
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4c462794d827e46950ccfc200705e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tipoDeApuntado: 0
   aiming: {fileID: 8514263295453690401}
   weaponType: 1
   spreadAngle: 1
@@ -397,13 +397,7 @@ MonoBehaviour:
   burstPause: 0.5
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
-  player: {fileID: 0}
-  sunFlower: {fileID: 0}
-  rangeGizmo: 4
-  layer:
-    serializedVersion: 2
-    m_Bits: 256
-  weaponHandler: {fileID: 0}
+  detectionPlayer: 10
 --- !u!114 &4687620691336130384
 MonoBehaviour:
   m_ObjectHideFlags: 0

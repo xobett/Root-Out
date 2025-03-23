@@ -5,25 +5,31 @@ using Weapons;
 
 public class KamikazeMushroom : WeaponsBase
 {
-    [SerializeField] private float detectionRange;
-    [SerializeField] Sunflower sunFlowerScript;
-    [SerializeField] Transform _sunFlower;
-    [SerializeField] WeaponHandler weaponHandler; // Referencia al WeaponHandler
-    NavMeshAgent agent;
+    [Header("Kamikaze Mushroom Settings")]
+    [SerializeField] private float detectionRangeExplosion;
+
+    private Transform sunFlowerGameObject; // Referencia al girasol
+    private Sunflower sunFlowerScript; // Referencia al script del girasol
+    private WeaponHandler weaponHandler; // Referencia al WeaponHandler
+    private NavMeshAgent agent;
+
 
     protected override void Start()
     {
+        sunFlowerScript = FindAnyObjectByType<Sunflower>();
+        weaponHandler = FindFirstObjectByType<WeaponHandler>();
+        sunFlowerGameObject = GameObject.FindGameObjectWithTag("Sunflower").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
     protected override void Update()
     {
-        StartCoroutine(Attack());
-        if (_sunFlower != null)
+        StartCoroutine(Explosion()); 
+        if (sunFlowerGameObject != null)
         {
-            agent.SetDestination(_sunFlower.position); 
+            agent.SetDestination(sunFlowerGameObject.position); // Asigna la posición del girasol como destino
         }
-        GetActiveSunflower();
+        GetActiveSunflower(); 
     }
 
     private void GetActiveSunflower()
@@ -32,12 +38,12 @@ public class KamikazeMushroom : WeaponsBase
         {
             GameObject activeSunflower = GameManager.instance.activeSunflower.gameObject;
             sunFlowerScript = activeSunflower.GetComponent<Sunflower>();
-            _sunFlower = activeSunflower.transform;
+            sunFlowerGameObject = activeSunflower.transform;
         }
     }
-    IEnumerator Attack()
+    IEnumerator Explosion() 
     {
-        if (Detection())
+        if (Detection()) 
         {
             Debug.Log("3");
             yield return new WaitForSeconds(1f);
@@ -46,7 +52,7 @@ public class KamikazeMushroom : WeaponsBase
             Debug.Log("1");
             yield return new WaitForSeconds(1f);
             Debug.Log("BOOM");
-            sunFlowerScript.DamageSunFlower(damage);
+            sunFlowerScript.DamageSunFlower(damage); // Llama al método DamageSunFlower del script Sunflower
             Destroy(gameObject);
             Debug.Log($"Daño al girasol : " + sunFlowerScript.currentHealth);
 
@@ -63,12 +69,12 @@ public class KamikazeMushroom : WeaponsBase
     bool Detection()
     {
         LayerMask layerMask = LayerMask.GetMask("Sunflower");
-        return Physics.CheckSphere(transform.position, detectionRange, layerMask);
+        return Physics.CheckSphere(transform.position, detectionRangeExplosion, layerMask);
     }
     private new void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, detectionRangeExplosion);
     }
 
 }

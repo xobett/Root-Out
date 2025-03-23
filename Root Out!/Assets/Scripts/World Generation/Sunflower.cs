@@ -38,7 +38,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     private float maxHealth = 100f;
 
     [SerializeField] private TextMeshProUGUI porcentLife;
-    [SerializeField] private Image sunflowerLifebar;
+ //   [SerializeField] private Image sunflowerLifebar;
 
     private void Start()
     {
@@ -58,7 +58,7 @@ public class Sunflower : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        sunflowerLifebar.fillAmount = currentHealth / maxHealth;
+       // sunflowerLifebar.fillAmount = currentHealth / maxHealth;
     }
 
     public void SpawnNewTerrain()
@@ -139,7 +139,7 @@ public class Sunflower : MonoBehaviour, IInteractable
     public void DamageSunFlower(float damage)
     {
         currentHealth -= damage;
-        sunflowerLifebar.fillAmount = currentHealth / maxHealth;
+      //  sunflowerLifebar.fillAmount = currentHealth / maxHealth;
         //UpdateLife();
     }
 

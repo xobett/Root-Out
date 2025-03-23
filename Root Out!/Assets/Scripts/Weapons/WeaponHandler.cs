@@ -29,7 +29,7 @@ public class WeaponHandler : MonoBehaviour
 
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 100f;
-   // private bool wheelIsRotating = false;
+    // private bool wheelIsRotating = false;
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class WeaponHandler : MonoBehaviour
 
     private void OpenMenu()
     {
-        if(Input.GetKey(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.Tab))
         {
             weaponSelectionWheel.gameObject.SetActive(true);
         }
@@ -60,9 +60,9 @@ public class WeaponHandler : MonoBehaviour
     // Maneja la rotación de la rueda del ratón para cambiar de arma
     private void HandleMouseScroll()
     {
-        if (weapons.Count <= 1)
+        if (weapons.Count < 2)
         {
-            return; // No permitir rotación si solo hay una arma
+            return; // No permitir rotación si hay menos de dos armas
         }
 
         if (Time.time - lastWeaponChangeTime < weaponChangeCooldown)
@@ -73,29 +73,37 @@ public class WeaponHandler : MonoBehaviour
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         if (scrollInput > 0f) // Si el ratón se desplaza hacia arriba
         {
-            if (selectedWeaponIndex < weapons.Count - 1) // Verificar si no se ha alcanzado el límite superior
+            for (int i = selectedWeaponIndex + 1; i < weapons.Count; i++)
             {
-                StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia arriba
-                selectedWeaponIndex = (selectedWeaponIndex + 1) % weapons.Count;
-                SwitchWeapon(selectedWeaponIndex);
-                lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+                if (weapons[i] != null)
+                {
+                    StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia arriba
+                    selectedWeaponIndex = i;
+                    SwitchWeapon(selectedWeaponIndex);
+                    lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+                    break;
+                }
             }
         }
         else if (scrollInput < 0f) // Si el ratón se desplaza hacia abajo
         {
-            if (selectedWeaponIndex > 0) // Verificar si no se ha alcanzado el límite inferior
+            for (int i = selectedWeaponIndex - 1; i >= 0; i--)
             {
-                StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
-                selectedWeaponIndex = (selectedWeaponIndex - 1 + weapons.Count) % weapons.Count;
-                SwitchWeapon(selectedWeaponIndex);
-                lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+                if (weapons[i] != null)
+                {
+                    StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
+                    selectedWeaponIndex = i;
+                    SwitchWeapon(selectedWeaponIndex);
+                    lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+                    break;
+                }
             }
         }
     }
 
     private IEnumerator RotateWeaponSelectionWheel(float targetValue)
     {
-       // wheelIsRotating = true; // Marcar que la rueda está rotando
+        // wheelIsRotating = true; // Marcar que la rueda está rotando
         var selectionWheelRect = weaponSelectionWheel.GetComponent<RectTransform>(); // Obtener el RectTransform de la rueda
 
         Quaternion targetRotation = Quaternion.Euler(0, 0, weaponSelectionWheel.transform.eulerAngles.z + targetValue); // Calcular la rotación objetivo
@@ -110,7 +118,7 @@ public class WeaponHandler : MonoBehaviour
         }
         selectionWheelRect.rotation = targetRotation;
 
-       // wheelIsRotating = false;
+        // wheelIsRotating = false;
 
         yield return null;
     }
