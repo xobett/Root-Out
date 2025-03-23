@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b7b4a773a0f2449bc0707c5edbefd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPlayer: {fileID: 0}
 --- !u!1 &1292405496495748138
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,13 +255,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4668542675704820440}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6455993, y: -0.21752377, z: 0.6961816, w: -0.22630966}
-  m_LocalPosition: {x: 0.275, y: -0.022, z: 0.522}
+  m_LocalRotation: {x: 0.97629607, y: -0.2164396, z: 0, w: 0}
+  m_LocalPosition: {x: 0.077, y: -0.082, z: -0.071}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1585821201999089465}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 6767442214047526001}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 25}
 --- !u!1 &5611974019189757436
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 5944689527504147316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -392,10 +391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6c33c430ef9204d8235632edf560c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
-  weaponDataList: []
   currentWeapon: {fileID: 0}
   weaponHolder: {fileID: 8723793114436876035}
+  weapons: []
   weaponIcons: []
   weaponSelectionWheel: {fileID: 0}
   rotationSpeed: 100
@@ -437,7 +435,6 @@ Transform:
   m_Children:
   - {fileID: 871767856956072941}
   - {fileID: 4989501597596570049}
-  - {fileID: 8723793114436876035}
   - {fileID: 9124208232601035284}
   - {fileID: 4960171811776983525}
   - {fileID: 1403685219514656962}
@@ -481,9 +478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimCtrlr: {fileID: 6839173636195219423}
+  stateTransitionSpeed: 4.5
+  ps_State: 1
   walkSpeed: 5
   sprintSpeed: 8
-  turnSmoothVelocity: 0
   turnSpeed: 0.218
   midAirSpeed: 15
   forwardForce: 0
@@ -535,6 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedCoins: 49
+  ammo: 0
   itemsInventory: []
   equippedItem: {fileID: 0}
 --- !u!114 &6837202042025227312
@@ -1749,12 +1748,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2666063498086541710, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8723793114436876035}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6839173636195219423}
   m_SourcePrefab: {fileID: 100100000, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
+--- !u!4 &6767442214047526001 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2666063498086541710, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}
+  m_PrefabInstance: {fileID: 8724891358753211903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8490520767389333678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: be2cb27b52baa964eb5739697350c5a4, type: 3}

@@ -13,6 +13,9 @@ namespace Weapons
             SingleShot
         }
 
+        [Header("Tipo de apuntado")]
+        [SerializeField] private PlayerAimState tipoDeApuntado; 
+
         [Header("Punto de Mira")]
         [SerializeField] public Transform aiming; // Punto de Mira
 
@@ -74,6 +77,13 @@ namespace Weapons
         protected virtual void Update()
         {
             FireNReload(); // Método que controla el disparo y la recarga
+        }
+
+        protected void SetNewAimState()
+        {
+            var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+
+            playerMovement.SetAnimationState(tipoDeApuntado);
         }
 
         void FireNReload()

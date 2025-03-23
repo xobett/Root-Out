@@ -57,6 +57,8 @@ public class PistolaHuevos : WeaponsBase, IInteractable
 
     public void OnInteract()
     {
+        SetNewAimState();
+
         if (weaponHandler != null)
         {
             weaponHandler.PickUpWeapon(gameObject, weaponData); // Añade el arma al WeaponHandler

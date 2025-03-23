@@ -2,11 +2,11 @@
 using System.Collections;
 using UnityEngine;
 
-public enum PlayerState
+public enum PlayerAimState
 {
-    ps_NoAim,
-    ps_RifleAim,
-    ps_SingleHandAim
+    NoAim,
+    RifleAim,
+    SingleHandAim
 }
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator playerAnimCtrlr;
     [SerializeField, Range(2, 5)] private float stateTransitionSpeed;
 
-    [SerializeField] private PlayerState ps_State;
+    [SerializeField] private PlayerAimState ps_State;
 
     [Header("MOVEMENT SETTINGS")]
     [SerializeField] public float walkSpeed;
@@ -57,20 +57,20 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementCheck();
         Gravity();
-
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            StartCoroutine(ChangePlayerAimState(ps_State));
-        }
     }
 
-    private IEnumerator ChangePlayerAimState(PlayerState aimState)
+    public void SetAnimationState(PlayerAimState aimState)
+    {
+        StartCoroutine(ChangePlayerAimState(aimState));
+    }
+
+    private IEnumerator ChangePlayerAimState(PlayerAimState aimState)
     {
         float time = 0;
 
         switch (aimState)
         {
-            case PlayerState.ps_NoAim:
+            case PlayerAimState.NoAim:
                 {
 
                     if (playerAnimCtrlr.GetLayerWeight(1) == 1)
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
                     break;
                 }
 
-            case PlayerState.ps_RifleAim:
+            case PlayerAimState.RifleAim:
                 {
                     if (playerAnimCtrlr.GetLayerWeight(2) == 1)
                     {
@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
                     break;
                 }
 
-            case PlayerState.ps_SingleHandAim:
+            case PlayerAimState.SingleHandAim:
                 {
                     if (playerAnimCtrlr.GetLayerWeight(1) == 1)
                     {
@@ -150,6 +150,8 @@ public class PlayerMovement : MonoBehaviour
                     break;
                 }
         }
+
+        yield return null;
     }
 
     private void MovementCheck()

@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472b06a943dc8f748baf2b2324971c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tipoDeApuntado: 1
   aiming: {fileID: 8471408064952643036}
   weaponType: 2
   spreadAngle: 0.5
@@ -190,8 +191,6 @@ MonoBehaviour:
   explosionUpgradeActivated: 0
   bulletText: {fileID: 0}
   weaponData: {fileID: 11400000, guid: d27121a2275c91d4283f076b7d7c55e5, type: 2}
-  canvasRecarga: {fileID: 0}
-  animacionRecarga: {fileID: 0}
 --- !u!4 &7530203457036585822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5f6ba8d47dcaabe46885f29fd4e6052a, type: 3}

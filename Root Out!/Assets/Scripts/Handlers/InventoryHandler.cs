@@ -22,16 +22,6 @@ public class InventoryHandler : MonoBehaviour
         itemsInventory.Add(itemToAdd);
     }
 
-    public void RemoveItem(InventoryItemData itemToRemove)
-    {
-        itemsInventory.Remove(itemToRemove);
-    }
-
-    public bool HasItem(InventoryItemData itemToVerify)
-    {
-        return itemsInventory.Contains(itemToVerify);
-    }
-
     public void AddAmmo(int ammountToAdd)
     {
         ammo += ammountToAdd;
