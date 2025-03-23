@@ -5,12 +5,14 @@ using UnityEngine;
 public class CornyGuy : CropBase
 {
     [Header("CORNY GUY ATTACK")]
+    [SerializeField] private Transform shootSpawn;
     [SerializeField] private Vector3 rotation = new Vector3(0, 3, 0);
 
     protected override void CropAttack()
     {
         //base.HeadToShootingPos();
-        ShootAround();
+        //ShootAround();
+        base.HeadToShootingPos();
     }
 
     protected override void SetAnimatorParameters()
@@ -21,13 +23,9 @@ public class CornyGuy : CropBase
     private void ShootAround()
     {
         //Aqui rota constantemente.
-        transform.Rotate(rotation);
+        shootSpawn.transform.Rotate(rotation);
 
-        if (TryGetComponent<WeaponCoryGuy>(out WeaponCoryGuy weaponCoryGuy))
-        {
-            weaponCoryGuy.enabled = true;
-            Debug.Log("Arma activada");
-        }
+        GetComponent<WeaponCoryGuy>().enabled = true;
 
         Destroy(gameObject, 10);
     }

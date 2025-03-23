@@ -31,37 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6257096309789117324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3770325465028087176
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4065112819001204519}
-  m_Layer: 0
-  m_Name: Shoot spawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4065112819001204519
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770325465028087176}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6257096309789117324}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8089460597273917744
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +65,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 510468268873343577}
-  - {fileID: 4065112819001204519}
   - {fileID: 6651385047311793001}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -165,12 +133,13 @@ MonoBehaviour:
   cropData: {fileID: 11400000, guid: f04abf14eabb79749842ca9c8c70c1ab, type: 2}
   cropAnimCtrlr: {fileID: 4351332407069607960}
   cropWalkSpeed: 0.6
-  cropRunSpeed: 0
+  cropRunSpeed: 0.9
   stoppingDistance: 1.5
   backDistance: 3
   sideDistance: 1.5
   damage: 0
-  shootingDistance: 1
+  frontShootingDistance: 3
+  sideShootingDistance: -3
   sphereDetectionRadius: 0.3
   whatIsEnemy:
     serializedVersion: 2
@@ -178,6 +147,7 @@ MonoBehaviour:
   maxHitDistance: 10
   enemyDetected: 0
   isFollowingPlayer: 0
+  shootSpawn: {fileID: 510468268873343577}
   rotation: {x: 0, y: 3, z: 0}
 --- !u!114 &5563750098599496366
 MonoBehaviour:
@@ -191,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b50970ee707164a9d1d3d4b10ec67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tipoDeApuntado: 0
   aiming: {fileID: 510468268873343577}
   weaponType: 1
   spreadAngle: 0.1
@@ -214,8 +185,6 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
-  rechargeAnimation: {fileID: 0}
-  rechargeCanvas: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
 --- !u!1001 &6612636689860942978

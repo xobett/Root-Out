@@ -24,7 +24,8 @@ public abstract class CropBase : MonoBehaviour
 
     [Header("COMBAT SETTINGS")]
     [SerializeField] protected float damage;
-    [SerializeField] protected float shootingDistance;
+    [SerializeField] protected float frontShootingDistance;
+    [SerializeField] protected float sideShootingDistance;
 
     [Header("ENEMY DETECTION")]
     [SerializeField] private float sphereDetectionRadius = 12f;
@@ -86,7 +87,7 @@ public abstract class CropBase : MonoBehaviour
         }
     }
 
-    private void HeadToPlayer()
+    protected virtual void HeadToPlayer()
     {
         LookAtTarget(playerPos);
 
@@ -111,7 +112,7 @@ public abstract class CropBase : MonoBehaviour
         if (enemyPos != null)
         {
             LookAtTarget(enemyPos);
-            Vector3 desiredShootingPos = enemyPos.transform.position + enemyPos.transform.forward * shootingDistance;
+            Vector3 desiredShootingPos = enemyPos.transform.position + enemyPos.transform.forward * frontShootingDistance + enemyPos.transform.right * sideShootingDistance;
             desiredShootingPos.y = transform.position.y;
 
             float distance = Vector3.Distance(transform.position, desiredShootingPos);

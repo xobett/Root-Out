@@ -7,12 +7,17 @@ public class SweetJack : CropBase
         base.SetAnimatorParameters();
     }
 
+    protected override void HeadToPlayer()
+    {
+        base.HeadToPlayer();
+        GetComponent<WeaponCoryGuy>().enabled = false;
+    }
+
     protected override void CropAttack()
     {
         base.HeadToShootingPos();
 
-        PistolaBellota pistolaBellota = GetComponent<PistolaBellota>();
-        //Hacer que dispare activando su booleano.
+        GetComponent<WeaponCoryGuy>().enabled = true;
     }
 
 }
