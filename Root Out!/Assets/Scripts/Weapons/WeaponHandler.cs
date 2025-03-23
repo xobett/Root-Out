@@ -29,7 +29,7 @@ public class WeaponHandler : MonoBehaviour
 
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 100f;
-    private bool wheelIsRotating = false;
+   // private bool wheelIsRotating = false;
 
     private void Start()
     {
@@ -94,7 +94,7 @@ public class WeaponHandler : MonoBehaviour
 
     private IEnumerator RotateWeaponSelectionWheel(float targetValue)
     {
-        wheelIsRotating = true; // Marcar que la rueda está rotando
+       // wheelIsRotating = true; // Marcar que la rueda está rotando
         var selectionWheelRect = weaponSelectionWheel.GetComponent<RectTransform>(); // Obtener el RectTransform de la rueda
 
         Quaternion targetRotation = Quaternion.Euler(0, 0, weaponSelectionWheel.transform.eulerAngles.z + targetValue); // Calcular la rotación objetivo
@@ -109,7 +109,7 @@ public class WeaponHandler : MonoBehaviour
         }
         selectionWheelRect.rotation = targetRotation;
 
-        wheelIsRotating = false;
+       // wheelIsRotating = false;
 
         yield return null;
     }
@@ -220,10 +220,6 @@ public class WeaponHandler : MonoBehaviour
         if (IsValidIndex(index)) // Verificar si el índice es válido
         {
             SwitchWeapon(index); // Cambiar al arma seleccionada
-        }
-        else
-        {
-            Debug.LogWarning("WeaponsMenuHandler: Índice fuera de los límites de los arrays.");
         }
     }
 
