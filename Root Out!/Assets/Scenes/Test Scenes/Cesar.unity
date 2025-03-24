@@ -9407,6 +9407,9 @@ MonoBehaviour:
   zoomSpeed: 5
   zoomIn: 25
   zoomHorizontalOffset: -2.5
+  whatIsCollision:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!114 &1875133576795865546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9965,7 +9968,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -10997,7 +11000,7 @@ GameObject:
   - component: {fileID: 1875133576795865546}
   - component: {fileID: 1728348866928700195}
   - component: {fileID: 8830336685741887520}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}

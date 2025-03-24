@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PepeHabanero : CropBase
 {
+    [SerializeField] private GameObject nukePrefab;
     protected override void CropAttack()
     {
         HeadToEnemy();
@@ -17,6 +18,10 @@ public class PepeHabanero : CropBase
         if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy"))
         {
             enemy.gameObject.GetComponent<AIHealth>().TakeDamage(damage);
+            Instantiate(nukePrefab, transform.position, Quaternion.identity);
+
+            //Destroy nuke after animation 
+
             Destroy(gameObject);
         }
     }

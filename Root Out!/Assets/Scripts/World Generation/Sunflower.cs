@@ -1,11 +1,12 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class Sunflower : MonoBehaviour, IInteractable
+public class Sunflower : MonoBehaviour
 {
     [Header("TERRAIN SPAWN SETTINGS")]
     [SerializeField] private GameObject[] terrainPrefabs;
@@ -46,22 +47,14 @@ public class Sunflower : MonoBehaviour, IInteractable
 
         GetReferences();
         BugDetection();
-        //UpdateLife(); //Actualiza la UI de vida.
     }
 
-    public void OnInteract()
+    public void StartGrowthSuccess()
     {
-        //var instance = GameManager.instance;
-
-        SpawnNewTerrain();
+        StartCoroutine(CreateNewTerrain());
     }
 
-    private void Update()
-    {
-       // sunflowerLifebar.fillAmount = currentHealth / maxHealth;
-    }
-
-    public void SpawnNewTerrain()
+    private IEnumerator CreateNewTerrain()
     {
         var fogPs = cloneFog.GetComponent<ParticleSystem>();
         var main = fogPs.main;
@@ -76,16 +69,30 @@ public class Sunflower : MonoBehaviour, IInteractable
         Vector3 spawnPos = transform.position + transform.forward * terrainDistanceSpawn;
         spawnPos.y = 0;
 
-        int randomTerrainType = GenerateRandomTerrainType();
+        GameObject terrainToSpawn = GenerateRandomTerrainType();
+
+        if (terrainToSpawn == terrainPrefabs[0] && GameManager.instance.finalHubCreated)
+        {
+            while (terrainToSpawn == terrainPrefabs[0])
+            {
+                terrainToSpawn = GenerateRandomTerrainType();
+                Debug.Log("Was supposed to spawn final hub but it was already created");
+                yield return null;
+            } 
+        }
+        else if (terrainToSpawn == terrainPrefabs[0] && !GameManager.instance.finalHubCreated)
+        {
+            GameManager.instance.finalHubCreated = true;
+            Debug.Log("Spawned final hub");
+        }
 
         ////Se genera un nuevo terreno en la posicion creada.
-        Instantiate(terrainPrefabs[randomTerrainType], spawnPos, terrainPrefabs[randomTerrainType].transform.rotation);
+        Instantiate(terrainToSpawn, spawnPos, terrainToSpawn.transform.rotation);
 
         //Se actualiza el navmesh surface para que los enemigos naveguen por el.
         navMeshSurface.BuildNavMesh();
 
-        //Tras instanciar el terreno, se autodestruye el girasol.
-        //Destroy(this.gameObject);
+        yield return null;
     }
 
     private void SpawnFog()
@@ -143,9 +150,11 @@ public class Sunflower : MonoBehaviour, IInteractable
         //UpdateLife();
     }
 
-    private int GenerateRandomTerrainType()
+    private GameObject GenerateRandomTerrainType()
     {
-        return Random.Range(0, terrainPrefabs.Length);
+        int randomTerrainIndex = Random.Range(0, terrainPrefabs.Length);
+
+        return terrainPrefabs[randomTerrainIndex];
     }
 
     //private void UpdateLife()
