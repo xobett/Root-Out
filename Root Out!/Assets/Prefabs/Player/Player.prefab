@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 2954248390838471208}
   - component: {fileID: 4030689293358286141}
   - component: {fileID: 6842912475283561048}
-  - component: {fileID: 6840670482356824514}
   - component: {fileID: 1242201768001229092}
   m_Layer: 5
   m_Name: Recarga
@@ -192,28 +191,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &6840670482356824514
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292405496495748138}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d054136846c3a3c4b86ab0e2e3b6c6b3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!111 &1242201768001229092
 Animation:
   m_ObjectHideFlags: 0
@@ -386,7 +363,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5944689527504147316}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e6c33c430ef9204d8235632edf560c1, type: 3}
   m_Name: 
@@ -394,9 +371,15 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   weaponHolder: {fileID: 8723793114436876035}
   weapons: []
-  weaponIcons: []
+  weaponIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   weaponSelectionWheel: {fileID: 0}
-  rotationSpeed: 100
+  rotationSpeed: 2
 --- !u!1 &6155343336968990131
 GameObject:
   m_ObjectHideFlags: 0

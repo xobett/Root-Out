@@ -34,6 +34,9 @@ public class CameraFollow : MonoBehaviour
     private bool isZooming; // Bool usado para saber si se esta haciendo zoom actualmente.
     private bool aimed; // Bool para saber si se ha hecho zoom recientemente.
 
+    [Header("CAMERA COLLISION SETTINGS")]
+    [SerializeField] private LayerMask whatIsCollision;
+
     void Start()
     {
         //Establece el frame rate a 60 fps.
@@ -54,11 +57,31 @@ public class CameraFollow : MonoBehaviour
     {
         CameraRotation();
         Aim();
+        CameraCollision();
     }
 
     private void LateUpdate()
     {
         Follow();
+    }
+
+    private void CameraCollision()
+    {
+        RaycastHit hitInfo;
+
+        Vector3 raycastDirection = transform.position - playerTracker.transform.position;
+        //if (Physics.Linecast(playerTracker.position, transform.position, out hitInfo, whatIsCollision))
+        //{
+        //    Debug.Log($"Is colliding with {hitInfo.collider.name}");
+        //}
+
+        if (Physics.Raycast(playerTracker.position, raycastDirection, out hitInfo, raycastDirection.magnitude, whatIsCollision))
+        {
+            Debug.Log($"Is colliding with {hitInfo.collider.name}");
+            Debug.Log($"Collision distance {hitInfo.distance}");
+        }
+
+        Debug.DrawRay(transform.position, playerTracker.transform.position - transform.position);
     }
 
     private void Follow()
@@ -81,7 +104,6 @@ public class CameraFollow : MonoBehaviour
 
         //Gira al jugador junto con la camara.
         player.transform.Rotate(Vector3.up * MouseHorizontalInput());
-
 
         //Se crea un Vector donde se guarda la direccion hacia el jugador.
         Vector3 relativePos = playerTracker.transform.position - transform.position;

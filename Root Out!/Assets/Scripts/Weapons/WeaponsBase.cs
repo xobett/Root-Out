@@ -1,12 +1,13 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 namespace Weapons
 {
     public class WeaponsBase : MonoBehaviour
     {
-        #region Enum Weapon Type 
         public enum WeaponType
         {
             SpreadShot,
@@ -15,9 +16,7 @@ namespace Weapons
             SingleShot
         }
 
-        #endregion
-
-        #region Weapons Variables
+        #region Weapons variables
 
         [Header("Tipo de apuntado")]
         [SerializeField] private PlayerAimState tipoDeApuntado;
@@ -48,7 +47,7 @@ namespace Weapons
         [SerializeField] public int maxBulletReserve; // necesito esta variable para que el upgrade haga effecto correctamente
 
         [Header("Estadísticas")]
-        [SerializeField] public float damage;// Daño 
+        [SerializeField] public float damage; // Daño 
         [SerializeField] protected float range; // Alcance 
         [SerializeField] protected float fireRate; // Cadencia de disparo
         [SerializeField] public float reloadTime; // Recargar
@@ -68,11 +67,12 @@ namespace Weapons
 
         [HideInInspector] public bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
         [HideInInspector] public bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
+
         #endregion
 
         #region References
 
-        protected GameObject canvasRecarga;
+        protected Image canvasRecargaImage;
         protected Animation animacionRecarga;
         protected TextMeshProUGUI bulletText;
 
@@ -84,19 +84,19 @@ namespace Weapons
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
             bulletReserve = maxBulletReserve;
 
-            canvasRecarga = GameObject.Find("Recarga");
+            // Buscar y desactivar el componente Image de canvasRecarga al inicio
+            GameObject canvasRecarga = GameObject.Find("Recarga");
             if (canvasRecarga != null)
             {
+                canvasRecargaImage = canvasRecarga.GetComponent<Image>();
                 animacionRecarga = canvasRecarga.GetComponent<Animation>();
-                canvasRecarga.SetActive(false); // Desactivar la imagen de recarga al inicio
-            }
-
-            bulletText = GameObject.Find("BulletText").GetComponent<TextMeshProUGUI>(); // Buscar el objeto con el nombre "BulletText" y obtener el componente TextMeshProUGUI
-            if (bulletText != null)
-            {
-                bulletText.gameObject.SetActive(false); // Desactivar el texto de munición al inicio
+                if (canvasRecargaImage != null)
+                {
+                    canvasRecargaImage.enabled = false;
+                }
             }
         }
+
         protected virtual void Update()
         {
             FireNReload(); // Método que controla el disparo y la recarga
@@ -160,10 +160,11 @@ namespace Weapons
         #region Logic Reload
         protected virtual IEnumerator ReloadCoroutine()  // Corrutina que maneja la lógica de recarga
         {
-            if (canvasRecarga != null)
+            if (canvasRecargaImage != null)
             {
-                canvasRecarga.SetActive(true); // Activar la imagen de recarga
+                canvasRecargaImage.enabled = true; // Activar la imagen de recarga
             }
+
             if (animacionRecarga != null)
             {
                 animacionRecarga.Play(); // Reproducir la animación de recarga
@@ -175,9 +176,9 @@ namespace Weapons
             {
                 animacionRecarga.Stop(); // Detener la animación de recarga
             }
-            if (canvasRecarga != null)
+            if (canvasRecargaImage != null)
             {
-                canvasRecarga.SetActive(false); // Desactivar la imagen de recarga
+                canvasRecargaImage.enabled = false; // Desactivar la imagen de recarga
             }
 
             // Calcula cuántas balas se necesitan para recargar completamente
@@ -196,11 +197,17 @@ namespace Weapons
 
             Debug.Log("Reloaded. Ammo: " + currentAmmo + ", Bullets in Reserve: " + bulletReserve);
         }
+
         protected virtual void Reload() // Método que maneja la recarga
         {
             // Detecta si se presiona la tecla de recarga (R)
             if (Input.GetKeyDown(KeyCode.R))
             {
+                if (canvasRecargaImage != null) // Comprueba si la imagen de recarga no es nula
+                {
+                    canvasRecargaImage.enabled = true; // Activar la imagen de recarga
+                }
+
                 if (bulletReserve > 0)
                 {
                     StartCoroutine(ReloadCoroutine()); // Inicia la recarga si hay balas en la reserva
@@ -363,7 +370,7 @@ namespace Weapons
         #endregion
 
         #region Ammo Text
-        protected void UpdateAmmoText() // Actualiza el texto de munición
+        protected virtual void UpdateAmmoText() // Actualiza el texto de munición
         {
             if (bulletText != null)
             {
@@ -373,6 +380,15 @@ namespace Weapons
 
         protected virtual void ActivateBulletText()
         {
+            if (bulletText == null)
+            {
+                GameObject bulletTextObject = GameObject.Find("Ammo Text");
+                if (bulletTextObject != null)
+                {
+                    bulletText = bulletTextObject.GetComponent<TextMeshProUGUI>();
+                }
+            }
+
             if (bulletText != null)
             {
                 bulletText.gameObject.SetActive(true); // Activar el texto de munición

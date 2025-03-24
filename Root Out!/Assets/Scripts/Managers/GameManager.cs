@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     private LeafJump leafJump;
     private CameraFollow cameraFollow;
 
+    [Header("FINAL HUB SETTINGS")]
+    public bool finalHubCreated;
+
     [Header("PLAYER SETTINGS")]
     public InventoryHandler playerInventoryHandler;
     public CropHandler playerCropHandler;
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     private float timer;
     [SerializeField] private float timeToCountdown = 10f;
-    public bool eventTimerisActive;
+    public bool eventTimerIsActive;
 
     void Start()
     {
@@ -78,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     private void EventTimer()
     {
-        if (eventTimerisActive)
+        if (eventTimerIsActive)
         {
             timer -= Time.deltaTime;
 
@@ -107,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     private void SunflowerHealthCheck()
     {
-        if (eventTimerisActive)
+        if (eventTimerIsActive)
         {
             if (marvelousEventActive && (currentSunflower.currentHealth <= 0 || currentSecondSunflower.currentHealth <= 0))
             {
@@ -151,8 +154,8 @@ public class GameManager : MonoBehaviour
         EndTimer();
         SetGrowthSuccessAnimations();
 
-        currentSunflower.SpawnNewTerrain();
-        currentSecondSunflower.SpawnNewTerrain();
+        currentSunflower.StartGrowthSuccess();
+        currentSecondSunflower.StartGrowthSuccess();
 
         Destroy(currentSunflower.gameObject, 4.8f);
         Destroy(currentSecondSunflower.gameObject, 4.8f);
@@ -172,7 +175,7 @@ public class GameManager : MonoBehaviour
         EndTimer();
         SetGrowthSuccessAnimations();
 
-        currentSunflower.SpawnNewTerrain();
+        currentSunflower.StartGrowthSuccess();
         Destroy(currentSunflower.gameObject, 4.8f);
 
     }
@@ -228,12 +231,12 @@ public class GameManager : MonoBehaviour
     private void StartTimer()
     {
         timer = timeToCountdown;
-        eventTimerisActive = true;
+        eventTimerIsActive = true;
         timerText.gameObject.SetActive(true);
     }
     private void EndTimer()
     {
-        eventTimerisActive = false;
+        eventTimerIsActive = false;
         timerText.gameObject.SetActive(false);
     }
     #endregion

@@ -38,7 +38,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        if (playerIsNear && !selectionMade && !GameManager.instance.eventTimerisActive)
+        if (playerIsNear && !selectionMade && !GameManager.instance.eventTimerIsActive)
         {
             switch (GameManager.instance.MarvelousEventActive)
             {

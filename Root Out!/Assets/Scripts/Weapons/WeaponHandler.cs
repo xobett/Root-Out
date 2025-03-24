@@ -25,7 +25,7 @@ public class WeaponHandler : MonoBehaviour
     // Variable para rastrear el tiempo del último cambio de arma
     private float lastWeaponChangeTime = 0f;
     // Cooldown de 0.5 segundos
-    private const float weaponChangeCooldown = 0.2f;
+    private const float weaponChangeCooldown = 0.4f;
 
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 100f;

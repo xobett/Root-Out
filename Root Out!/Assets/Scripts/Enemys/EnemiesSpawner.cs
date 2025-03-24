@@ -20,7 +20,7 @@ public class EnemiesSpawner : MonoBehaviour
 
         Instantiate(GetRandomEnemy(), GetRandomSpawnPosition().position, Quaternion.identity);
 
-        if (GameManager.instance.eventTimerisActive)
+        if (GameManager.instance.eventTimerIsActive)
         {
             StartCoroutine(SpawnEnemies());
         }
