@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -35,7 +36,13 @@ public class CameraFollow : MonoBehaviour
     private bool aimed; // Bool para saber si se ha hecho zoom recientemente.
 
     [Header("CAMERA COLLISION SETTINGS")]
-    [SerializeField] private LayerMask whatIsCollision;
+    [SerializeField] private LayerMask whatIsCollision; //Layer que controla en que layers se detecta colision.
+    [SerializeField] private float backDistance; //Float que controla la distancia de la orbita alrededor del jugador.
+
+    [Header("NEW CAMERA SETTINGS")]
+    [SerializeField] private Transform target; //Transform al que seguira la camara.
+
+    float angleToRotate = -90 * Mathf.Deg2Rad; //Float que recibe Input de la camara convertido a radianes, para crear un orbita en base a este con las funciones COS y SIN.
 
     void Start()
     {
@@ -45,9 +52,6 @@ public class CameraFollow : MonoBehaviour
         //Bloquea el cursor del jugador
         Cursor.lockState = CursorLockMode.Locked;
 
-        //Establece la posicion de seguimiento de jugador. Se emparenta al Player Tracker que sigue al jugador.
-        SetCameraPosition(playerTracker);
-
         //Referencia los componentes necesarios.
         GetReferences();
     }
@@ -55,9 +59,14 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        CameraRotation();
-        Aim();
-        CameraCollision();
+        //CameraRotation();
+        //Aim();
+        //CameraCollision();
+
+        if (MouseHorizontalInput() != 0)
+        {
+            angleToRotate -= MouseHorizontalInput() * xSensitivity * Mathf.Deg2Rad;
+        }
     }
 
     private void LateUpdate()
@@ -65,32 +74,6 @@ public class CameraFollow : MonoBehaviour
         Follow();
     }
 
-    private void CameraCollision()
-    {
-        RaycastHit hitInfo;
-
-        Vector3 raycastDirection = transform.position - playerTracker.transform.position;
-        //if (Physics.Linecast(playerTracker.position, transform.position, out hitInfo, whatIsCollision))
-        //{
-        //    Debug.Log($"Is colliding with {hitInfo.collider.name}");
-        //}
-
-        if (Physics.Raycast(playerTracker.position, raycastDirection, out hitInfo, raycastDirection.magnitude, whatIsCollision))
-        {
-            Debug.Log($"Is colliding with {hitInfo.collider.name}");
-            Debug.Log($"Collision distance {hitInfo.distance}");
-        }
-
-        Debug.DrawRay(transform.position, playerTracker.transform.position - transform.position);
-    }
-
-    private void Follow()
-    {
-        if (!IsAiming() && !isZooming && !aimed)
-        {
-            transform.position = Vector3.Lerp(transform.position, defaultFollowPos.position, 3f * Time.deltaTime);
-        }
-    }
     private void CameraRotation()
     {
         //Checa si el jugador no esta haciendo zoom
@@ -120,6 +103,63 @@ public class CameraFollow : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookAtPlayer * upRotation, rotationSpeed * Time.deltaTime);
         }
 
+    }
+
+    private void CameraCollision()
+    {
+        RaycastHit hitInfo;
+
+        Vector3 raycastDirection = transform.position - playerTracker.transform.position;
+        //if (Physics.Linecast(playerTracker.position, transform.position, out hitInfo, whatIsCollision))
+        //{
+        //    Debug.Log($"Is colliding with {hitInfo.collider.name}");
+        //}
+
+        if (Physics.Raycast(playerTracker.position, raycastDirection, out hitInfo, raycastDirection.magnitude, whatIsCollision))
+        {
+            Debug.Log($"Is colliding with {hitInfo.collider.name}");
+            Debug.Log($"Collision distance {hitInfo.distance}");
+        }
+
+        Debug.DrawRay(transform.position, playerTracker.transform.position - transform.position);
+    }
+
+    private void Follow()
+    {
+        if (!IsAiming() && !isZooming && !aimed)
+        {
+            //Se crea un Vector3 donde se almacenara la rotacion alrededor del objetivo.
+            //En un circulo, para calcular la posicion alrededor de este se usa la funcion de Coseno para calcular posicion en X, y la funcion Seno para calcular la posicion en Y.
+            //Dicho eso, el vector crea por asi decirlo un circulo alrededor del angulo que recibe en radianes, calculando la posicion X con el COS y la posicion Y con SIN.
+            Vector3 orbit = new Vector3(Mathf.Cos(angleToRotate), 0, Mathf.Sin(angleToRotate));
+
+            //La posicion de la camara sigue la posicion del jugador, sumandole los valores del Vector3 que controla la rotacion creada, multiplicando la distancia de la orbita por un float.
+            transform.position = target.position + orbit * backDistance;
+
+            //Mira constantemente al jugador.
+            transform.rotation = Quaternion.LookRotation(target.position - transform.position);
+
+            //Gira al jugador en conjunto con la rotacion de la camara.
+            player.transform.Rotate(Vector3.up * MouseHorizontalInput());
+
+            //transform.position = Vector3.Lerp(transform.position, defaultFollowPos.position, 3f * Time.deltaTime);
+        }
+    }
+
+    private void FirstMethod()
+    {
+        Vector3 cameraOffset = transform.position - player.transform.position;
+
+        if (MouseHorizontalInput() != 0)
+        {
+            Quaternion camTurnAngle = Quaternion.AngleAxis(MouseHorizontalInput() * xSensitivity, Vector3.up);
+
+            cameraOffset = camTurnAngle * cameraOffset;
+        }
+
+        Vector3 newpos = player.transform.position + cameraOffset;
+
+        transform.position = Vector3.Slerp(transform.position, newpos, 0.05f);
     }
 
     private void Aim()
@@ -219,7 +259,6 @@ public class CameraFollow : MonoBehaviour
     {
         return Input.GetMouseButton(1);
     }
-
     private float MouseVerticalInput()
     {
         return Input.GetAxis("Mouse Y") * ySensitivity;
