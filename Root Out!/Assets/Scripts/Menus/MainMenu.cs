@@ -3,11 +3,20 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     Volume globalVolume;
     Vignette vignette;
+
+    [SerializeField] GameObject panelSettings;
+    [SerializeField] GameObject panelMain;
+    [SerializeField] GameObject panelLogros;
+
+    [SerializeField] Slider mainVolumeSlider; // Referencia al slider de volumen principal
+    [SerializeField] AudioSource audioSourceMain; // Referencia al AudioSource principal
+
 
     private void Start()
     {
@@ -17,6 +26,10 @@ public class MainMenu : MonoBehaviour
             vignette = vignetteComponent;
             vignette.intensity.value = 0f; // Inicializar la intensidad de la viñeta a 0
         }
+
+        panelSettings.SetActive(false); // Activa el menú de configuración
+        panelLogros.SetActive(false);
+
     }
 
     public void Game()
@@ -45,6 +58,48 @@ public class MainMenu : MonoBehaviour
 
         // Cargar la escena "Game" en modo único para reiniciarla cada vez
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
+    }
+
+    public void Quit()
+    {
+        AudioManager.instance.PlaySFX("Out");
+        Application.Quit();
+    }
+    public void Settings()
+    {
+        AudioManager.instance.PlaySFX("Into");
+        panelMain.SetActive(false);
+        panelSettings.SetActive(true); // Activa el menú de configuración
+    }
+    public void Back()
+    {
+        AudioManager.instance.PlaySFX("Out");
+        panelMain.SetActive(true);
+        panelSettings.SetActive(false);
+    }
+
+    public void Logros()
+    {
+        AudioManager.instance.PlaySFX("Into");
+        panelMain.SetActive(false);
+        panelLogros.SetActive(true);
+    }
+    public void BackLogros()
+    {
+        AudioManager.instance.PlaySFX("Out");
+        panelMain.SetActive(true);
+        panelLogros.SetActive(false);
+    }
+    public void Volumen()
+    {
+        mainVolumeSlider.onValueChanged.AddListener(SetMainVolume); // Añade un listener para el slider de volumen principal
+        mainVolumeSlider.value = audioSourceMain.volume; // Inicializa el slider con el valor actual del volumen principal
+    }
+
+    // Método para actualizar el volumen principal
+    public void SetMainVolume(float volume)
+    {
+        audioSourceMain.volume = volume; // Establece el volumen del AudioSource principal
     }
 }
 
