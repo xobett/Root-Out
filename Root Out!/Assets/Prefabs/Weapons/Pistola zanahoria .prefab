@@ -178,8 +178,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6, y: 0.59, z: 0.12988472}
-  m_Center: {x: 0.2676592, y: 0.04552132, z: -0.018216133}
+  m_Size: {x: 0.78, y: 0.45, z: 0.09}
+  m_Center: {x: 0.2676592, y: 0.04552132, z: 0}
 --- !u!114 &5635957317709180901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,11 +202,11 @@ MonoBehaviour:
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
   explosionPrefab: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
-  currentAmmo: 50
-  maxAmmo: 50
+  currentAmmo: 20
+  maxAmmo: 20
   bulletReserve: 100
   maxBulletReserve: 100
-  damage: 3
+  damage: 4
   range: 5
   fireRate: 10
   reloadTime: 2
@@ -218,5 +218,4 @@ MonoBehaviour:
   burstPause: 0.5
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
-  bulletText: {fileID: 0}
   weaponData: {fileID: 11400000, guid: d7925107ad7f48e41a80215726566f6d, type: 2}

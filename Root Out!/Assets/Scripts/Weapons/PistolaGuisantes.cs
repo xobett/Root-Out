@@ -19,7 +19,6 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
         {
             base.Shoot();
             AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
-            
         }
     }
 
@@ -40,11 +39,15 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
             weaponHandler.PickUpWeapon(gameObject, weaponData); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
-            if (bulletText != null)
-            {
-                bulletText.gameObject.SetActive(true); // Activar el texto de munición al recoger el arma
-            }
+            ActivateBulletText(); // Activar el texto de munición al recoger el arma
         }
     }
 
+    protected override void UpdateAmmoText()
+    {
+        if (bulletText != null)
+        {
+            bulletText.text = "INFINITY"; // Actualiza el texto con la munición actual y máxima
+        }
+    }
 }
