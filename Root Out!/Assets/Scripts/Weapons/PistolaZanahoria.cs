@@ -43,6 +43,7 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
             weaponHandler.PickUpWeapon(gameObject, weaponData); // Añade el arma al WeaponHandler
             transform.SetParent(weaponHandler.weaponHolder); // Asigna el transform del arma como hijo del weaponHolder
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
+            ActivateBulletText(); // Activar el texto de munición al recoger el arma
         }
     }
 }

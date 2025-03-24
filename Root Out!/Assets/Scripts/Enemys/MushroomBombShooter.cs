@@ -11,7 +11,7 @@ public class MushroomBombShooter : WeaponsBase
     [SerializeField] private GameObject HUDTargetPoint; // prefab del HUD taget point que es la imagen tiro al blanco en el piso
     [SerializeField] private float heightSecondBullet = 12f; // Mide la altura de la bala que aparece arriba del player
 
-    [HideInInspector] private float targetPointDistance; // Distancia de la imagen "tiro al blanco"
+  //  [HideInInspector] private float targetPointDistance; // Distancia de la imagen "tiro al blanco"
 
     private Transform player; // Objetivo a disparar
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
@@ -86,7 +86,7 @@ public class MushroomBombShooter : WeaponsBase
         {
             yield return new WaitForSeconds(1f / fireRate); // Espera el tiempo basado en la cadencia de disparo
 
-            pointFloor = bombMark.position + Vector3.down * targetPointDistance; // Posición de la imagen
+            pointFloor = bombMark.position + Vector3.down * 0; // Posición de la imagen
             point = Instantiate(HUDTargetPoint, pointFloor, Quaternion.identity); // Instancia de la imagen
             Destroy(point, 1.5f); // Destruye la imagen después de 0.5 segundos
         }
