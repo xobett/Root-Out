@@ -60,6 +60,11 @@ public class WeaponHandler : MonoBehaviour
     // Maneja la rotación de la rueda del ratón para cambiar de arma
     private void HandleMouseScroll()
     {
+        if (!Input.GetKey(KeyCode.Tab))
+        {
+            return; // No permitir cambio de arma si la tecla Tab no está presionada
+        }
+
         if (weapons.Count < 2)
         {
             return; // No permitir rotación si hay menos de dos armas
@@ -165,13 +170,13 @@ public class WeaponHandler : MonoBehaviour
                 Debug.LogWarning("Weapon holder or weapon GameObject is not assigned.");
             }
 
-            // Asignar el icono del arma al primer slot y desplazar los demás
-            if (weaponIcons.Count < 6)
+            // Asignar el icono del arma al slot correspondiente
+            int weaponIndex = weapons.IndexOf(newWeapon);
+            if (weaponIndex < weaponIcons.Count)
             {
-                weaponIcons.Insert(0, weaponIcons[0]); // Mover el primer icono al primer slot
+                weaponIcons[weaponIndex].sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
+                weaponIcons[weaponIndex].enabled = true; // Asegurarse de que el icono esté habilitado
             }
-            weaponIcons[0].sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
-            weaponIcons[0].enabled = true; // Asegurarse de que el icono esté habilitado
 
             // Actualizar las posiciones de los iconos
             UpdateWeaponPositions();
