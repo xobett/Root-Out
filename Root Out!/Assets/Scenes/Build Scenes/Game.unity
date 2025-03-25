@@ -390,6 +390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Tracker
       objectReference: {fileID: 0}
+    - target: {fileID: 3203856627063831907, guid: fef70c9861f2e4341be6d088dfd2925f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7288848714663631868, guid: fef70c9861f2e4341be6d088dfd2925f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2035,6 +2039,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1583988403 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4919376154230161259, guid: ef4c7facc672dc44793553d252835415, type: 3}
+  m_PrefabInstance: {fileID: 2026462684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1642054410 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
@@ -2105,6 +2114,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: upLimit
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: downLimit
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: maxDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: backDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: followTarget
+      value: 
+      objectReference: {fileID: 1583988403}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: safeDistance
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
       propertyPath: playerTracker
       value: 
       objectReference: {fileID: 235272952}
@@ -2112,6 +2145,18 @@ PrefabInstance:
       propertyPath: defaultFollowPos
       value: 
       objectReference: {fileID: 1422090840}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: cameraSensitivity.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: cameraSensitivity.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 21349030876566673, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
+      propertyPath: whatIsCollision.m_Bits
+      value: 65536
+      objectReference: {fileID: 0}
     - target: {fileID: 986953497760693880, guid: 961280faf9723d344adf397d36dbe58f, type: 3}
       propertyPath: stopNaNs
       value: 0
@@ -2290,6 +2335,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1522295207}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: rotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: weaponSelectionWheel
       value: 
       objectReference: {fileID: 1650950781}
@@ -2317,6 +2366,10 @@ PrefabInstance:
       propertyPath: 'weaponIcons.Array.data[5]'
       value: 
       objectReference: {fileID: 216766540}
+    - target: {fileID: 4919376154230161259, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4989501597596570049, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.319
@@ -2868,6 +2921,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5107453697389840959, guid: cf245403e7c521c43b6729815de93009, type: 3}
+      propertyPath: autoFire
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5565976775888962945, guid: cf245403e7c521c43b6729815de93009, type: 3}
       propertyPath: m_Name
       value: Pistola calabaza
@@ -3117,6 +3174,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
+    - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516486767844177476, guid: be5a35ee4783b984a818864a85638784, type: 3}
+      propertyPath: weaponType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.669

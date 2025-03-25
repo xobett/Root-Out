@@ -134,7 +134,7 @@ namespace Weapons
             else if (weaponType == WeaponType.BurstFire)
             {
                 // Detecta si se presiona el botón y si es posible disparar en ráfagas
-                if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
+                if (Input.GetKey(KeyCode.Mouse0) && CanShoot())
                 {
                     Shoot();
                 }
@@ -142,7 +142,7 @@ namespace Weapons
             else
             {
                 // Detecta si se presiona el botón y si es posible disparar
-                if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
+                if (Input.GetKey(KeyCode.Mouse0) && CanShoot())
                 {
                     nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
                     Shoot(); // Llama al método Shoot para disparar

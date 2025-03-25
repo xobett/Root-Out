@@ -138,42 +138,43 @@ public class WeaponHandler : MonoBehaviour
     {
         if (weapons.Count < 6) // Limitar el número de armas a 6
         {
-            weapons.Add(newWeapon); // Añadir el arma a la lista
+            // Insertar el arma en la primera posición y desplazar las demás
+            weapons.Insert(0, newWeapon);
+            if (weapons.Count > 6)
+            {
+                weapons.RemoveAt(6); // Asegurarse de que la lista no tenga más de 6 armas
+            }
 
-            currentWeapon = newWeapon; // Establecer el arma actual
             Debug.Log("Picked up weapon: " + newWeapon.name);
+
+            // Desactivar el collider del arma
+            Collider weaponCollider = newWeapon.GetComponent<Collider>();
+            if (weaponCollider != null)
+            {
+                weaponCollider.enabled = false;
+            }
 
             // Establecer el GameObject del arma en el Transform especificado
             if (weaponHolder != null && newWeapon != null) // Si el weaponHolder y el GameObject del arma no están vacíos
             {
                 newWeapon.transform.SetParent(weaponHolder); // Establecer el padre del arma
                 newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
-                SetCurrentWeapon(newWeapon); // Establecer el arma actual
             }
             else
             {
                 Debug.LogWarning("Weapon holder or weapon GameObject is not assigned.");
             }
 
-            // Actualizar los iconos de las 
-            UpdateWeaponPositions();
+            // Asignar el icono del arma al primer slot y desplazar los demás
+            if (weaponIcons.Count < 6)
+            {
+                weaponIcons.Insert(0, weaponIcons[0]); // Mover el primer icono al primer slot
+            }
+            weaponIcons[0].sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
+            weaponIcons[0].enabled = true; // Asegurarse de que el icono esté habilitado
 
-            // Asignar el icono del arma al slot correspondiente
-            int weaponIndex = weapons.Count - 1; // Obtener el índice del arma recién añadida
-            if (weaponIndex < weaponIcons.Count)
-            {
-                weaponIcons[weaponIndex].sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
-                weaponIcons[weaponIndex].enabled = true; // Asegurarse de que el icono esté habilitado
-                weaponIcons[weaponIndex].transform.localPosition = weaponIcons[weaponIndex].transform.localPosition; // Mantener la posición local del icono
-            }
-            else
-            {
-                // Si no hay suficientes slots de iconos, crear uno nuevo
-                Image newIcon = Instantiate(weaponIcons[0], weaponSelectionWheel); // Instanciar un nuevo icono basado en el primer icono
-                newIcon.sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
-                newIcon.enabled = true; // Asegurarse de que el icono esté habilitado
-                weaponIcons.Add(newIcon); // Añadir el nuevo icono a la lista
-            }
+            // Actualizar las posiciones de los iconos
+            UpdateWeaponPositions();
         }
         else
         {
