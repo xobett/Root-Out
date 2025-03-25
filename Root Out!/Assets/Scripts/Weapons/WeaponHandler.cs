@@ -3,19 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Weapons;
 
 public class WeaponHandler : MonoBehaviour
 {
-    // Arma actual
-    [SerializeField] public GameObject currentWeapon;
-    // Transform donde se instanciará el arma
-    [SerializeField] public Transform weaponHolder;
 
-    // Lista para almacenar las armas
-    [SerializeField] public List<GameObject> weapons = new List<GameObject>();
-    // Iconos en la rueda
-    [SerializeField] private List<Image> weaponIcons = new List<Image>();
+    [SerializeField] public GameObject currentWeapon; // Arma actual
+    [SerializeField] public Transform weaponHolder; // Transform donde se instanciará el arma
+
+    [SerializeField] public List<GameObject> weapons = new List<GameObject>();  // Lista para almacenar las armas
+    [SerializeField] private List<Image> weaponIcons = new List<Image>(); // Iconos en la rueda
 
     // Canvas de la rueda de armas
     [SerializeField] private RectTransform weaponSelectionWheel;
@@ -27,24 +23,22 @@ public class WeaponHandler : MonoBehaviour
     private float lastWeaponChangeTime = 0f;
     // Cooldown de 0.5 segundos
     private const float weaponChangeCooldown = 0.4f;
-    
+
     // Velocidad de rotación de la rueda de armas
-    [SerializeField] float rotationSpeed = 100f;
-    // private bool wheelIsRotating = false;
+    [SerializeField] float rotationSpeed = 5f;
 
     /// <summary>
     /// Ajustar el posicionamiento de la rueda de armas al inicio
     /// </summary>
-    private void Start() 
+    private void Start()
     {
         weaponSelectionWheel.gameObject.SetActive(true); // modi
     }
     private void Update()
     {
-        // Maneja la rotación de la rueda del ratón para cambiar de arma
-        HandleMouseScroll();
-        // Maneja la selección de arma al hacer clic
-        HandleWeaponSelection();
+        HandleMouseScroll();  // Maneja la rotación de la rueda del ratón para cambiar de arma
+        HandleWeaponSelection();  // Maneja la selección de arma al hacer clic
+
         OpenMenu();
     }
 
@@ -142,7 +136,6 @@ public class WeaponHandler : MonoBehaviour
     }
 
     // Método para recoger un arma nueva
-    // Método para recoger un arma nueva
     public void PickUpWeapon(GameObject newWeapon, WeaponData newWeaponData)
     {
         if (weapons.Count < 6) // Limitar el número de armas a 6
@@ -180,6 +173,18 @@ public class WeaponHandler : MonoBehaviour
                 weaponComponent = newWeapon.AddComponent<WeaponComponent>();
             }
             weaponComponent.weaponData = newWeaponData;
+
+            // Desactivar todas las armas antes de activar la nueva
+            foreach (var weapon in weapons)
+            {
+                if (weapon != null && weapon != newWeapon)
+                {
+                    weapon.SetActive(false);
+                }
+            }
+
+            // Activar la nueva arma
+            newWeapon.SetActive(true);
 
             // **Actualizar la lista de iconos en el mismo orden**
             UpdateWeaponIcons();
@@ -251,7 +256,7 @@ public class WeaponHandler : MonoBehaviour
         // Desactivar todas las armas antes de activar la nueva
         foreach (var weapon in weapons)
         {
-            if (weapon != null)
+            if (weapon != null && weapon != newWeapon)
             {
                 weapon.SetActive(false);
             }
@@ -282,7 +287,7 @@ public class WeaponHandler : MonoBehaviour
         if (weaponHolder != null)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawRay(weaponHolder.position, weaponHolder.forward * 100);
+            Gizmos.DrawRay(weaponHolder.position, weaponHolder.forward * 10);
         }
     }
 }

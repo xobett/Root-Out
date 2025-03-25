@@ -2861,10 +2861,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
-    - target: {fileID: 1474868788659554937, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9301f431a220d1d4f82e40a8553ac53a, type: 2}
     - target: {fileID: 5077107983995887419, guid: cf245403e7c521c43b6729815de93009, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.68
@@ -2905,22 +2901,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5170046860989816336, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9301f431a220d1d4f82e40a8553ac53a, type: 2}
     - target: {fileID: 5565976775888962945, guid: cf245403e7c521c43b6729815de93009, type: 3}
       propertyPath: m_Name
       value: Pistola calabaza
       objectReference: {fileID: 0}
-    - target: {fileID: 5941646935899689380, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9301f431a220d1d4f82e40a8553ac53a, type: 2}
-    - target: {fileID: 7035302221374408379, guid: cf245403e7c521c43b6729815de93009, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9301f431a220d1d4f82e40a8553ac53a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3210,30 +3194,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
-    - target: {fileID: 1406095809366842770, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e802b13d0ce96554e95a9234ee98fc31, type: 2}
-    - target: {fileID: 3001259390110721496, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e802b13d0ce96554e95a9234ee98fc31, type: 2}
-    - target: {fileID: 3359804665040525835, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e802b13d0ce96554e95a9234ee98fc31, type: 2}
-    - target: {fileID: 3411329484752074395, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e802b13d0ce96554e95a9234ee98fc31, type: 2}
-    - target: {fileID: 3551258608754773409, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e802b13d0ce96554e95a9234ee98fc31, type: 2}
-    - target: {fileID: 6084326424006145423, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e802b13d0ce96554e95a9234ee98fc31, type: 2}
     - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.669
@@ -3274,10 +3234,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8483638708991458321, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e802b13d0ce96554e95a9234ee98fc31, type: 2}
     - target: {fileID: 8918381668964958531, guid: be5a35ee4783b984a818864a85638784, type: 3}
       propertyPath: m_Name
       value: Pistola bellota
@@ -3435,6 +3391,10 @@ PrefabInstance:
     - target: {fileID: 7190973760464605668, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_Name
       value: Pistola huevos
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190973760464605668, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7530203457036585822, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_LocalPosition.x
