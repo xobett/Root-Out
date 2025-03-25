@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Weapons;
 
 public class WeaponHandler : MonoBehaviour
 {
@@ -26,14 +27,17 @@ public class WeaponHandler : MonoBehaviour
     private float lastWeaponChangeTime = 0f;
     // Cooldown de 0.5 segundos
     private const float weaponChangeCooldown = 0.4f;
-
+    
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 100f;
     // private bool wheelIsRotating = false;
 
-    private void Start()
+    /// <summary>
+    /// Ajustar el posicionamiento de la rueda de armas al inicio
+    /// </summary>
+    private void Start() 
     {
-        weaponSelectionWheel.gameObject.SetActive(false);
+        weaponSelectionWheel.gameObject.SetActive(true); // modi
     }
     private void Update()
     {
@@ -41,29 +45,29 @@ public class WeaponHandler : MonoBehaviour
         HandleMouseScroll();
         // Maneja la selección de arma al hacer clic
         HandleWeaponSelection();
-        OpenMenu();
+        //OpenMenu();
     }
 
-    private void OpenMenu()
-    {
-        if (Input.GetKey(KeyCode.Tab))
-        {
-            weaponSelectionWheel.gameObject.SetActive(true);
-        }
-        else
-        {
-            weaponSelectionWheel.gameObject.SetActive(false);
-        }
-    }
+    //private void OpenMenu()
+    //{
+    //    if (Input.GetKey(KeyCode.Tab))
+    //    {
+    //        weaponSelectionWheel.gameObject.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        weaponSelectionWheel.gameObject.SetActive(false);
+    //    }
+    //}
 
 
     // Maneja la rotación de la rueda del ratón para cambiar de arma
     private void HandleMouseScroll()
     {
-        if (!Input.GetKey(KeyCode.Tab))
-        {
-            return; // No permitir cambio de arma si la tecla Tab no está presionada
-        }
+        //if (!Input.GetKey(KeyCode.Tab))
+        //{
+        //    return; // No permitir cambio de arma si la tecla Tab no está presionada
+        //}
 
         if (weapons.Count < 2)
         {
@@ -128,7 +132,6 @@ public class WeaponHandler : MonoBehaviour
         yield return null;
     }
 
-
     // Maneja la selección de arma al hacer clic
     private void HandleWeaponSelection()
     {
@@ -139,46 +142,49 @@ public class WeaponHandler : MonoBehaviour
     }
 
     // Método para recoger un arma nueva
-    public void PickUpWeapon(GameObject newWeapon, WeaponData newWeaponData) // Recibe el GameObject del arma y sus datos
+    // Método para recoger un arma nueva
+    public void PickUpWeapon(GameObject newWeapon, WeaponData newWeaponData)
     {
         if (weapons.Count < 6) // Limitar el número de armas a 6
         {
-            // Insertar el arma en la primera posición y desplazar las demás
-            weapons.Insert(0, newWeapon);
+            weapons.Insert(0, newWeapon); // Insertar el arma en la primera posición
+
             if (weapons.Count > 6)
             {
-                weapons.RemoveAt(6); // Asegurarse de que la lista no tenga más de 6 armas
+                weapons.RemoveAt(6); // Mantener un máximo de 6 armas
             }
 
             Debug.Log("Picked up weapon: " + newWeapon.name);
 
-            // Desactivar el collider del arma
-            Collider weaponCollider = newWeapon.GetComponent<Collider>();
-            if (weaponCollider != null)
+            // Desactivar el collider del arma para que no se pueda volver a recoger
+            if (newWeapon.TryGetComponent<Collider>(out var weaponCollider))
             {
                 weaponCollider.enabled = false;
             }
 
-            // Establecer el GameObject del arma en el Transform especificado
-            if (weaponHolder != null && newWeapon != null) // Si el weaponHolder y el GameObject del arma no están vacíos
+            // Ubicar el arma en el WeaponHolder
+            if (weaponHolder != null && newWeapon != null)
             {
-                newWeapon.transform.SetParent(weaponHolder); // Establecer el padre del arma
-                newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); // Resetea la posición local y la rotación local
+                newWeapon.transform.SetParent(weaponHolder);
+                newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             }
             else
             {
                 Debug.LogWarning("Weapon holder or weapon GameObject is not assigned.");
             }
 
-            // Asignar el icono del arma al slot correspondiente
-            int weaponIndex = weapons.IndexOf(newWeapon);
-            if (weaponIndex < weaponIcons.Count)
+            // Asignar el WeaponData al nuevo componente
+            var weaponComponent = newWeapon.GetComponent<WeaponComponent>();
+            if (weaponComponent == null)
             {
-                weaponIcons[weaponIndex].sprite = newWeaponData.weaponIcon; // Asignar el icono del arma
-                weaponIcons[weaponIndex].enabled = true; // Asegurarse de que el icono esté habilitado
+                weaponComponent = newWeapon.AddComponent<WeaponComponent>();
             }
+            weaponComponent.weaponData = newWeaponData;
 
-            // Actualizar las posiciones de los iconos
+            // **Actualizar la lista de iconos en el mismo orden**
+            UpdateWeaponIcons();
+
+            // **Actualizar posiciones de los íconos en el UI**
             UpdateWeaponPositions();
         }
         else
@@ -187,15 +193,41 @@ public class WeaponHandler : MonoBehaviour
         }
     }
 
+    // Método para sincronizar los iconos con las armas en el mismo orden
+    private void UpdateWeaponIcons()
+    {
+        for (int i = 0; i < weaponIcons.Count; i++)
+        {
+            if (i < weapons.Count && weapons[i] != null) // Verifica que haya un arma en la posición
+            {
+                WeaponComponent weaponComponent = weapons[i].GetComponent<WeaponComponent>(); // Obtener el componente WeaponComponent
+
+                if (weaponComponent != null && weaponComponent.weaponData != null)
+                {
+                    weaponIcons[i].sprite = weaponComponent.weaponData.weaponIcon; // Asignar el ícono correcto
+                    weaponIcons[i].enabled = true; // Habilitar la imagen
+                }
+                else
+                {
+                    weaponIcons[i].enabled = false; // Deshabilitar si no hay arma
+                }
+            }
+            else
+            {
+                weaponIcons[i].enabled = false; // Si no hay arma en la posición, desactivar ícono
+            }
+        }
+    }
+
+    // Método para posicionar correctamente los íconos en el UI
     private void UpdateWeaponPositions()
     {
-        for (int i = 0; i < weapons.Count; i++)
+        for (int i = 0; i < weaponIcons.Count; i++)
         {
-            if (i < weaponIcons.Count)
+            if (i < weapons.Count)
             {
-                // Asignar la posición del icono en el canvas
                 weaponIcons[i].transform.SetParent(weaponSelectionWheel);
-                weaponIcons[i].transform.localPosition = weaponIcons[i].transform.localPosition;
+                weaponIcons[i].transform.localPosition = Vector3.zero; // Ajustar posición si es necesario
             }
         }
     }
@@ -253,4 +285,9 @@ public class WeaponHandler : MonoBehaviour
             Gizmos.DrawRay(weaponHolder.position, weaponHolder.forward * 100);
         }
     }
+}
+
+public class WeaponComponent : MonoBehaviour
+{
+    public WeaponData weaponData;
 }
