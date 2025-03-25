@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq.Expressions;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -23,6 +22,7 @@ public class CameraFollow : MonoBehaviour
     [Header("CAMERA ZOOM SETTINGS")]
     [SerializeField, Range(1, 10)] private float zoomSpeed; // Float donde se almacena la velocidad de zoom.
     [SerializeField] private float zoomIn; // Float donde se almacena la distancia a la que se hara zoom, misma que se usara para restarla posterior a hacer zoom.
+    [SerializeField] private float horizontalZoomOffset;
 
     private bool isZooming; // Bool usado para saber si se esta haciendo zoom actualmente.
     private bool aimed; // Bool para saber si se ha hecho zoom recientemente.
@@ -76,20 +76,24 @@ public class CameraFollow : MonoBehaviour
         Vector3 right = transform.right * nearPlaneSize.x;
         Vector3 up = transform.up * nearPlaneSize.y;
 
-        return new Vector3[] 
+        return new Vector3[]
         {
-            center - right + up, 
-            center + right + up, 
-            center - right - up, 
-            center + right - up 
+            center - right + up,
+            center + right + up,
+            center - right - up,
+            center + right - up
         };
     }
 
     private void OrbitRotationInput()
     {
-        if (MouseHorizontalInput() != 0 || MouseVerticalInput() != 0)
+        if (MouseHorizontalInput() != 0)
         {
             orbitAngle.x -= MouseHorizontalInput() * Mathf.Deg2Rad * cameraSensitivity.x * Time.deltaTime;
+        }
+
+        if (MouseVerticalInput() != 0 && !IsAiming())
+        {
             orbitAngle.y -= MouseVerticalInput() * Mathf.Deg2Rad * cameraSensitivity.y * Time.deltaTime;
 
             orbitAngle.y = Mathf.Clamp(orbitAngle.y, downLimit * Mathf.Deg2Rad, upLimit * Mathf.Deg2Rad);
@@ -97,17 +101,17 @@ public class CameraFollow : MonoBehaviour
     }
     private void FollowAndOrbit()
     {
+        //Se crea un Vector3 donde se almacenara la rotacion activa alrededor del objetivo.
         Vector3 orbitValue;
 
-        //Se crea un Vector3 donde se almacenara la rotacion alrededor del objetivo.
         //En un circulo, para calcular la posicion alrededor de este se usa la funcion de Coseno para calcular posicion en X, y la funcion Seno para calcular la posicion en Y.
         //Dicho eso, el vector crea por asi decirlo un circulo alrededor del angulo que recibe en radianes, calculando la posicion X con el COS y la posicion Y con SIN.
         Vector3 normalOrbit = new Vector3(Mathf.Cos(orbitAngle.x) * Mathf.Cos(orbitAngle.y), Mathf.Sin(orbitAngle.y), Mathf.Sin(orbitAngle.x) * Mathf.Cos(orbitAngle.y));
 
         //Se crea un Vector3 donde se crea una nueva rotacion en orbita solamente en los ejes X y Z, para evitar rotar hacia arriba al hacer zoom.
+        //NO USADO PERO SE GUARDA POR SI ACASO.
         Vector3 zoomOrbit = new Vector3(Mathf.Cos(orbitAngle.x), 0, Mathf.Sin(orbitAngle.x));
 
-        //orbitValue = IsAiming() ? zoomOrbit : normalOrbit;
         orbitValue = normalOrbit;
 
         float orbitDistance = maxDistance;
@@ -142,75 +146,52 @@ public class CameraFollow : MonoBehaviour
             if (IsAiming() && !aimed && !isZooming)
             {
                 //Hace zoom y cambia la posicion de la camara.
-                StartCoroutine(CameraZoom(zoomIn, true));
+                StartCoroutine(CameraZoom(zoomIn, horizontalZoomOffset));
 
             }
             //Para dejar de hacer zoom, checa si ya no se esta haciendo zoom, si no se esta haciendo zoom actualmente y si se hizo zoom recientemente.
             else if (!IsAiming() && aimed && !isZooming)
             {
                 //Deja de hacer zoom y regresa la posicion de la camara.
-                StartCoroutine(CameraZoom(-zoomIn, false));
+                StartCoroutine(CameraZoom(-zoomIn, -horizontalZoomOffset));
 
                 aimed = false;
             }
         }
     }
 
-    private IEnumerator CameraZoom(float zoomValue, bool zoomIn)
+    private IEnumerator CameraZoom(float zoomValue, float horizontalOffset)
     {
         isZooming = true;
         aimed = true;
 
-        //Establece el valor actual del zoom de la camara.
-        float currentZoom = cam.fieldOfView;
         //Establece el valor meta al que se desea cambiar el zoom de la camara.
         float targetZoom = cam.fieldOfView - zoomValue;
+
+        //Dado a que la posicion de seguimiento es hijo del jugador, se asigna en un Vector la posicion local de este en relacion al padre.
+        Vector3 targetPosition = followTarget.localPosition;
+        //Despues, a el valor en X de esa posicion en horizontal se le asigna el valor a aumentar en X en su posicion local.
+        targetPosition.x += horizontalOffset;
 
         float time = 0;
 
         while (time < 1)
         {
             //Cambia el zoom de la camara progresivamente.
-            cam.fieldOfView = Mathf.Lerp(currentZoom, targetZoom, time);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, targetZoom, time);
             //Cambia la rotacion en Y de la camara a 0 para mejor vista.
             orbitAngle.y = Mathf.Lerp(orbitAngle.y, 10 * Mathf.Deg2Rad, time);
-
-            if (zoomIn)
-            {
-                if (followTarget.transform.localPosition.x < 2f)
-                {
-                    followTarget.Translate(new Vector3(10f, 0, 0) * Time.deltaTime);
-                }
-
-            }
-            else if (!zoomIn)
-            {
-                if (followTarget.transform.localPosition.x > 0f)
-                {
-                    followTarget.Translate(new Vector3(-10f, 0, 0) * Time.deltaTime);
-                }
-            }
+            //Cambia la posicion de la camara para mejor vision.
+            followTarget.localPosition = Vector3.Lerp(followTarget.localPosition, targetPosition, time);
 
             time += Time.deltaTime * zoomSpeed;
 
             yield return null;
         }
 
-
-        if (zoomIn)
-        {
-            followTarget.transform.localPosition = new Vector3(2, 1.5f, 0);
-        }
-        else if (!zoomIn)
-        {
-            followTarget.transform.localPosition = new Vector3(0, 1.5f, 0);
-        }
-
-            //Para asegurar que se haya llegado a los valores deseados, se establecen al final.
-            cam.fieldOfView = targetZoom;
-
-        //La rotacion actual de la camara se resetea.
-        //orbitAngle.y = 0 * Mathf.Deg2Rad;
+        //Para asegurar que se haya llegado a los valores deseados, se establecen al final.
+        cam.fieldOfView = targetZoom;
+        followTarget.localPosition = targetPosition;
 
         isZooming = false;
 
