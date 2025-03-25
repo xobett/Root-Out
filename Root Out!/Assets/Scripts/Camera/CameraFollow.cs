@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -106,7 +107,8 @@ public class CameraFollow : MonoBehaviour
         //Se crea un Vector3 donde se crea una nueva rotacion en orbita solamente en los ejes X y Z, para evitar rotar hacia arriba al hacer zoom.
         Vector3 zoomOrbit = new Vector3(Mathf.Cos(orbitAngle.x), 0, Mathf.Sin(orbitAngle.x));
 
-        orbitValue = IsAiming() ? zoomOrbit : normalOrbit;
+        //orbitValue = IsAiming() ? zoomOrbit : normalOrbit;
+        orbitValue = normalOrbit;
 
         float orbitDistance = maxDistance;
         Vector3[] collisionPoints = CalculateCollisionPoints(orbitValue);
@@ -140,21 +142,21 @@ public class CameraFollow : MonoBehaviour
             if (IsAiming() && !aimed && !isZooming)
             {
                 //Hace zoom y cambia la posicion de la camara.
-                StartCoroutine(CameraZoom(zoomIn, 0.1f));
+                StartCoroutine(CameraZoom(zoomIn, true));
 
             }
             //Para dejar de hacer zoom, checa si ya no se esta haciendo zoom, si no se esta haciendo zoom actualmente y si se hizo zoom recientemente.
             else if (!IsAiming() && aimed && !isZooming)
             {
                 //Deja de hacer zoom y regresa la posicion de la camara.
-                StartCoroutine(CameraZoom(-zoomIn, -0.1f));
+                StartCoroutine(CameraZoom(-zoomIn, false));
 
                 aimed = false;
             }
         }
     }
 
-    private IEnumerator CameraZoom(float zoomValue, float horizontalOffset)
+    private IEnumerator CameraZoom(float zoomValue, bool zoomIn)
     {
         isZooming = true;
         aimed = true;
@@ -171,18 +173,44 @@ public class CameraFollow : MonoBehaviour
             //Cambia el zoom de la camara progresivamente.
             cam.fieldOfView = Mathf.Lerp(currentZoom, targetZoom, time);
             //Cambia la rotacion en Y de la camara a 0 para mejor vista.
-            orbitAngle.y = Mathf.Lerp(orbitAngle.y, 0 * Mathf.Deg2Rad, time);
+            orbitAngle.y = Mathf.Lerp(orbitAngle.y, 10 * Mathf.Deg2Rad, time);
+
+            if (zoomIn)
+            {
+                if (followTarget.transform.localPosition.x < 2f)
+                {
+                    followTarget.Translate(new Vector3(10f, 0, 0) * Time.deltaTime);
+                }
+
+            }
+            else if (!zoomIn)
+            {
+                if (followTarget.transform.localPosition.x > 0f)
+                {
+                    followTarget.Translate(new Vector3(-10f, 0, 0) * Time.deltaTime);
+                }
+            }
 
             time += Time.deltaTime * zoomSpeed;
 
             yield return null;
         }
 
-        //Para asegurar que se haya llegado a los valores deseados, se establecen al final.
-        cam.fieldOfView = targetZoom;
+
+        if (zoomIn)
+        {
+            followTarget.transform.localPosition = new Vector3(2, 1.5f, 0);
+        }
+        else if (!zoomIn)
+        {
+            followTarget.transform.localPosition = new Vector3(0, 1.5f, 0);
+        }
+
+            //Para asegurar que se haya llegado a los valores deseados, se establecen al final.
+            cam.fieldOfView = targetZoom;
 
         //La rotacion actual de la camara se resetea.
-        orbitAngle.y = 0 * Mathf.Deg2Rad;
+        //orbitAngle.y = 0 * Mathf.Deg2Rad;
 
         isZooming = false;
 
