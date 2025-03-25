@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -7,10 +6,10 @@ public class CameraFollow : MonoBehaviour
     [Header("NEW CAMERA FOLLOW SETTINGS")]
     [SerializeField] private Transform followTarget; //Transform al que seguira la camara.
 
-    [SerializeField] private float backDistance; //Float que controla la distancia de la orbita alrededor del jugador.
+    [SerializeField] private float maxDistance; //Float que controla la distancia de la orbita alrededor del jugador.
 
     [SerializeField] private Vector2 cameraSensitivity; //Vector2 que controla la sensibilidad de la camara.
-    
+
     Vector2 orbitAngle = new Vector2(-90 * Mathf.Deg2Rad, 0); //Vector2 que recibe Input del mouse convertido a radianes, para crear un orbita en base a este con las funciones COS y SIN.
 
     [SerializeField] private float upLimit; // Float que sera convertido a radianes para limitar la vista hacia arriba de la camara.
@@ -31,6 +30,9 @@ public class CameraFollow : MonoBehaviour
 
     [Header("CAMERA COLLISION SETTINGS")]
     [SerializeField] private LayerMask whatIsCollision; //Layer que controla en que layers se detecta colision.
+    [SerializeField] private Vector2 nearPlaneSize;
+    [SerializeField, Range(0f, 1f)] private float safeDistance;
+    private RaycastHit hit;
 
     void Start()
     {
@@ -42,18 +44,44 @@ public class CameraFollow : MonoBehaviour
 
         //Referencia los componentes necesarios.
         GetReferences();
+
+        GetCameraNearPlaneSize();
     }
 
     void Update()
     {
         Aim();
-        CameraCollision();
         OrbitRotationInput();
     }
 
     private void LateUpdate()
     {
         FollowAndOrbit();
+    }
+
+    private void GetCameraNearPlaneSize()
+    {
+        float planeHeight = Mathf.Tan((cam.fieldOfView * Mathf.Deg2Rad / 2) * cam.nearClipPlane);
+        float planeWidth = planeHeight * cam.aspect;
+
+        nearPlaneSize = new Vector2(planeWidth, planeHeight);
+    }
+
+    private Vector3[] CalculateCollisionPoints(Vector3 orbitDirection)
+    {
+        Vector3 position = followTarget.position;
+        Vector3 center = position + orbitDirection * (cam.nearClipPlane + safeDistance);
+
+        Vector3 right = transform.right * nearPlaneSize.x;
+        Vector3 up = transform.up * nearPlaneSize.y;
+
+        return new Vector3[] 
+        {
+            center - right + up, 
+            center + right + up, 
+            center - right - up, 
+            center + right - up 
+        };
     }
 
     private void OrbitRotationInput()
@@ -78,43 +106,30 @@ public class CameraFollow : MonoBehaviour
         //Se crea un Vector3 donde se crea una nueva rotacion en orbita solamente en los ejes X y Z, para evitar rotar hacia arriba al hacer zoom.
         Vector3 zoomOrbit = new Vector3(Mathf.Cos(orbitAngle.x), 0, Mathf.Sin(orbitAngle.x));
 
-        if (IsAiming())
+        orbitValue = IsAiming() ? zoomOrbit : normalOrbit;
+
+        float orbitDistance = maxDistance;
+        Vector3[] collisionPoints = CalculateCollisionPoints(orbitValue);
+
+        foreach (Vector3 collisionPoint in collisionPoints)
         {
-            orbitValue = zoomOrbit;
-        }
-        else
-        {
-            orbitValue = normalOrbit;
+            if (Physics.Raycast(collisionPoint, orbitValue, out hit, maxDistance, whatIsCollision))
+            {
+                orbitDistance = Mathf.Min((hit.point - followTarget.position).magnitude, orbitDistance);
+            }
         }
 
         //La posicion de la camara sigue la posicion del jugador, sumandole los valores del Vector3 que controla la rotacion orbita creada, multiplicando la distancia de la orbita por un float.
-        Vector3 orbitMovement = followTarget.position + orbitValue * backDistance;
-
+        Vector3 orbitMovement = followTarget.position + orbitValue * orbitDistance;
         //Se interpola esfericamente la posicion de la camara.
         transform.position = Vector3.Slerp(transform.position, orbitMovement, orbitSmooth * Time.deltaTime);
 
         Quaternion lookAtPlayer = Quaternion.LookRotation(followTarget.position - transform.position, Vector3.up);
-
         //Mira constantemente al jugador.
         transform.rotation = lookAtPlayer;
 
         //Gira al jugador en conjunto con la rotacion de la camara.
         player.transform.Rotate(Vector3.up * MouseHorizontalInput() * cameraSensitivity.x * Time.deltaTime);
-    }
-
-    private void CameraCollision()
-    {
-        RaycastHit hitInfo;
-
-        Vector3 raycastDirection = followTarget.transform.position - transform.position;
-
-        if (Physics.Raycast(followTarget.position, raycastDirection, out hitInfo, raycastDirection.magnitude, whatIsCollision))
-        {
-            Debug.Log($"Is colliding with {hitInfo.collider.name}");
-            Debug.Log($"Collision distance {hitInfo.distance}");
-        }
-
-        Debug.DrawRay(transform.position, followTarget.transform.position - transform.position);
     }
 
     private void Aim()
@@ -135,7 +150,7 @@ public class CameraFollow : MonoBehaviour
                 StartCoroutine(CameraZoom(-zoomIn, -0.1f));
 
                 aimed = false;
-            } 
+            }
         }
     }
 
@@ -172,7 +187,7 @@ public class CameraFollow : MonoBehaviour
         isZooming = false;
 
         yield return null;
-        
+
     }
 
     private void GetReferences()
