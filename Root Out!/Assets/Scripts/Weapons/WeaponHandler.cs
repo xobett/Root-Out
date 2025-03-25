@@ -45,29 +45,29 @@ public class WeaponHandler : MonoBehaviour
         HandleMouseScroll();
         // Maneja la selección de arma al hacer clic
         HandleWeaponSelection();
-        //OpenMenu();
+        OpenMenu();
     }
 
-    //private void OpenMenu()
-    //{
-    //    if (Input.GetKey(KeyCode.Tab))
-    //    {
-    //        weaponSelectionWheel.gameObject.SetActive(true);
-    //    }
-    //    else
-    //    {
-    //        weaponSelectionWheel.gameObject.SetActive(false);
-    //    }
-    //}
+    private void OpenMenu()
+    {
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            weaponSelectionWheel.gameObject.SetActive(true);
+        }
+        else
+        {
+            weaponSelectionWheel.gameObject.SetActive(false);
+        }
+    }
 
 
     // Maneja la rotación de la rueda del ratón para cambiar de arma
     private void HandleMouseScroll()
     {
-        //if (!Input.GetKey(KeyCode.Tab))
-        //{
-        //    return; // No permitir cambio de arma si la tecla Tab no está presionada
-        //}
+        if (!Input.GetKey(KeyCode.Tab))
+        {
+            return; // No permitir cambio de arma si la tecla Tab no está presionada
+        }
 
         if (weapons.Count < 2)
         {
@@ -227,7 +227,7 @@ public class WeaponHandler : MonoBehaviour
             if (i < weapons.Count)
             {
                 weaponIcons[i].transform.SetParent(weaponSelectionWheel);
-                weaponIcons[i].transform.localPosition = Vector3.zero; // Ajustar posición si es necesario
+                weaponIcons[i].transform.localPosition = weaponIcons[i].transform.localPosition; // Ajustar posición si es necesario
             }
         }
     }
