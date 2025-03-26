@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100;
     [SerializeField, Range(0, 100)] public float currentHealth;
-    [SerializeField] private Image playerLifeBar;
+    [SerializeField] public Image playerLifeBar;
 
 
 

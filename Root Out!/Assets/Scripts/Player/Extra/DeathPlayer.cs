@@ -28,7 +28,7 @@ public class DeathPlayer : MonoBehaviour
         if (playerHealth.currentHealth <= 0)
         {
             //animDeath.Play("Death");
-            float duration = 4f;
+            float duration = 2f;
             float elapsed = 0f; 
             float startSaturation = 50f; 
             float endSaturation = -100f;
