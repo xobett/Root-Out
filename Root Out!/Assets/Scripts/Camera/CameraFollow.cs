@@ -212,10 +212,7 @@ public class CameraFollow : MonoBehaviour
     #region Inputs
     private float MouseHorizontalInput() => Input.GetAxis("Mouse X");
     private float MouseVerticalInput() => Input.GetAxis("Mouse Y");
-    private bool IsAiming()
-    {
-        return Input.GetMouseButton(1);
-    }
+    private bool IsAiming() => Input.GetMouseButton(1);
 
     #endregion
 
