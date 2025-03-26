@@ -30,6 +30,8 @@ public class MainMenu : MonoBehaviour
         panelSettings.SetActive(false); // Activa el menú de configuración
         panelLogros.SetActive(false);
 
+        Cursor.lockState = CursorLockMode.None; // Desbloquear el cursor
+
     }
 
     public void Game()
