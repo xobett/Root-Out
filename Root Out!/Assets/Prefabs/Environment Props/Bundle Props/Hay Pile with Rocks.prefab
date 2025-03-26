@@ -29,9 +29,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 21523788115862235}
   - {fileID: 2553353831448505136}
   - {fileID: 3537941514399661909}
-  - {fileID: 21523788115862235}
   - {fileID: 3826208502583759502}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_Name
       value: Roca 2 placeholder (1)
@@ -125,7 +129,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.12
-  m_Center: {x: 0, y: 0.07, z: 0}
+  m_Center: {x: 0, y: -0, z: 0}
 --- !u!1001 &3644490861580449125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.132
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
       propertyPath: m_LocalPosition.z
@@ -174,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
       propertyPath: m_Name
       value: Roca 1 placeholder
@@ -231,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -265,6 +273,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_Name
       value: Roca 2 placeholder
@@ -307,7 +319,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.12
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Center: {x: 0, y: 0.01, z: 0}
 --- !u!1001 &8381361241733094561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,7 +338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8366813316959944314, guid: c79464a89a3fedc4cbb4240e72cfeab3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.026
       objectReference: {fileID: 0}
     - target: {fileID: 8366813316959944314, guid: c79464a89a3fedc4cbb4240e72cfeab3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -397,5 +409,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.07
+  m_Radius: 1.35
   m_Center: {x: 0, y: 0.06, z: 0}

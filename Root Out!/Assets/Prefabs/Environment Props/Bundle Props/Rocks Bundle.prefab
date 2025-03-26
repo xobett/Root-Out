@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 150145649957319254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.116, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82,6 +82,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_Name
       value: Roca 2 placeholder (1)
@@ -89,13 +93,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3171180524322255535}
   m_SourcePrefab: {fileID: 100100000, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
 --- !u!4 &314938684913277032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
   m_PrefabInstance: {fileID: 275944904712372099}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1086831768213422802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+  m_PrefabInstance: {fileID: 275944904712372099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &3171180524322255535
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086831768213422802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.12
+  m_Height: 0.17116332
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &920386263443093765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,6 +179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
       propertyPath: m_Name
       value: Roca 1 placeholder
@@ -151,8 +190,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1453448103330835091}
   m_SourcePrefab: {fileID: 100100000, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
+--- !u!1 &1327934172398676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
+  m_PrefabInstance: {fileID: 920386263443093765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1453448103330835091
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327934172398676}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.32270944
+  m_Height: 0.22884384
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.16, z: 0}
 --- !u!4 &814983390457618158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fdc2b57e102f3f145badc7698a122687, type: 3}
@@ -206,6 +276,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_Name
       value: Roca 2 placeholder
@@ -213,10 +287,41 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5885497425976843899}
   m_SourcePrefab: {fileID: 100100000, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
 --- !u!4 &2317304936351510910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
   m_PrefabInstance: {fileID: 2855847255313798805}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3126457067029523396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+  m_PrefabInstance: {fileID: 2855847255313798805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &5885497425976843899
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3126457067029523396}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.12
+  m_Height: 0.17116332
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

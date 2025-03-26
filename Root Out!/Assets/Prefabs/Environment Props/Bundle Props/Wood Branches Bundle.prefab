@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1243924154889158770}
+  - component: {fileID: 5967724699380800484}
   m_Layer: 0
   m_Name: Wood Branches Bundle
   m_TagString: Untagged
@@ -34,6 +35,29 @@ Transform:
   - {fileID: 4417043707007772414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5967724699380800484
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582366037615837367}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26
+  m_Height: 1.7
+  m_Direction: 0
+  m_Center: {x: -0.08, y: 0.09, z: 0.12}
 --- !u!1001 &1788465410224430735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,10 +106,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 96.959
       objectReference: {fileID: 0}
+    - target: {fileID: -4265338650084452101, guid: 67098bdc351b3844380ef8fdd99a1bb3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: 67098bdc351b3844380ef8fdd99a1bb3, type: 3}
       propertyPath: m_Name
       value: Rama 1 placeholder
       objectReference: {fileID: 0}
+    - target: {fileID: 2586607309129781981, guid: 67098bdc351b3844380ef8fdd99a1bb3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
+    - target: {fileID: 7216655632450529714, guid: 67098bdc351b3844380ef8fdd99a1bb3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -144,10 +180,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.0010070801
       objectReference: {fileID: 0}
+    - target: {fileID: -6483264720827800135, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
       propertyPath: m_Name
       value: Rama 3 placeholder
       objectReference: {fileID: 0}
+    - target: {fileID: 4191509097384965755, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
+    - target: {fileID: 7330095381222774183, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -206,10 +254,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -179.998
       objectReference: {fileID: 0}
+    - target: {fileID: -2682167134973850427, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
       propertyPath: m_Name
       value: Rama 2 placeholder
       objectReference: {fileID: 0}
+    - target: {fileID: 7484468418975526891, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
