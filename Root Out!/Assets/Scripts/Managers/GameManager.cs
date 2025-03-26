@@ -103,7 +103,13 @@ public class GameManager : MonoBehaviour
             marvelousEventActive = false;
 
             messageTextAnimator.SetTrigger("Exit Sunflower selection");
-            DisplayMessage("You don't have enough Seeds!");
+            messageText.text = "You don't have enough Seeds!";
+            messageTextAnimator.SetBool("secondSunflowerNotChosen", false);
+
+            playerInventoryHandler.AddSeedCoins(marvelousGrowthCost);
+
+            var sunflowerGrower = currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>();
+            sunflowerGrower.selectionMade = false;
         }
     }
 

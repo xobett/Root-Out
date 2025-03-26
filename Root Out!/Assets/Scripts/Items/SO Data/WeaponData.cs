@@ -24,4 +24,11 @@ public class WeaponData : ScriptableObject
     [Header("PREFAB")]
     [SerializeField] public GameObject weaponPrefab;
 
+    public string WeaponName => weaponName;
+    public string WeaponDescription => weaponDescription;
+    public WeaponsBase.WeaponType WeaponType => weaponType;
+    public int WeaponDamage => damage;
+    public float WeaponReloadTime => reloadTime;
+    public int WeaponMaxAmmo => maxAmmo;
+
 }

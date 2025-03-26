@@ -42,8 +42,6 @@ public class CornyGuy : CropBase
         }
     }
 
-
-
     protected override void SetAnimatorParameters()
     {
         base.SetAnimatorParameters();

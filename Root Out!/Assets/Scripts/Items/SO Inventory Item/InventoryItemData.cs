@@ -26,7 +26,7 @@ public class InventoryItemData : ScriptableObject
     public string ItemDescription => itemName;
     public ItemType ItemType => itemType;
     public Sprite ItemIcon => itemIcon;
-    public CropData CropData => CropData;
+    public CropData CropData => cropData;
     public WeaponData WeaponData => weaponData;
     public PerksData PerksData => perksData;
     public GameObject ItemPrefab => itemPrefab;

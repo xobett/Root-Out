@@ -35,6 +35,7 @@ public class CropData : ScriptableObject
     public GameObject CropPrefab => cropPrefab;
     public CropType Type => type;
     public float CropCooldownTime => cropCooldownTime;
+    public float CropDamage => cropDamage;
     public Sprite CropIcon => cropIcon;
 }
 

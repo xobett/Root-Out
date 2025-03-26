@@ -20,6 +20,7 @@ public class UIInventory : MonoBehaviour
 
     [Header("INVENTORY PANEL SETTINGS")]
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject uiInventoryIcon;
 
     [Header("INVENTORY GRID SETTINGS")]
     [SerializeField] private GameObject cropInventoryGrid;
@@ -77,28 +78,30 @@ public class UIInventory : MonoBehaviour
             DeactivateInput();
 
             for (int i = itemsDisplayed; i < playerInventory.Inventory.Count; i++)
-            {
-                var itemProt = new GameObject();
-                itemProt.AddComponent<Image>();
-                itemProt.GetComponent<Image>().sprite = playerInventory.Inventory[i].ItemIcon;
+            {                
+                GameObject uiIcon = Instantiate(uiInventoryIcon);
+                uiIcon.GetComponent<Image>().sprite = playerInventory.Inventory[i].ItemIcon;
+
+                var uiIconInfo = uiIcon.GetComponent<UiInventoryIconInfo>();
+                uiIconInfo.GetItemInfo(playerInventory.Inventory[i]);
 
                 switch (playerInventory.Inventory[i].ItemType)
                 {
                     case ItemType.Crop:
                         {
-                            Instantiate(itemProt, cropInventoryGrid.transform);
+                            uiIcon.transform.SetParent(cropInventoryGrid.transform, false);
                             break;
                         }
 
                     case ItemType.Weapon:
                         {
-                            Instantiate(itemProt, weaponInventoryGrid.transform);
+                            uiIcon.transform.SetParent(weaponInventoryGrid.transform, false);
                             break;
                         }
 
                     case ItemType.Perk:
                         {
-                            Instantiate(itemProt, perkInventoryGrid.transform);
+                            uiIcon.transform.SetParent(perkInventoryGrid.transform, false);
                             break;
                         }
                 }
@@ -112,6 +115,11 @@ public class UIInventory : MonoBehaviour
         {
             RegainInput();
         }
+    }
+
+    public void DisplayInventoryItemInfo()
+    {
+
     }
 
     private void DeactivateInput()

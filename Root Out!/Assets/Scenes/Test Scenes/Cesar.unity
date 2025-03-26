@@ -2156,7 +2156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &555553980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9196,6 +9196,7 @@ MonoBehaviour:
   generalMessage: {fileID: 0}
   fadeSpeed: 0
   inventoryPanel: {fileID: 1323645222}
+  uiInventoryIcon: {fileID: 9206137657758922888, guid: a3bbdfd4243c598499a46a1703adcd1b, type: 3}
   cropInventoryGrid: {fileID: 1045154867}
   weaponInventoryGrid: {fileID: 1368477228}
   perkInventoryGrid: {fileID: 916288274}
@@ -10344,6 +10345,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1073991295686311600, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: seedCoins
+      value: 659
+      objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

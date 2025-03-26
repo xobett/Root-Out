@@ -9,4 +9,7 @@ public class PerksData : ScriptableObject
 
     [Header("VISUAL ICON")]
     [SerializeField] private Sprite perkIcon;
+
+    public string PerkName => perkName;
+    public string PerkDescription => perkDescription;
 }
