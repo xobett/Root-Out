@@ -316,10 +316,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom Bomb Shooter
       objectReference: {fileID: 0}
-    - target: {fileID: 6087019335867297729, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.2
@@ -359,10 +355,6 @@ PrefabInstance:
     - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6878431962647199036, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.358
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2519,9 +2511,9 @@ Transform:
   m_Children:
   - {fileID: 408721567}
   - {fileID: 1883117273}
-  - {fileID: 206375441}
-  - {fileID: 115673787}
   - {fileID: 3061079699174749595}
+  - {fileID: 115673787}
+  - {fileID: 206375441}
   - {fileID: 1052963813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3391,10 +3383,6 @@ PrefabInstance:
     - target: {fileID: 7190973760464605668, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_Name
       value: Pistola huevos
-      objectReference: {fileID: 0}
-    - target: {fileID: 7190973760464605668, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7530203457036585822, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_LocalPosition.x

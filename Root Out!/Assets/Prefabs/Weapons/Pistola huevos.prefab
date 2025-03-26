@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4545795674448502169}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0.725, y: 0.129, z: 0}
+  m_LocalPosition: {x: 0.725, y: 0.066, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5f6ba8d47dcaabe46885f29fd4e6052a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1601004283710859082, guid: 5f6ba8d47dcaabe46885f29fd4e6052a, type: 3}
       propertyPath: m_Layer
@@ -177,17 +177,17 @@ MonoBehaviour:
   shootDownwards: 0
   bulletPrefab: {fileID: 9057334875416266116, guid: 34d74bd594858a647a19b51c6a5126f6, type: 3}
   explosionPrefab: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
-  currentAmmo: 80
-  maxAmmo: 80
-  bulletReserve: 100
-  maxBulletReserve: 100
-  damage: 2
-  range: 3
+  currentAmmo: 20
+  maxAmmo: 20
+  bulletReserve: 150
+  maxBulletReserve: 150
+  damage: 10
+  range: 5
   fireRate: 2
   reloadTime: 2
-  bulletForce: 40
+  bulletForce: 20
   lifeTimeBullets: 1
-  bulletsPerBurst: 2
+  bulletsPerBurst: 1
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
