@@ -38,7 +38,6 @@ namespace Weapons
 
         [Header("Tipo de Bala")]
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
-        [SerializeField] public GameObject explosionPrefab; // Prefab de la explosión
 
         [Header("Munición")]
         [SerializeField] public int currentAmmo; // Munición actual
@@ -269,22 +268,6 @@ namespace Weapons
                         Debug.LogWarning("Bullet prefab does not have BulletDamage component.");
                     }
 
-                    // Asigna el prefab de la explosión a la bala y controla la instanciación
-                    if (bullet.TryGetComponent<Bullet>(out var bulletScript))
-                    {
-                        bulletScript.SetExplosionPrefab(explosionPrefab);
-                        if (explosionUpgradeActivated && canInstantiateExplosion) // Comprueba si la mejora de explosión está activada y si se puede instanciar
-                        {
-                            Debug.Log("Explosion upgrade activated!");
-                            bulletScript.SetCanInstantiateExplosion(true); // Activa la instanciación de la explosión
-                            StartCoroutine(ExplosionCooldown()); // Inicia la corrutina para controlar el tiempo de espera entre instanciaciones de explosión
-                        }
-                        else
-                        {
-                            bulletScript.SetCanInstantiateExplosion(false);
-                        }
-                    }
-
                     Destroy(bullet, lifeTimeBullets); // Destruye la bala después de que expire el tiempo de vida especificado.
                 }
             }
@@ -350,22 +333,6 @@ namespace Weapons
         protected virtual int GetNumBullets() // Método virtual para obtener el número de balas, será sobrescrito en las clases derivadas
         {
             return weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Valor predeterminado
-        }
-        #endregion
-
-        #region Explosive Bullets
-        public IEnumerator ExplosionCooldown()  // Corrutina para controlar el tiempo de espera entre instanciaciones de explosión
-        {
-            canInstantiateExplosion = false;
-            yield return new WaitForSeconds(1f);
-            canInstantiateExplosion = true;
-            Debug.Log("Exploto");
-        }
-
-        // Método para activar la mejora de explosión
-        public void ActivateExplosionUpgrade()
-        {
-            explosionUpgradeActivated = true;
         }
         #endregion
 

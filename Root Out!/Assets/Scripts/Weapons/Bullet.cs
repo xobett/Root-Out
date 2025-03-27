@@ -1,24 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour, IBullet
 {
     private float damage;
-    private bool canInstantiateExplosion = false; // Controla si se puede instanciar la explosión
-    [SerializeField] public GameObject explosionPrefab;
+    public GameObject explosionPrefab;
+    public bool canExplode = true;
 
     public void SetDamage(float damageAmount)
     {
         damage = damageAmount;
-    }
-
-    public void SetExplosionPrefab(GameObject prefab) // Método para asignar el prefab de la explosión
-    {
-        explosionPrefab = prefab; // Asignar el prefab
-    }
-
-    public void SetCanInstantiateExplosion(bool value) // Método para controlar la instanciación de la explosión
-    {
-        canInstantiateExplosion = value;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,16 +17,23 @@ public class Bullet : MonoBehaviour, IBullet
         if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth)) // Si el objeto colisionado tiene un componente AIHealth
         {
             aiHealth.TakeDamage(damage); // Aplicar daño al AIHealth
-            Destroy(gameObject); // Destruir la bala
+            if (canExplode)
+            {
+                StartCoroutine(ExplosionCooldown()); // Iniciar la corrutina de explosión
+                Destroy(gameObject,2f); // Destruir la bala después de 2 segundos
+            }
         }
+    }
 
-        if (canInstantiateExplosion && explosionPrefab != null) // Si se puede instanciar la explosión y el prefab no es nulo
+    public IEnumerator ExplosionCooldown()  // Corrutina para controlar el tiempo de espera entre instanciaciones de explosión
+    {
+        while (canExplode)
         {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity); // Instanciar el prefab
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(1f);
+            //bool canExplode = false;
+            Debug.Log("Exploto");
         }
-        Destroy(gameObject, 0.5f); // Destruir la bala
-
-
     }
 }
 

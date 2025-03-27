@@ -15,8 +15,8 @@ public class VelocityUpgrade : MonoBehaviour , IInteractable
     }
     public void OnInteract()
     {
-        playerMovement.walkSpeed = walkUpgrade;
-        playerMovement.sprintSpeed = sprintUpgrade;
+        playerMovement.walkSpeed += walkUpgrade;
+        playerMovement.sprintSpeed += sprintUpgrade;
         Destroy(gameObject);
     }
 

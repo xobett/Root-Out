@@ -14,9 +14,8 @@ public class ExplosionUpgrade : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        weapon.damage += 7; // Aumenta el daño del jugador 
-        weapon.explosionPrefab = explosionPrefab; // Asigna el prefab de la explosión a las balas
-        weapon.ActivateExplosionUpgrade(); // Activa la mejora de explosión
+       
+        Debug.Log("Explosion Upgrade Activated" + weapon.damage);
         Destroy(gameObject); // Destruye el objeto de mejora
     }
 }

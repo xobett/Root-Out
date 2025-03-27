@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 9057334875416266116}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -95.043, y: -14.895, z: 59.008}
+  m_LocalPosition: {x: -94.139984, y: -14.895, z: 62.065487}
   m_LocalScale: {x: 0.63761, y: 0.63761, z: 0.63761}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4965,7 +4965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e679e3bb49c90d47aa12f95480d5fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 6322684346280968154, guid: d8d67ca5dc64e0848a0f5d16f092d3c8, type: 3}
+  explosionPrefab: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
+  canExplode: 1
 --- !u!135 &1132718030433609928
 SphereCollider:
   m_ObjectHideFlags: 0
