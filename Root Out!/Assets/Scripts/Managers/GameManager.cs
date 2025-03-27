@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     [Header("FINAL HUB SETTINGS")]
     public bool finalHubCreated;
 
+    public int maxTerrainsPerGame = 10;
+    public int totalTerrainsGenerated;
+
     [Header("PLAYER SETTINGS")]
     public InventoryHandler playerInventoryHandler;
     public CropHandler playerCropHandler;
@@ -39,9 +42,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator currentSecondSunflowerAnimator;
     [SerializeField] private Animator currentSecondSunflowerLifebarAnimator;
 
-    [Header("MARVELOUS GROWTH EVENT SETTINGS")]
+    [Header("ACTIVE EVENT SETTINGS")]
     [SerializeField] private bool marvelousEventActive;
     [SerializeField] private bool normalEventActive;
+    [SerializeField] private bool compellingEventActive;
+
+    [SerializeField] private bool finalEventActive;
     public bool MarvelousEventActive => marvelousEventActive;
 
     //Change it to a method where depending on the type of event, will give a sunflower.
@@ -54,7 +60,10 @@ public class GameManager : MonoBehaviour
     [Header("GROWTH EVENT TIMER SETTINGS")]
     [SerializeField] private TextMeshProUGUI timerText;
     private float timer;
+
     [SerializeField] private float timeToCountdown = 10f;
+    [SerializeField] private float finalEventTimer;
+    
     public bool eventTimerIsActive;
 
     void Start()
@@ -136,7 +145,7 @@ public class GameManager : MonoBehaviour
                 normalEventActive = false;
 
                 currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
-            } 
+            }
         }
     }
 
@@ -161,10 +170,16 @@ public class GameManager : MonoBehaviour
         SetGrowthSuccessAnimations();
 
         currentSunflower.StartGrowthSuccess();
+        totalTerrainsGenerated++;
+
         currentSecondSunflower.StartGrowthSuccess();
+        totalTerrainsGenerated++;
 
         Destroy(currentSunflower.gameObject, 4.8f);
         Destroy(currentSecondSunflower.gameObject, 4.8f);
+
+        currentSunflower = null;
+        currentSecondSunflower = null;
 
         marvelousEventActive = false;
     }
@@ -182,55 +197,104 @@ public class GameManager : MonoBehaviour
         SetGrowthSuccessAnimations();
 
         currentSunflower.StartGrowthSuccess();
+        totalTerrainsGenerated++;
+
         Destroy(currentSunflower.gameObject, 4.8f);
+
+        currentSunflower = null;
+
+        normalEventActive = false;
 
     }
 
+    public void StartFinaEvent()
+    {
+
+    }
+
+    private IEnumerator FinalEvent()
+    {
+        timeToCountdown = finalEventTimer;
+
+        StartTimer();
+
+        yield return new WaitUntil(() => timer <= 0);
+
+        EndTimer();
+    }
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator, ref bool selectionMade)
     {
-        currentSunflower = sunflower;
-        currentSunflowerAnimator = sunflowerAnimator;
-        currentSunflowerLifebarAnimator = sunflowerLifeBarAnimator;
-
-        switch (growthType)
+        if (totalTerrainsGenerated < maxTerrainsPerGame)
         {
-            case GrowthSelection.Marvelous:
-                {
-                    if (playerInventoryHandler.SeedCoins >= marvelousGrowthCost)
-                    {
-                        playerInventoryHandler.PaySeedCoins(marvelousGrowthCost);
-                        StartCoroutine(MarvelousEvent());
-                    }
-                    else
-                    {
-                        DisplayMessage("You don't have enough Seeds!");
-                        selectionMade = false;
-                    }
-                    break;
-                }
+            currentSunflower = sunflower;
+            currentSunflowerAnimator = sunflowerAnimator;
+            currentSunflowerLifebarAnimator = sunflowerLifeBarAnimator;
 
-            case GrowthSelection.Genuine:
-                {
-                    if (playerInventoryHandler.SeedCoins >= genuineGrowthCost)
+            switch (growthType)
+            {
+                case GrowthSelection.Marvelous:
                     {
-                        playerInventoryHandler.PaySeedCoins(genuineGrowthCost);
+                        if (playerInventoryHandler.SeedCoins >= marvelousGrowthCost)
+                        {
+                            playerInventoryHandler.PaySeedCoins(marvelousGrowthCost);
+                            StartCoroutine(MarvelousEvent());
+                        }
+                        else
+                        {
+                            DisplayMessage("You don't have enough Seeds!");
+                            selectionMade = false;
+                        }
+                        break;
+                    }
+
+                case GrowthSelection.Genuine:
+                    {
+                        if (playerInventoryHandler.SeedCoins >= genuineGrowthCost)
+                        {
+                            playerInventoryHandler.PaySeedCoins(genuineGrowthCost);
+                            StartCoroutine(NormalEvent());
+                        }
+                        else
+                        {
+                            DisplayMessage("You don't have enough Seeds!");
+                            selectionMade = false;
+                        }
+                        break;
+                    }
+
+                case GrowthSelection.Compelling:
+                    {
                         StartCoroutine(NormalEvent());
+                        break;
                     }
-                    else
-                    {
-                        DisplayMessage("You don't have enough Seeds!");
-                        selectionMade = false;
-                    }
-                    break;
-                }
-
-            case GrowthSelection.Compelling:
-                {
-                    StartCoroutine(NormalEvent());
-                    break;
-                }
+            } 
         }
+        else
+        {
+            DisplayMessage("You reached the limit of the map!");
+            selectionMade = false;
+        }
+    }
+
+    public Sunflower GetActiveSunflower()
+    {
+        Sunflower sunflowerToReturn;
+
+        if (marvelousEventActive)
+        {
+            Sunflower[] activeSunflowers = new Sunflower[2];
+            activeSunflowers[0] = currentSunflower;
+            activeSunflowers[1] = currentSunflower;
+
+            sunflowerToReturn = activeSunflowers[Random.Range(0, 1)];
+        }
+        else
+        {
+            sunflowerToReturn = currentSunflower;
+        }
+
+        return sunflowerToReturn;
     }
 
     #region Timer Event Methods

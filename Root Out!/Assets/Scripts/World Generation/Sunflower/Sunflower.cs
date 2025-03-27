@@ -86,6 +86,13 @@ public class Sunflower : MonoBehaviour
             Debug.Log("Spawned final hub");
         }
 
+        //En caso de que el terreno no se haya generado durante la partida, y sea la ultima vez que se spawnea, se asigna como el ultimo spawneo a realizar.
+        if (!GameManager.instance.finalHubCreated && GameManager.instance.totalTerrainsGenerated == GameManager.instance.maxTerrainsPerGame - 1)
+        {
+            terrainToSpawn = terrainPrefabs[0];
+            GameManager.instance.finalHubCreated = true;
+        }
+
         ////Se genera un nuevo terreno en la posicion creada.
         Instantiate(terrainToSpawn, spawnPos, terrainToSpawn.transform.rotation);
 
