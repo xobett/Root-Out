@@ -67,7 +67,13 @@ namespace Weapons
 
         [HideInInspector] public bool canInstantiateExplosion = true; // Controla si se puede instanciar la explosión
         [HideInInspector] public bool explosionUpgradeActivated = false; // Controla si la mejora de explosión ha sido activada
+        #endregion
 
+        #region Variable Perk OneShoot
+        private float originalDamage; // Guarda el daño original del arma
+
+        [Header("Perk OneShoot")]
+        [SerializeField] private float coldDown; // Tiempo de espera entre disparos
         #endregion
 
         #region References
@@ -83,6 +89,7 @@ namespace Weapons
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
             bulletReserve = maxBulletReserve;
+            originalDamage = damage; // Almacenar el daño original del 
 
             // Buscar y desactivar el componente Image de canvasRecarga al inicio
             GameObject canvasRecarga = GameObject.Find("Recarga");
@@ -287,11 +294,6 @@ namespace Weapons
             }
         }
         #endregion
-        private IEnumerator ExplosionCooldown()
-        {
-            yield return new WaitForSeconds(3f); // Esperar 3 segundos
-            canInstantiateExplosion = true; // Permitir que la explosión pueda instanciarse nuevamente
-        }
 
         #region Spread & NonSpread Direction
         private Vector3 GetSpreadDirection(Vector3 baseDirection) // Método para obtener una dirección con dispersión
@@ -325,6 +327,38 @@ namespace Weapons
             Quaternion rotation = Quaternion.Euler(0, angle, 0); // Crea una rotación basada en el ángulo
             return rotation * baseDirection; // Aplica la rotación a la dirección base
         }
+        #endregion
+
+        #region Cooldown Explosion
+        private IEnumerator ExplosionCooldown()
+        {
+            yield return new WaitForSeconds(3f); // Esperar 3 segundos
+            canInstantiateExplosion = true; // Permitir que la explosión pueda instanciarse nuevamente
+        }
+
+        #endregion
+
+        #region Perk OneShoot
+        public void StartDamageIncreaseRoutine()
+        {
+            StartCoroutine(DamageIncreaseRoutine());
+        }
+
+        private IEnumerator DamageIncreaseRoutine()
+        {
+            while (true)
+            {
+                originalDamage += 100; // Guardar el daño original
+                Debug.LogWarning("Damage increased by 100!" + originalDamage); // Mensaje de depuración  
+                yield return new WaitForSeconds(coldDown); // Esperar el tiempo de espera  
+                damage = originalDamage; // Restaurar el daño original
+                Debug.LogWarning("daño original" + damage); // Mensaje de depuración  
+                yield return new WaitForSeconds(coldDown); // Esperar el tiempo de espera  
+                Debug.LogWarning("Reinicio de perk"); // Mensaje de depuración  
+            }
+        }
+
+
         #endregion
 
         #region FireBurst

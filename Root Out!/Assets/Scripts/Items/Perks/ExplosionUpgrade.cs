@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using Weapons;
 
@@ -7,14 +6,14 @@ public class ExplosionUpgrade : MonoBehaviour, IInteractable
     [SerializeField] private GameObject explosionPrefab;
     private WeaponsBase weapon;
 
+ 
     private void Start()
     {
-        weapon =FindFirstObjectByType<WeaponsBase>();
+        weapon = FindFirstObjectByType<WeaponsBase>();
     }
 
     public void OnInteract()
     {
-        
         if (weapon != null)
         {
             weapon.explosionUpgradeActivated = true; // Activar la mejora de explosión

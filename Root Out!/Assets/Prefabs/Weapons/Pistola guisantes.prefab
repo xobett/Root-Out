@@ -177,16 +177,16 @@ MonoBehaviour:
   weaponType: 1
   spreadAngle: 0.1
   horizontalSpread: 0
-  autoFire: 0
+  autoFire: 1
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 9057334875416266116, guid: 34d74bd594858a647a19b51c6a5126f6, type: 3}
-  explosionPrefab: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
+  explosivePrefab: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
   currentAmmo: 2147483647
   maxAmmo: 2147483647
   bulletReserve: 2147483647
   maxBulletReserve: 2147483647
-  damage: 5
+  damage: 0.5
   range: 5
   fireRate: 6
   reloadTime: 0
