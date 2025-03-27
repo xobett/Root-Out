@@ -1796,6 +1796,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4756941855049690014, guid: 82c2c07e1fa14034b834b026383e1e4b, type: 3}
   m_PrefabInstance: {fileID: 6182799479710387164}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &314834512
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.240999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.024999619
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862985303220337229, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203658623344238839, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
+      propertyPath: m_Name
+      value: _Pistola bellota
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ef033e2bb369374b89d763258cd111b, type: 3}
 --- !u!1 &328411363
 GameObject:
   m_ObjectHideFlags: 0
@@ -11498,67 +11555,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5220125646828196507, guid: 2471a9024fa02cc439c605b9481c5a53, type: 3}
   m_PrefabInstance: {fileID: 622465702}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1682654780
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.805428
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.358488
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8110882103676328953, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918381668964958531, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_Name
-      value: Pistola bellota
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918381668964958531, guid: be5a35ee4783b984a818864a85638784, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: be5a35ee4783b984a818864a85638784, type: 3}
 --- !u!1 &1699785624
 GameObject:
   m_ObjectHideFlags: 0
@@ -14513,15 +14509,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1517419253885632579, guid: 4a178571a13f4154f8e56c8d6e2cf01b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.772
       objectReference: {fileID: 0}
     - target: {fileID: 1517419253885632579, guid: 4a178571a13f4154f8e56c8d6e2cf01b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.03
       objectReference: {fileID: 0}
     - target: {fileID: 1517419253885632579, guid: 4a178571a13f4154f8e56c8d6e2cf01b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5.09
       objectReference: {fileID: 0}
     - target: {fileID: 1517419253885632579, guid: 4a178571a13f4154f8e56c8d6e2cf01b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16252,8 +16248,8 @@ SceneRoots:
   - {fileID: 1176283268}
   - {fileID: 2054986892}
   - {fileID: 1338089373}
-  - {fileID: 1682654780}
   - {fileID: 1521717066}
+  - {fileID: 314834512}
   - {fileID: 1384411749}
   - {fileID: 1030439808}
   - {fileID: 1544692407}

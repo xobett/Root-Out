@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class CropBase : MonoBehaviour
@@ -33,8 +32,10 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField] protected LayerMask whatIsEnemy;
     [SerializeField] protected float maxHitDistance;
 
+    [SerializeField] protected bool arrivedToShootPos;
     [SerializeField] protected bool enemyDetected;
     [SerializeField] protected bool isFollowingPlayer;
+    [SerializeField] protected bool isFollowingEnemy;
 
     protected RaycastHit hit;
 
@@ -57,6 +58,7 @@ public abstract class CropBase : MonoBehaviour
     {
         if (EnemyDetection() && !enemyDetected)
         {
+            isFollowingPlayer = false;
             enemyDetected = true;
             enemyPos = hit.collider.transform;
         }
@@ -81,9 +83,11 @@ public abstract class CropBase : MonoBehaviour
             desiredFollowingPos.y = transform.position.y;
 
             SetDestination(desiredFollowingPos, cropRunSpeed);
+            isFollowingEnemy = true;
         }
         else
         {
+            isFollowingEnemy = false;
             enemyDetected = false;
         }
     }
@@ -120,7 +124,12 @@ public abstract class CropBase : MonoBehaviour
 
             if (distance > 1)
             {
+                arrivedToShootPos = false;
                 SetDestination(desiredShootingPos, cropRunSpeed);
+            }
+            else
+            {
+                arrivedToShootPos = true;
             }
         }
         else

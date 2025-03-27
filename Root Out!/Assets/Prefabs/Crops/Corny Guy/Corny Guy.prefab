@@ -147,9 +147,16 @@ MonoBehaviour:
   maxHitDistance: 10
   enemyDetected: 0
   isFollowingPlayer: 0
+  timeBeforeShooting: 1.5
+  shootingTime: 2
+  nudeTime: 10
+  unNudeTransitionTime: 5.5
   shootPivot: {fileID: 2156197255525643009}
-  rotation: {x: 0, y: 13, z: 0}
+  shootSpawn: {fileID: 510468268873343577}
+  rotation: {x: 0, y: -13, z: 0}
   arrivedToShootingPosition: 0
+  ableToShoot: 0
+  abilityUsed: 0
 --- !u!114 &5563750098599496366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +178,7 @@ MonoBehaviour:
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
-  explosionPrefab: {fileID: 0}
+  explosivePrefab: {fileID: 0}
   currentAmmo: 100000
   maxAmmo: 100000
   bulletReserve: 100000
@@ -188,6 +195,7 @@ MonoBehaviour:
   burstPause: 0.5
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
+  coldDown: 0
 --- !u!1 &9075647356830890442
 GameObject:
   m_ObjectHideFlags: 0

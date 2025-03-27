@@ -3,14 +3,23 @@ using UnityEngine;
 
 public class RedChibiPepper : CropBase
 {
-    protected override void SetAnimatorParameters()
-    {
-        base.SetAnimatorParameters();
-    }
-
     protected override void CropAttack()
     {
         HeadToEnemy();
+    }
+
+    protected override void SetAnimatorParameters()
+    {
+        base.SetAnimatorParameters();
+
+        if (isFollowingEnemy)
+        {
+            cropAnimCtrlr.SetBool("isRunning", true);
+        }
+        else
+        {
+            cropAnimCtrlr.SetBool("isRunning", false);
+        }
     }
 
     private void OnCollisionEnter(Collision enemy)

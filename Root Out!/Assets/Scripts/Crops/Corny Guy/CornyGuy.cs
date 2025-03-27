@@ -1,20 +1,28 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CornyGuy : CropBase
 {
     [Header("CORNY GUY ATTACK")]
+    [SerializeField] private float timeBeforeShooting;
+    [SerializeField] private float shootingTime;
+    [SerializeField] private float nudeTime;
+    [SerializeField] private float unNudeTransitionTime;
+
     [SerializeField] private Transform shootPivot;
+    [SerializeField] private Transform shootSpawn;
+
     [SerializeField] private Vector3 rotation = new Vector3(0, 3, 0);
 
     [SerializeField] protected bool arrivedToShootingPosition;
+    [SerializeField] private bool ableToShoot;
+
+    [SerializeField] private bool abilityUsed;
 
     protected override void CropAttack()
     {
-        ShootAround();
         HeadToShootingPos();
+        ShootAround();
     }
 
     protected override void HeadToShootingPos()
@@ -36,7 +44,7 @@ public class CornyGuy : CropBase
                 arrivedToShootingPosition = true;
             }
         }
-        else
+        else if (enemyPos == null && !abilityUsed)
         {
             enemyDetected = false;
         }
@@ -49,13 +57,49 @@ public class CornyGuy : CropBase
 
     private void ShootAround()
     {
-        if (arrivedToShootingPosition)
+        if (arrivedToShootingPosition && !abilityUsed)
+        {
+            StartCoroutine(ShootCorns());
+        }
+
+        if (ableToShoot)
         {
             shootPivot.transform.Rotate(rotation);
-
-            GetComponent<WeaponCoryGuy>().enabled = true; 
         }
 
         //Destroy(gameObject, 10);
+    }
+
+    private IEnumerator ShootCorns()
+    {
+        abilityUsed = true;
+
+        Debug.Log("Entered the ability method");
+
+        yield return new WaitUntil(() => arrivedToShootingPosition);
+
+        cropAnimCtrlr.SetTrigger("Shoot Corns");
+
+        yield return new WaitForSeconds(timeBeforeShooting);
+
+        ableToShoot = true;
+        GetComponent<WeaponCoryGuy>().enabled = true;
+
+        yield return new WaitForSeconds(shootingTime);
+
+        ableToShoot = false;
+        GetComponent<WeaponCoryGuy>().enabled = false;
+
+        cropAnimCtrlr.SetBool("isNude", true);
+
+        yield return new WaitForSeconds(nudeTime);
+
+        cropAnimCtrlr.SetBool("isNude", false);
+
+        yield return new WaitForSeconds(unNudeTransitionTime);
+
+        arrivedToShootingPosition = false;
+        enemyPos = null;
+        abilityUsed = false;
     }
 }
