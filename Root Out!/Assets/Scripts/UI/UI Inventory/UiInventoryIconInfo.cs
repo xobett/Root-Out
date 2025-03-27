@@ -1,84 +1,19 @@
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiInventoryIconInfo : MonoBehaviour
 {
-    [SerializeField] private CropItemInfo cropInfo;
-    [SerializeField] private WeaponItemInfo weaponInfo;
-    [SerializeField] private PerkItemInfo perkInfo;
+    [SerializeField] private InventoryItemData item;
 
-    public void GetItemInfo(InventoryItemData data)
+    public void DisplayItemInfo()
     {
-        switch (data.ItemType)
-        {
-            case ItemType.Crop:
-                {
-                    var currentCropInfo = data.CropData;
-
-                    cropInfo.cropName = currentCropInfo.CropName;
-                    cropInfo.cropDescription = currentCropInfo.CropDescription;
-                    cropInfo.typeOfCrop = currentCropInfo.Type.ToString();
-                    cropInfo.cropCooldownTime = currentCropInfo.CropCooldownTime.ToString();
-                    cropInfo.cropDamage = currentCropInfo.CropDamage.ToString();
-
-                    break;
-                }
-
-            case ItemType.Weapon:
-                {
-                    var currentWeaponInfo = data.WeaponData;
-
-                    weaponInfo.weaponName = currentWeaponInfo.WeaponName;
-                    weaponInfo.weaponDescription = currentWeaponInfo.WeaponDescription;
-                    weaponInfo.weaponType = currentWeaponInfo.WeaponType.ToString();
-                    weaponInfo.weaponDamage = currentWeaponInfo.WeaponDamage.ToString();
-                    weaponInfo.weaponMaxAmmo = currentWeaponInfo.WeaponMaxAmmo.ToString();
-
-                    break;
-                }
-
-            case ItemType.Perk:
-            {
-                    var currentPerkInfo = data.PerksData;
-
-                    perkInfo.perkName = currentPerkInfo.PerkName;
-                    perkInfo.perkDescription = currentPerkInfo.PerkDescription;
-
-                    break;
-            }
-        }
+        UIManager infoDisplayer = UIManager.instance;
+        infoDisplayer.UpdateSelectedItemInfo(item);
     }
 
-}
-
-
-[System.Serializable]
-public struct CropItemInfo
-{
-    public string cropName;
-    public string cropDescription;
-    public string typeOfCrop;
-
-    public string cropCooldownTime;
-    public string cropDamage;
-}
-
-[System.Serializable]
-public struct WeaponItemInfo
-{
-    public string weaponName;
-    public string weaponDescription;
-    public string weaponType;
-
-    public string weaponDamage;
-
-    public string reloadTime;
-    public string weaponMaxAmmo;
-}
-
-[System.Serializable]
-public struct PerkItemInfo
-{
-    public string perkName;
-    public string perkDescription;
+    public void GetItem(InventoryItemData data)
+    {
+        item = data;
+    }
 }

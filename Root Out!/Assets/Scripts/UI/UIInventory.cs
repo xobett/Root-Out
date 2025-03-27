@@ -83,7 +83,7 @@ public class UIInventory : MonoBehaviour
                 uiIcon.GetComponent<Image>().sprite = playerInventory.Inventory[i].ItemIcon;
 
                 var uiIconInfo = uiIcon.GetComponent<UiInventoryIconInfo>();
-                uiIconInfo.GetItemInfo(playerInventory.Inventory[i]);
+                uiIconInfo.GetItem(playerInventory.Inventory[i]);
 
                 switch (playerInventory.Inventory[i].ItemType)
                 {
