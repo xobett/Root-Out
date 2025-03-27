@@ -8,7 +8,7 @@ public class FinalEventActivator : MonoBehaviour, IInteractable
     {
         if (isNear)
         {
-            Debug.Log("Final Event should start");
+            GameManager.instance.StartFinaEvent();
         }
     }
 

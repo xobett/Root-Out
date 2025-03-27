@@ -149,67 +149,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator MarvelousEvent()
-    {
-        marvelousEventActive = true;
-
-        DisplayMessage("Select a second Sunflower to grow!");
-        messageTextAnimator.SetBool("secondSunflowerNotChosen", true);
-
-        //Se espera hasta que se haya elegido un segundo girasol para crecer.
-        yield return new WaitUntil(() => currentSunflower != null && currentSecondSunflower != null);
-
-        messageTextAnimator.SetBool("secondSunflowerNotChosen", false);
-
-        StartTimer();
-        StartSunflowerAnimations();
-
-        yield return new WaitUntil(() => timer <= 0);
-
-        EndTimer();
-        SetGrowthSuccessAnimations();
-
-        currentSunflower.StartGrowthSuccess();
-        totalTerrainsGenerated++;
-
-        currentSecondSunflower.StartGrowthSuccess();
-        totalTerrainsGenerated++;
-
-        Destroy(currentSunflower.gameObject, 4.8f);
-        Destroy(currentSecondSunflower.gameObject, 4.8f);
-
-        currentSunflower = null;
-        currentSecondSunflower = null;
-
-        marvelousEventActive = false;
-    }
-
-    private IEnumerator NormalEvent()
-    {
-        normalEventActive = true;
-
-        StartTimer();
-        StartSunflowerAnimations();
-
-        yield return new WaitUntil(() => timer <= 0);
-
-        EndTimer();
-        SetGrowthSuccessAnimations();
-
-        currentSunflower.StartGrowthSuccess();
-        totalTerrainsGenerated++;
-
-        Destroy(currentSunflower.gameObject, 4.8f);
-
-        currentSunflower = null;
-
-        normalEventActive = false;
-
-    }
-
     public void StartFinaEvent()
     {
-
+        DisplayMessage("Final event test");
+        messageTextAnimator.SetBool("secondSunflowerNotChosen", true);
     }
 
     private IEnumerator FinalEvent()
@@ -277,6 +220,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SpawnEnemiesInWorld()
+    {
+        GameObject[] enemySpawners = GameObject.FindGameObjectsWithTag("Enemy Spawner");
+
+        foreach (GameObject enemySpawner in enemySpawners)
+        {
+            enemySpawner.GetComponent<EnemiesSpawner>().StartSpawner();
+        }
+
+    }
+
     public Sunflower GetActiveSunflower()
     {
         Sunflower sunflowerToReturn;
@@ -296,6 +250,67 @@ public class GameManager : MonoBehaviour
 
         return sunflowerToReturn;
     }
+
+    #region Event Methods
+
+    private IEnumerator MarvelousEvent()
+    {
+        marvelousEventActive = true;
+
+        DisplayMessage("Select a second Sunflower to grow!");
+        messageTextAnimator.SetBool("secondSunflowerNotChosen", true);
+
+        //Se espera hasta que se haya elegido un segundo girasol para crecer.
+        yield return new WaitUntil(() => currentSunflower != null && currentSecondSunflower != null);
+
+        messageTextAnimator.SetBool("secondSunflowerNotChosen", false);
+
+        StartTimer();
+        StartSunflowerAnimations();
+
+        yield return new WaitUntil(() => timer <= 0);
+
+        EndTimer();
+        SetGrowthSuccessAnimations();
+
+        currentSunflower.StartGrowthSuccess();
+        totalTerrainsGenerated++;
+
+        currentSecondSunflower.StartGrowthSuccess();
+        totalTerrainsGenerated++;
+
+        Destroy(currentSunflower.gameObject, 4.8f);
+        Destroy(currentSecondSunflower.gameObject, 4.8f);
+
+        currentSunflower = null;
+        currentSecondSunflower = null;
+
+        marvelousEventActive = false;
+    }
+    private IEnumerator NormalEvent()
+    {
+        normalEventActive = true;
+
+        StartTimer();
+        StartSunflowerAnimations();
+
+        yield return new WaitUntil(() => timer <= 0);
+
+        EndTimer();
+        SetGrowthSuccessAnimations();
+
+        currentSunflower.StartGrowthSuccess();
+        totalTerrainsGenerated++;
+
+        Destroy(currentSunflower.gameObject, 4.8f);
+
+        currentSunflower = null;
+
+        normalEventActive = false;
+
+    }
+
+    #endregion
 
     #region Timer Event Methods
     private void StartTimer()

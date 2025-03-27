@@ -14,6 +14,8 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private GameObject hudCanvas;
 
     [SerializeField] private TextMeshProUGUI totalCoinsText;
+    [SerializeField] private TextMeshProUGUI totalAmmoText;
+
     [SerializeField] private TextMeshProUGUI generalMessage;
 
     [SerializeField] private float fadeSpeed;
@@ -49,12 +51,13 @@ public class UIInventory : MonoBehaviour
             OpenInventory();
         }
 
-        DisplayTotalCoins();
+        DisplayCoinsAndAmmo();
     }
 
-    private void DisplayTotalCoins()
+    private void DisplayCoinsAndAmmo()
     {
         totalCoinsText.text = $"Total coins: {playerInventory.SeedCoins}";
+        totalAmmoText.text = $"Total Ammo: {playerInventory.Ammo}";
 
         if (totalCoinsText.alpha >= 0.9f)
         {
