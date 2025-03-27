@@ -11,7 +11,6 @@ public class MushroomBombShooter : WeaponsBase
     [SerializeField] private GameObject HUDTargetPoint; // prefab del HUD taget point que es la imagen tiro al blanco en el piso
     [SerializeField] private float heightSecondBullet = 12f; // Mide la altura de la bala que aparece arriba del player
 
-  //  [HideInInspector] private float targetPointDistance; // Distancia de la imagen "tiro al blanco"
 
     private Transform player; // Objetivo a disparar
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler

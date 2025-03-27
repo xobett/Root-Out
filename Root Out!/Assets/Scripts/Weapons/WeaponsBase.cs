@@ -38,6 +38,7 @@ namespace Weapons
 
         [Header("Tipo de Bala")]
         [SerializeField] protected GameObject bulletPrefab; // Prefab de la bala
+        [SerializeField] public GameObject explosivePrefab; // Prefab de la explosión
 
         [Header("Munición")]
         [SerializeField] public int currentAmmo; // Munición actual
@@ -268,6 +269,15 @@ namespace Weapons
                         Debug.LogWarning("Bullet prefab does not have BulletDamage component.");
                     }
 
+                    // Emparentar el prefab de explosión a la bala si la mejora está activada y se puede instanciar
+                    if (explosionUpgradeActivated && canInstantiateExplosion)
+                    {
+                        GameObject explosion = Instantiate(explosivePrefab, bullet.transform.position, Quaternion.identity);
+                        explosion.transform.SetParent(bullet.transform); // Emparentar la explosión a la bala
+                        StartCoroutine(ExplosionCooldown());
+                        canInstantiateExplosion = false;
+                    }
+
                     Destroy(bullet, lifeTimeBullets); // Destruye la bala después de que expire el tiempo de vida especificado.
                 }
             }
@@ -277,6 +287,11 @@ namespace Weapons
             }
         }
         #endregion
+        private IEnumerator ExplosionCooldown()
+        {
+            yield return new WaitForSeconds(3f); // Esperar 3 segundos
+            canInstantiateExplosion = true; // Permitir que la explosión pueda instanciarse nuevamente
+        }
 
         #region Spread & NonSpread Direction
         private Vector3 GetSpreadDirection(Vector3 baseDirection) // Método para obtener una dirección con dispersión
