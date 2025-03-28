@@ -19,7 +19,7 @@ namespace Weapons
         #region Weapons variables
 
         [Header("Tipo de apuntado")]
-        [SerializeField] private PlayerAimState tipoDeApuntado;
+        [SerializeField] public PlayerAimState tipoDeApuntado;
 
         [Header("Punto de Mira")]
         [SerializeField] public Transform aiming; // Punto de Mira
@@ -113,6 +113,11 @@ namespace Weapons
         #endregion
 
         #region Aim State
+        private void OnEnable()
+        {
+            GetComponent<AimType>().tipoDeApuntado = tipoDeApuntado;
+        }
+
         protected void SetNewAimState() // Establece el nuevo estado de apuntado
         {
             var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();

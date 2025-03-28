@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Weapons;
 
 public class WeaponHandler : MonoBehaviour
 {
@@ -84,6 +85,9 @@ public class WeaponHandler : MonoBehaviour
                     selectedWeaponIndex = i;
                     SwitchWeapon(selectedWeaponIndex);
                     lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+
+                    var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+                    playerMovement.SetAnimationState(GetCurrentAim());
                     break;
                 }
             }
@@ -98,6 +102,9 @@ public class WeaponHandler : MonoBehaviour
                     selectedWeaponIndex = i;
                     SwitchWeapon(selectedWeaponIndex);
                     lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+
+                    var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+                    playerMovement.SetAnimationState(GetCurrentAim());
                     break;
                 }
             }
@@ -242,12 +249,18 @@ public class WeaponHandler : MonoBehaviour
     {
         if (index < weapons.Count) // Verificar que el índice sea válido para todas las armas
         {
-            SetCurrentWeapon(weapons[index]); // Establecer el arma actual según el índice
+            SetCurrentWeapon(weapons[index]); // Establecer el arma actual según el índice\
         }
         else
         {
             Debug.LogWarning("No weapon in slot " + (index + 1)); // Mostrar advertencia si no hay un arma en el índice
         }
+    }
+
+    private PlayerAimState GetCurrentAim()
+    {
+        var aim = currentWeapon.GetComponentInChildren<AimType>().tipoDeApuntado;
+        return aim;
     }
 
     // Método para establecer el arma actual y desactivar las otras armas

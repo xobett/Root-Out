@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 6936859655523426109}
   - component: {fileID: 3578929219361076564}
   - component: {fileID: 4773028388522413957}
+  - component: {fileID: 1845463319093109693}
   m_Layer: 9
   m_Name: Pistola Bellota Renovado
   m_TagString: Untagged
@@ -306,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tipoDeApuntado: 2
-  aiming: {fileID: 7826118259766602785, guid: 197182a5fbcfff847bfec19e17242331, type: 3}
+  aiming: {fileID: 2688946835037105613}
   weaponType: 1
   spreadAngle: 0.1
   horizontalSpread: 0
@@ -354,6 +355,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.98, y: 0.9, z: 0.33}
   m_Center: {x: 0.22, y: 0.31, z: 0}
+--- !u!114 &1845463319093109693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564299451844398381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c054ea86a24bfc468751fcb05afe54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipoDeApuntado: 0
 --- !u!1 &3026693680591662333
 GameObject:
   m_ObjectHideFlags: 0

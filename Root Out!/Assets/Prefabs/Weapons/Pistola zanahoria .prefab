@@ -192,6 +192,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0aed6dc6ab6d5b4a81d6d3a459e6098, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5635957317709180901}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0aed6dc6ab6d5b4a81d6d3a459e6098, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9042977146862751344}
   m_SourcePrefab: {fileID: 100100000, guid: a0aed6dc6ab6d5b4a81d6d3a459e6098, type: 3}
 --- !u!4 &7324639930854181520 stripped
 Transform:
@@ -264,3 +267,16 @@ MonoBehaviour:
   explosionUpgradeActivated: 0
   coldDown: 3
   weaponData: {fileID: 11400000, guid: d7925107ad7f48e41a80215726566f6d, type: 2}
+--- !u!114 &9042977146862751344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993196204823728170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c054ea86a24bfc468751fcb05afe54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipoDeApuntado: 0
