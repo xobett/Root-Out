@@ -12,6 +12,8 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField, Range(0f, 1f)] protected float cropWalkSpeed;
     [SerializeField, Range(0f, 1f)] protected float cropRunSpeed;
 
+    protected float originalRunSpeed;
+
     [Header("FOLLOW SETTINGS")]
     [SerializeField, Range(0, 5)] protected float stoppingDistance;
     [SerializeField] protected float backDistance;
@@ -46,12 +48,23 @@ public abstract class CropBase : MonoBehaviour
     private void Start()
     {
         GetReferences();
+
+        originalRunSpeed = cropRunSpeed;
     }
 
     protected virtual void Update()
     {
         BehaviourCheck();
         SetAnimatorParameters();
+    }
+
+    private void FixedUpdate()
+    {
+        //Para alcanzar al enemigo eventualmente, se suma un valor chico a la velocidad de movimiento progresivamente.
+        if (enemyDetected && enemyPos != null)
+        {
+            cropRunSpeed += 0.01f;
+        } 
     }
 
     protected void BehaviourCheck()
@@ -94,6 +107,9 @@ public abstract class CropBase : MonoBehaviour
 
     protected virtual void HeadToPlayer()
     {
+        //Se resetea la velocidad de la planta cuando vuelve a seguir al jugador.
+        cropRunSpeed = originalRunSpeed;
+
         LookAtTarget(playerPos);
 
         Vector3 desiredFollowingPos = playerPos.position + playerPos.forward * -backDistance + transform.right * sideDistance;

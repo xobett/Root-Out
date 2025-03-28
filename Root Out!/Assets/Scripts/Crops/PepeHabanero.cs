@@ -8,6 +8,7 @@ public class PepeHabanero : CropBase
     protected override void CropAttack()
     {
         base.HeadToEnemy();
+        
     }
 
     protected override void SetAnimatorParameters()
@@ -16,7 +17,7 @@ public class PepeHabanero : CropBase
 
         if (isFollowingEnemy)
         {
-            cropAnimCtrlr.SetBool("isRunning", true); 
+            cropAnimCtrlr.SetBool("isRunning", true);
         }
         else
         {

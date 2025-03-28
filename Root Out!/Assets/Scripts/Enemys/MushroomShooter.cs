@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Weapons;
 using System;
+using TMPro.SpriteAssetUtilities;
 public class MushroomShooter : WeaponsBase
 {
     [Header("MushroomShooter")]
@@ -17,8 +18,7 @@ public class MushroomShooter : WeaponsBase
     {
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        sunFlower = GameObject.FindGameObjectWithTag("Sunflower").transform;
-        agent = GetComponent<NavMeshAgent>();
+        agent = gameObject.GetComponent<NavMeshAgent>();
     }
     private void LateUpdate()
     {
@@ -30,6 +30,8 @@ public class MushroomShooter : WeaponsBase
         base.Update();
 
         GetActiveSunflower();
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     protected override void Reload()
@@ -48,7 +50,7 @@ public class MushroomShooter : WeaponsBase
     {
         if (Detection())
         {
-            agent.SetDestination(player.position);
+            agent.destination = player.transform.position;
             LookAtTarget(player);
         }
 
@@ -56,7 +58,7 @@ public class MushroomShooter : WeaponsBase
         {
             if (sunFlower != null)
             {
-                agent.SetDestination(sunFlower.position);
+                agent.destination = sunFlower.transform.position;
                 LookAtTarget(sunFlower);
             }
         }

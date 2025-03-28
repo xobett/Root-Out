@@ -380,7 +380,7 @@ MonoBehaviour:
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 170378819388794420, guid: 9cb272a159628b24296395a1752c0d93, type: 3}
-  explosionPrefab: {fileID: 0}
+  explosivePrefab: {fileID: 0}
   currentAmmo: 2147483647
   maxAmmo: 2147483647
   bulletReserve: 2147483647
@@ -397,7 +397,8 @@ MonoBehaviour:
   burstPause: 0.5
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
-  detectionPlayer: 10
+  coldDown: 0
+  detectionPlayer: 20
 --- !u!114 &4687620691336130384
 MonoBehaviour:
   m_ObjectHideFlags: 0

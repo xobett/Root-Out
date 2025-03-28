@@ -98,6 +98,8 @@ public class CornyGuy : CropBase
 
         yield return new WaitForSeconds(unNudeTransitionTime);
 
+        cropRunSpeed = originalRunSpeed;
+
         arrivedToShootingPosition = false;
         enemyPos = null;
         abilityUsed = false;
