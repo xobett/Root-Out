@@ -937,63 +937,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1001 &183278211
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4601248732316366986, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_Name
-      value: Mushroom Bomb Shooter
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.629166
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.782751
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
 --- !u!1 &191426092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,7 +2029,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 680, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &342095140
+--- !u!1001 &341913844
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2096,15 +2039,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 765508041025346711, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.210983
+      value: -14.103647
       objectReference: {fileID: 0}
     - target: {fileID: 765508041025346711, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.50000095
       objectReference: {fileID: 0}
     - target: {fileID: 765508041025346711, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.826746
+      value: -1.2569423
       objectReference: {fileID: 0}
     - target: {fileID: 765508041025346711, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2137,10 +2080,6 @@ PrefabInstance:
     - target: {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: m_Name
       value: Mushroom Shooter
-      objectReference: {fileID: 0}
-    - target: {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16402,5 +16341,4 @@ SceneRoots:
   - {fileID: 1716820085}
   - {fileID: 2332498015258288120}
   - {fileID: 1284228704}
-  - {fileID: 342095140}
-  - {fileID: 183278211}
+  - {fileID: 341913844}
