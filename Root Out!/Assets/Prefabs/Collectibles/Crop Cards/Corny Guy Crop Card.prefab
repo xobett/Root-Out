@@ -217,9 +217,10 @@ GameObject:
   - component: {fileID: 5406031231541171604}
   - component: {fileID: 4194847614668459816}
   - component: {fileID: 8858582690876309632}
+  - component: {fileID: 8013511086811873214}
   m_Layer: 11
   m_Name: Corny Guy Crop Card
-  m_TagString: Untagged
+  m_TagString: Crop Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,3 +303,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropToAdd: {fileID: 11400000, guid: f04abf14eabb79749842ca9c8c70c1ab, type: 2}
   inventoryItemToAdd: {fileID: 11400000, guid: 4cd0985b0747cc84fac87d39a0692d48, type: 2}
+--- !u!114 &8013511086811873214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775496419236907856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287430607e2283a4b96d99f382e09901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

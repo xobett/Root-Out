@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7256321692043544212}
   - component: {fileID: 2618230375007722144}
   - component: {fileID: 7025304739969509123}
+  - component: {fileID: 5059634844536363673}
   m_Layer: 11
   m_Name: Sweet Jack Crop Card
-  m_TagString: Untagged
+  m_TagString: Crop Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropToAdd: {fileID: 11400000, guid: 41fd113dc464ead489dca958a2b639fe, type: 2}
   inventoryItemToAdd: {fileID: 11400000, guid: acc3e19531db37049a883afd8fcc0538, type: 2}
+--- !u!114 &5059634844536363673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104004453492773285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287430607e2283a4b96d99f382e09901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6456798008216153053
 GameObject:
   m_ObjectHideFlags: 0

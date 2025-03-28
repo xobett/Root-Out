@@ -773,12 +773,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2050544801736188087}
-  - component: {fileID: 1705783227043786899}
+  - component: {fileID: 8856206786550828895}
   - component: {fileID: 1509201918128463575}
+  - component: {fileID: 1705783227043786899}
   - component: {fileID: 2763320290524931766}
+  - component: {fileID: -7282626325271032332}
   m_Layer: 9
   m_Name: Pistola Manzana Renovada
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -800,6 +802,54 @@ Transform:
   - {fileID: 5152397512770210401}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &8856206786550828895
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650003552736929253}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1509201918128463575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650003552736929253}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.77, y: 0.66, z: 0.56}
+  m_Center: {x: 0.15, y: 0.32, z: 0}
 --- !u!114 &1705783227043786899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,27 +890,6 @@ MonoBehaviour:
   explosionUpgradeActivated: 0
   coldDown: 3
   weaponData: {fileID: 11400000, guid: c18b4b97f856bff46a76d879629c972f, type: 2}
---- !u!65 &1509201918128463575
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6650003552736929253}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.77, y: 0.66, z: 0.56}
-  m_Center: {x: 0.15, y: 0.32, z: 0}
 --- !u!114 &2763320290524931766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,6 +903,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tipoDeApuntado: 0
+--- !u!114 &-7282626325271032332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650003552736929253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287430607e2283a4b96d99f382e09901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7482911731755478158
 GameObject:
   m_ObjectHideFlags: 0

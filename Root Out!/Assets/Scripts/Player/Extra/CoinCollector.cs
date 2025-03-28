@@ -6,12 +6,6 @@ public class CoinCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Seed Coin"))
-        {
-            var playerInventory = GameManager.instance.playerInventoryHandler;
-            playerInventory.AddSeedCoins(coinsToAdd);
-
-            Destroy(other.gameObject);
-        }
+        other.GetComponent<Item>().ItemInteraction();
     }
 }

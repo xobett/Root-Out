@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4239687095232718537}
   - component: {fileID: 1748933498739861554}
   - component: {fileID: 5196083688728955099}
+  - component: {fileID: -1888678580755261544}
   m_Layer: 11
   m_Name: Red Chibi Pepper Crop Card
-  m_TagString: Untagged
+  m_TagString: Crop Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropToAdd: {fileID: 11400000, guid: 7f628994f8057274bbbcccf8d23a26ea, type: 2}
   inventoryItemToAdd: {fileID: 11400000, guid: 6b952eb7f508e0641bc54d813914a405, type: 2}
+--- !u!114 &-1888678580755261544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654653523062588023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287430607e2283a4b96d99f382e09901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3489462095726848056
 GameObject:
   m_ObjectHideFlags: 0

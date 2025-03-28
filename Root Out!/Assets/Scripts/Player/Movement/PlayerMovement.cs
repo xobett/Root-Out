@@ -185,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 zoomMovement = transform.right * HorizontalInput() + transform.forward * ForwardInput();
 
         //Mueve al personaje sin rotacion.
-        charController.Move(Time.deltaTime * SpeedCheck() * zoomMovement);
+        charController.Move(Time.deltaTime * walkSpeed * zoomMovement);
     }
 
     private void NormalMovement()
@@ -211,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 moveDirection = transform.rotation * Vector3.forward;
 
             //Mueve al jugador hacia donde este rotado.
-            charController.Move(Time.deltaTime * SpeedCheck() * moveDirection);
+            charController.Move(Time.deltaTime * walkSpeed * moveDirection);
         }
         else
         {

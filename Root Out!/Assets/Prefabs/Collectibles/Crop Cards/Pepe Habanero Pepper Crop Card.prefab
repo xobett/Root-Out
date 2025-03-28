@@ -217,9 +217,10 @@ GameObject:
   - component: {fileID: 2552215298452807502}
   - component: {fileID: 539730811029118327}
   - component: {fileID: 2703098112900770951}
+  - component: {fileID: 7365502298207071543}
   m_Layer: 11
   m_Name: Pepe Habanero Pepper Crop Card
-  m_TagString: Untagged
+  m_TagString: Crop Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,3 +303,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropToAdd: {fileID: 11400000, guid: 374db251a96af634c87ade11138a5dc6, type: 2}
   inventoryItemToAdd: {fileID: 11400000, guid: f747cd7eeae982a41bf81d7c8e459602, type: 2}
+--- !u!114 &7365502298207071543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160065370259997955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287430607e2283a4b96d99f382e09901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
