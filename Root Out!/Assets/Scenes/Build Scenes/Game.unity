@@ -205,10 +205,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2401794766098707253, guid: 34d74bd594858a647a19b51c6a5126f6, type: 3}
-      propertyPath: explosionPrefab
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 9057334875416266116, guid: 34d74bd594858a647a19b51c6a5126f6, type: 3}
       propertyPath: m_Name
       value: Proyectil aliado universal
@@ -354,6 +350,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5014879619776171729, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
   m_PrefabInstance: {fileID: 2443329838455662880}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &451953206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451953208}
+  - component: {fileID: 451953207}
+  m_Layer: 0
+  m_Name: Nav Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &451953207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451953206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 6bc791bd17567244cad0cae786f761ab, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &451953208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451953206}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.5163827, y: 2.321426, z: 13.490947}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &464599239
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,10 +511,6 @@ PrefabInstance:
     - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6877164462081190046, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: smokePrefab
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1508,10 +1564,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom Kamikaze
       objectReference: {fileID: 0}
-    - target: {fileID: 8273410966226516354, guid: 62015e164ef71f740973ad659e69eded, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1578,18 +1630,6 @@ PrefabInstance:
     - target: {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: m_Name
       value: Mushroom Shooter
-      objectReference: {fileID: 0}
-    - target: {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8040456011349735739, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 4771542621520495476, guid: ce59ff3f99b8ab648b6b59b9456148b3, type: 3}
-    - target: {fileID: 8514263295453690401, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.59
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3459,3 +3499,4 @@ SceneRoots:
   - {fileID: 158245332}
   - {fileID: 464599240}
   - {fileID: 670695343}
+  - {fileID: 451953208}
