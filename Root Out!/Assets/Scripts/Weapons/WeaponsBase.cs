@@ -280,7 +280,7 @@ namespace Weapons
                     if (explosionUpgradeActivated && canInstantiateExplosion)
                     {
                         GameObject explosion = Instantiate(explosivePrefab, bullet.transform.position, Quaternion.identity);
-                        explosion.transform.SetParent(bullet.transform); // Emparentar la explosión a la  
+                        explosion.transform.SetParent(bullet.transform); // Emparentar la explosión a la bala
                         Debug.Log("Explosive bullet instantiated!");
                         StartCoroutine(ExplosionCooldown());
                         canInstantiateExplosion = false;
@@ -328,9 +328,6 @@ namespace Weapons
             Quaternion rotation = Quaternion.Euler(0, angle, 0); // Crea una rotación basada en el ángulo
             return rotation * baseDirection; // Aplica la rotación a la dirección base
         }
-        #endregion
-
-        #region Cooldown Explosion
         private IEnumerator ExplosionCooldown()
         {
             yield return new WaitForSeconds(3f); // Esperar 3 segundos

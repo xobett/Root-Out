@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5192217173543388301}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 1.101, y: 0.177, z: 0.004}
+  m_LocalPosition: {x: 0.949, y: 0.177, z: 0.004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,11 +41,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a0aed6dc6ab6d5b4a81d6d3a459e6098, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.268
+      value: -3.61
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0aed6dc6ab6d5b4a81d6d3a459e6098, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5700002
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0aed6dc6ab6d5b4a81d6d3a459e6098, type: 3}
       propertyPath: m_LocalPosition.z
@@ -245,7 +245,7 @@ MonoBehaviour:
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 9057334875416266116, guid: 34d74bd594858a647a19b51c6a5126f6, type: 3}
-  explosivePrefab: {fileID: 8383582890506480977, guid: 2252fa7ff89c2a646ac296d8ed68b6cb, type: 3}
+  explosivePrefab: {fileID: 3096751718326257763, guid: 197182a5fbcfff847bfec19e17242331, type: 3}
   currentAmmo: 4
   maxAmmo: 4
   bulletReserve: 40
