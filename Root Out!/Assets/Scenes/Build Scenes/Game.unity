@@ -412,10 +412,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom Bomb Shooter
       objectReference: {fileID: 0}
-    - target: {fileID: 4601248732316366986, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.2
@@ -455,6 +451,10 @@ PrefabInstance:
     - target: {fileID: 6629645737722985113, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877164462081190046, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
+      propertyPath: smokePrefab
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1444,7 +1444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8273410966226516354, guid: 62015e164ef71f740973ad659e69eded, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1512,6 +1512,18 @@ PrefabInstance:
     - target: {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
       propertyPath: m_Name
       value: Mushroom Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040456011349735739, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4771542621520495476, guid: ce59ff3f99b8ab648b6b59b9456148b3, type: 3}
+    - target: {fileID: 8514263295453690401, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.59
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2174,11 +2186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.98
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.7
+      value: 4.73
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3382,8 +3394,8 @@ SceneRoots:
   - {fileID: 1877196467}
   - {fileID: 502386099}
   - {fileID: 5193603633156814763}
-  - {fileID: 311888380}
   - {fileID: 1467490296}
+  - {fileID: 311888380}
   - {fileID: 2041294390}
   - {fileID: 1826891151}
   - {fileID: 287881776}

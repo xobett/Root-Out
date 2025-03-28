@@ -10,6 +10,7 @@ public class MushroomBombShooter : WeaponsBase
     [Header("Mushroom Bomb Shooter Settings")]
     [SerializeField] private GameObject HUDTargetPoint; // prefab del HUD taget point que es la imagen tiro al blanco en el piso
     [SerializeField] private float heightSecondBullet = 12f; // Mide la altura de la bala que aparece arriba del player
+    [SerializeField] private GameObject smokePrefab;
 
 
     private Transform player; // Objetivo a disparar
@@ -44,6 +45,7 @@ public class MushroomBombShooter : WeaponsBase
 
     protected override void Shoot()
     {
+        SmokeShoot();
         Mortar(); // Llama al método Mortar
         base.Shoot(); // Llama al método Shoot de la clase base
         Attack(); // Llama al método Attack
@@ -79,6 +81,10 @@ public class MushroomBombShooter : WeaponsBase
         mortar.GetComponent<Rigidbody>().AddForce(Vector3.down * bulletForce, ForceMode.Impulse);
     }
 
+    private void  SmokeShoot()
+    {
+        Instantiate(smokePrefab, aiming.position, Quaternion.identity);
+    }
     IEnumerator TargetPointCoroutine() // Corrutina para instanciar targetShooting
     {
         while (true)
