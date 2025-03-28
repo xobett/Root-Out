@@ -18,6 +18,7 @@ public class CornyGuy : CropBase
     [SerializeField] private bool ableToShoot;
 
     [SerializeField] private bool abilityUsed;
+    [SerializeField] private int abilityTimesUsed;
 
     protected override void CropAttack()
     {
@@ -103,5 +104,12 @@ public class CornyGuy : CropBase
         arrivedToShootingPosition = false;
         enemyPos = null;
         abilityUsed = false;
+
+        abilityTimesUsed++;
+
+        if (abilityTimesUsed == 2)
+        {
+            Destroy(gameObject);
+        }
     }
 }

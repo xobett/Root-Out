@@ -66,9 +66,9 @@ public class MushroomShooter : WeaponsBase
 
     private void GetActiveSunflower()
     {
-        if (GameManager.instance.activeSunflower != null)
+        if (GameManager.instance.GetActiveSunflower() != null)
         {
-            GameObject activeSunflower = GameManager.instance.activeSunflower.gameObject;
+            GameObject activeSunflower = GameManager.instance.GetActiveSunflower().gameObject;
             sunFlower = activeSunflower.transform; 
         }
     }

@@ -145,8 +145,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   maxHitDistance: 10
+  arrivedToShootPos: 0
   enemyDetected: 0
   isFollowingPlayer: 0
+  isFollowingEnemy: 0
   timeBeforeShooting: 1.5
   shootingTime: 2
   nudeTime: 10
@@ -183,7 +185,7 @@ MonoBehaviour:
   maxAmmo: 100000
   bulletReserve: 100000
   maxBulletReserve: 0
-  damage: 2
+  damage: 25
   range: 3
   fireRate: 28
   reloadTime: 1

@@ -19,6 +19,7 @@ public class EnemiesSpawner : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenSpawn);
 
         Instantiate(GetRandomEnemy(), GetRandomSpawnPosition().position, Quaternion.identity);
+        Debug.Log("Spawned");
 
         if (GameManager.instance.eventTimerIsActive)
         {

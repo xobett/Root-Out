@@ -151,8 +151,9 @@ public class GameManager : MonoBehaviour
 
     public void StartFinaEvent()
     {
-        DisplayMessage("Final event test");
+        DisplayMessage("Survive the last minute!");
         messageTextAnimator.SetBool("secondSunflowerNotChosen", true);
+        StartCoroutine(FinalEvent());
     }
 
     private IEnumerator FinalEvent()
@@ -160,6 +161,8 @@ public class GameManager : MonoBehaviour
         timeToCountdown = finalEventTimer;
 
         StartTimer();
+
+        SpawnEnemiesInWorld();
 
         yield return new WaitUntil(() => timer <= 0);
 
@@ -268,6 +271,8 @@ public class GameManager : MonoBehaviour
         StartTimer();
         StartSunflowerAnimations();
 
+        SpawnEnemiesInWorld();
+
         yield return new WaitUntil(() => timer <= 0);
 
         EndTimer();
@@ -293,6 +298,8 @@ public class GameManager : MonoBehaviour
 
         StartTimer();
         StartSunflowerAnimations();
+
+        SpawnEnemiesInWorld();
 
         yield return new WaitUntil(() => timer <= 0);
 

@@ -149,7 +149,7 @@ public class PropsSpawner : MonoBehaviour
         GameObject itemToSpawn = null;
 
         //Dependiendo del resultado del random, se aumentara o bajara la probabilidad de que se spawnee el item que se elija.
-        int randomItemSelection = Random.Range(0, 2);
+        int randomItemSelection = Random.Range(0, 1);
 
         switch (randomItemSelection)
         {
