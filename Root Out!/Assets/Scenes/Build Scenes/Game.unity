@@ -1198,6 +1198,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870f23df3cff782459093f8952b360d2, type: 3}
+--- !u!1001 &670695343
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663657747665038841, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389908784280474320, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+      propertyPath: m_Name
+      value: Explosion shader incompleta
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+--- !u!1 &670695344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5389908784280474320, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
+  m_PrefabInstance: {fileID: 670695343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &680381929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1826891151}
     m_Modifications:
+    - target: {fileID: 694872422705124965, guid: 62015e164ef71f740973ad659e69eded, type: 3}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 670695344}
     - target: {fileID: 6000692407331309984, guid: 62015e164ef71f740973ad659e69eded, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.2
@@ -2487,14 +2553,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2041294390}
     m_Modifications:
-    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: coldDown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: originalDamage
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5014879619776171729, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.082
@@ -3333,10 +3391,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistola huevos
       objectReference: {fileID: 0}
-    - target: {fileID: 7240532743973914911, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
-      propertyPath: damage
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7530203457036585822, guid: 0fe57f05aee5fc24e9377c9468883f21, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.612
@@ -3404,3 +3458,4 @@ SceneRoots:
   - {fileID: 2026462684}
   - {fileID: 158245332}
   - {fileID: 464599240}
+  - {fileID: 670695343}

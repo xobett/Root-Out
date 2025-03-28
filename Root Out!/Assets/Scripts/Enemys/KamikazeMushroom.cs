@@ -26,12 +26,12 @@ public class KamikazeMushroom : WeaponsBase
 
     protected override void Update()
     {
-        StartCoroutine(Explosion()); 
+        StartCoroutine(Explosion());
         if (sunFlowerGameObject != null)
         {
             agent.SetDestination(sunFlowerGameObject.position); // Asigna la posición del girasol como destino
         }
-        GetActiveSunflower(); 
+        GetActiveSunflower();
     }
 
     private void GetActiveSunflower()
@@ -43,9 +43,9 @@ public class KamikazeMushroom : WeaponsBase
             sunFlowerGameObject = activeSunflower.transform;
         }
     }
-    IEnumerator Explosion() 
+    IEnumerator Explosion()
     {
-        if (Detection()) 
+        if (Detection())
         {
             Debug.Log("3");
             yield return new WaitForSeconds(1f);
@@ -53,6 +53,7 @@ public class KamikazeMushroom : WeaponsBase
             yield return new WaitForSeconds(1f);
             Debug.Log("1");
             yield return new WaitForSeconds(1f);
+            SmmokeEffect();
             Debug.Log("BOOM");
             sunFlowerScript.DamageSunFlower(damage); // Llama al método DamageSunFlower del script Sunflower
             Destroy(gameObject);
@@ -60,6 +61,10 @@ public class KamikazeMushroom : WeaponsBase
 
 
         }
+    }
+    private void SmmokeEffect()
+    {
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
     }
     protected override void Reload()
     {
