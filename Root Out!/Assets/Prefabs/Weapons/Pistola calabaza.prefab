@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.68
+      value: -1.471
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_LocalPosition.y
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.01
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_LocalRotation.w
@@ -206,5 +206,6 @@ MonoBehaviour:
   burstPause: 0.5
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
+  coldDown: 3
   bulletsPerShot: 4
   weaponData: {fileID: 11400000, guid: 32d6781e21717494a87a6cd5aac035b2, type: 2}

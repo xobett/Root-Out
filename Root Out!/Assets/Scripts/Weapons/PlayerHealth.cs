@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         playerLifeBar.fillAmount = currentHealth / maxHealth; // Calcula el fillAmount basado en la vida actual y máxima
-        Debug.Log("Vida del jugador: " + currentHealth);
+        //Debug.Log("Vida del jugador: " + currentHealth);
 
         if (currentHealth <= 0)
         {

@@ -280,7 +280,8 @@ namespace Weapons
                     if (explosionUpgradeActivated && canInstantiateExplosion)
                     {
                         GameObject explosion = Instantiate(explosivePrefab, bullet.transform.position, Quaternion.identity);
-                        explosion.transform.SetParent(bullet.transform); // Emparentar la explosión a la bala
+                        explosion.transform.SetParent(bullet.transform); // Emparentar la explosión a la  
+                        Debug.Log("Explosive bullet instantiated!");
                         StartCoroutine(ExplosionCooldown());
                         canInstantiateExplosion = false;
                     }
