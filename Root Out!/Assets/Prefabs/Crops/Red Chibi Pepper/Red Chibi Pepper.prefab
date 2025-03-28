@@ -137,14 +137,18 @@ MonoBehaviour:
   backDistance: 1.5
   sideDistance: -1.1
   damage: 100
-  shootingDistance: 0
+  frontShootingDistance: 0
+  sideShootingDistance: 0
   sphereDetectionRadius: 0.3
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
   maxHitDistance: 10
+  arrivedToShootPos: 0
   enemyDetected: 0
   isFollowingPlayer: 0
+  isFollowingEnemy: 0
+  redChibiExplosion: {fileID: 4362371409038336509, guid: a9b108456512bb34aa0093c2c0ac7fd6, type: 3}
 --- !u!1001 &4144063200340674485
 PrefabInstance:
   m_ObjectHideFlags: 0

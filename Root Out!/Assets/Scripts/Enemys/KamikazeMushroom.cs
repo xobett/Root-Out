@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.AI;
 using Weapons;
@@ -14,6 +15,9 @@ public class KamikazeMushroom : WeaponsBase
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
     private NavMeshAgent agent;
 
+    [SerializeField] private Animator kamikazeAnimatorCtrlr;
+    private Transform playerPos;
+    [SerializeField] private float playerDetectionRange;
 
     protected override void Start()
     {
@@ -22,16 +26,53 @@ public class KamikazeMushroom : WeaponsBase
         //Para que no aparezca error comente esta linea... como quiera en el metodo del update esta buscando constantemente un girasol activo, con eso agarra uno.
         //sunFlowerGameObject = GameObject.FindGameObjectWithTag("Sunflower").transform;
         agent = GetComponent<NavMeshAgent>();
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     protected override void Update()
     {
-        StartCoroutine(Explosion());
-        if (sunFlowerGameObject != null)
-        {
-            agent.SetDestination(sunFlowerGameObject.position); // Asigna la posición del girasol como destino
-        }
+        Explosion();
+
+        SearchPlayer();
+
+        KamikazeBehaviour();
+
         GetActiveSunflower();
+    }
+
+    private void KamikazeBehaviour()
+    {
+        if (sunFlowerGameObject != null && GameManager.instance.eventTimerIsActive)
+        {
+            agent.speed = 3;
+            agent.destination = sunFlowerGameObject.transform.position; // Asigna la posición del girasol como destino
+
+            kamikazeAnimatorCtrlr.SetBool("isRunning", true);
+            kamikazeAnimatorCtrlr.SetBool("isWalking", false);
+        }
+        else if (PlayerDetection())
+        {
+            kamikazeAnimatorCtrlr.SetBool("isWalking", true);
+            kamikazeAnimatorCtrlr.SetBool("isRunning", false);
+
+            agent.speed = 2;
+            agent.destination = playerPos.position;
+        }
+        else
+        {
+            kamikazeAnimatorCtrlr.SetBool("isWalking", false);
+        }
+    }
+
+    private void SearchPlayer()
+    {
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    private bool PlayerDetection()
+    {
+        LayerMask layerMask = LayerMask.GetMask("Player");
+        return Physics.CheckSphere(transform.position, playerDetectionRange, layerMask);
     }
 
     private void GetActiveSunflower()
@@ -43,28 +84,22 @@ public class KamikazeMushroom : WeaponsBase
             sunFlowerGameObject = activeSunflower.transform;
         }
     }
-    IEnumerator Explosion()
+    void Explosion()
     {
         if (Detection())
         {
-            Debug.Log("3");
-            yield return new WaitForSeconds(1f);
-            Debug.Log("2");
-            yield return new WaitForSeconds(1f);
-            Debug.Log("1");
-            yield return new WaitForSeconds(1f);
             SmmokeEffect();
             Debug.Log("BOOM");
             sunFlowerScript.DamageSunFlower(damage); // Llama al método DamageSunFlower del script Sunflower
             Destroy(gameObject);
             Debug.Log($"Daño al girasol : " + sunFlowerScript.currentHealth);
-
-
         }
     }
     private void SmmokeEffect()
     {
-        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        Quaternion smokeRotation = Quaternion.Euler(-90, 0, 0);
+
+        Instantiate(explosionEffect, transform.position, smokeRotation);
     }
     protected override void Reload()
     {
@@ -82,6 +117,9 @@ public class KamikazeMushroom : WeaponsBase
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRangeExplosion);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, playerDetectionRange);
     }
 
 }

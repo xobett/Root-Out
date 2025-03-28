@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RedChibiPepper : CropBase
 {
+    [SerializeField] private GameObject redChibiExplosion;
     protected override void CropAttack()
     {
         HeadToEnemy();
@@ -26,6 +27,7 @@ public class RedChibiPepper : CropBase
     {
         if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy"))
         {
+            Instantiate(redChibiExplosion, transform.position, Quaternion.identity);
             enemy.gameObject.GetComponent<AIHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }
