@@ -7,6 +7,7 @@ public class KamikazeMushroom : WeaponsBase
 {
     [Header("Kamikaze Mushroom Settings")]
     [SerializeField] private float detectionRangeExplosion;
+    [SerializeField] private GameObject explosionEffect;
 
     private Transform sunFlowerGameObject; // Referencia al girasol
     private Sunflower sunFlowerScript; // Referencia al script del girasol

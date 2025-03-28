@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4147673311644008337}
   serializedVersion: 2
   m_LocalRotation: {x: 0.02361325, y: 0.00000008940697, z: 0.010435037, w: 0.99966675}
-  m_LocalPosition: {x: 0, y: 1.415, z: 0}
+  m_LocalPosition: {x: -0, y: 1.51, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,8 +250,8 @@ MonoBehaviour:
   autoFire: 1
   shootUpwards: 1
   shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: 397fa4485e1bf7d4bb5de13b088cef74, type: 3}
-  explosionPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 4771542621520495476, guid: ce59ff3f99b8ab648b6b59b9456148b3, type: 3}
+  explosivePrefab: {fileID: 0}
   currentAmmo: 2147483647
   maxAmmo: 2147483647
   bulletReserve: 2147483647
@@ -268,8 +268,10 @@ MonoBehaviour:
   burstPause: 0.5
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
+  coldDown: 0
   HUDTargetPoint: {fileID: 3026164163744036126, guid: 6a9feb9b591cb5c44b63fa84772771a9, type: 3}
   heightSecondBullet: 15
+  smokePrefab: {fileID: 0}
 --- !u!114 &5078747472099110838
 MonoBehaviour:
   m_ObjectHideFlags: 0
