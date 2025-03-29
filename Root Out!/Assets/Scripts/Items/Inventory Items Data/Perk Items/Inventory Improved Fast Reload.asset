@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbb087bed70409f44a9b153b77808534, type: 3}
-  m_Name: Teleporter
+  m_Name: Inventory Improved Fast Reload
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
-  itemType: 2
-  itemIcon: {fileID: 0}
+  itemName: Improved Fast Reload
+  itemDescription: Fast reload
+  itemType: 3
+  itemIcon: {fileID: 21300000, guid: 0955f08e8f19a5a48878d188a785b802, type: 3}
   cropData: {fileID: 0}
   weaponData: {fileID: 0}
-  perksData: {fileID: 0}
+  perksData: {fileID: 11400000, guid: 69952b1fabc5f7240afc0e34558b0ed8, type: 2}
+  itemPrefab: {fileID: 0}

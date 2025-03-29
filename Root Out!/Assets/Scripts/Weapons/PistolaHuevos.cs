@@ -40,6 +40,7 @@ public class PistolaHuevos : WeaponsBase, IInteractable
 
     public void OnInteract()
     {
+        AddWeaponToInventory();
         SetNewAimState();
 
         if (weaponHandler != null)

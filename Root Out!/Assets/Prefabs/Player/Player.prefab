@@ -468,7 +468,7 @@ MonoBehaviour:
   ps_State: 1
   walkSpeed: 5
   sprintSpeed: 8
-  turnSpeed: 0.218
+  turnSpeed: 0.06
   midAirSpeed: 15
   forwardForce: 0
   groundCheckRadius: 0.215
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346265c64d5dc014e8340ccad60a1cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedCoins: 900
+  seedCoins: 659
   ammo: 0
   itemsInventory: []
   equippedItem: {fileID: 0}
@@ -603,7 +603,7 @@ Transform:
   m_GameObject: {fileID: 6754032009203369110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

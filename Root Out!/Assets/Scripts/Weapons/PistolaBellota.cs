@@ -17,6 +17,7 @@ public class PistolaBellota : WeaponsBase, IInteractable
 
     public void OnInteract()
     {
+        AddWeaponToInventory();
         SetNewAimState();
 
         if (weaponHandler != null)

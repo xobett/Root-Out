@@ -35,6 +35,7 @@ public class PistolaManzana : WeaponsBase, IInteractable
 
     public void OnInteract()
     {
+        AddWeaponToInventory();
         SetNewAimState();
 
         if (weaponHandler != null)

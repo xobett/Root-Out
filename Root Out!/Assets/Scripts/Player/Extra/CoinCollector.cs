@@ -6,6 +6,12 @@ public class CoinCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Item>().ItemInteraction();
+        string tag = other.tag;
+
+        if (tag == "Seed Coin" || tag == "Weapon" || tag == "Perk" || tag == "Crop Card")
+        {
+            other.GetComponent<Item>().ItemInteraction();
+        }
+
     }
 }

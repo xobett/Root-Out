@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +23,7 @@ namespace Weapons
         [SerializeField] public PlayerAimState tipoDeApuntado;
 
         [Header("Punto de Mira")]
-        [SerializeField] public Transform aiming; // Punto de Mira
+        public Transform aiming; // Punto de Mira
 
         [Header("Tipo de Arma")]
         [SerializeField] public WeaponType weaponType; // Tipo de Arma
@@ -60,6 +61,9 @@ namespace Weapons
         [SerializeField] protected float burstDistance = 0.1f; // Distancia entre balas en una ráfaga
         [SerializeField] protected float burstPause = 0.5f;
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
+
+        [Header("INVENTORY ITEM SETTINGS")]
+        [SerializeField] private InventoryItemData inventoryItemToAdd;
 
         #endregion
 
@@ -102,6 +106,12 @@ namespace Weapons
                     canvasRecargaImage.enabled = false;
                 }
             }
+
+            //Consigue el punto de mira de el jugador que no se mueve
+            var player = GameObject.FindGameObjectWithTag("Player");
+            int shootSpawnIndex = player.transform.childCount - 1;
+            aiming = player.transform.GetChild(shootSpawnIndex);
+
         }
 
         protected virtual void Update()
@@ -123,6 +133,14 @@ namespace Weapons
             var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
             playerMovement.SetAnimationState(tipoDeApuntado); // Llama al método SetAnimationState en el script PlayerMovement
+        }
+        #endregion
+
+        #region Inventory
+        public void AddWeaponToInventory()
+        {
+            var inventory = GameManager.instance.playerInventoryHandler;
+            inventory.AddItem(inventoryItemToAdd);
         }
         #endregion
 

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb087bed70409f44a9b153b77808534, type: 3}
+  m_Name: Inventory One Shot
+  m_EditorClassIdentifier: 
+  itemName: One Shot
+  itemDescription: Increases the probability of eliminating an enemy with one shot.
+  itemType: 3
+  itemIcon: {fileID: 21300000, guid: 9687e4303a94b4a44a0f06130459ae22, type: 3}
+  cropData: {fileID: 0}
+  weaponData: {fileID: 0}
+  perksData: {fileID: 11400000, guid: f99816999b9daf044911f3cb2771eb6f, type: 2}
+  itemPrefab: {fileID: 0}

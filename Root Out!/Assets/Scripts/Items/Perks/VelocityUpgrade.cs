@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class VelocityUpgrade : MonoBehaviour , IInteractable
 {
-    
+    [Header("INVENTORY ITEM SETTINGS")]
+    [SerializeField] private InventoryItemData inventoryItemToAdd;
+
     PlayerMovement playerMovement;
 
     [Header("Upgrades")]
@@ -15,6 +17,9 @@ public class VelocityUpgrade : MonoBehaviour , IInteractable
     }
     public void OnInteract()
     {
+        var playerInventory = GameManager.instance.playerInventoryHandler;
+        playerInventory.AddItem(inventoryItemToAdd);
+
         playerMovement.walkSpeed += walkUpgrade;
         playerMovement.sprintSpeed += sprintUpgrade;
         Destroy(gameObject);

@@ -32,6 +32,7 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
 
     public void OnInteract()
     {
+        AddWeaponToInventory();
         SetNewAimState();
 
         if (weaponHandler != null)
