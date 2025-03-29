@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviour
 
     private CameraFollow cameraController; // Referencia al controlador de la cámara
     private PlayerMovement movementController; // Referencia al controlador de movimiento del jugador
+    private LeafJump leafJump; //Referencia al salto del jugador.
+
     [SerializeField] Slider vfxVolumeSlider; // Referencia al slider de volumen de efectos visuales
     [SerializeField] Slider mainVolumeSlider; // Referencia al slider de volumen principal
     [SerializeField] AudioSource audioSourceMain; // Referencia al AudioSource principal
@@ -26,6 +28,7 @@ public class PauseMenu : MonoBehaviour
     {
         cameraController = FindFirstObjectByType<CameraFollow>(); // Busca el controlador de la cámara en la escena
         movementController = FindFirstObjectByType<PlayerMovement>(); // Busca el controlador de movimiento del jugador en la escena
+        leafJump = FindFirstObjectByType<LeafJump>();
         pauseMenu.SetActive(false);
         vfx.SetActive(false);
         back.SetActive(false);
@@ -62,8 +65,10 @@ public class PauseMenu : MonoBehaviour
         AudioManager.instance.SetAudioVolume(0.1f);
         Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
         cameraController.enabled = false; // Desactiva el controlador de la cámara
-        movementController.enabled = false; // Desactiva el controlador de movimiento del jugador
-        HUD.SetActive(false); // Desactiva el HUD
+        //movementController.enabled = false; // Desactiva el controlador de movimiento del jugador
+        //leafJump.enabled = false; //Desactiva el controlador de salto del jugador
+        GameManager.instance.gamePaused = true;
+        //HUD.SetActive(false); // Desactiva el HUD
         pauseMenu.SetActive(true); // Activa el menú de pausa
         Time.timeScale = 0f; // Detiene el tiempo del juego
         isPaused = true; // Establece la variable de pausa a true
@@ -74,8 +79,10 @@ public class PauseMenu : MonoBehaviour
         AudioManager.instance.SetAudioVolume(0.3f);
         Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
         cameraController.enabled = true; // Activa el controlador de la cámara
-        movementController.enabled = true; // Activa el controlador de movimiento del jugador
-        HUD.SetActive(true); // Activa el HUD
+        //movementController.enabled = true; // Activa el controlador de movimiento del jugador
+        //leafJump.enabled = true; //Activa el controlador de salto del jugador
+        GameManager.instance.gamePaused = false;
+        //HUD.SetActive(true); // Activa el HUD
         pauseMenu.SetActive(false); // Desactiva el menú de pausa
         Time.timeScale = 1f; // Restaura el tiempo del juego
         isPaused = false; // Establece la variable de pausa a false

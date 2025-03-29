@@ -127,8 +127,9 @@ public class UIInventory : MonoBehaviour
 
     private void DeactivateInput()
     {
-        playerMovement.enabled = false;
-        leafJump.enabled = false;
+        //playerMovement.enabled = false;
+        //leafJump.enabled = false;
+        GameManager.instance.gamePaused = true;
         cameraFollow.enabled = false;
         cropHandler.enabled = false;
 
@@ -140,8 +141,9 @@ public class UIInventory : MonoBehaviour
 
     private void RegainInput()
     {
-        playerMovement.enabled = true;
-        leafJump.enabled = true;
+        //playerMovement.enabled = true;
+        //leafJump.enabled = true;
+        GameManager.instance.gamePaused = false;
         cameraFollow.enabled = true;
         cropHandler.enabled = true;
 

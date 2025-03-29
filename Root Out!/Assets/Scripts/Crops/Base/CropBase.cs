@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public abstract class CropBase : MonoBehaviour
@@ -69,12 +70,19 @@ public abstract class CropBase : MonoBehaviour
 
     protected void BehaviourCheck()
     {
-        if (EnemyDetection() && !enemyDetected)
+        if (GetEnemyInWorld() && !enemyDetected)
         {
             isFollowingPlayer = false;
             enemyDetected = true;
-            enemyPos = hit.collider.transform;
+            enemyPos = GetEnemyInWorld().transform;
         }
+
+        //if (EnemyDetection() && !enemyDetected)
+        //{
+        //    isFollowingPlayer = false;
+        //    enemyDetected = true;
+        //    enemyPos = hit.collider.transform;
+        //}
 
         if (!enemyDetected)
         {
@@ -192,6 +200,23 @@ public abstract class CropBase : MonoBehaviour
 
     //Detecta al enemigo frente 
     private bool EnemyDetection() => Physics.SphereCast(transform.position, sphereDetectionRadius, transform.forward, out hit, maxHitDistance, whatIsEnemy);
+
+    public GameObject GetEnemyInWorld()
+    {
+        GameObject enemyToFollow;
+        GameObject[] enemiesInWorld = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (enemiesInWorld != null && enemiesInWorld.Length > 1)
+        {
+            enemyToFollow = enemiesInWorld[Random.Range(0, enemiesInWorld.Length)];
+        }
+        else
+        {
+            enemyToFollow = GameObject.FindGameObjectWithTag("Enemy");
+        }
+
+        return enemyToFollow;
+    }
 
     private void OnDrawGizmos()
     {

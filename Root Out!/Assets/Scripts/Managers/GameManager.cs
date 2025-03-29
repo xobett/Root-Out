@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     private LeafJump leafJump;
     private CameraFollow cameraFollow;
 
+    [Header("PAUSE SETTINGS")]
+    public bool gamePaused;
+
     [Header("FINAL HUB SETTINGS")]
     public bool finalHubCreated;
 

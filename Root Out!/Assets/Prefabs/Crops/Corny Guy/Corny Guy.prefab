@@ -159,6 +159,7 @@ MonoBehaviour:
   arrivedToShootingPosition: 0
   ableToShoot: 0
   abilityUsed: 0
+  abilityTimesUsed: 0
 --- !u!114 &5563750098599496366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,13 +174,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoDeApuntado: 0
   aiming: {fileID: 510468268873343577}
+  cropAiming: {fileID: 510468268873343577}
   weaponType: 1
   spreadAngle: 0.1
   horizontalSpread: 0
   autoFire: 1
   shootUpwards: 0
   shootDownwards: 0
-  bulletPrefab: {fileID: 170378819388794420, guid: d0381ed2fad43bb45a50b69516c3b425, type: 3}
+  bulletPrefab: {fileID: 9057334875416266116, guid: 34d74bd594858a647a19b51c6a5126f6, type: 3}
   explosivePrefab: {fileID: 0}
   currentAmmo: 100000
   maxAmmo: 100000
@@ -195,6 +197,7 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  inventoryItemToAdd: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   coldDown: 0

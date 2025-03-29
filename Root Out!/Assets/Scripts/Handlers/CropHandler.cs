@@ -199,6 +199,8 @@ public class CropHandler : MonoBehaviour
                     break;
                 }
         }
+
+        totalCropsDropped--;
     }
 
     public void AddCrop(CropData crop)

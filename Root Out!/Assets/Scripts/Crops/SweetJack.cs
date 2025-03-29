@@ -1,8 +1,16 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class SweetJack : CropBase
 {
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform shootSpawn;
+
+    [SerializeField] private float nextShoot = 0.0f;
+    [SerializeField] private float fireRate;
+
+    private bool autoDestroyTimerActivated;
+
     protected override void SetAnimatorParameters()
     {
         base.SetAnimatorParameters();
@@ -20,14 +28,27 @@ public class SweetJack : CropBase
     protected override void HeadToPlayer()
     {
         base.HeadToPlayer();
-        GetComponent<WeaponCoryGuy>().enabled = false;
+
+        gameObject.GetComponent<WeaponCoryGuy>().enabled = false;
     }
 
     protected override void CropAttack()
     {
+        gameObject.GetComponent<WeaponCoryGuy>().enabled = true;
+
         base.HeadToShootingPos();
 
-        GetComponent<WeaponCoryGuy>().enabled = true;
+        StartCoroutine(StartAutoDestroy());
+
     }
 
+    private IEnumerator StartAutoDestroy()
+    {
+        if (!autoDestroyTimerActivated)
+        {
+            autoDestroyTimerActivated = true;
+
+            yield return new WaitForSeconds(10f);
+        }
+    }
 }

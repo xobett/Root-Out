@@ -55,8 +55,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        MovementCheck();
-        Gravity();
+        if (!GameManager.instance.gamePaused)
+        {
+            MovementCheck();
+            Gravity();
+
+            if (IsTouching())
+            {
+                playerAnimCtrlr.SetBool("isGrounded", true);
+            }
+            else
+            {
+                playerAnimCtrlr.SetBool("isGrounded", false);
+            } 
+        }
     }
 
     public void SetAnimationState(PlayerAimState aimState)
@@ -273,8 +285,6 @@ public class PlayerMovement : MonoBehaviour
     public bool IsTouching()
     {
         bool isTouching = Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
-
-        playerAnimCtrlr.SetBool("isGrounded", isTouching);
 
         return isTouching;
     }

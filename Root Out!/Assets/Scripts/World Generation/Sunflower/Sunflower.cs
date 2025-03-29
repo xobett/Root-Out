@@ -71,7 +71,7 @@ public class Sunflower : MonoBehaviour
 
         GameObject terrainToSpawn = GenerateRandomTerrainType();
 
-        if (terrainToSpawn == terrainPrefabs[0] && GameManager.instance.finalHubCreated)
+        if ((terrainToSpawn == terrainPrefabs[0] && GameManager.instance.finalHubCreated) || (terrainToSpawn == terrainPrefabs[0] && GameManager.instance.totalTerrainsGenerated < 4))
         {
             while (terrainToSpawn == terrainPrefabs[0])
             {

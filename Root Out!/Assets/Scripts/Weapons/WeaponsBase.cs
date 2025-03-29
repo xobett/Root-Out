@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +23,7 @@ namespace Weapons
 
         [Header("Punto de Mira")]
         public Transform aiming; // Punto de Mira
+        [SerializeField] private Transform cropAiming;
 
         [Header("Tipo de Arma")]
         [SerializeField] public WeaponType weaponType; // Tipo de Arma
@@ -125,7 +125,10 @@ namespace Weapons
         #region Aim State
         private void OnEnable()
         {
-            GetComponent<AimType>().tipoDeApuntado = tipoDeApuntado;
+            if (GetComponent<AimType>())
+            {
+                GetComponent<AimType>().tipoDeApuntado = tipoDeApuntado;
+            }
         }
 
         protected void SetNewAimState() // Establece el nuevo estado de apuntado
@@ -272,7 +275,16 @@ namespace Weapons
             {
                 for (int i = 0; i < numberBullets; i++)
                 {
-                    Vector3 direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
+                    Vector3 direction;
+
+                    if (gameObject.tag == "Weapon")
+                    {
+                        direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
+                    }
+                    else
+                    {
+                        direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(cropAiming.forward) : GetNonSpreadDirection(cropAiming.forward, i, numberBullets);
+                    }
 
                     // Ajustar la dirección de disparo hacia arriba o hacia abajo
                     if (shootUpwards)
@@ -284,8 +296,28 @@ namespace Weapons
                         direction = Vector3.down;
                     }
 
-                    Vector3 positionOffset = weaponType == WeaponType.BurstFire ? aiming.forward * burstDistance * burstIndex : Vector3.zero;
-                    GameObject bullet = Instantiate(bulletPrefab, aiming.position + positionOffset, Quaternion.LookRotation(direction));
+                    Vector3 positionOffset;
+
+                    if (gameObject.tag == "Weapon")
+                    {
+                        positionOffset = weaponType == WeaponType.BurstFire ? aiming.forward * burstDistance * burstIndex : Vector3.zero;
+                    }
+                    else
+                    {
+                        positionOffset = weaponType == WeaponType.BurstFire ? cropAiming.forward * burstDistance * burstIndex : Vector3.zero;
+                    }
+
+                    GameObject bullet;
+
+                    if (gameObject.tag == "Weapon")
+                    {
+                        bullet = Instantiate(bulletPrefab, aiming.position + positionOffset, Quaternion.LookRotation(direction));
+                    }
+                    else
+                    {
+                        bullet = Instantiate(bulletPrefab, cropAiming.position + positionOffset, Quaternion.LookRotation(direction));
+                    }
+
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     rb.AddForce(direction * bulletForce, ForceMode.Impulse);
 

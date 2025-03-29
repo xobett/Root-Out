@@ -92,7 +92,7 @@ public class CameraFollow : MonoBehaviour
             orbitAngle.x -= MouseHorizontalInput() * Mathf.Deg2Rad * cameraSensitivity.x * Time.deltaTime;
         }
 
-        if (MouseVerticalInput() != 0 && !IsAiming())
+        if (MouseVerticalInput() != 0)
         {
             orbitAngle.y -= MouseVerticalInput() * Mathf.Deg2Rad * cameraSensitivity.y * Time.deltaTime;
 

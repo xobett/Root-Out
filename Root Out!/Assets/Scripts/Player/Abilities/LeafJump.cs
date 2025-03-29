@@ -5,15 +5,27 @@ public class LeafJump : MonoBehaviour
 {
     [Header("GENERAL SETTINGS")]
     [SerializeField, Range(5, 20)] private float totalChargeLimit = 15f;
-    private float currentChargedForce;
+    public float currentChargedForce;
 
     [Header("ANIMATION SETTINGS")]
     [SerializeField] private Animator playerAnimCtrlr;
 
     void Update()
     {
-        ChargeJump();
-        Jump();
+        if (!GameManager.instance.gamePaused)
+        {
+            ChargeJump();
+            Jump();
+
+            if (IsJumping())
+            {
+                playerAnimCtrlr.SetBool("isJumping", true);
+            }
+            else
+            {
+                playerAnimCtrlr.SetBool("isJumping", false);
+            } 
+        }
     }
 
     private void Jump()
@@ -47,8 +59,6 @@ public class LeafJump : MonoBehaviour
     private bool IsJumping()
     {
         bool isJumping = Input.GetKeyUp(KeyCode.Space);
-
-        playerAnimCtrlr.SetBool("isJumping", isJumping);
 
         return isJumping;
     }

@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 5622856898522218364}
   m_Layer: 13
   m_Name: Mushroom Shooter
-  m_TagString: Mushroom Shooter
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,6 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoDeApuntado: 0
   aiming: {fileID: 8514263295453690401}
+  cropAiming: {fileID: 8514263295453690401}
   weaponType: 1
   spreadAngle: 1
   horizontalSpread: 0
@@ -396,6 +397,7 @@ MonoBehaviour:
   burstRate: 0.1
   burstDistance: 0.1
   burstPause: 0.5
+  inventoryItemToAdd: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   coldDown: 3

@@ -84,12 +84,12 @@ public class CornyGuy : CropBase
         yield return new WaitForSeconds(timeBeforeShooting);
 
         ableToShoot = true;
-        GetComponent<WeaponCoryGuy>().enabled = true;
+        gameObject.GetComponent<WeaponCoryGuy>().enabled = true;
 
         yield return new WaitForSeconds(shootingTime);
 
         ableToShoot = false;
-        GetComponent<WeaponCoryGuy>().enabled = false;
+        gameObject.GetComponent<WeaponCoryGuy>().enabled = false;
 
         cropAnimCtrlr.SetBool("isNude", true);
 
