@@ -275,11 +275,12 @@ namespace Weapons
             {
                 for (int i = 0; i < numberBullets; i++)
                 {
-                    Vector3 direction;
+                    Vector3 direction = aiming.transform.forward; // Obtener la dirección de disparo
+                    Vector3 directionCamera = Camera.main.transform.forward; // Obtener la dirección de la cámara
 
-                    if (gameObject.tag == "Weapon")
+                    if (gameObject.CompareTag("Weapon"))
                     {
-                        direction = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
+                        directionCamera = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
                     }
                     else
                     {
@@ -296,7 +297,7 @@ namespace Weapons
                         direction = Vector3.down;
                     }
 
-                    Vector3 positionOffset;
+                    Vector3 positionOffset; // Variable para almacenar el desplazamiento de la posición de la bala
 
                     if (gameObject.tag == "Weapon")
                     {

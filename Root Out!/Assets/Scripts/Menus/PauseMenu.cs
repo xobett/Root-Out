@@ -52,17 +52,20 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) // Si se presiona la tecla Escape
         {
-            if (!isPaused) // Si el juego está en pausa
+            if (!isPaused) // Si el juego no está en pausa
             {
-
                 PauseGame(); // Pausa el juego
+                AudioManager.instance.SetAudioVolume(0.1f);
+            }
+            else
+            {
+                ResumeGame(); // Reanuda el juego
             }
         }
     }
 
     void PauseGame()
     {
-        AudioManager.instance.SetAudioVolume(0.1f);
         Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
         cameraController.enabled = false; // Desactiva el controlador de la cámara
         //movementController.enabled = false; // Desactiva el controlador de movimiento del jugador
@@ -76,16 +79,17 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        AudioManager.instance.SetAudioVolume(0.3f);
         Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
         cameraController.enabled = true; // Activa el controlador de la cámara
-        //movementController.enabled = true; // Activa el controlador de movimiento del jugador
-        //leafJump.enabled = true; //Activa el controlador de salto del jugador
         GameManager.instance.gamePaused = false;
-        //HUD.SetActive(true); // Activa el HUD
         pauseMenu.SetActive(false); // Desactiva el menú de pausa
         Time.timeScale = 1f; // Restaura el tiempo del juego
-        isPaused = false; // Establece la variable de pausa a false
+        //movementController.enabled = true; // Activa el controlador de movimiento del jugador
+        //leafJump.enabled = true; //Activa el controlador de salto del jugador
+        //HUD.SetActive(true); // Activa el HUD
+
+        audioSourceMain.volume = mainVolumeSlider.value; // Restaura el volumen principal
+        isPaused = false; 
     }
 
     public void MainMenu()
@@ -99,7 +103,7 @@ public class PauseMenu : MonoBehaviour
         mainMenu.SetActive(false); // Desactiva el menú principal
         panelControls.SetActive(false); // Desactiva el panel de controles
         panelResume.SetActive(false);
-        vfx.SetActive(true); // Activa el menú de efectos visuales
+        vfx.SetActive(true); // Activa el menú de efectos 
         back.SetActive(true); // Activa el botón de retroceso
         volumen.SetActive(true); // Activa el menú de volumen
     }
