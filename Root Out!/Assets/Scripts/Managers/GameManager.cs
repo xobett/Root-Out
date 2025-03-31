@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     
     public bool eventTimerIsActive;
 
-    void Start()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
         GetInputReferences();
         GetPlayerReferences();
     }
-
 
     private void Update()
     {

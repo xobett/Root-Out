@@ -139,13 +139,15 @@ MonoBehaviour:
   damage: 100
   frontShootingDistance: 0
   sideShootingDistance: 0
-  sphereDetectionRadius: 0.3
+  sphereDetectionRadius: 18
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
   maxHitDistance: 10
+  arrivedToShootPos: 0
   enemyDetected: 0
   isFollowingPlayer: 0
+  isFollowingEnemy: 0
   nukePrefab: {fileID: 6749730267601847604, guid: 9a8af0ba22f8ba54ca64b5794ebfa081, type: 3}
 --- !u!1001 &5230912870682836596
 PrefabInstance:

@@ -31,7 +31,7 @@ public abstract class CropBase : MonoBehaviour
 
 
     [Header("ENEMY DETECTION")]
-    [SerializeField] protected float sphereDetectionRadius = 12f;
+    [SerializeField] protected float sphereDetectionRadius = 18f;
     [SerializeField] protected LayerMask whatIsEnemy;
     [SerializeField] protected float maxHitDistance;
 
@@ -57,6 +57,13 @@ public abstract class CropBase : MonoBehaviour
     {
         BehaviourCheck();
         SetAnimatorParameters();
+
+        Collider[] enemyColliders = Physics.OverlapSphere(playerPos.position, sphereDetectionRadius, whatIsEnemy);
+
+        foreach(Collider enemyCollider in enemyColliders)
+        {
+            Debug.Log("Enemy detected");
+        }
     }
 
     private void FixedUpdate()
@@ -164,9 +171,12 @@ public abstract class CropBase : MonoBehaviour
 
     protected void SetDestination(Vector3 desiredFollowingPos, float speed)
     {
-        transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / speed);
+        //transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / speed);
 
-        //Lerp on a fixed value for better following.
+
+        //Moves at a constant speed.
+        transform.position = Vector3.MoveTowards(transform.position, desiredFollowingPos, Time.deltaTime * 2.5f);
+
 
     }
     protected void LookAtTarget(Transform target)
@@ -220,12 +230,9 @@ public abstract class CropBase : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Cambia el color del gizmo a color azul
         Gizmos.color = Color.blue;
-        //Traza una linea desde la planta hacia actual del Sphere Cast.
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * maxHitDistance);
-        //Crea la esfera visual al final de la distancia actual.
-        Gizmos.DrawWireSphere(transform.position + transform.forward * maxHitDistance, sphereDetectionRadius);
+
+        Gizmos.DrawWireSphere(playerPos.position, sphereDetectionRadius);
     }
 
     private void OnDestroy()

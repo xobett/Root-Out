@@ -34,7 +34,7 @@ public class UIInventory : MonoBehaviour
 
     [SerializeField] private int itemsDisplayed;
 
-    private bool isOpened;
+    private bool isOpened = false;
 
     private float targetValue;
 
@@ -118,11 +118,6 @@ public class UIInventory : MonoBehaviour
         {
             RegainInput();
         }
-    }
-
-    public void DisplayInventoryItemInfo()
-    {
-
     }
 
     private void DeactivateInput()

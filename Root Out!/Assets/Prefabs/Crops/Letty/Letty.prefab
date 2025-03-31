@@ -139,13 +139,15 @@ MonoBehaviour:
   damage: 0
   frontShootingDistance: 0
   sideShootingDistance: 0
-  sphereDetectionRadius: 0.3
+  sphereDetectionRadius: 18
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
   maxHitDistance: 10
+  arrivedToShootPos: 0
   enemyDetected: 0
   isFollowingPlayer: 0
+  isFollowingEnemy: 0
   lettyShield: {fileID: 8254129718523729923, guid: 95c325d1fd39df04dba740d658de0ab0, type: 3}
 --- !u!1001 &4382833622939879883
 PrefabInstance:
