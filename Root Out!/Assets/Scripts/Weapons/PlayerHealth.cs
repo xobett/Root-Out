@@ -1,24 +1,35 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("PLAYER HEALTH SETTINGS")]
     public float maxHealth = 100;
     [SerializeField, Range(0, 100)] public float currentHealth;
     [SerializeField] public Image playerLifeBar;
 
 
+    [Header("PLAYER DEATH ANIMATION SETTINGS")]
+    [SerializeField] private Animator playerAnimCtrlr;
+    [SerializeField] private Animator deathPanelAnimCtrlr;
+
+    [SerializeField] private Volume volume;
+    private ColorAdjustments colorAdjustments;
+
+    [SerializeField] private GameObject hud;
 
     public void TakeDamagePlayer(float damage)
     {
         currentHealth -= damage;
         playerLifeBar.fillAmount = currentHealth / maxHealth; // Calcula el fillAmount basado en la vida actual y máxima
-        //Debug.Log("Vida del jugador: " + currentHealth);
 
         if (currentHealth <= 0)
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
 
@@ -38,20 +49,48 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
 
-    void Die()
+    private IEnumerator Die()
     {
-        var playerCharacterCtrlr = gameObject.GetComponent<CharacterController>();
-        var lastCheckpointSaved = gameObject.GetComponent<CheckpointUpdater>().lastCheckpoint;
+        hud.SetActive(false);
 
-        playerCharacterCtrlr.enabled = false;
-        gameObject.transform.position = lastCheckpointSaved;
-        playerCharacterCtrlr.enabled = true;
+        playerAnimCtrlr.SetTrigger("Death");
+
+        var playerMovement = gameObject.GetComponent<PlayerMovement>();
+        var playerCropHandler = gameObject.GetComponent<CropHandler>();
+        var playerLeafJump = gameObject.GetComponent<LeafJump>();
+        var cameraFollow = Camera.main.GetComponent<CameraFollow>();
+
+        //Desactiva el input del player.
+        playerMovement.enabled = false;
+        playerCropHandler.enabled = false;
+        playerLeafJump.enabled = false;
+        cameraFollow.enabled = false;
+
+        //yield return new WaitForSecondsRealtime(2f);
+        
+        volume.profile.TryGet(out colorAdjustments);
+
+        float duration = 5f;
+        float elapsed = 0f;
+        float startSaturation = 50f;
+        float endSaturation = -100f;
+
+        while (elapsed < duration)
+        {
+            Time.timeScale = Mathf.Lerp(1f, 0f, elapsed/duration);
+            colorAdjustments.saturation.value = Mathf.Lerp(startSaturation, endSaturation, elapsed / duration);
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+
+        deathPanelAnimCtrlr.SetTrigger("Intro");
+        Cursor.lockState = CursorLockMode.None;
     }
-
 
     internal void TryGetComponent<T>()
     {

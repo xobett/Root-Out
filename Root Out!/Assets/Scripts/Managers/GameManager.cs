@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GrowthSelection
 {
@@ -317,6 +318,22 @@ public class GameManager : MonoBehaviour
 
         normalEventActive = false;
 
+    }
+
+    #endregion
+
+    #region Game Methods
+
+    public void PlayAgain()
+    {
+        var actualScene = SceneManager.GetActiveScene();
+        SceneManager.LoadSceneAsync(actualScene.buildIndex);
+        Time.timeScale = 1f;
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     #endregion
