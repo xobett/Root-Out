@@ -75,9 +75,6 @@ namespace Weapons
 
         #region Variable Perk OneShoot
         private float originalDamage; // Guarda el daño original del arma
-
-        [Header("Perk OneShoot")]
-        [SerializeField] private float coldDown; // Tiempo de espera entre disparos
         #endregion
 
         #region References
@@ -352,6 +349,14 @@ namespace Weapons
         }
         #endregion
 
+        #region Coroutine ExplosionCooldown
+        private IEnumerator ExplosionCooldown()
+        {
+            yield return new WaitForSeconds(4f); // Esperar 3 segundos
+            canInstantiateExplosion = true; // Permitir que la explosión pueda instanciarse nuevamente
+        }
+        #endregion
+
         #region Spread & NonSpread Direction
         private Vector3 GetSpreadDirection(Vector3 baseDirection) // Método para obtener una dirección con dispersión
         {
@@ -384,12 +389,6 @@ namespace Weapons
             Quaternion rotation = Quaternion.Euler(0, angle, 0); // Crea una rotación basada en el ángulo
             return rotation * baseDirection; // Aplica la rotación a la dirección base
         }
-        private IEnumerator ExplosionCooldown()
-        {
-            yield return new WaitForSeconds(3f); // Esperar 3 segundos
-            canInstantiateExplosion = true; // Permitir que la explosión pueda instanciarse nuevamente
-        }
-
         #endregion
 
         #region Perk OneShoot
@@ -402,12 +401,12 @@ namespace Weapons
         {
             while (true)
             {
-                originalDamage += 100; // Guardar el daño original
+                originalDamage = 100; // Guardar el daño original
                 Debug.LogWarning("Damage increased by 100!" + originalDamage); // Mensaje de depuración  
-                yield return new WaitForSeconds(coldDown); // Esperar el tiempo de espera  
-                damage = originalDamage; // Restaurar el daño original
+                yield return new WaitForSeconds(4f); // Esperar el tiempo de espera  
+                originalDamage = damage; // Restaurar el daño original
                 Debug.LogWarning("daño original" + damage); // Mensaje de depuración  
-                yield return new WaitForSeconds(coldDown); // Esperar el tiempo de espera  
+                yield return new WaitForSeconds(15f); // Esperar el tiempo de espera  
                 Debug.LogWarning("Reinicio de perk"); // Mensaje de depuración  
             }
         }

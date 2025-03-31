@@ -310,6 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoDeApuntado: 2
   aiming: {fileID: 2688946835037105613}
+  cropAiming: {fileID: 0}
   weaponType: 1
   spreadAngle: 0.1
   horizontalSpread: 0
@@ -324,7 +325,7 @@ MonoBehaviour:
   maxBulletReserve: 50
   damage: 20
   range: 5
-  fireRate: 0.3
+  fireRate: 3
   reloadTime: 4
   bulletForce: 20
   lifeTimeBullets: 3

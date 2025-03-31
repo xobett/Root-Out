@@ -9,16 +9,11 @@ public class ExplosionUpgrade : MonoBehaviour, IInteractable
     [SerializeField] private GameObject explosionPrefab;
     private WeaponsBase weapon;
 
-    private void Start()
-    {
-        weapon = FindFirstObjectByType<WeaponsBase>();
-    }
-
     public void OnInteract()
     {
-        if (weapon != null)
+        foreach (GameObject weaponObject in GameObject.FindGameObjectsWithTag("Weapon"))
         {
-
+            weapon = weaponObject.GetComponent<WeaponsBase>();
             weapon.explosionUpgradeActivated = true; // Activar la mejora de explosión
             weapon.explosivePrefab = explosionPrefab; // Asignar el prefab de la explosión
             Debug.Log("Explosion Upgrade Activated: " + weapon.damage);

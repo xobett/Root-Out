@@ -45,15 +45,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.471
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.71
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cf3413c671e60498d274858f9c1651, type: 3}
       propertyPath: m_LocalRotation.w
@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoDeApuntado: 1
   aiming: {fileID: 7279786509918256495}
+  cropAiming: {fileID: 0}
   weaponType: 0
   spreadAngle: 5
   horizontalSpread: 0
@@ -236,7 +237,7 @@ MonoBehaviour:
   maxBulletReserve: 25
   damage: 40
   range: 3
-  fireRate: 0.7
+  fireRate: 3
   reloadTime: 3
   bulletForce: 100
   lifeTimeBullets: 0.5

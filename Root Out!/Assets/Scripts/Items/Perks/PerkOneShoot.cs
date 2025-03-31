@@ -8,17 +8,18 @@ public class PerkOneShoot : MonoBehaviour, IInteractable
 
     private WeaponsBase weaponBase;
 
-    void Start()
-    {
-        weaponBase = FindFirstObjectByType<WeaponsBase>();
-    }
-
     public void OnInteract()
     {
+        foreach (GameObject weaponObject in GameObject.FindGameObjectsWithTag("Weapon"))
+        {
+            weaponBase = weaponObject.GetComponent<WeaponsBase>();
+            weaponBase.StartDamageIncreaseRoutine(); // Iniciar la corrutina en WeaponsBase
+            Debug.Log("One Shoot Activated: " + weaponBase.damage);
+        }
+
         var playerInventory = GameManager.instance.playerInventoryHandler;
         playerInventory.AddItem(inventoryItemToAdd);
 
-        weaponBase.StartDamageIncreaseRoutine(); // Iniciar la corrutina en WeaponsBase
         Destroy(gameObject); // Destruye el objeto de mejora
     }
 }
