@@ -9,18 +9,18 @@ public class CropHandler : MonoBehaviour
     [SerializeField] private List<CropData> crops = new List<CropData>();
     [SerializeField] private CropData equippedCrop;
 
-    private const int maxDrop_LettyCrops = 4;
-    private const int maxDrop_SweetJackCrops = 2;
-    private const int maxDrop_PepeHabaneroCrops = 2;
-    private const int maxDrop_RedChibiCrops = 2;
-    private const int maxDrop_CornyGuyCrops = 2;
+    [SerializeField] private int maxDrop_LettyCrops = 4;
+    [SerializeField] private int maxDrop_SweetJackCrops = 2;
+    [SerializeField] private int maxDrop_PepeHabaneroCrops = 2;
+    [SerializeField] private int maxDrop_RedChibiCrops = 2;
+    [SerializeField] private int maxDrop_CornyGuyCrops = 2;
 
     [Header("TYPES OF CROPS DROPPED")]
-    [SerializeField] private int droppedLettyCrops;
-    [SerializeField] private int droppedSweetJackCrops;
-    [SerializeField] private int droppedPepeHabaneroCrops;
-    [SerializeField] private int droppedRedChibiCrops;
-    [SerializeField] private int droppedCornyGuyCrops;
+    private int droppedLettyCrops;
+    private int droppedSweetJackCrops;
+    private int droppedPepeHabaneroCrops;
+    private int droppedRedChibiCrops;
+    private int droppedCornyGuyCrops;
 
     [Header("CROP TIMERS")]
     private float timer_LettyCrop;
@@ -31,7 +31,7 @@ public class CropHandler : MonoBehaviour
 
     [Header("TOTAL CROPS DROPPED")]
     [SerializeField] private int totalCropsDropped;
-    private const int maxCropsOnField = 15;
+    [SerializeField] private int maxCropsOnField = 15;
 
     [Header("SPAWN CROP SETTINGS")]
     private const float spawnDistance = 1.5f;
@@ -49,8 +49,8 @@ public class CropHandler : MonoBehaviour
 
     void Start()
     {
-        equippedCrop = crops[3];
-        SetUIIcons();
+        //equippedCrop = crops[3];
+        //SetUIIcons();
     }
 
     // Update is called once per frame
@@ -110,7 +110,7 @@ public class CropHandler : MonoBehaviour
 
             Debug.Log($"Cooldown time of {equippedCrop.CropName} is {equippedCrop.CropCooldownTime}");
 
-            Vector3 spawnPosition = transform.position + transform.forward * spawnDistance;
+            Vector3 spawnPosition = transform.position - transform.forward * spawnDistance;
             spawnPosition.y += 1;
             GameObject clone = Instantiate(equippedCrop.CropPrefab, spawnPosition, transform.rotation);
             totalCropsDropped++;
@@ -127,7 +127,7 @@ public class CropHandler : MonoBehaviour
 
     private void CropSelection()
     {
-        if (!wheelIsRotating)
+        if (!wheelIsRotating && MouseScrollWheelInput() != 0)
         {
             if (MouseScrollWheelInput() > 0 && IsPressingShift())
             {
@@ -205,7 +205,10 @@ public class CropHandler : MonoBehaviour
 
     public void AddCrop(CropData crop)
     {
-        crops.Add(crop);
+
+        //crops.Add(crop);
+        crops.Remove(crops[0]);
+        crops.Insert(0, crop);
         equippedCrop = crops[crops.IndexOf(crop)];
     }
 

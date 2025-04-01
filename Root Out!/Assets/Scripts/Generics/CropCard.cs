@@ -16,7 +16,7 @@ public class CropCard : MonoBehaviour, IInteractable
         var cropHandler = GameManager.instance.playerCropHandler;
         var inventoryHandler = GameManager.instance.playerInventoryHandler;
 
-        //cropHandler.AddCrop(cropToAdd);
+        cropHandler.AddCrop(cropToAdd);
         inventoryHandler.AddItem(inventoryItemToAdd);
 
         Debug.Log($"{cropToAdd.CropName} was added to the crop handler.");
