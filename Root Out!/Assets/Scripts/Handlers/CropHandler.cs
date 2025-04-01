@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +11,9 @@ public class CropHandler : MonoBehaviour
     [Header("INVENTORY SETTINGS")]
     [SerializeField] private List<CropData> crops = new List<CropData>();
     [SerializeField] private CropData equippedCrop;
+
+    [SerializeField] private GameObject[] cropCards; 
+    [SerializeField] private int cardToActivate = 0;
 
     [SerializeField] private int maxDrop_LettyCrops = 4;
     [SerializeField] private int maxDrop_SweetJackCrops = 2;
@@ -127,7 +133,7 @@ public class CropHandler : MonoBehaviour
 
     private void CropSelection()
     {
-        if (!wheelIsRotating && MouseScrollWheelInput() != 0)
+        if (!wheelIsRotating && MouseScrollWheelInput() != 0 && crops.Count > 2)
         {
             if (MouseScrollWheelInput() > 0 && IsPressingShift())
             {
@@ -205,18 +211,31 @@ public class CropHandler : MonoBehaviour
 
     public void AddCrop(CropData crop)
     {
-
-        //crops.Add(crop);
-        crops.Remove(crops[0]);
-        crops.Insert(0, crop);
+        crops.Add(crop);
         equippedCrop = crops[crops.IndexOf(crop)];
+
+        if (cardToActivate < cropCards.Length)
+        {
+            cropCards[cardToActivate].SetActive(true);
+            cardToActivate++;
+        }
+
+        SetUIIcons();
     }
 
     private void SetUIIcons()
     {
-        previousCropIcon.sprite = equippedCrop == crops[0] ? crops[crops.Count - 1].CropIcon : crops[crops.IndexOf(equippedCrop) - 1].CropIcon;
+        if (crops.Count == 2)
+        {
+            previousCropIcon.sprite = crops[crops.IndexOf(equippedCrop) - 1].CropIcon;
+        }
+        else if (crops.Count > 2)
+        {
+            previousCropIcon.sprite = equippedCrop == crops[0] ? crops[crops.Count - 1].CropIcon : crops[crops.IndexOf(equippedCrop) - 1].CropIcon;
+            nextCropIcon.sprite = equippedCrop == crops[crops.Count - 1] ? crops[0].CropIcon : crops[crops.IndexOf(equippedCrop) + 1].CropIcon;
+        }
+
         equippedCropIcon.sprite = equippedCrop.CropIcon;
-        nextCropIcon.sprite = equippedCrop == crops[crops.Count - 1] ? crops[0].CropIcon : crops[crops.IndexOf(equippedCrop) + 1].CropIcon;
     }
 
     private int GetLettyShieldLeafs()
