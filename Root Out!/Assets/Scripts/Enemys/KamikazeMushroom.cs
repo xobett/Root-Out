@@ -90,8 +90,8 @@ public class KamikazeMushroom : WeaponsBase
             SmmokeEffect();
             Debug.Log("BOOM");
             sunFlowerScript.DamageSunFlower(damage); // Llama al método DamageSunFlower del script Sunflower
+            agent.enabled = false;
             Destroy(gameObject);
-            Debug.Log($"Daño al girasol : " + sunFlowerScript.currentHealth);
         }
     }
     private void SmmokeEffect()
