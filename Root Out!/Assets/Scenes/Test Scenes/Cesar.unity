@@ -2106,7 +2106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &377774173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3403,7 +3403,7 @@ GameObject:
   - component: {fileID: 614929252}
   - component: {fileID: 614929251}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Next Crop Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3460,7 +3460,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3914,7 +3914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &697197685
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6306,7 +6306,7 @@ GameObject:
   - component: {fileID: 1346328552}
   - component: {fileID: 1346328551}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Equipped Crop Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6361,7 +6361,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8611,7 +8611,7 @@ GameObject:
   - component: {fileID: 1701234678}
   - component: {fileID: 1701234677}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Previous Crop Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8668,7 +8668,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9083,7 +9083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1761625528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10716,6 +10716,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1761625529}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: nextCropText
+      value: 
+      objectReference: {fileID: 614929251}
+    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: selectionWheel
       value: 
       objectReference: {fileID: 1012661591}
@@ -10732,9 +10736,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 697197686}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: equippedCropText
+      value: 
+      objectReference: {fileID: 1346328551}
+    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: previousCropIcon
       value: 
       objectReference: {fileID: 377774174}
+    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: previousCropText
+      value: 
+      objectReference: {fileID: 1701234677}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: 'crops.Array.data[0]'
       value: 
@@ -10969,7 +10981,7 @@ PrefabInstance:
       objectReference: {fileID: 674236099}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: timeToCountdown
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: genuineGrowthCost

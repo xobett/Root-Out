@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ public class CropHandler : MonoBehaviour
     [SerializeField] private CropData nextCrop;
 
     [SerializeField] private GameObject[] cropCards;
-    [SerializeField] private int cardToActivate = 0;
+    private int cardToActivate = 0;
 
     [SerializeField] private int maxDrop_LettyCrops = 4;
     [SerializeField] private int maxDrop_SweetJackCrops = 2;
@@ -27,13 +28,6 @@ public class CropHandler : MonoBehaviour
     private int droppedRedChibiCrops;
     private int droppedCornyGuyCrops;
 
-    [Header("CROP TIMERS AND COOLDOWN BYPASSES")]
-    private float timer_LettyCrop;
-    private float timer_SweetJackCrop;
-    private float timer_PepeHabaneroCrop;
-    private float timer_RedChibiCrop;
-    private float timer_CornyGuyCrop;
-
     [Header("TOTAL CROPS DROPPED")]
     [SerializeField] private int totalCropsDropped;
     [SerializeField] private int maxCropsOnField = 15;
@@ -41,84 +35,36 @@ public class CropHandler : MonoBehaviour
     [Header("SPAWN CROP SETTINGS")]
     private const float spawnDistance = 1.5f;
 
-    [Header("SELECTION WHEEL ICONS")]
+    [Header("CROP ICON SETTINGS")]
     [SerializeField] private Image previousCropIcon;
     [SerializeField] private Image equippedCropIcon;
     [SerializeField] private Image nextCropIcon;
+
+    [SerializeField] private TextMeshProUGUI previousCropText;
+    [SerializeField] private TextMeshProUGUI equippedCropText;
+    [SerializeField] private TextMeshProUGUI nextCropText;
 
     [Header("COOLDOWN ANIMATION SETTINGS")]
     [SerializeField] private float fadeSpeed;
     [SerializeField] private float minimumValue;
     [SerializeField] private float maximumValue;
-    float lerpTime = 0.0f;
+    private float lerpTime = 0.0f;
 
     void Update()
     {
         DropCrop();
         CropSelection();
-        PlayCropTimers();
 
+        PlayCropTimers();
+        DisplayCropsStats();
         CooldownAnimation();
     }
 
-    void PreviousCropCooldown()
+    private void DisplayCropsStats()
     {
-        Color changingColor = Color.white;
-        changingColor.a = minimumValue;
-
-        if (previousCrop != null)
-        {
-            if (previousCrop.cooldownAnimation)
-            {
-                Debug.Log("Previous item on cooldown");
-                previousCropIcon.color = Color.Lerp(previousCropIcon.color, changingColor, lerpTime);
-            }
-            else
-            {
-                changingColor.a = 1;
-                previousCropIcon.color = changingColor;
-            }
-        }
-    }
-
-    void EquippedCropCooldown()
-    {
-        Color changingColor = Color.white;
-        changingColor.a = minimumValue;
-
-        if (equippedCrop != null)
-        {
-            if (equippedCrop.cooldownAnimation)
-            {
-                equippedCropIcon.color = Color.Lerp(equippedCropIcon.color, changingColor, lerpTime);
-            }
-            else
-            {
-                changingColor.a = 1;
-                equippedCropIcon.color = changingColor;
-            }
-        }
-    }
-
-    void NextCropCooldown()
-    {
-        Color changingColor = Color.white;
-        changingColor.a = minimumValue;
-
-        if (nextCrop != null)
-        {
-            if (nextCrop.cooldownAnimation)
-            {
-                Debug.Log("Next item on cooldown");
-                nextCropIcon.color = Color.Lerp(nextCropIcon.color, changingColor, lerpTime);
-
-            }
-            else
-            {
-                changingColor.a = 1;
-                nextCropIcon.color = changingColor;
-            }
-        }
+        if (previousCrop != null) previousCropText.text = $"+{previousCrop.cooldownBypass}";
+        if (equippedCrop != null) equippedCropText.text = $"+{equippedCrop.cooldownBypass}";
+        if (nextCrop != null) nextCropText.text = $"+{nextCrop.cooldownBypass}";
     }
 
     private void CooldownAnimation()
@@ -146,46 +92,48 @@ public class CropHandler : MonoBehaviour
             {
                 case "Letty":
                     {
-                        if (GetLettyShieldLeafs() == 3 || droppedLettyCrops >= maxDrop_LettyCrops || timer_LettyCrop > 0) return;
+                        if (GetLettyShieldLeafs() == 3 || droppedLettyCrops >= maxDrop_LettyCrops || equippedCrop.timer > 0) return;
                         droppedLettyCrops++;
-                        timer_LettyCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
 
                 case "Corny Guy":
                     {
-                        if (droppedCornyGuyCrops >= maxDrop_CornyGuyCrops || timer_CornyGuyCrop > 0) return;
+                        if (droppedCornyGuyCrops >= maxDrop_CornyGuyCrops || equippedCrop.timer > 0) return;
                         droppedCornyGuyCrops++;
-                        timer_CornyGuyCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
 
                 case "Red Chibi Pepper":
                     {
-                        if (droppedRedChibiCrops >= maxDrop_RedChibiCrops || timer_RedChibiCrop > 0) return;
+                        if (droppedRedChibiCrops >= maxDrop_RedChibiCrops || equippedCrop.timer > 0) return;
                         droppedRedChibiCrops++;
-                        timer_RedChibiCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
 
                 case "Pepe Habanero":
                     {
-                        if (droppedPepeHabaneroCrops >= maxDrop_PepeHabaneroCrops || timer_PepeHabaneroCrop > 0) return;
+                        if (droppedPepeHabaneroCrops >= maxDrop_PepeHabaneroCrops || equippedCrop.timer > 0) return;
                         droppedPepeHabaneroCrops++;
-                        timer_PepeHabaneroCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
 
                 case "Sweet Jack O Pumpkin":
                     {
-                        if (droppedSweetJackCrops >= maxDrop_SweetJackCrops || timer_SweetJackCrop > 0) return;
+                        if (droppedSweetJackCrops >= maxDrop_SweetJackCrops || equippedCrop.timer > 0) return;
                         droppedSweetJackCrops++;
-                        timer_SweetJackCrop = equippedCrop.CropCooldownTime;
                         break;
                     }
             }
 
-            equippedCrop.timer = equippedCrop.CropCooldownTime;
+            if (equippedCrop.cooldownBypass > 0)
+            {
+                equippedCrop.cooldownBypass--;
+            }
+            else
+            {
+                equippedCrop.timer = equippedCrop.CropCooldownTime;
+            }
 
             Debug.Log($"Cooldown time of {equippedCrop.CropName} is {equippedCrop.CropCooldownTime}");
 
@@ -198,12 +146,6 @@ public class CropHandler : MonoBehaviour
 
     private void PlayCropTimers()
     {
-        timer_CornyGuyCrop -= Time.deltaTime;
-        timer_LettyCrop -= Time.deltaTime;
-        timer_PepeHabaneroCrop -= Time.deltaTime;
-        timer_RedChibiCrop -= Time.deltaTime;
-        timer_SweetJackCrop -= Time.deltaTime;
-
         for (int i = 0; i < crops.Count; i++)
         {
             crops[i].timer -= Time.deltaTime;
@@ -221,7 +163,7 @@ public class CropHandler : MonoBehaviour
 
     private void CropSelection()
     {
-        if (MouseScrollWheelInput() != 0 && crops.Count > 2)
+        if (MouseScrollWheelInput() != 0 && crops.Count > 1)
         {
             if (MouseScrollWheelInput() > 0 && IsPressingShift())
             {
@@ -300,7 +242,7 @@ public class CropHandler : MonoBehaviour
     {
         if (crops.Count == 2)
         {
-            previousCrop = crops[crops.IndexOf(equippedCrop) - 1];
+            previousCrop = equippedCrop == crops[0] ? crops[crops.Count - 1] : crops[crops.IndexOf(equippedCrop) - 1];
             previousCropIcon.sprite = previousCrop.CropIcon;
         }
         else if (crops.Count > 2)
@@ -314,7 +256,6 @@ public class CropHandler : MonoBehaviour
 
         equippedCropIcon.sprite = equippedCrop.CropIcon;
     }
-
     private int GetLettyShieldLeafs()
     {
         int currentShieldLeafs = 0;
@@ -329,11 +270,67 @@ public class CropHandler : MonoBehaviour
         return currentShieldLeafs;
     }
 
-    #region Inputs
+    #region Cooldown animation methods
+    void PreviousCropCooldown()
+    {
+        Color changingColor = Color.white;
+        changingColor.a = minimumValue;
 
+        if (previousCrop != null)
+        {
+            if (previousCrop.cooldownAnimation)
+            {
+                previousCropIcon.color = Color.Lerp(previousCropIcon.color, changingColor, lerpTime);
+            }
+            else
+            {
+                changingColor.a = 1;
+                previousCropIcon.color = changingColor;
+            }
+        }
+    }
+    void EquippedCropCooldown()
+    {
+        Color changingColor = Color.white;
+        changingColor.a = minimumValue;
+
+        if (equippedCrop != null)
+        {
+            if (equippedCrop.cooldownAnimation)
+            {
+                equippedCropIcon.color = Color.Lerp(equippedCropIcon.color, changingColor, lerpTime);
+            }
+            else
+            {
+                changingColor.a = 1;
+                equippedCropIcon.color = changingColor;
+            }
+        }
+    }
+    void NextCropCooldown()
+    {
+        Color changingColor = Color.white;
+        changingColor.a = minimumValue;
+
+        if (nextCrop != null)
+        {
+            if (nextCrop.cooldownAnimation)
+            {
+                nextCropIcon.color = Color.Lerp(nextCropIcon.color, changingColor, lerpTime);
+            }
+            else
+            {
+                changingColor.a = 1;
+                nextCropIcon.color = changingColor;
+            }
+        }
+    }
+
+    #endregion
+
+    #region Inputs
     private bool IsPressingShift() => Input.GetKey(KeyCode.LeftShift);
     private float MouseScrollWheelInput() => Input.GetAxis("Mouse ScrollWheel");
     private bool IsDropping() => Input.GetKeyDown(KeyCode.Q);
-
     #endregion
 }
