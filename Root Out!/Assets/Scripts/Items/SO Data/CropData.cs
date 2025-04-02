@@ -18,9 +18,13 @@ public class CropData : ScriptableObject
     [SerializeField] private float cropRunSpeed;
 
     [Header("ABILITY SETTINGS")]
-
     [SerializeField] private float cropCooldownTime;
     [SerializeField] private float cropDamage;
+
+    [SerializeField] public int cooldownBypass;
+    [SerializeField] public bool cooldownAnimation;
+
+    [SerializeField] public float timer;
 
     [Header("VISUAL ICON")]
 

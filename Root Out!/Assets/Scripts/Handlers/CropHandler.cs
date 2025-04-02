@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +6,10 @@ public class CropHandler : MonoBehaviour
 {
     [Header("INVENTORY SETTINGS")]
     [SerializeField] private List<CropData> crops = new List<CropData>();
+
+    [SerializeField] private CropData previousCrop;
     [SerializeField] private CropData equippedCrop;
+    [SerializeField] private CropData nextCrop;
 
     [SerializeField] private GameObject[] cropCards;
     [SerializeField] private int cardToActivate = 0;
@@ -32,12 +34,6 @@ public class CropHandler : MonoBehaviour
     private float timer_RedChibiCrop;
     private float timer_CornyGuyCrop;
 
-    private int lettyCooldownBypass;
-    private int sweetJackCooldownBypass;
-    private int pepeHabaneroCooldownBypass;
-    private int redChibiCooldownBypass;
-    private int cornyGuyCooldownBypass;
-
     [Header("TOTAL CROPS DROPPED")]
     [SerializeField] private int totalCropsDropped;
     [SerializeField] private int maxCropsOnField = 15;
@@ -46,17 +42,9 @@ public class CropHandler : MonoBehaviour
     private const float spawnDistance = 1.5f;
 
     [Header("SELECTION WHEEL ICONS")]
-    [SerializeField] private Image selectionWheel;
-
     [SerializeField] private Image previousCropIcon;
     [SerializeField] private Image equippedCropIcon;
     [SerializeField] private Image nextCropIcon;
-
-    private const float rotationValue = 60f;
-    [SerializeField, Range(0f, 5f)] private float rotationSpeed;
-    private bool wheelIsRotating;
-
-    private float targetValue;
 
     [Header("COOLDOWN ANIMATION SETTINGS")]
     [SerializeField] private float fadeSpeed;
@@ -73,12 +61,72 @@ public class CropHandler : MonoBehaviour
         CooldownAnimation();
     }
 
+    void PreviousCropCooldown()
+    {
+        Color changingColor = Color.white;
+        changingColor.a = minimumValue;
+
+        if (previousCrop != null)
+        {
+            if (previousCrop.cooldownAnimation)
+            {
+                Debug.Log("Previous item on cooldown");
+                previousCropIcon.color = Color.Lerp(previousCropIcon.color, changingColor, lerpTime);
+            }
+            else
+            {
+                changingColor.a = 1;
+                previousCropIcon.color = changingColor;
+            }
+        }
+    }
+
+    void EquippedCropCooldown()
+    {
+        Color changingColor = Color.white;
+        changingColor.a = minimumValue;
+
+        if (equippedCrop != null)
+        {
+            if (equippedCrop.cooldownAnimation)
+            {
+                equippedCropIcon.color = Color.Lerp(equippedCropIcon.color, changingColor, lerpTime);
+            }
+            else
+            {
+                changingColor.a = 1;
+                equippedCropIcon.color = changingColor;
+            }
+        }
+    }
+
+    void NextCropCooldown()
+    {
+        Color changingColor = Color.white;
+        changingColor.a = minimumValue;
+
+        if (nextCrop != null)
+        {
+            if (nextCrop.cooldownAnimation)
+            {
+                Debug.Log("Next item on cooldown");
+                nextCropIcon.color = Color.Lerp(nextCropIcon.color, changingColor, lerpTime);
+
+            }
+            else
+            {
+                changingColor.a = 1;
+                nextCropIcon.color = changingColor;
+            }
+        }
+    }
+
     private void CooldownAnimation()
     {
-        Color newColor = Color.white;
-        newColor.a = minimumValue;
+        PreviousCropCooldown();
+        EquippedCropCooldown();
+        NextCropCooldown();
 
-        equippedCropIcon.color = Color.Lerp(equippedCropIcon.color, newColor, lerpTime);
         lerpTime += fadeSpeed * Time.deltaTime;
 
         if (lerpTime > 1)
@@ -137,6 +185,8 @@ public class CropHandler : MonoBehaviour
                     }
             }
 
+            equippedCrop.timer = equippedCrop.CropCooldownTime;
+
             Debug.Log($"Cooldown time of {equippedCrop.CropName} is {equippedCrop.CropCooldownTime}");
 
             Vector3 spawnPosition = transform.position - transform.forward * spawnDistance;
@@ -145,6 +195,7 @@ public class CropHandler : MonoBehaviour
             totalCropsDropped++;
         }
     }
+
     private void PlayCropTimers()
     {
         timer_CornyGuyCrop -= Time.deltaTime;
@@ -152,46 +203,36 @@ public class CropHandler : MonoBehaviour
         timer_PepeHabaneroCrop -= Time.deltaTime;
         timer_RedChibiCrop -= Time.deltaTime;
         timer_SweetJackCrop -= Time.deltaTime;
+
+        for (int i = 0; i < crops.Count; i++)
+        {
+            crops[i].timer -= Time.deltaTime;
+
+            if (crops[i].timer > 0)
+            {
+                crops[i].cooldownAnimation = true;
+            }
+            else
+            {
+                crops[i].cooldownAnimation = false;
+            }
+        }
     }
 
     private void CropSelection()
     {
-        if (!wheelIsRotating && MouseScrollWheelInput() != 0 && crops.Count > 2)
+        if (MouseScrollWheelInput() != 0 && crops.Count > 2)
         {
             if (MouseScrollWheelInput() > 0 && IsPressingShift())
             {
                 equippedCrop = equippedCrop == crops[crops.Count - 1] ? crops[0] : crops[crops.IndexOf(equippedCrop) + 1];
-                StartCoroutine(RotateSelectionWheel(rotationValue));
             }
             else if (MouseScrollWheelInput() < 0 && IsPressingShift())
             {
                 equippedCrop = equippedCrop == crops[0] ? crops[crops.Count - 1] : crops[crops.IndexOf(equippedCrop) - 1];
-                StartCoroutine(RotateSelectionWheel(-rotationValue));
             }
             SetUIIcons();
         }
-    }
-
-    private IEnumerator RotateSelectionWheel(float targetValue)
-    {
-        wheelIsRotating = true;
-        var selectionWheelRect = selectionWheel.GetComponent<RectTransform>();
-
-        Quaternion targetRotation = Quaternion.Euler(0, 0, selectionWheel.transform.eulerAngles.z + targetValue);
-
-        float time = 0f;
-
-        while (time < 1)
-        {
-            selectionWheelRect.rotation = Quaternion.Slerp(selectionWheelRect.rotation, targetRotation, time);
-            time += Time.deltaTime * rotationSpeed;
-            yield return null;
-        }
-        selectionWheelRect.rotation = targetRotation;
-
-        wheelIsRotating = false;
-
-        yield return null;
     }
 
     public void UpdateDroppedCrop(string cropName)
@@ -236,43 +277,14 @@ public class CropHandler : MonoBehaviour
     {
         if (crops.Contains(crop))
         {
-            switch(crop.CropName)
-            {
-                case "Letty":
-                    {
-                        lettyCooldownBypass++;
-                        break;
-                    }
-
-                case "Corny Guy":
-                    {
-                        cornyGuyCooldownBypass++;
-                        break;
-                    }
-
-                case "Red Chibi Pepper":
-                    {
-                        redChibiCooldownBypass++;
-                        break;
-                    }
-
-                case "Pepe Habanero":
-                    {
-                        pepeHabaneroCooldownBypass++;
-                        break;
-                    }
-
-                case "Sweet Jack O Pumpkin":
-                    {
-                        sweetJackCooldownBypass++;
-                        break;
-                    }
-            }
+            crops[crops.IndexOf(crop)].cooldownBypass++;
         }
         else
         {
             crops.Add(crop);
             equippedCrop = crops[crops.IndexOf(crop)];
+            equippedCrop.cooldownBypass = 0;
+            equippedCrop.timer = 0;
 
             if (cardToActivate < cropCards.Length)
             {
@@ -288,12 +300,16 @@ public class CropHandler : MonoBehaviour
     {
         if (crops.Count == 2)
         {
-            previousCropIcon.sprite = crops[crops.IndexOf(equippedCrop) - 1].CropIcon;
+            previousCrop = crops[crops.IndexOf(equippedCrop) - 1];
+            previousCropIcon.sprite = previousCrop.CropIcon;
         }
         else if (crops.Count > 2)
         {
-            previousCropIcon.sprite = equippedCrop == crops[0] ? crops[crops.Count - 1].CropIcon : crops[crops.IndexOf(equippedCrop) - 1].CropIcon;
-            nextCropIcon.sprite = equippedCrop == crops[crops.Count - 1] ? crops[0].CropIcon : crops[crops.IndexOf(equippedCrop) + 1].CropIcon;
+            previousCrop = equippedCrop == crops[0] ? crops[crops.Count - 1] : crops[crops.IndexOf(equippedCrop) - 1];
+            nextCrop = equippedCrop == crops[crops.Count - 1] ? crops[0] : crops[crops.IndexOf(equippedCrop) + 1];
+
+            previousCropIcon.sprite = previousCrop.CropIcon;
+            nextCropIcon.sprite = nextCrop.CropIcon;
         }
 
         equippedCropIcon.sprite = equippedCrop.CropIcon;
