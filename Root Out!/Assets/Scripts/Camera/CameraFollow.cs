@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float safeDistance;
     private RaycastHit hit;
 
+    private Image puntoDeMiraCanvas; // Se encuentra en el Player, es hijo del ShootSpawn
+
     void Start()
     {
         //Establece el frame rate a 60 fps.
@@ -47,6 +50,13 @@ public class CameraFollow : MonoBehaviour
         GetReferences();
 
         GetCameraNearPlaneSize();
+
+        puntoDeMiraCanvas = GameObject.FindGameObjectWithTag("PuntoMira").GetComponent<Image>();
+        if(puntoDeMiraCanvas != null)
+        {
+            Debug.Log("Punto de mira encontrado");
+        }
+
     }
 
     void Update()
@@ -147,6 +157,7 @@ public class CameraFollow : MonoBehaviour
             {
                 //Hace zoom y cambia la posicion de la camara.
                 StartCoroutine(CameraZoom(zoomIn, horizontalZoomOffset));
+                puntoDeMiraCanvas.enabled = true;
 
             }
             //Para dejar de hacer zoom, checa si ya no se esta haciendo zoom, si no se esta haciendo zoom actualmente y si se hizo zoom recientemente.
@@ -156,6 +167,8 @@ public class CameraFollow : MonoBehaviour
                 StartCoroutine(CameraZoom(-zoomIn, -horizontalZoomOffset));
 
                 aimed = false;
+
+                puntoDeMiraCanvas.enabled = false;
             }
         }
     }
