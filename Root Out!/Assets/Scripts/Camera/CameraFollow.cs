@@ -24,7 +24,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float zoomIn; // Float donde se almacena la distancia a la que se hara zoom, misma que se usara para restarla posterior a hacer zoom.
     [SerializeField] private float horizontalZoomOffset;
 
-    private bool isZooming; // Bool usado para saber si se esta haciendo zoom actualmente.
+    public bool isZooming; // Bool usado para saber si se esta haciendo zoom actualmente.
     private bool aimed; // Bool para saber si se ha hecho zoom recientemente.
 
     private Camera cam; // Camara de la cual se obtendran y modificaran los valores de zoom.

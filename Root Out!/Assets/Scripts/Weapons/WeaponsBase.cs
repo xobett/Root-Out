@@ -273,11 +273,11 @@ namespace Weapons
                 for (int i = 0; i < numberBullets; i++)
                 {
                     Vector3 direction = aiming.transform.forward; // Obtener la dirección de disparo
-                    Vector3 directionCamera = Camera.main.transform.forward; // Obtener la dirección de la cámara
+                    Vector3 directionCamera = Camera.main.transform.position - aiming.transform.position; // Obtener la dirección de la cámara
 
                     if (gameObject.CompareTag("Weapon"))
                     {
-                        directionCamera = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
+                        //directionCamera = weaponType == WeaponType.SpreadShot ? GetSpreadDirection(aiming.forward) : GetNonSpreadDirection(aiming.forward, i, numberBullets);
                     }
                     else
                     {
@@ -285,14 +285,14 @@ namespace Weapons
                     }
 
                     // Ajustar la dirección de disparo hacia arriba o hacia abajo
-                    if (shootUpwards)
-                    {
-                        direction = Vector3.up;
-                    }
-                    else if (shootDownwards)
-                    {
-                        direction = Vector3.down;
-                    }
+                    //if (shootUpwards)
+                    //{
+                    //    direction = Vector3.up;
+                    //}
+                    //else if (shootDownwards)
+                    //{
+                    //    direction = Vector3.down;
+                    //}
 
                     Vector3 positionOffset; // Variable para almacenar el desplazamiento de la posición de la bala
 
@@ -309,7 +309,7 @@ namespace Weapons
 
                     if (gameObject.tag == "Weapon")
                     {
-                        bullet = Instantiate(bulletPrefab, aiming.position + positionOffset, Quaternion.LookRotation(direction));
+                        bullet = Instantiate(bulletPrefab, aiming.position, Quaternion.LookRotation(directionCamera));
                     }
                     else
                     {
@@ -317,7 +317,15 @@ namespace Weapons
                     }
 
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                    rb.AddForce(direction * bulletForce, ForceMode.Impulse);
+
+                    if (gameObject.tag == "Weapon")
+                    {
+                        rb.AddForce(directionCamera  * bulletForce, ForceMode.Impulse);
+                    }
+                    else
+                    {
+                        rb.AddForce(direction * bulletForce, ForceMode.Impulse); 
+                    }
 
                     // Verifica si el prefab de la bala tiene el componente IBullet
                     if (bullet.TryGetComponent<IBullet>(out var bulletComponent))

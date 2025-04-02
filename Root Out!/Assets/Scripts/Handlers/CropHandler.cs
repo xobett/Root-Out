@@ -1,8 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +9,7 @@ public class CropHandler : MonoBehaviour
     [SerializeField] private List<CropData> crops = new List<CropData>();
     [SerializeField] private CropData equippedCrop;
 
-    [SerializeField] private GameObject[] cropCards; 
+    [SerializeField] private GameObject[] cropCards;
     [SerializeField] private int cardToActivate = 0;
 
     [SerializeField] private int maxDrop_LettyCrops = 4;
@@ -28,12 +25,18 @@ public class CropHandler : MonoBehaviour
     private int droppedRedChibiCrops;
     private int droppedCornyGuyCrops;
 
-    [Header("CROP TIMERS")]
+    [Header("CROP TIMERS AND COOLDOWN BYPASSES")]
     private float timer_LettyCrop;
     private float timer_SweetJackCrop;
     private float timer_PepeHabaneroCrop;
     private float timer_RedChibiCrop;
     private float timer_CornyGuyCrop;
+
+    private int lettyCooldownBypass;
+    private int sweetJackCooldownBypass;
+    private int pepeHabaneroCooldownBypass;
+    private int redChibiCooldownBypass;
+    private int cornyGuyCooldownBypass;
 
     [Header("TOTAL CROPS DROPPED")]
     [SerializeField] private int totalCropsDropped;
@@ -44,6 +47,7 @@ public class CropHandler : MonoBehaviour
 
     [Header("SELECTION WHEEL ICONS")]
     [SerializeField] private Image selectionWheel;
+
     [SerializeField] private Image previousCropIcon;
     [SerializeField] private Image equippedCropIcon;
     [SerializeField] private Image nextCropIcon;
@@ -52,19 +56,38 @@ public class CropHandler : MonoBehaviour
     [SerializeField, Range(0f, 5f)] private float rotationSpeed;
     private bool wheelIsRotating;
 
+    private float targetValue;
 
-    void Start()
-    {
-        //equippedCrop = crops[3];
-        //SetUIIcons();
-    }
+    [Header("COOLDOWN ANIMATION SETTINGS")]
+    [SerializeField] private float fadeSpeed;
+    [SerializeField] private float minimumValue;
+    [SerializeField] private float maximumValue;
+    float lerpTime = 0.0f;
 
-    // Update is called once per frame
     void Update()
     {
         DropCrop();
         CropSelection();
         PlayCropTimers();
+
+        CooldownAnimation();
+    }
+
+    private void CooldownAnimation()
+    {
+        Color newColor = Color.white;
+        newColor.a = minimumValue;
+
+        equippedCropIcon.color = Color.Lerp(equippedCropIcon.color, newColor, lerpTime);
+        lerpTime += fadeSpeed * Time.deltaTime;
+
+        if (lerpTime > 1)
+        {
+            float temp = maximumValue;
+            maximumValue = minimumValue;
+            minimumValue = temp;
+            lerpTime = 0f;
+        }
     }
 
     private void DropCrop()
@@ -211,16 +234,54 @@ public class CropHandler : MonoBehaviour
 
     public void AddCrop(CropData crop)
     {
-        crops.Add(crop);
-        equippedCrop = crops[crops.IndexOf(crop)];
-
-        if (cardToActivate < cropCards.Length)
+        if (crops.Contains(crop))
         {
-            cropCards[cardToActivate].SetActive(true);
-            cardToActivate++;
-        }
+            switch(crop.CropName)
+            {
+                case "Letty":
+                    {
+                        lettyCooldownBypass++;
+                        break;
+                    }
 
-        SetUIIcons();
+                case "Corny Guy":
+                    {
+                        cornyGuyCooldownBypass++;
+                        break;
+                    }
+
+                case "Red Chibi Pepper":
+                    {
+                        redChibiCooldownBypass++;
+                        break;
+                    }
+
+                case "Pepe Habanero":
+                    {
+                        pepeHabaneroCooldownBypass++;
+                        break;
+                    }
+
+                case "Sweet Jack O Pumpkin":
+                    {
+                        sweetJackCooldownBypass++;
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            crops.Add(crop);
+            equippedCrop = crops[crops.IndexOf(crop)];
+
+            if (cardToActivate < cropCards.Length)
+            {
+                cropCards[cardToActivate].SetActive(true);
+                cardToActivate++;
+            }
+
+            SetUIIcons();
+        }
     }
 
     private void SetUIIcons()
