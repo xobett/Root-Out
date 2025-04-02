@@ -4694,11 +4694,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996071265}
   m_CullTransparentMesh: 1
---- !u!95 &998308844 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6839173636195219423, guid: ef4c7facc672dc44793553d252835415, type: 3}
-  m_PrefabInstance: {fileID: 3604358283773766497}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1002533378
 GameObject:
   m_ObjectHideFlags: 0
@@ -7554,7 +7549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1542629266
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10660,21 +10655,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1934802830}
     - target: {fileID: 2439334005778980448, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: currentHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2439334005778980448, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: playerLifeBar
       value: 
       objectReference: {fileID: 1618041751}
     - target: {fileID: 2439334005778980448, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: playerAnimCtrlr
-      value: 
-      objectReference: {fileID: 998308844}
-    - target: {fileID: 2439334005778980448, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: deathPanelAnimCtrlr
       value: 
       objectReference: {fileID: 1073833657}
+    - target: {fileID: 3981653281401382007, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4502303870412876093, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: weaponSelectionWheel
       value: 
@@ -10703,33 +10694,9 @@ PrefabInstance:
       propertyPath: 'weaponIcons.Array.data[5]'
       value: 
       objectReference: {fileID: 1142497240}
-    - target: {fileID: 4989501597596570049, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6155343336968990131, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6238140726805344101, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: range
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: fadeSpeed
-      value: 2.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: equippedCrop
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: maximumValue
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: minimumValue
-      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: nextCropIcon
@@ -10739,18 +10706,6 @@ PrefabInstance:
       propertyPath: nextCropText
       value: 
       objectReference: {fileID: 614929251}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: selectionWheel
-      value: 
-      objectReference: {fileID: 1012661591}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: maxCropsOnField
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: crops.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: equippedCropIcon
       value: 
@@ -10768,30 +10723,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1701234677}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: 'crops.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cd705242a5dac6e4ebc5a2baf259f09a, type: 2}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: 'crops.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cd705242a5dac6e4ebc5a2baf259f09a, type: 2}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: 'crops.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cd705242a5dac6e4ebc5a2baf259f09a, type: 2}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: 'crops.Array.data[3]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cd705242a5dac6e4ebc5a2baf259f09a, type: 2}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: 'crops.Array.data[4]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cd705242a5dac6e4ebc5a2baf259f09a, type: 2}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: cropCards.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: 'cropCards.Array.data[0]'
       value: 
       objectReference: {fileID: 697197684}
@@ -10803,12 +10734,7 @@ PrefabInstance:
       propertyPath: 'cropCards.Array.data[2]'
       value: 
       objectReference: {fileID: 1761625527}
-    - target: {fileID: 7292770304426905396, guid: ef4c7facc672dc44793553d252835415, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7292770304426905396, guid: ef4c7facc672dc44793553d252835415, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
