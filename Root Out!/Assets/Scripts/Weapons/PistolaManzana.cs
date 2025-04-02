@@ -5,6 +5,7 @@ using Weapons;
 public class PistolaManzana : WeaponsBase, IInteractable
 {
     [Header("PistolaManzana Settings")]
+    [SerializeField] private int bulletsPerShot = 6; // Número de balas por disparo
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
@@ -19,6 +20,7 @@ public class PistolaManzana : WeaponsBase, IInteractable
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
+            FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
             base.Shoot();
             //AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
 

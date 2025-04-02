@@ -467,7 +467,7 @@ MonoBehaviour:
   ps_State: 1
   walkSpeed: 5
   sprintSpeed: 8
-  turnSpeed: 0.06
+  turnSpeed: 0.042
   midAirSpeed: 15
   forwardForce: 0
   groundCheckRadius: 0.215
@@ -663,7 +663,7 @@ Transform:
   m_GameObject: {fileID: 8484769132668733744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0.184, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -678,6 +678,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2410107243988334635}
     m_Modifications:
+    - target: {fileID: 4727396389596990124, guid: a400ca96c413f514da4d7c0a9eee63f0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5479882388192058733, guid: a400ca96c413f514da4d7c0a9eee63f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
