@@ -195,6 +195,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &699513167857426921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4306869467887499413}
+  m_Layer: 0
+  m_Name: Item Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4306869467887499413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699513167857426921}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.787, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 573469412481906143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1236399241928607706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,8 +1752,8 @@ GameObject:
   - component: {fileID: 1751967467167559551}
   - component: {fileID: 411511897743224818}
   - component: {fileID: 7377833158121166314}
-  m_Layer: 11
-  m_Name: Nest Mart Shop
+  m_Layer: 17
+  m_Name: Lucky Hatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1746,6 +1777,7 @@ Transform:
   - {fileID: 4768455791396373740}
   - {fileID: 6740221877651256958}
   - {fileID: 7011486853766018338}
+  - {fileID: 4306869467887499413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1751967467167559551
@@ -1797,10 +1829,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b13186aaf1f04c040b839aeaad38618f, type: 2}
   - {fileID: 11400000, guid: ad802c9fa2e82914f896c18782fd2a75, type: 2}
   - {fileID: 11400000, guid: 0a401492444349840a1c6048c8fbc12d, type: 2}
-  itemSpawnPosition: {fileID: 0}
+  shopCooldownTime: 10
+  interaction:
+    serializedVersion: 2
+    m_Bits: 131072
+  itemSpawnPosition: {fileID: 4306869467887499413}
   shopInfoAnimator: {fileID: 1692353043508751564}
   shopCostAnimator: {fileID: 8576465996239002816}
-  playerIsNear: 0
 --- !u!65 &7377833158121166314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1919,6 +1954,10 @@ PrefabInstance:
     - target: {fileID: 2017455715203116424, guid: 065e2ebc9c99cfb4390d130e04059fea, type: 3}
       propertyPath: m_Name
       value: Item Shop Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017455715203116424, guid: 065e2ebc9c99cfb4390d130e04059fea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3036613533237427237, guid: 065e2ebc9c99cfb4390d130e04059fea, type: 3}
       propertyPath: m_LocalScale.x

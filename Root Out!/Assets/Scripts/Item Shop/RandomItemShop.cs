@@ -1,10 +1,16 @@
+using System.Collections;
 using UnityEngine;
 
 public class RandomItemShop : MonoBehaviour, IInteractable
 {
     [Header("SHOP ITEMS SETTINGS")]
     [SerializeField] private InventoryItemData[] shopItems;
+
     [SerializeField] private const int shopItemCost = 10;
+    [SerializeField] private float shopCooldownTime;
+
+    [SerializeField] private bool cooldownActive;
+    private bool playerIsNear;
 
     [Header("SPAWN SHOP ITEM SETTINGS")]
     [SerializeField] private Transform itemSpawnPosition;
@@ -13,31 +19,62 @@ public class RandomItemShop : MonoBehaviour, IInteractable
     [SerializeField] private Animator shopInfoAnimator;
     [SerializeField] private Animator shopCostAnimator;
 
-    [Header("DETECTION SETTINGS")]
-    [SerializeField] private bool playerIsNear;
-
     public void OnInteract()
     {
-        Debug.Log("Interacting with shop");
+        DisplayCooldownMessage();
         BuyRandomItem();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && cooldownActive && playerIsNear)
+        {
+            GameManager.instance.DisplayMessage("Next hatch is being prepared!");
+            Debug.Log("Test");
+        }
+    }
+
+    void DisplayCooldownMessage()
+    {
+        if (cooldownActive)
+        {
+            GameManager.instance.DisplayMessage("Next hatch is being prepared!");
+        }
     }
 
     private void BuyRandomItem()
     {
+        LayerMask nonInteraction = LayerMask.NameToLayer("Default");
+
         if (GameManager.instance.playerInventoryHandler.SeedCoins >= shopItemCost)
         {
-            //Instantiate(GetRandomShopItem().ItemPrefab, itemSpawnPosition.position, Quaternion.identity);
-
             var playerInventory = GameManager.instance.playerInventoryHandler;
-
             playerInventory.PaySeedCoins(shopItemCost);
 
-            playerInventory.AddItem(GetRandomShopItem());
+            gameObject.layer = nonInteraction;
+
+            Instantiate(GetRandomShopItem().ItemPrefab, itemSpawnPosition.position, Quaternion.identity);
+
+            StartCoroutine(RandomShopCooldown());
         }
         else
         {
-            GameManager.instance.DisplayMessage("You don't have enough Seeds to buy an item!");
+            GameManager.instance.DisplayMessage("You don't have enough coins!");
         }
+    }
+
+    private IEnumerator RandomShopCooldown()
+    {
+        yield return new WaitForSeconds(1);
+
+        cooldownActive = true;
+
+        yield return new WaitForSeconds(shopCooldownTime);
+
+        LayerMask interaction = LayerMask.NameToLayer("Growth Selection");
+        gameObject.layer = interaction;
+
+        cooldownActive = false;
     }
 
     private void OnTriggerEnter(Collider other)

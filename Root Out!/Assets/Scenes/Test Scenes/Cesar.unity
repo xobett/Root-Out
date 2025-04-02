@@ -938,63 +938,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208732137}
   m_CullTransparentMesh: 1
---- !u!1001 &225665888
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.518894
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5003368
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.363316
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7666038190650843420, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
-      propertyPath: m_Name
-      value: Lucky Hatch Shop
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
 --- !u!1 &237412685
 GameObject:
   m_ObjectHideFlags: 0
@@ -8737,6 +8680,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701234675}
   m_CullTransparentMesh: 1
+--- !u!1001 &1725616348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.340063
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5003368
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.740035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177456884323121236, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666038190650843420, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+      propertyPath: m_Name
+      value: Nest Market
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
 --- !u!1 &1737075932
 GameObject:
   m_ObjectHideFlags: 0
@@ -9653,7 +9669,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 573469412481906143, guid: 31caef5509d92604eabba2a3f4130783, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.09
+      value: -5.4436836
       objectReference: {fileID: 0}
     - target: {fileID: 573469412481906143, guid: 31caef5509d92604eabba2a3f4130783, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9661,7 +9677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 573469412481906143, guid: 31caef5509d92604eabba2a3f4130783, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.18
+      value: -8.184999
       objectReference: {fileID: 0}
     - target: {fileID: 573469412481906143, guid: 31caef5509d92604eabba2a3f4130783, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9693,7 +9709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8295604051478240929, guid: 31caef5509d92604eabba2a3f4130783, type: 3}
       propertyPath: m_Name
-      value: Nest Mart Shop
+      value: Lucky Hatch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10597,7 +10613,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -13.792
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10605,7 +10621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8
+      value: -9.15
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10687,13 +10703,17 @@ PrefabInstance:
       propertyPath: 'weaponIcons.Array.data[5]'
       value: 
       objectReference: {fileID: 1142497240}
+    - target: {fileID: 4989501597596570049, guid: ef4c7facc672dc44793553d252835415, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6155343336968990131, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6238140726805344101, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: range
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: fadeSpeed
@@ -10787,7 +10807,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7292770304426905396, guid: ef4c7facc672dc44793553d252835415, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11160,4 +11181,4 @@ SceneRoots:
   - {fileID: 1847679261}
   - {fileID: 1679475177}
   - {fileID: 1924911996}
-  - {fileID: 225665888}
+  - {fileID: 1725616348}

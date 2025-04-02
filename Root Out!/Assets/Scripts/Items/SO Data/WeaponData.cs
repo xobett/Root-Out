@@ -30,5 +30,4 @@ public class WeaponData : ScriptableObject
     public int WeaponDamage => damage;
     public float WeaponReloadTime => reloadTime;
     public int WeaponMaxAmmo => maxAmmo;
-
 }

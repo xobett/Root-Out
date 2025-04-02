@@ -33,7 +33,6 @@ public class CropData : ScriptableObject
     [Header("PREFAB")]
     [SerializeField] private GameObject cropPrefab;
 
-
     public string CropName => cropName;
     public string CropDescription => cropDescription;
     public GameObject CropPrefab => cropPrefab;

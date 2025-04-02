@@ -86,7 +86,7 @@ public class CropHandler : MonoBehaviour
 
     private void DropCrop()
     {
-        if (IsDropping() && totalCropsDropped < maxCropsOnField)
+        if (equippedCrop != null && IsDropping() && totalCropsDropped < maxCropsOnField) 
         {
             switch (equippedCrop.CropName)
             {

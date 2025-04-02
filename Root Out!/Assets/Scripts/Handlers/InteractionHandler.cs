@@ -5,7 +5,7 @@ public class InteractionHandler : MonoBehaviour
     [Header("INTERACTION SETTINGS")]
     [SerializeField] private float range;
 
-    [SerializeField] private LayerMask whatIsInteraction;
+    [SerializeField] public LayerMask whatIsInteraction;
 
     private RaycastHit outHit;
 
