@@ -318,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoDeApuntado: 0
   aiming: {fileID: 5682930776111023041}
+  cropAiming: {fileID: 0}
   weaponType: 0
   spreadAngle: 1
   horizontalSpread: 0
@@ -343,11 +344,11 @@ MonoBehaviour:
   inventoryItemToAdd: {fileID: 0}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
-  coldDown: 0
   detectionRangeExplosion: 3
   explosionEffect: {fileID: 5389908784280474320, guid: 8fa65229d107703438652a59d29ed65b, type: 3}
   kamikazeAnimatorCtrlr: {fileID: 8698840147458064682}
   playerDetectionRange: 25
+  deathVfx: {fileID: 1601680627274549450, guid: bbf8335e4ccd77a4dbef98481c6b39b8, type: 3}
 --- !u!114 &1370159796952117348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +364,7 @@ MonoBehaviour:
   actualHealth: 50
   maxHealth: 50
   hUDLifeBar: {fileID: 7976462859073121486}
+  deathVfx: {fileID: 1601680627274549450, guid: bbf8335e4ccd77a4dbef98481c6b39b8, type: 3}
 --- !u!1001 &4316021561794379197
 PrefabInstance:
   m_ObjectHideFlags: 0

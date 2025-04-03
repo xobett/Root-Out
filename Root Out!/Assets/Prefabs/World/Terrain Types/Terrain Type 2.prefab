@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3011892143594713460}
   - component: {fileID: 5381179442435891329}
   m_Layer: 0
-  m_Name: Props Spawner
+  m_Name: Props Spawner NO MOVER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,34 +49,13 @@ MonoBehaviour:
   weapons: []
   cropCards: []
   perks: []
-  simpleProps:
-  - {fileID: 150145649957319254, guid: 1f472b84da9f6e44796b98e221292f3b, type: 3}
-  - {fileID: 8582366037615837367, guid: 6d6c226750ebd234e8b96fa6af727b0b, type: 3}
-  - {fileID: 604703503464103027, guid: 813fd49d77ee4ce4e9d41b9f9b3bd12e, type: 3}
-  - {fileID: 1334467017510627410, guid: bc92c860df1f36442b97c35057caaee8, type: 3}
-  - {fileID: 8259800611863942416, guid: e548656c124c9c1498b8ba6b0868ce00, type: 3}
-  coverProps:
-  - {fileID: 5934727084711749344, guid: 78174cc90e1ff8f4380ca9cd4cd30e37, type: 3}
-  - {fileID: 5948419783774642729, guid: 82c2c07e1fa14034b834b026383e1e4b, type: 3}
-  - {fileID: 4153482727969188069, guid: c6fa5b270c898c74389f70593ace81d8, type: 3}
-  - {fileID: 2451222616143659037, guid: 30ce3476925d6944386611aa58ee486e, type: 3}
-  - {fileID: 7920853121926213199, guid: 0a2736a4866f0f244b8196cf97553118, type: 3}
-  simplePropsPos:
+  lootPos:
   - {fileID: 6199273345212552876}
   - {fileID: 3594388723871773030}
   - {fileID: 5967976471070951686}
   - {fileID: 865135569672287816}
   - {fileID: 5733165827298707773}
-  coverPropsPos:
-  - {fileID: 7268890441882619992}
-  - {fileID: 7124355462499688472}
-  - {fileID: 747590164658233528}
-  - {fileID: 7486905690429303594}
-  - {fileID: 5043539126951418227}
-  - {fileID: 6407277660047262202}
-  positionsGroups:
-  - {fileID: 4560462145412299176}
-  - {fileID: 5150776738023163598}
+  lootPositionsGroups: {fileID: 5150776738023163598}
 --- !u!1 &509339801232988633
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +67,7 @@ GameObject:
   - component: {fileID: 3617122342869604111}
   - component: {fileID: 5191245111364465189}
   m_Layer: 0
-  m_Name: Sunflower Spawner
+  m_Name: Sunflower Spawner NO MOVER
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -161,37 +140,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 485714574334781777}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &976865897250159498
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 747590164658233528}
-  m_Layer: 0
-  m_Name: Cover Prop Position 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &747590164658233528
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976865897250159498}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15, y: 0.5, z: -15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 983562568060798723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356467722606656189
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +174,6 @@ Transform:
   - {fileID: 3617122342869604111}
   - {fileID: 3011892143594713460}
   - {fileID: 3486189985452114807}
-  - {fileID: 983562568060798723}
   - {fileID: 4185518802715640709}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -240,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5733165827298707773}
   m_Layer: 0
-  m_Name: Simple Prop Position 5
+  m_Name: Loot Position 5
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -292,37 +239,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3486189985452114807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2604964167693544206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7268890441882619992}
-  m_Layer: 0
-  m_Name: Cover Prop Position 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7268890441882619992
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2604964167693544206}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0.5, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 983562568060798723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2879868849161900758
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 865135569672287816}
   m_Layer: 0
-  m_Name: Simple Prop Position 4
+  m_Name: Loot Position 4
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -354,37 +270,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4185518802715640709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3033896032465512648
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7124355462499688472}
-  m_Layer: 0
-  m_Name: Cover Prop Position 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7124355462499688472
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033896032465512648}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15, y: 0.5, z: -15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 983562568060798723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3099561159995426570
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5967976471070951686}
   m_Layer: 0
-  m_Name: Simple Prop Position 3
+  m_Name: Loot Position 3
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -427,7 +312,7 @@ GameObject:
   - component: {fileID: 485714574334781777}
   - component: {fileID: 6679380001924089480}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Enemy Spawner (MOVER, NO ELIMINAR, HIJOS)
   m_TagString: Enemy Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,42 +354,11 @@ MonoBehaviour:
   - {fileID: 7015222743023847385}
   - {fileID: 8252521418925509191}
   - {fileID: 1533723398060984337}
-  timeBetweenSpawn: 5
   enemiesPrefabs:
   - {fileID: 4601248732316366986, guid: 3d8c95c316225dc4b9d77733d88b6da2, type: 3}
   - {fileID: 8273410966226516354, guid: 62015e164ef71f740973ad659e69eded, type: 3}
   - {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
---- !u!1 &3557834248446650682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5043539126951418227}
-  m_Layer: 0
-  m_Name: Cover Prop Position 5
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5043539126951418227
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557834248446650682}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15, y: 0.5, z: 15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 983562568060798723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  enemySpawnVfx: {fileID: 6414768626602377024, guid: fa9497cf54c4d5a4e92d862fea325a02, type: 3}
 --- !u!1 &3695462830451374689
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,43 +421,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3486189985452114807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4560462145412299176
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 983562568060798723}
-  m_Layer: 0
-  m_Name: Cover Prop Positions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &983562568060798723
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560462145412299176}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7268890441882619992}
-  - {fileID: 7124355462499688472}
-  - {fileID: 747590164658233528}
-  - {fileID: 7486905690429303594}
-  - {fileID: 5043539126951418227}
-  - {fileID: 6407277660047262202}
-  m_Father: {fileID: 2772897099206856946}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4653984844144863541
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6199273345212552876}
   m_Layer: 0
-  m_Name: Simple Prop Position 1
+  m_Name: Loot Position 1
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -666,37 +483,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4185518802715640709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4882541901402010532
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7486905690429303594}
-  m_Layer: 0
-  m_Name: Cover Prop Position 4
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7486905690429303594
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4882541901402010532}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 0.5, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 983562568060798723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5150776738023163598
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4185518802715640709}
   m_Layer: 0
-  m_Name: Simple Prop Positions
+  m_Name: Loot Positions (MOVER, NO ELIMINAR, HIJOS)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,7 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3594388723871773030}
   m_Layer: 0
-  m_Name: Simple Prop Position 2
+  m_Name: Loot Position 2
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -839,7 +625,7 @@ GameObject:
   - component: {fileID: 3306026670194518291}
   - component: {fileID: 3965692028925912262}
   m_Layer: 10
-  m_Name: Floor
+  m_Name: Floor NO MOVER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -934,37 +720,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &8508212039215374916
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6407277660047262202}
-  m_Layer: 0
-  m_Name: Cover Prop Position 6
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6407277660047262202
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8508212039215374916}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15, y: 0.5, z: 15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 983562568060798723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8763871696864793526
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3486189985452114807}
   m_Layer: 0
-  m_Name: Sunflower Spawn Positions
+  m_Name: Sunflower Spawn Positions NO MOVER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

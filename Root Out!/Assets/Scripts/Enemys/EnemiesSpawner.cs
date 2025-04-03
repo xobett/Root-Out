@@ -5,8 +5,11 @@ public class EnemiesSpawner : MonoBehaviour
 {
     [Header("ENEMY SPAWN SETTINGS")]
     [SerializeField] private Transform[] spawnPositions;
-    [SerializeField] private float timeBetweenSpawn;
-    [SerializeField, Tooltip("Enemies prefabs to instantiate.")] private GameObject[] enemiesPrefabs;
+    [SerializeField] private GameObject[] enemiesPrefabs;
+
+    [SerializeField] private GameObject enemySpawnVfx;
+
+    private GameObject lastEnemySpawned;
 
     [ContextMenu("Spawn Enemy")]
     public void StartSpawner()
@@ -16,10 +19,25 @@ public class EnemiesSpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        yield return new WaitForSeconds(timeBetweenSpawn);
+        GameObject enemyToSpawn = GetRandomEnemy();
+        Vector3 spawnPosition = GetRandomSpawnPosition().position;
 
-        Instantiate(GetRandomEnemy(), GetRandomSpawnPosition().position, Quaternion.identity);
-        Debug.Log("Spawned");
+        while (enemyToSpawn == lastEnemySpawned)
+        {
+            enemyToSpawn = GetRandomEnemy();
+            yield return null;
+        }
+
+        spawnPosition.y = 1.5f;
+
+        GameObject spawnVfx = Instantiate(enemySpawnVfx, spawnPosition, Quaternion.identity);
+
+        yield return new WaitForSeconds(3.5f);
+
+        GameObject enemyClone = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+        lastEnemySpawned = enemyToSpawn;
+
+        yield return new WaitForSeconds(GameManager.instance.enemySpawnTime);
 
         if (GameManager.instance.eventTimerIsActive)
         {
@@ -27,7 +45,7 @@ public class EnemiesSpawner : MonoBehaviour
         }
         else
         {
-            yield return null;
+            StopCoroutine(SpawnEnemies());
         }
     }
 

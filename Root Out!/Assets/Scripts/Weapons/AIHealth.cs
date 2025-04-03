@@ -8,6 +8,8 @@ public class AIHealth : MonoBehaviour
     [SerializeField] private Image hUDLifeBar;
     public static int enemiesDefeated = 0; // Variable estática para contar los enemigos derrotados
 
+    [SerializeField] private GameObject deathVfx;
+
     public void TakeDamage(float damage)
     {
         Debug.Log("El personaje " + name + " recibio daño");
@@ -24,6 +26,8 @@ public class AIHealth : MonoBehaviour
     {
         Debug.Log("Mataste a " + name);
         enemiesDefeated++; // Incrementar el contador de enemigos derrotados
+
+        Instantiate(deathVfx, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

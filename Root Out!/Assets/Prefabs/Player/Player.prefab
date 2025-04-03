@@ -291,9 +291,9 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.56
-  m_Height: 0
-  m_Direction: 2
+  m_Radius: 0.63
+  m_Height: 1.67
+  m_Direction: 1
   m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!114 &3038434369683781718
 MonoBehaviour:
@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bcedd9adc8ee848804cb167481ed7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabVfx: {fileID: 5808717559623831645, guid: 6e97f61e12d41fa448e722f91c82a1f0, type: 3}
 --- !u!1 &5944689527504147316
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +555,7 @@ MonoBehaviour:
   maxDrop_CornyGuyCrops: 2
   totalCropsDropped: 0
   maxCropsOnField: 5
+  spawnCropVfx: {fileID: 241882218063588477, guid: 1ff645a71bd274f4288a556a072b88df, type: 3}
   previousCropIcon: {fileID: 0}
   equippedCropIcon: {fileID: 0}
   nextCropIcon: {fileID: 0}

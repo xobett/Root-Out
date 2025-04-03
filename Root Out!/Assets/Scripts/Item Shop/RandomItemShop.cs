@@ -44,18 +44,9 @@ public class RandomItemShop : MonoBehaviour, IInteractable
 
     private void BuyRandomItem()
     {
-        LayerMask nonInteraction = LayerMask.NameToLayer("Default");
-
         if (GameManager.instance.playerInventoryHandler.SeedCoins >= shopItemCost)
         {
-            var playerInventory = GameManager.instance.playerInventoryHandler;
-            playerInventory.PaySeedCoins(shopItemCost);
-
-            gameObject.layer = nonInteraction;
-
-            Instantiate(GetRandomShopItem().ItemPrefab, itemSpawnPosition.position, Quaternion.identity);
-
-            StartCoroutine(RandomShopCooldown());
+            StartCoroutine(SpawnRandomItem());
         }
         else
         {
@@ -63,9 +54,24 @@ public class RandomItemShop : MonoBehaviour, IInteractable
         }
     }
 
-    private IEnumerator RandomShopCooldown()
+    private IEnumerator SpawnRandomItem()
     {
-        yield return new WaitForSeconds(1);
+        var playerInventory = GameManager.instance.playerInventoryHandler;
+        playerInventory.PaySeedCoins(shopItemCost);
+
+        LayerMask nonInteraction = LayerMask.NameToLayer("Default");
+        gameObject.layer = nonInteraction;
+
+        InventoryItemData itemToSpawn = GetRandomShopItem();
+
+        while(itemToSpawn.ItemType == ItemType.Weapon && playerInventory.Inventory.Contains(itemToSpawn))
+        {
+            Debug.Log($"Inventory already contained {itemToSpawn.name}");
+            itemToSpawn = GetRandomShopItem();
+            yield return null;
+        }
+
+        Instantiate(GetRandomShopItem().ItemPrefab, itemSpawnPosition.position, Quaternion.identity);
 
         cooldownActive = true;
 
@@ -75,6 +81,8 @@ public class RandomItemShop : MonoBehaviour, IInteractable
         gameObject.layer = interaction;
 
         cooldownActive = false;
+
+        StopCoroutine(SpawnRandomItem());
     }
 
     private void OnTriggerEnter(Collider other)

@@ -14,133 +14,62 @@ public class PropsSpawner : MonoBehaviour
     [SerializeField] private GameObject[] cropCards;
     [SerializeField] private GameObject[] perks;
 
-    [Header("PROP SETTINGS")]
-    [SerializeField] private GameObject[] simpleProps;
-    [SerializeField] private GameObject[] coverProps;
-
-    [Header("PROP SPAWN POSITION SETTINGS")]
-    [SerializeField] private Transform[] simplePropsPos;
-    [SerializeField] private Transform[] coverPropsPos;
+    [Header("LOOT SPAWN POSITION SETTINGS")]
+    [SerializeField] private Transform[] lootPos;
 
     [Header("PROP POSITIONS GROUPS")]
-    [SerializeField] private GameObject[] positionsGroups;
+    [SerializeField] private GameObject lootPositionsGroups;
 
-    private List<int> simplePropUsedPos = new List<int>();
-    private List<int> coverPropUsedPos = new List<int>();
+    private List<int> lootUsedPos = new List<int>();
 
     void Start()
     {
-        StartCoroutine(SpawnProps());
-        StopCoroutine(SpawnProps());
+        StartCoroutine(SpawnLoot());
     }
 
-    private IEnumerator SpawnProps()
+    private IEnumerator SpawnLoot()
     {
-        for (int i = 0; i < simplePropsPos.Length; i++)
+        for (int i = 0; i < lootPos.Length; i++)
         {
             GameObject lootItem = SpawnNewItem();
+            int randomLootPos = GenerateRandomPos();
 
-            int randomSimpleProp = GenerateRandomProp("Simple");
-            int randomSimplePropPos = GenerateRandomPropPos("Simple");
-
-            while (simplePosUsed(randomSimplePropPos))
+            while (LootPosUsed(randomLootPos))
             {
-                randomSimplePropPos = GenerateRandomPropPos("Simple");
+                randomLootPos = GenerateRandomPos();
                 yield return null;
             }
 
             if (lootItem != null)
             {
-                GameObject clone = Instantiate(lootItem, simplePropsPos[randomSimplePropPos].position, lootItem.transform.rotation);
+                GameObject clone = Instantiate(lootItem, lootPos[randomLootPos].position, lootItem.transform.rotation);
 
                 clone.transform.parent = gameObject.transform.parent;
 
-                simplePropUsedPos.Add(randomSimplePropPos); 
+                lootUsedPos.Add(randomLootPos); 
             }
-        }
-
-        for (int i = 0; i < coverPropsPos.Length; i++)
-        {
-            int randomCoverProp = GenerateRandomProp("Cover");
-            int randomCoverPropPos = GenerateRandomPropPos("Cover");
-
-            while (coverPosUsed(randomCoverPropPos))
-            {
-                randomCoverPropPos = GenerateRandomPropPos("Cover");
-                yield return null;
-            }
-
-            GameObject clone = Instantiate(coverProps[randomCoverProp], coverPropsPos[randomCoverPropPos].position, coverProps[randomCoverProp].transform.rotation);
-            clone.transform.parent = gameObject.transform.parent;
-
-            coverPropUsedPos.Add(randomCoverPropPos);
         }
 
         ClearUnusedElements();
-
-        yield return null;
+        StopCoroutine(SpawnLoot());
     }
 
-    private bool simplePosUsed(int posToVerify)
+    private bool LootPosUsed(int posToVerify)
     {
-        return simplePropUsedPos.Contains(posToVerify);
+        return lootUsedPos.Contains(posToVerify);
     }
 
-    private bool coverPosUsed(int posToVerify)
-    {
-        return coverPropUsedPos.Contains(posToVerify);
-    }
 
-    private int GenerateRandomProp(string propType)
-    {
-        int randomPropNumber = 0;
-
-        switch (propType)
-        {
-            case "Simple":
-                {
-                    randomPropNumber = Random.Range(0, simpleProps.Length);
-                    break;
-                }
-
-            case "Cover":
-                {
-                    randomPropNumber = Random.Range(0, coverProps.Length);
-                    break;
-                }
-        }
-
-        return randomPropNumber;
-    }
-
-    private int GenerateRandomPropPos(string propType)
+    private int GenerateRandomPos()
     {
         int randomPosNumber = 0;
-        switch (propType)
-        {
-            case "Simple":
-                {
-                    randomPosNumber = Random.Range(0, simplePropsPos.Length);
-                    break;
-                }
 
-            case "Cover":
-                {
-                    randomPosNumber = Random.Range(0, coverPropsPos.Length);
-                    break;
-                }
-        }
-
-        return randomPosNumber;
+        return randomPosNumber = Random.Range(0, lootPos.Length);
     }
 
     private void ClearUnusedElements()
     {
-        for (int i = 0; i < positionsGroups.Length; i++)
-        {
-            Destroy(positionsGroups[i]);
-        }
-
+        Destroy(lootPositionsGroups);
         Destroy(this.gameObject);
     }
 
@@ -149,7 +78,7 @@ public class PropsSpawner : MonoBehaviour
         GameObject itemToSpawn = null;
 
         //Dependiendo del resultado del random, se aumentara o bajara la probabilidad de que se spawnee el item que se elija.
-        int randomItemSelection = Random.Range(0, 1);
+        int randomItemSelection = Random.Range(0, 2);
 
         switch (randomItemSelection)
         {

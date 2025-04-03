@@ -5,6 +5,7 @@ public class Letty : CropBase
 {
     [Header("SHIELD SETTINGS")]
     [SerializeField] private GameObject lettyShield;
+    [SerializeField] private GameObject leafVfx;
 
     private bool shieldSpawned;
 
@@ -21,6 +22,8 @@ public class Letty : CropBase
     private void Shield()
     {
         GameObject lettyShield = GameObject.FindGameObjectWithTag("Letty Shield");
+
+        Instantiate(leafVfx, transform.position, Quaternion.identity);
 
         if (GameObject.FindGameObjectWithTag("Letty Shield") == null)
         {

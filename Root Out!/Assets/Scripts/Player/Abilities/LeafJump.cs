@@ -16,28 +16,25 @@ public class LeafJump : MonoBehaviour
         {
             ChargeJump();
             Jump();
-
-            if (IsJumping())
-            {
-                playerAnimCtrlr.SetBool("isJumping", true);
-            }
-            else
-            {
-                playerAnimCtrlr.SetBool("isJumping", false);
-            } 
         }
     }
 
     private void Jump()
     {
         //Checa si se dejo de presionar la barra espaciadora y si el jugador se encuentra en el suelo.
-        if (IsJumping() && PlayerIsGrounded())
+        if (IsJumping() && PlayerIsGrounded() && currentChargedForce > 5)
         {
             //Se agrega fuerza positiva sobre el Vector3 que constantemente ejerce gravedad.
             GetComponent<PlayerMovement>().gravity.y = currentChargedForce;
 
+            playerAnimCtrlr.SetBool("isJumping", true);
+
             //Tras saltar, se reinicia el valor del salto cargado.
             currentChargedForce = 0f;
+        }
+        else
+        {
+            playerAnimCtrlr.SetBool("isJumping", false);
         }
     }
 
@@ -56,10 +53,5 @@ public class LeafJump : MonoBehaviour
         return gameObject.GetComponent<PlayerMovement>().IsTouching();
     }
 
-    private bool IsJumping()
-    {
-        bool isJumping = Input.GetKeyUp(KeyCode.Space);
-
-        return isJumping;
-    }
+    private bool IsJumping() => Input.GetKeyUp(KeyCode.Space);
 }

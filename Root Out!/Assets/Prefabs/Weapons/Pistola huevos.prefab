@@ -229,7 +229,7 @@ MonoBehaviour:
   weaponType: 2
   spreadAngle: 0.5
   horizontalSpread: 0
-  autoFire: 1
+  autoFire: 0
   shootUpwards: 0
   shootDownwards: 0
   bulletPrefab: {fileID: 9057334875416266116, guid: 34d74bd594858a647a19b51c6a5126f6, type: 3}
@@ -251,7 +251,6 @@ MonoBehaviour:
   inventoryItemToAdd: {fileID: 11400000, guid: 2097b3b4228a0454ab2a0bf9bfab9a7b, type: 2}
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
-  coldDown: 3
   weaponData: {fileID: 11400000, guid: d27121a2275c91d4283f076b7d7c55e5, type: 2}
 --- !u!114 &7621606865529998831
 MonoBehaviour:

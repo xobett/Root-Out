@@ -33,6 +33,7 @@ public class CropHandler : MonoBehaviour
     [SerializeField] private int maxCropsOnField = 15;
 
     [Header("SPAWN CROP SETTINGS")]
+    [SerializeField] private GameObject spawnCropVfx;
     private const float spawnDistance = 1.5f;
 
     [Header("CROP ICON SETTINGS")]
@@ -140,6 +141,7 @@ public class CropHandler : MonoBehaviour
             Vector3 spawnPosition = transform.position - transform.forward * spawnDistance;
             spawnPosition.y += 1;
             GameObject clone = Instantiate(equippedCrop.CropPrefab, spawnPosition, transform.rotation);
+            Instantiate(spawnCropVfx, spawnPosition, Quaternion.identity);
             totalCropsDropped++;
         }
     }

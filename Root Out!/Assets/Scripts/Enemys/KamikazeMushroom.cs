@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.AI;
 using Weapons;
@@ -17,6 +16,8 @@ public class KamikazeMushroom : WeaponsBase
     [SerializeField] private Animator kamikazeAnimatorCtrlr;
     private Transform playerPos;
     [SerializeField] private float playerDetectionRange;
+
+    [SerializeField] private GameObject deathVfx;
 
     protected override void Start()
     {
@@ -44,7 +45,7 @@ public class KamikazeMushroom : WeaponsBase
         if (sunFlowerGameObject != null && GameManager.instance.eventTimerIsActive)
         {
             agent.speed = 3;
-            agent.destination = sunFlowerGameObject.transform.position; // Asigna la posición del girasol como destino
+            agent.destination = sunFlowerGameObject.transform.position; // Asigna la posición del girasol como destino 
 
             kamikazeAnimatorCtrlr.SetBool("isRunning", true);
             kamikazeAnimatorCtrlr.SetBool("isWalking", false);
@@ -91,14 +92,18 @@ public class KamikazeMushroom : WeaponsBase
             Debug.Log("BOOM");
             sunFlowerScript.DamageSunFlower(damage); // Llama al método DamageSunFlower del script Sunflower
             agent.enabled = false;
+
+            Instantiate(deathVfx, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
     private void SmmokeEffect()
     {
         Quaternion smokeRotation = Quaternion.Euler(-90, 0, 0);
+        Vector3 spawnPos = transform.position;
+        spawnPos.y = 0.6f;
 
-        Instantiate(explosionEffect, transform.position, smokeRotation);
+        Instantiate(explosionEffect, spawnPos, smokeRotation);
     }
     protected override void Reload()
     {

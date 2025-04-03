@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7807402020958826053}
   - component: {fileID: 8195758081223585672}
   - component: {fileID: 6603990298617543571}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Letty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   isFollowingPlayer: 0
   isFollowingEnemy: 0
   lettyShield: {fileID: 8254129718523729923, guid: 95c325d1fd39df04dba740d658de0ab0, type: 3}
+  leafVfx: {fileID: 4630506410414282746, guid: 761c797bba560ac438f52de8054e1bd8, type: 3}
 --- !u!1001 &4382833622939879883
 PrefabInstance:
   m_ObjectHideFlags: 0

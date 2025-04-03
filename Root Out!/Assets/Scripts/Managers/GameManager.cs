@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,8 +20,8 @@ public class GameManager : MonoBehaviour
     private LeafJump leafJump;
     private CameraFollow cameraFollow;
 
-    [Header("PAUSE SETTINGS")]
-    public bool gamePaused;
+    //Booleano que bloquea input de jugador al estar pausado el juego.
+    [HideInInspector] public bool gamePaused;
 
     [Header("FINAL HUB SETTINGS")]
     public bool finalHubCreated;
@@ -28,45 +29,46 @@ public class GameManager : MonoBehaviour
     public int maxTerrainsPerGame = 10;
     public int totalTerrainsGenerated;
 
-    [Header("PLAYER SETTINGS")]
-    public InventoryHandler playerInventoryHandler;
-    public CropHandler playerCropHandler;
+    //Handlers del jugador referenciados para acceder facilmente a ellos desde otros scripts.
+    [HideInInspector] public InventoryHandler playerInventoryHandler;
+    [HideInInspector] public CropHandler playerCropHandler;
 
     [Header("SUNFLOWER GROWTH COSTS")]
     [SerializeField] private int marvelousGrowthCost;
     [SerializeField] private int genuineGrowthCost;
 
-    [Header("FIRST SUNFLOWER TO UNLOCK EVENT SETTINGS")]
-    [SerializeField] private Sunflower currentSunflower;
-    [SerializeField] private Animator currentSunflowerAnimator;
-    [SerializeField] private Animator currentSunflowerLifebarAnimator;
+    //Variables del girasol a desbloquear durante un evento.
+    private Sunflower currentSunflower;
+    private Animator currentSunflowerAnimator;
+    private Animator currentSunflowerLifebarAnimator;
 
-    [Header("SECOND SUNFLOWER TO UNLOCK EVENT SETTINGS")]
-    [SerializeField] private Sunflower currentSecondSunflower;
-    [SerializeField] private Animator currentSecondSunflowerAnimator;
-    [SerializeField] private Animator currentSecondSunflowerLifebarAnimator;
+    //Variables de un segundo girasol a desbloquear durante un evento.
+    private Sunflower currentSecondSunflower;
+    private Animator currentSecondSunflowerAnimator;
+    private Animator currentSecondSunflowerLifebarAnimator;
 
     [Header("ACTIVE EVENT SETTINGS")]
-    [SerializeField] private bool marvelousEventActive;
-    [SerializeField] private bool normalEventActive;
-    [SerializeField] private bool compellingEventActive;
+    public float enemySpawnTime;
+    private float originalEnemySpawnTime;
 
-    [SerializeField] private bool finalEventActive;
+    private bool marvelousEventActive;
+    private bool normalEventActive;
+    private bool compellingEventActive;
+
+    private bool finalEventActive;
     public bool MarvelousEventActive => marvelousEventActive;
-
-    //Change it to a method where depending on the type of event, will give a sunflower.
-    public Sunflower activeSunflower => currentSunflower;
 
     [Header("MESSAGE TEXT SETTINGS")]
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private Animator messageTextAnimator;
 
-    [Header("GROWTH EVENT TIMER SETTINGS")]
+    [Header("GROWTH EVENT SETTINGS")]
     [SerializeField] private TextMeshProUGUI timerText;
     private float timer;
 
-    [SerializeField] private float timeToCountdown = 10f;
-    [SerializeField] private float finalEventTimer;
+    [SerializeField] private float compellingEventCountdown;
+    [SerializeField] private float normalEventCountdown;
+    [SerializeField] private float finalEventCountdown;
     
     public bool eventTimerIsActive;
 
@@ -125,7 +127,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     private void SunflowerHealthCheck()
     {
         if (eventTimerIsActive)
@@ -149,6 +150,17 @@ public class GameManager : MonoBehaviour
 
                 currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
             }
+            else if (compellingEventActive && currentSunflower.currentHealth <= 0)
+            {
+                StopCoroutine(CompellingEvent());
+                SetGrowthFailedAnimations();
+                EndTimer();
+                compellingEventActive = false;
+                enemySpawnTime = originalEnemySpawnTime;
+
+                currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
+                
+            }
         }
     }
 
@@ -159,18 +171,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FinalEvent());
     }
 
-    private IEnumerator FinalEvent()
-    {
-        timeToCountdown = finalEventTimer;
-
-        StartTimer();
-
-        SpawnEnemiesInWorld();
-
-        yield return new WaitUntil(() => timer <= 0);
-
-        EndTimer();
-    }
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator, ref bool selectionMade)
     {
@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
 
                 case GrowthSelection.Compelling:
                     {
-                        StartCoroutine(NormalEvent());
+                        StartCoroutine(CompellingEvent());
                         break;
                     }
             } 
@@ -258,7 +258,20 @@ public class GameManager : MonoBehaviour
     }
 
     #region Event Methods
+    private IEnumerator FinalEvent()
+    {
+        finalEventActive = true;
 
+        StartTimer();
+
+        SpawnEnemiesInWorld();
+
+        yield return new WaitUntil(() => timer <= 0);
+
+        EndTimer();
+
+        finalEventActive = false;
+    }
     private IEnumerator MarvelousEvent()
     {
         marvelousEventActive = true;
@@ -320,6 +333,35 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private IEnumerator CompellingEvent()
+    {
+        compellingEventActive = true;
+
+        originalEnemySpawnTime = enemySpawnTime;
+        enemySpawnTime = enemySpawnTime / 2;
+
+        StartTimer();
+        StartSunflowerAnimations();
+
+        SpawnEnemiesInWorld();
+
+        yield return new WaitUntil(() => timer <= 0);
+
+        EndTimer();
+        SetGrowthSuccessAnimations();
+
+        currentSunflower.StartGrowthSuccess();
+        totalTerrainsGenerated++;
+
+        Destroy(currentSunflower.gameObject, 4.8f);
+
+        currentSunflower = null;
+
+        enemySpawnTime = originalEnemySpawnTime;
+
+        compellingEventActive = false;
+    }
+
     #endregion
 
     #region Game Methods
@@ -341,7 +383,7 @@ public class GameManager : MonoBehaviour
     #region Timer Event Methods
     private void StartTimer()
     {
-        timer = timeToCountdown;
+        timer = finalEventActive ? finalEventCountdown : compellingEventActive ? compellingEventCountdown : normalEventCountdown;
         eventTimerIsActive = true;
         timerText.gameObject.SetActive(true);
     }
