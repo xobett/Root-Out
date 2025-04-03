@@ -1,9 +1,9 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using Weapons;
 
 public class WeaponHandler : MonoBehaviour
 {
@@ -28,41 +28,16 @@ public class WeaponHandler : MonoBehaviour
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 5f;
 
-    /// <summary>
-    /// Ajustar el posicionamiento de la rueda de armas al inicio
-    /// </summary>
-    private void Start()
-    {
-        weaponSelectionWheel.gameObject.SetActive(true); // modi
-    }
+  
     private void Update()
     {
         HandleMouseScroll();  // Maneja la rotación de la rueda del ratón para cambiar de arma
-        HandleWeaponSelection();  // Maneja la selección de arma al hacer clic
-
-        OpenMenu();
-    }
-
-    private void OpenMenu()
-    {
-        if (Input.GetKey(KeyCode.Tab))
-        {
-            weaponSelectionWheel.gameObject.SetActive(true);
-        }
-        else
-        {
-            weaponSelectionWheel.gameObject.SetActive(false);
-        }
     }
 
 
     // Maneja la rotación de la rueda del ratón para cambiar de arma
     private void HandleMouseScroll()
     {
-        if (!Input.GetKey(KeyCode.Tab))
-        {
-            return; // No permitir cambio de arma si la tecla Tab no está presionada
-        }
 
         if (weapons.Count < 2)
         {
@@ -81,6 +56,7 @@ public class WeaponHandler : MonoBehaviour
             {
                 if (weapons[i] != null)
                 {
+                    StartCoroutine(ColdDownWheelAnimation());
                     StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia arriba
                     selectedWeaponIndex = i;
                     SwitchWeapon(selectedWeaponIndex);
@@ -98,6 +74,7 @@ public class WeaponHandler : MonoBehaviour
             {
                 if (weapons[i] != null)
                 {
+                    StartCoroutine(ColdDownWheelAnimation());
                     StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
                     selectedWeaponIndex = i;
                     SwitchWeapon(selectedWeaponIndex);
@@ -109,6 +86,17 @@ public class WeaponHandler : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator ColdDownWheelAnimation()
+    {
+        weaponSelectionWheel.gameObject.SetActive(true); // Asegurarse de que la rueda esté activa
+        Animation anim = weaponSelectionWheel.GetComponent<Animation>();
+        anim.Play("RuedaArmasAbajo");
+        yield return new WaitForSeconds(anim["RuedaArmasAbajo"].length);
+        anim.Play("RuedaArmasArriba");
+        yield return new WaitForSeconds(anim["RuedaArmasArriba"].length);
+        weaponSelectionWheel.gameObject.SetActive(false); // Asegurarse de que la rueda esté activa
     }
 
     private IEnumerator RotateWeaponSelectionWheel(float targetValue)
@@ -131,15 +119,6 @@ public class WeaponHandler : MonoBehaviour
         // wheelIsRotating = false;
 
         yield return null;
-    }
-
-    // Maneja la selección de arma al hacer clic
-    private void HandleWeaponSelection()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SelectWeapon(selectedWeaponIndex);
-        }
     }
 
     // Método para recoger un arma nueva
