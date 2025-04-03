@@ -1,7 +1,6 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,12 +22,12 @@ public class WeaponHandler : MonoBehaviour
     // Variable para rastrear el tiempo del último cambio de arma
     private float lastWeaponChangeTime = 0f;
     // Cooldown de 0.5 segundos
-    private const float weaponChangeCooldown = 0.4f;
+    private const float weaponChangeCooldown = 1.5f;
 
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 5f;
 
-  
+
     private void Update()
     {
         HandleMouseScroll();  // Maneja la rotación de la rueda del ratón para cambiar de arma
@@ -56,11 +55,11 @@ public class WeaponHandler : MonoBehaviour
             {
                 if (weapons[i] != null)
                 {
-                    StartCoroutine(ColdDownWheelAnimation());
                     StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia arriba
-                    selectedWeaponIndex = i;
-                    SwitchWeapon(selectedWeaponIndex);
+                    selectedWeaponIndex = i; 
+                    SwitchWeapon(selectedWeaponIndex); 
                     lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+                  //  StartCoroutine(ColdDownWheelAnimation());
 
                     var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
                     playerMovement.SetAnimationState(GetCurrentAim());
@@ -74,11 +73,11 @@ public class WeaponHandler : MonoBehaviour
             {
                 if (weapons[i] != null)
                 {
-                    StartCoroutine(ColdDownWheelAnimation());
                     StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
                     selectedWeaponIndex = i;
                     SwitchWeapon(selectedWeaponIndex);
                     lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+                  //  StartCoroutine(ColdDownWheelAnimation());
 
                     var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
                     playerMovement.SetAnimationState(GetCurrentAim());
@@ -101,7 +100,7 @@ public class WeaponHandler : MonoBehaviour
 
     private IEnumerator RotateWeaponSelectionWheel(float targetValue)
     {
-        // wheelIsRotating = true; // Marcar que la rueda está rotando
+
         var selectionWheelRect = weaponSelectionWheel.GetComponent<RectTransform>(); // Obtener el RectTransform de la rueda
 
         Quaternion targetRotation = Quaternion.Euler(0, 0, weaponSelectionWheel.transform.eulerAngles.z + targetValue); // Calcular la rotación objetivo
@@ -116,7 +115,6 @@ public class WeaponHandler : MonoBehaviour
         }
         selectionWheelRect.rotation = targetRotation;
 
-        // wheelIsRotating = false;
 
         yield return null;
     }
@@ -258,20 +256,20 @@ public class WeaponHandler : MonoBehaviour
         currentWeapon.SetActive(true); // Activar la nueva arma
     }
 
-    // Seleccionar un arma según el índice
-    void SelectWeapon(int index) // Recibe el índice del arma
-    {
-        if (IsValidIndex(index)) // Verificar si el índice es válido
-        {
-            SwitchWeapon(index); // Cambiar al arma seleccionada
-        }
-    }
+    //// Seleccionar un arma según el índice
+    //void SelectWeapon(int index) // Recibe el índice del arma
+    //{
+    //    if (IsValidIndex(index)) // Verificar si el índice es válido
+    //    {
+    //        SwitchWeapon(index); // Cambiar al arma seleccionada
+    //    }
+    //}
 
-    // Verificar si el índice es válido
-    private bool IsValidIndex(int index) // Recibe el índice del arma
-    {
-        return index >= 0 && index < weapons.Count; // Verificar si el índice está dentro de los límites de los arrays
-    }
+    //// Verificar si el índice es válido
+    //private bool IsValidIndex(int index) // Recibe el índice del arma
+    //{
+    //    return index >= 0 && index < weapons.Count; // Verificar si el índice está dentro de los límites de los arrays
+    //}
 
     // Dibujar gizmos en el editor para visualizar el weaponHolder
     private void OnDrawGizmos()
