@@ -24,6 +24,10 @@ public class MushroomBombShooter : WeaponsBase
     [SerializeField] private Animator bombShooterAnimCtrlr;
     private float mushroomSpeed;
 
+    [Header("BOMB SHOOTER AUDIO")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shootClip;
+
     protected override void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por la etiqueta
@@ -31,6 +35,8 @@ public class MushroomBombShooter : WeaponsBase
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(TargetPointCoroutine()); // Inicia la corrutina para instanciar targetShooting
+
+        audioSource.clip = shootClip;
     }
 
     protected override void Update()
@@ -63,6 +69,8 @@ public class MushroomBombShooter : WeaponsBase
     {
         if (mushroomSpeed == 0)
         {
+            audioSource.Play();
+
             SmokeShoot();
             Mortar(); // Llama al método Mortar
             base.Shoot(); // Llama al método Shoot de la clase base

@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour, IBullet
         {
             Instantiate(hitEnemyVfx, transform.position, hitEnemyVfx.transform.rotation);
 
+            AudioManager.instance.PlaySFX("Enemy hit");
+
             aiHealth.TakeDamage(damage);
 
             Destroy(gameObject);

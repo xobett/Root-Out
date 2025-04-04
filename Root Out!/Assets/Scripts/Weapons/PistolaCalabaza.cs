@@ -38,8 +38,10 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
+
             FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
             base.Shoot();
+            AudioManager.instance.PlaySFX("Disparo Calabaza");
         }
     }
 

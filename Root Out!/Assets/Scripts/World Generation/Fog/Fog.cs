@@ -15,10 +15,4 @@ public class Fog : MonoBehaviour
             Destroy(other.gameObject, 6);
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue + Color.grey;
-        Gizmos.DrawWireSphere(transform.position, fogDetectionRadius);
-    }
 }

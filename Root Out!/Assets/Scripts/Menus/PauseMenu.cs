@@ -22,7 +22,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] Slider mainVolumeSlider; // Referencia al slider de volumen principal
     [SerializeField] AudioSource audioSourceMain; // Referencia al AudioSource principal
 
-    bool isPaused = false; // Variable para controlar si el juego está en pausa
+    public bool isPaused = false; // Variable para controlar si el juego está en pausa
+
+    [SerializeField] private UIInventory uiInventory;
 
     private void Start()
     {
@@ -50,7 +52,7 @@ public class PauseMenu : MonoBehaviour
 
     void HandlePause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // Si se presiona la tecla Escape
+        if (Input.GetKeyDown(KeyCode.Escape) && !uiInventory.isOpened) // Si se presiona la tecla Escape
         {
             if (!isPaused) // Si el juego no está en pausa
             {

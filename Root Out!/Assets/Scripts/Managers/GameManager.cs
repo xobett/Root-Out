@@ -79,6 +79,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float compellingEventCountdown;
     [SerializeField] private float normalEventCountdown;
     [SerializeField] private float finalEventCountdown;
+
+    public float premiumShopProbability;
     
     public bool eventTimerIsActive;
 
@@ -194,6 +196,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            premiumShopProbability = 0f;
+
             if (totalTerrainsGenerated < maxTerrainsPerGame)
             {
                 currentSunflower = sunflower;
@@ -302,7 +306,13 @@ public class GameManager : MonoBehaviour
 
         EndTimer();
 
+        ClearEnemies();
+
         DisplayMessage("YOU WON!");
+
+        yield return new WaitForSeconds(5);
+
+        SceneManager.LoadScene("Credits", LoadSceneMode.Single);
 
         finalEventActive = false;
     }
@@ -327,6 +337,8 @@ public class GameManager : MonoBehaviour
 
         EndTimer();
         SetGrowthSuccessAnimations();
+
+        premiumShopProbability += Random.Range(10, 30);
 
         currentSunflower.StartGrowthSuccess();
         totalTerrainsGenerated++;
@@ -419,6 +431,8 @@ public class GameManager : MonoBehaviour
         timer = finalEventActive ? finalEventCountdown : compellingEventActive ? compellingEventCountdown : normalEventCountdown;
         eventTimerIsActive = true;
         timerText.gameObject.SetActive(true);
+
+        DisplayMessage("Protect the sunflower from the Mushrooms!");
     }
     private void EndTimer()
     {

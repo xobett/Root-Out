@@ -10,6 +10,9 @@ public class AIHealth : MonoBehaviour
 
     [SerializeField] private GameObject deathVfx;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip deathClip;
+
     public void TakeDamage(float damage)
     {
         Debug.Log("El personaje " + name + " recibio daño");
@@ -26,6 +29,9 @@ public class AIHealth : MonoBehaviour
     {
         Debug.Log("Mataste a " + name);
         enemiesDefeated++; // Incrementar el contador de enemigos derrotados
+
+        audioSource.clip = deathClip;
+        audioSource.Play();
 
         Instantiate(deathVfx, transform.position, Quaternion.identity);
         Destroy(gameObject);

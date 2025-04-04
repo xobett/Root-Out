@@ -19,9 +19,9 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
-            base.Shoot();
-            // AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
 
+            base.Shoot();
+            AudioManager.instance.PlaySFX("Disparo Zanahoria");
         }
     }
 

@@ -34,7 +34,9 @@ public class UIInventory : MonoBehaviour
 
     [SerializeField] private int itemsDisplayed;
 
-    private bool isOpened = false;
+    public bool isOpened = false;
+
+    [SerializeField] private PauseMenu pauseMenu;
 
     private float targetValue;
 
@@ -46,7 +48,7 @@ public class UIInventory : MonoBehaviour
 
     void Update()
     {
-        if (IsOpening())
+        if (IsOpening() && !pauseMenu.isPaused)
         {
             OpenInventory();
         }

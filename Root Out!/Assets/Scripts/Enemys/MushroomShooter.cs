@@ -17,11 +17,16 @@ public class MushroomShooter : WeaponsBase
     [SerializeField] private Animator mushroomShooterAnimCtrlr;
     private float shooterSpeed;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shootClip;
+
     protected override void Start()
     {
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = gameObject.GetComponent<NavMeshAgent>();
+
+        audioSource.clip = shootClip;
     }
     private void LateUpdate()
     {
@@ -46,9 +51,10 @@ public class MushroomShooter : WeaponsBase
     }
     protected override void Shoot()
     {
-        if (shooterSpeed == 0)
+        if (shooterSpeed == 0 && Detection())
         {
-            base.Shoot(); 
+            base.Shoot();
+            audioSource.Play();
         }
     }
 

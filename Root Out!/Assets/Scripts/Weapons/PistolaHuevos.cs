@@ -23,10 +23,8 @@ public class PistolaHuevos : WeaponsBase, IInteractable
             //    StartCoroutine(FireBurst());
             //}
 
-
             base.Shoot();
-
-            // AudioManager.instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
+            AudioManager.instance.PlaySFX("Disparo Huevo");
         }
     }
 

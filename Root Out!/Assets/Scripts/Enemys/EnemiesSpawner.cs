@@ -11,6 +11,8 @@ public class EnemiesSpawner : MonoBehaviour
 
     private GameObject lastEnemySpawned;
 
+    [SerializeField] private AudioClip spawnClip;
+
     [ContextMenu("Spawn Enemy")]
     public void StartSpawner()
     {
@@ -20,7 +22,8 @@ public class EnemiesSpawner : MonoBehaviour
     private IEnumerator SpawnEnemies()
     {
         GameObject enemyToSpawn = GetRandomEnemy();
-        Vector3 spawnPosition = GetRandomSpawnPosition().position;
+        Transform spawnPosition = GetRandomSpawnPosition();
+        Vector3 position = spawnPosition.position;
 
         while (enemyToSpawn == lastEnemySpawned)
         {
@@ -28,13 +31,18 @@ public class EnemiesSpawner : MonoBehaviour
             yield return null;
         }
 
-        spawnPosition.y = 1.5f;
+        position.y = 1.5f;
 
-        GameObject spawnVfx = Instantiate(enemySpawnVfx, spawnPosition, Quaternion.identity);
+        GameObject spawnVfx = Instantiate(enemySpawnVfx, position, Quaternion.identity);
+
+        AudioSource spawnAudioSource = spawnPosition.gameObject.GetComponent<AudioSource>();
+        spawnAudioSource.clip = spawnClip;
+        spawnAudioSource.Play();
+
 
         yield return new WaitForSeconds(3.5f);
 
-        GameObject enemyClone = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+        GameObject enemyClone = Instantiate(enemyToSpawn, position, Quaternion.identity);
         lastEnemySpawned = enemyToSpawn;
 
         yield return new WaitForSeconds(GameManager.instance.enemySpawnTime);

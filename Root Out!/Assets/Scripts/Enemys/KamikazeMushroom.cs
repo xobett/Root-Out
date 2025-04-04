@@ -19,6 +19,10 @@ public class KamikazeMushroom : WeaponsBase
 
     [SerializeField] private GameObject deathVfx;
 
+    [Header("KAMIKAZE AUDIO")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip explosionClip;
+
     protected override void Start()
     {
         sunFlowerScript = FindAnyObjectByType<Sunflower>();
@@ -27,6 +31,8 @@ public class KamikazeMushroom : WeaponsBase
         //sunFlowerGameObject = GameObject.FindGameObjectWithTag("Sunflower").transform;
         agent = GetComponent<NavMeshAgent>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+
+        audioSource.clip = explosionClip;
     }
 
     protected override void Update()
@@ -94,6 +100,7 @@ public class KamikazeMushroom : WeaponsBase
             agent.enabled = false;
 
             Instantiate(deathVfx, transform.position, Quaternion.identity);
+            audioSource.Play();
             Destroy(gameObject);
         }
         else if (PlayerNear())
@@ -104,6 +111,7 @@ public class KamikazeMushroom : WeaponsBase
             agent.enabled = false;
 
             Instantiate(deathVfx, transform.position, Quaternion.identity);
+            audioSource.Play();
             Destroy(gameObject);
         }
     }

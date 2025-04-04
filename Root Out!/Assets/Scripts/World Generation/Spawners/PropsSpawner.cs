@@ -17,6 +17,11 @@ public class PropsSpawner : MonoBehaviour
     [Header("LOOT SPAWN POSITION SETTINGS")]
     [SerializeField] private Transform[] lootPos;
 
+    [Header("ITEM SHOP SETTINGS")]
+    [SerializeField] private GameObject nestMarket;
+
+    [SerializeField] private Transform premiumItempShopPos;
+
     [Header("PROP POSITIONS GROUPS")]
     [SerializeField] private GameObject lootPositionsGroups;
 
@@ -50,6 +55,8 @@ public class PropsSpawner : MonoBehaviour
             }
         }
 
+        SpawnItemShop();
+
         ClearUnusedElements();
         StopCoroutine(SpawnLoot());
     }
@@ -57,6 +64,18 @@ public class PropsSpawner : MonoBehaviour
     private bool LootPosUsed(int posToVerify)
     {
         return lootUsedPos.Contains(posToVerify);
+    }
+
+    void SpawnItemShop()
+    {
+        float probability = Random.Range(0, 100);
+
+        probability *= GameManager.instance.premiumShopProbability;
+
+        if (probability > 100)
+        {
+            Instantiate(nestMarket, premiumItempShopPos.position, premiumItempShopPos.transform.rotation);
+        }
     }
 
 
@@ -121,7 +140,7 @@ public class PropsSpawner : MonoBehaviour
                     Debug.Log("Loot item was chosen");
                     int lootProbability = Random.Range(0, 4);
 
-                    if (lootProbability == 3)
+                    if (NumberIsPair(lootProbability))
                     {
                         int lootSelection = Random.Range(0, 2);
 

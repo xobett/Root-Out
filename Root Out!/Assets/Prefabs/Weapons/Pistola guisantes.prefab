@@ -171,8 +171,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6, y: 0.59, z: 0.45470428}
-  m_Center: {x: 0.01858902, y: 0.19010127, z: 0.13276863}
+  m_Size: {x: 0.6, y: 1.5899999, z: 0.45470428}
+  m_Center: {x: 0.01858902, y: -0.30989873, z: 0.13276863}
 --- !u!54 &8562781624072432486
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -238,6 +238,9 @@ MonoBehaviour:
   burstDistance: 0.1
   burstPause: 0.5
   inventoryItemToAdd: {fileID: 11400000, guid: 9f6454df6c5d983459b94b5f953d89dc, type: 2}
+  sweetJackVfx: {fileID: 0}
+  sweetJackShoot: 0
+  isReloading: 0
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   weaponData: {fileID: 11400000, guid: b1946ab0424699049aa3bc4854c0a255, type: 2}

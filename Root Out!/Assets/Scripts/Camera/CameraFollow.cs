@@ -161,6 +161,8 @@ public class CameraFollow : MonoBehaviour
             //Para hacer zoom, checa si se esta haciendo zoom, si no se esta haciendo zoom actualmente y si no hizo zoom recientemente.
             if (IsAiming() && !aimed && !isZooming)
             {
+                AudioManager.instance.PlaySFX("Apuntar");
+
                 //Hace zoom y cambia la posicion de la camara.
                 StartCoroutine(CameraZoom(zoomIn, horizontalZoomOffset));
                 puntoDeMiraCanvas.enabled = true;

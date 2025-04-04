@@ -164,6 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9104953023742149883}
+  - component: {fileID: 599881548354123385}
   m_Layer: 0
   m_Name: Position 4
   m_TagString: Untagged
@@ -186,6 +187,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1128804967728634316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &599881548354123385
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242760136403317973}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 8
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2350967057371683739
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 2350967057371683739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.48, y: 0.5, z: -9.65}
+  m_LocalPosition: {x: 2.48, y: 1, z: -9.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -295,7 +393,7 @@ Transform:
   m_GameObject: {fileID: 3086011834781889299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.79, y: 0.5, z: -13.04}
+  m_LocalPosition: {x: -5.79, y: 1, z: -13.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -359,6 +457,7 @@ MonoBehaviour:
   - {fileID: 8273410966226516354, guid: 62015e164ef71f740973ad659e69eded, type: 3}
   - {fileID: 6205278035956761403, guid: 9d934831c0df08748a0ae619ac909bed, type: 3}
   enemySpawnVfx: {fileID: 6414768626602377024, guid: fa9497cf54c4d5a4e92d862fea325a02, type: 3}
+  spawnClip: {fileID: 8300000, guid: cb72678c8ea47dc45816ecb0cf0488c4, type: 3}
 --- !u!1 &4017254889775049068
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedCoin: {fileID: 4772143867209942912, guid: a6307bf4b444b8e47858c89c4f502f5f, type: 3}
-  ammo: {fileID: 340161551291883254, guid: 9fa1d2aeb0415124a94e377c1ce6f9bd, type: 3}
+  ammo: {fileID: 4772143867209942912, guid: a6307bf4b444b8e47858c89c4f502f5f, type: 3}
   weapons:
   - {fileID: 1564299451844398381, guid: ff808567e671caf42adad4b2f5132195, type: 3}
   - {fileID: 5565976775888962945, guid: cf245403e7c521c43b6729815de93009, type: 3}
@@ -427,6 +526,8 @@ MonoBehaviour:
   - {fileID: 8296092144563827367}
   - {fileID: 7238319330302434487}
   - {fileID: 6100908733733738157}
+  nestMarket: {fileID: 7666038190650843420, guid: c05d3c798f56ca74e9e5b9346f817680, type: 3}
+  premiumItempShopPos: {fileID: 5985902953367763916}
   lootPositionsGroups: {fileID: 4455029426759066395}
 --- !u!1 &4100431711315356400
 GameObject:
@@ -453,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 4100431711315356400}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.77, y: 0.5, z: -1.58}
+  m_LocalPosition: {x: 12.77, y: 1, z: -1.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -642,6 +743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4087886607263149437}
+  - component: {fileID: 1044408800570029031}
   m_Layer: 0
   m_Name: Position 3
   m_TagString: Untagged
@@ -664,6 +766,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1128804967728634316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1044408800570029031
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4910354235103916642}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 8
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5065339430248838959
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +903,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4351759781922921197}
+  - component: {fileID: 7644174485735121841}
   m_Layer: 0
   m_Name: Position 2
   m_TagString: Untagged
@@ -726,6 +926,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1128804967728634316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7644174485735121841
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5449446350353953301}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 8
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6349511273610354983
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +1048,7 @@ Transform:
   m_GameObject: {fileID: 6349511273610354983}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.14, y: 0.52, z: -7.63}
+  m_LocalPosition: {x: -7, y: 0.52, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -782,7 +1079,7 @@ Transform:
   m_GameObject: {fileID: 6442023165565993508}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 0.5, z: 7.5}
+  m_LocalPosition: {x: 8.5, y: 1, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -946,6 +1243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2669173370121035336}
+  - component: {fileID: 7027878013620129900}
   m_Layer: 0
   m_Name: Position 1
   m_TagString: Untagged
@@ -968,6 +1266,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1128804967728634316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7027878013620129900
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367363107688876060}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 8
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &92890761980177488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1267,6 +1662,10 @@ PrefabInstance:
     - target: {fileID: 3506185919270148052, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
       propertyPath: m_Name
       value: Fog bloque chico obstaculo (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506185919270148052, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2446,6 +2845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2507,6 +2910,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2631,6 +3038,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3004,6 +3415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque chico obstaculo (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3506185919270148052, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3128,6 +3543,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3189,6 +3608,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3934,6 +4357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4120,6 +4547,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4181,6 +4612,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4554,6 +4989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4801,6 +5240,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6352,6 +6795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6786,6 +7233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6910,6 +7361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7033,6 +7488,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7220,6 +7679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7405,6 +7868,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7592,6 +8059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7778,6 +8249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7901,6 +8376,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8087,6 +8566,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8398,6 +8881,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8583,6 +9070,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8956,6 +9447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque chico obstaculo
       objectReference: {fileID: 0}
+    - target: {fileID: 3506185919270148052, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9204,6 +9699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9389,6 +9888,10 @@ PrefabInstance:
     - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
       propertyPath: m_Name
       value: Fog bloque mediano obstaculo (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -27,6 +27,8 @@ public class EnemyBullet : MonoBehaviour, IBullet
 
             Instantiate(playerHitVfx, transform.position, hitVfx.transform.rotation);
 
+            AudioManager.instance.PlaySFX("Player hit");
+
             Destroy(gameObject);
         }
         if (other.gameObject.TryGetComponent<Sunflower>(out var sunFlower))

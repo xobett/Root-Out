@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 8170081442514756751}
   - component: {fileID: 6877164462081190046}
   - component: {fileID: 5078747472099110838}
+  - component: {fileID: 5042656567420869306}
   m_Layer: 13
   m_Name: Mushroom Bomb Shooter
   m_TagString: Enemy
@@ -268,12 +269,17 @@ MonoBehaviour:
   burstDistance: 0.1
   burstPause: 0.5
   inventoryItemToAdd: {fileID: 0}
+  sweetJackVfx: {fileID: 0}
+  sweetJackShoot: 0
+  isReloading: 0
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
   HUDTargetPoint: {fileID: 3026164163744036126, guid: 6a9feb9b591cb5c44b63fa84772771a9, type: 3}
   heightSecondBullet: 15
   smokePrefab: {fileID: 7967474238444114956, guid: 02f285780fa65214e88def631eb21ca1, type: 3}
   bombShooterAnimCtrlr: {fileID: 6889213395781147533}
+  audioSource: {fileID: 5042656567420869306}
+  shootClip: {fileID: 8300000, guid: 183c6b979eaf6f748b812c6c76f78e8f, type: 3}
 --- !u!114 &5078747472099110838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +296,105 @@ MonoBehaviour:
   maxHealth: 75
   hUDLifeBar: {fileID: 3400777871220660004}
   deathVfx: {fileID: 1601680627274549450, guid: bbf8335e4ccd77a4dbef98481c6b39b8, type: 3}
+  audioSource: {fileID: 5042656567420869306}
+  deathClip: {fileID: 8300000, guid: 20b461a6a12880c46beab978cbc057a0, type: 3}
+--- !u!82 &5042656567420869306
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601248732316366986}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 8
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6087019335867297729
 GameObject:
   m_ObjectHideFlags: 0

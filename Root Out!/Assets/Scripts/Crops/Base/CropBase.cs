@@ -31,7 +31,7 @@ public abstract class CropBase : MonoBehaviour
 
 
     [Header("ENEMY DETECTION")]
-    [SerializeField] protected float sphereDetectionRadius = 18f;
+    protected float sphereDetectionRadius = 15f;
     [SerializeField] protected LayerMask whatIsEnemy;
     [SerializeField] protected float maxHitDistance;
 
@@ -172,9 +172,7 @@ public abstract class CropBase : MonoBehaviour
     protected void SetDestination(Vector3 desiredFollowingPos, float speed)
     {
         //Moves at a constant speed.
-        transform.position = Vector3.MoveTowards(transform.position, desiredFollowingPos, Time.deltaTime * 2.5f);
-
-
+        transform.position = Vector3.MoveTowards(transform.position, desiredFollowingPos, Time.deltaTime * 2.8f);
     }
     protected void LookAtTarget(Transform target)
     {
