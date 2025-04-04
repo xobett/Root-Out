@@ -63,7 +63,7 @@ namespace Weapons
         protected float nextTimeToFire = 0f;  // Tiempo entre disparos
 
         [Header("INVENTORY ITEM SETTINGS")]
-        [SerializeField] private InventoryItemData inventoryItemToAdd;
+        public InventoryItemData inventoryItemToAdd;
 
         [Header("VFX SETTINGS")]
         [SerializeField] private GameObject sweetJackVfx;
