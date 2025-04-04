@@ -467,7 +467,7 @@ namespace Weapons
         {
             if (bulletText == null)
             {
-                GameObject bulletTextObject = GameObject.Find("Ammo Text");
+                GameObject bulletTextObject = GameObject.Find("WeaponAmmo");
                 if (bulletTextObject != null)
                 {
                     bulletText = bulletTextObject.GetComponent<TextMeshProUGUI>();
