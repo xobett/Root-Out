@@ -4962,7 +4962,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4980,3 +4980,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1de9f0bc1ca9284aa1bbb7b2b173efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitVfx: {fileID: 625522613143090449, guid: d28d0b1eef275814e9b1dd150c1def2d, type: 3}
+  playerHitVfx: {fileID: 8124709879464889492, guid: 26d0f23e8b138524a99033bda660dd70, type: 3}

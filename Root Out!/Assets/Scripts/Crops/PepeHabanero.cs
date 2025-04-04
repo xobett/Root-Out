@@ -1,14 +1,20 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PepeHabanero : CropBase
 {
+    [Header("PEPE HABANERO SETTINGS")]
     [SerializeField] private GameObject nukePrefab;
+    [SerializeField] private float nukeRadius;
+
+    private bool reachedExplosionPos;
+
     protected override void CropAttack()
     {
-        base.HeadToEnemy();
-        
+        if (!reachedExplosionPos)
+        {
+            base.HeadToEnemy();   
+        }
     }
 
     protected override void SetAnimatorParameters()
@@ -29,19 +35,33 @@ public class PepeHabanero : CropBase
     {
         if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(Explode(enemy.gameObject));
+            StartCoroutine(Explode());
         }
     }
 
-    private IEnumerator Explode(GameObject enemy)
+    private IEnumerator Explode()
     {
         cropAnimCtrlr.SetTrigger("Explode");
+
+        reachedExplosionPos = true;
 
         yield return new WaitForSeconds(2);
 
         Instantiate(nukePrefab, transform.position, Quaternion.identity);
-        enemy.GetComponent<AIHealth>().TakeDamage(damage);
+
+        Collider[] enemyColliders = Physics.OverlapSphere(transform.position, nukeRadius, whatIsEnemy);
+
+        foreach(Collider enemyCollider in enemyColliders)
+        {
+            enemyCollider.GetComponent<AIHealth>().TakeDamage(damage);
+        }
 
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, nukeRadius);
     }
 }

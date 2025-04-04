@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5563750098599496366}
   m_Layer: 22
   m_Name: Corny Guy
-  m_TagString: Untagged
+  m_TagString: Corny Guy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   ableToShoot: 0
   abilityUsed: 0
   abilityTimesUsed: 0
+  cornyGuyVfx: {fileID: 2099960004264464946, guid: af1e0eb9b9b85e94dafae4edaccb8bae, type: 3}
 --- !u!114 &5563750098599496366
 MonoBehaviour:
   m_ObjectHideFlags: 0

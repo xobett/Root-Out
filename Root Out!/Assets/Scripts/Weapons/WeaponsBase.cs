@@ -23,7 +23,7 @@ namespace Weapons
 
         [Header("Punto de Mira")]
         public Transform aiming; // Punto de Mira
-        [SerializeField] private Transform cropAiming;
+        [SerializeField] public Transform cropAiming;
 
         [Header("Tipo de Arma")]
         [SerializeField] public WeaponType weaponType; // Tipo de Arma
@@ -64,6 +64,10 @@ namespace Weapons
 
         [Header("INVENTORY ITEM SETTINGS")]
         [SerializeField] private InventoryItemData inventoryItemToAdd;
+
+        [Header("VFX SETTINGS")]
+        [SerializeField] private GameObject sweetJackVfx;
+        [SerializeField] private bool sweetJackShoot;
 
         #endregion
 
@@ -338,6 +342,13 @@ namespace Weapons
                         StartCoroutine(ExplosionCooldown());
                         canInstantiateExplosion = false;
                     }
+
+                    if (sweetJackShoot)
+                    {
+                        Vector3 spawnPos = cropAiming.transform.position - cropAiming.transform.forward * 0.4f;
+                        Instantiate(sweetJackVfx, spawnPos, sweetJackVfx.transform.rotation);
+                    }
+
 
                     Destroy(bullet, lifeTimeBullets); // Destruye la bala después de que expire el tiempo de vida especificado.
                 }

@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
     
     public bool eventTimerIsActive;
 
+    //Variables extra
+    public bool explosionUpgradeActivated;
+
     private void Awake()
     {
         if (instance == null)

@@ -86,11 +86,21 @@ public class KamikazeMushroom : WeaponsBase
     }
     void Explosion()
     {
-        if (Detection())
+        if (SunflowerNear())
         {
             SmmokeEffect();
-            Debug.Log("BOOM");
+
             sunFlowerScript.DamageSunFlower(damage); // Llama al método DamageSunFlower del script Sunflower
+            agent.enabled = false;
+
+            Instantiate(deathVfx, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        else if (PlayerNear())
+        {
+            SmmokeEffect();
+
+            playerPos.gameObject.GetComponent<PlayerHealth>().TakeDamagePlayer(damage);
             agent.enabled = false;
 
             Instantiate(deathVfx, transform.position, Quaternion.identity);
@@ -112,7 +122,14 @@ public class KamikazeMushroom : WeaponsBase
             base.Reload();
         }
     }
-    bool Detection()
+
+    bool PlayerNear()
+    {
+        LayerMask layerMask = LayerMask.GetMask("Player");
+        return Physics.CheckSphere(transform.position, detectionRangeExplosion, layerMask);
+    }
+
+    bool SunflowerNear()
     {
         LayerMask layerMask = LayerMask.GetMask("Sunflower");
         return Physics.CheckSphere(transform.position, detectionRangeExplosion, layerMask);

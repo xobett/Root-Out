@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SweetJack : CropBase
 {
+    [Header("SWEET JACK SETTINGS")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootSpawn;
 
@@ -49,6 +50,8 @@ public class SweetJack : CropBase
             autoDestroyTimerActivated = true;
 
             yield return new WaitForSeconds(10f);
+
+            Destroy(gameObject);
         }
     }
 }

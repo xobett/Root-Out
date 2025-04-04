@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RedChibiPepper : CropBase
 {
+    [Header("RED CHIBI PEPPER SETTINGS")]
     [SerializeField] private GameObject redChibiExplosion;
     protected override void CropAttack()
     {

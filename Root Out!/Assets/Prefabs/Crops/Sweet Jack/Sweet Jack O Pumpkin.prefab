@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1025716450124364382}
   m_Layer: 22
   m_Name: Sweet Jack O Pumpkin
-  m_TagString: Untagged
+  m_TagString: Sweet Jack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +160,8 @@ MonoBehaviour:
   burstDistance: 0.1
   burstPause: 0.5
   inventoryItemToAdd: {fileID: 0}
+  sweetJackVfx: {fileID: 2582821607894381710, guid: 7c14dd799fdb205489088c7916483182, type: 3}
+  sweetJackShoot: 1
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
 --- !u!1 &8531700995258327092

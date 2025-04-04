@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Letty : CropBase
 {
-    [Header("SHIELD SETTINGS")]
+    [Header("LETTY SETTINGS")]
     [SerializeField] private GameObject lettyShield;
     [SerializeField] private GameObject leafVfx;
 

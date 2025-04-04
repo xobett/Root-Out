@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CornyGuy : CropBase
 {
-    [Header("CORNY GUY ATTACK")]
+    [Header("CORNY GUY SETTINGS")]
     [SerializeField] private float timeBeforeShooting;
     [SerializeField] private float shootingTime;
     [SerializeField] private float nudeTime;
@@ -19,6 +19,8 @@ public class CornyGuy : CropBase
 
     [SerializeField] private bool abilityUsed;
     [SerializeField] private int abilityTimesUsed;
+
+    [SerializeField] private GameObject cornyGuyVfx;
 
     protected override void CropAttack()
     {
@@ -86,6 +88,10 @@ public class CornyGuy : CropBase
         ableToShoot = true;
         gameObject.GetComponent<WeaponCoryGuy>().enabled = true;
 
+        Quaternion vfxRotation = Quaternion.Euler(90, 0, 0);
+
+        Instantiate(cornyGuyVfx, shootPivot.position, vfxRotation);
+
         yield return new WaitForSeconds(shootingTime);
 
         ableToShoot = false;
@@ -99,17 +105,18 @@ public class CornyGuy : CropBase
 
         yield return new WaitForSeconds(unNudeTransitionTime);
 
-        cropRunSpeed = originalRunSpeed;
-
-        arrivedToShootingPosition = false;
-        enemyPos = null;
-        abilityUsed = false;
-
         abilityTimesUsed++;
 
         if (abilityTimesUsed == 2)
         {
             Destroy(gameObject);
         }
+
+        cropRunSpeed = originalRunSpeed;
+
+        arrivedToShootingPosition = false;
+        enemyPos = null;
+        abilityUsed = false;
+
     }
 }

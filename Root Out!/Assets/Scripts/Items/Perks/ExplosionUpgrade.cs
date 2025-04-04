@@ -19,6 +19,8 @@ public class ExplosionUpgrade : MonoBehaviour, IInteractable
             Debug.Log("Explosion Upgrade Activated: " + weapon.damage);
         }
 
+        GameManager.instance.explosionUpgradeActivated = true;
+
         var playerInventory = GameManager.instance.playerInventoryHandler;
         playerInventory.AddItem(inventoryItemToAdd);
         Destroy(gameObject); // Destruye el objeto de mejora

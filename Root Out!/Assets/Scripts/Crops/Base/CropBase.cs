@@ -171,9 +171,6 @@ public abstract class CropBase : MonoBehaviour
 
     protected void SetDestination(Vector3 desiredFollowingPos, float speed)
     {
-        //transform.position = Vector3.SmoothDamp(transform.position, desiredFollowingPos, ref velocityRef, 1f / speed);
-
-
         //Moves at a constant speed.
         transform.position = Vector3.MoveTowards(transform.position, desiredFollowingPos, Time.deltaTime * 2.5f);
 
@@ -214,11 +211,12 @@ public abstract class CropBase : MonoBehaviour
     public GameObject GetEnemyInWorld()
     {
         GameObject enemyToFollow;
-        GameObject[] enemiesInWorld = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (enemiesInWorld != null && enemiesInWorld.Length > 1)
+        Collider[] enemyColliders = Physics.OverlapSphere(playerPos.position, sphereDetectionRadius, whatIsEnemy);
+
+        if (enemyColliders != null && enemyColliders.Length > 1)
         {
-            enemyToFollow = enemiesInWorld[Random.Range(0, enemiesInWorld.Length)];
+            enemyToFollow = enemyColliders[Random.Range(0, enemyColliders.Length)].gameObject;
         }
         else
         {
@@ -232,7 +230,10 @@ public abstract class CropBase : MonoBehaviour
     {
         Gizmos.color = Color.blue;
 
-        Gizmos.DrawWireSphere(playerPos.position, sphereDetectionRadius);
+        if (playerPos != null)
+        {
+            Gizmos.DrawWireSphere(playerPos.position, sphereDetectionRadius); 
+        }
     }
 
     private void OnDestroy()

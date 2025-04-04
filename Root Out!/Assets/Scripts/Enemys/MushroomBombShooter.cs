@@ -21,6 +21,8 @@ public class MushroomBombShooter : WeaponsBase
     private Transform bombMark;
 
     NavMeshAgent agent;
+    [SerializeField] private Animator bombShooterAnimCtrlr;
+    private float mushroomSpeed;
 
     protected override void Start()
     {
@@ -41,14 +43,31 @@ public class MushroomBombShooter : WeaponsBase
     private void LateUpdate()
     {
         LookAtTarget(player); // Llama al método LookAtTarget
+
+        mushroomSpeed = agent.velocity.magnitude;
+
+        if (mushroomSpeed > 0)
+        {
+            bombShooterAnimCtrlr.SetBool("isShooting", false);
+            bombShooterAnimCtrlr.SetBool("isWalking", true);
+        }
+        else
+        {
+
+            bombShooterAnimCtrlr.SetBool("isShooting", true);
+            bombShooterAnimCtrlr.SetBool("isWalking", false);
+        }
     }
 
     protected override void Shoot()
     {
-        SmokeShoot();
-        Mortar(); // Llama al método Mortar
-        base.Shoot(); // Llama al método Shoot de la clase base
-        Attack(); // Llama al método Attack
+        if (mushroomSpeed == 0)
+        {
+            SmokeShoot();
+            Mortar(); // Llama al método Mortar
+            base.Shoot(); // Llama al método Shoot de la clase base
+            Attack(); // Llama al método Attack 
+        }
     }
 
     protected override void Reload()
@@ -81,7 +100,7 @@ public class MushroomBombShooter : WeaponsBase
         mortar.GetComponent<Rigidbody>().AddForce(Vector3.down * bulletForce, ForceMode.Impulse);
     }
 
-    private void  SmokeShoot()
+    private void SmokeShoot()
     {
         Quaternion smokeOrientation = Quaternion.Euler(-90, 0, 0);
 
@@ -94,7 +113,10 @@ public class MushroomBombShooter : WeaponsBase
             yield return new WaitForSeconds(1f / fireRate); // Espera el tiempo basado en la cadencia de disparo
 
             pointFloor = bombMark.position + Vector3.down * 0; // Posición de la imagen
-            point = Instantiate(HUDTargetPoint, pointFloor, Quaternion.identity); // Instancia de la imagen
+            if (mushroomSpeed == 0)
+            {
+                point = Instantiate(HUDTargetPoint, pointFloor, Quaternion.identity); // Instancia de la imagen 
+            }
             Destroy(point, 1.5f); // Destruye la imagen después de 0.5 segundos
         }
     }

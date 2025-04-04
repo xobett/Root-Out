@@ -259,7 +259,7 @@ MonoBehaviour:
   maxBulletReserve: 2147483647
   damage: 3
   range: 5
-  fireRate: 0.4
+  fireRate: 0.75
   reloadTime: 0
   bulletForce: 10
   lifeTimeBullets: 10
@@ -273,6 +273,7 @@ MonoBehaviour:
   HUDTargetPoint: {fileID: 3026164163744036126, guid: 6a9feb9b591cb5c44b63fa84772771a9, type: 3}
   heightSecondBullet: 15
   smokePrefab: {fileID: 7967474238444114956, guid: 02f285780fa65214e88def631eb21ca1, type: 3}
+  bombShooterAnimCtrlr: {fileID: 6889213395781147533}
 --- !u!114 &5078747472099110838
 MonoBehaviour:
   m_ObjectHideFlags: 0

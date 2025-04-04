@@ -14,6 +14,9 @@ public class MushroomShooter : WeaponsBase
     private Transform sunFlower;
     private NavMeshAgent agent;
 
+    [SerializeField] private Animator mushroomShooterAnimCtrlr;
+    private float shooterSpeed;
+
     protected override void Start()
     {
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
@@ -43,7 +46,10 @@ public class MushroomShooter : WeaponsBase
     }
     protected override void Shoot()
     {
-        base.Shoot();
+        if (shooterSpeed == 0)
+        {
+            base.Shoot(); 
+        }
     }
 
     void TargetToAtack()
@@ -53,7 +59,6 @@ public class MushroomShooter : WeaponsBase
             agent.destination = player.transform.position;
             LookAtTarget(player);
         }
-
         else
         {
             if (sunFlower != null)
@@ -61,6 +66,21 @@ public class MushroomShooter : WeaponsBase
                 agent.destination = sunFlower.transform.position;
                 LookAtTarget(sunFlower);
             }
+        }
+
+        Debug.Log(agent.velocity.magnitude);
+
+        shooterSpeed = agent.velocity.magnitude;
+
+        if (shooterSpeed > 0)
+        {
+            mushroomShooterAnimCtrlr.SetBool("isShooting", false);
+            mushroomShooterAnimCtrlr.SetBool("isWalking", true);
+        }
+        else
+        {
+            mushroomShooterAnimCtrlr.SetBool("isShooting", true);
+            mushroomShooterAnimCtrlr.SetBool("isWalking", false);
         }
     }
 
