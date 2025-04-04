@@ -278,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoDeApuntado: 2
   aiming: {fileID: 8681059446760794111}
+  cropAiming: {fileID: 0}
   weaponType: 3
   spreadAngle: 0.1
   horizontalSpread: 0
@@ -288,8 +289,8 @@ MonoBehaviour:
   explosivePrefab: {fileID: 3096751718326257763, guid: 197182a5fbcfff847bfec19e17242331, type: 3}
   currentAmmo: 4
   maxAmmo: 4
-  bulletReserve: 40
-  maxBulletReserve: 40
+  bulletReserve: 1000
+  maxBulletReserve: 1000
   damage: 45
   range: 5
   fireRate: 1
@@ -301,9 +302,11 @@ MonoBehaviour:
   burstDistance: 0.1
   burstPause: 0.5
   inventoryItemToAdd: {fileID: 11400000, guid: a97963d0bc412894aad3e06f8f4217e4, type: 2}
+  sweetJackVfx: {fileID: 0}
+  sweetJackShoot: 0
+  isReloading: 0
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
-  coldDown: 3
   weaponData: {fileID: 11400000, guid: d7925107ad7f48e41a80215726566f6d, type: 2}
 --- !u!114 &9042977146862751344
 MonoBehaviour:

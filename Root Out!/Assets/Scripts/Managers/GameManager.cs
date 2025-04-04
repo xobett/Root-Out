@@ -276,6 +276,17 @@ public class GameManager : MonoBehaviour
     }
 
     #region Event Methods
+
+    private void ClearEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<AIHealth>().TakeDamage(100);
+        }
+    }
+
     private IEnumerator FinalEvent()
     {
         finalEventActive = true;
@@ -287,6 +298,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => timer <= 0);
 
         EndTimer();
+
+        DisplayMessage("YOU WON!");
 
         finalEventActive = false;
     }
@@ -350,7 +363,6 @@ public class GameManager : MonoBehaviour
         normalEventActive = false;
 
     }
-
     private IEnumerator CompellingEvent()
     {
         compellingEventActive = true;
@@ -441,19 +453,11 @@ public class GameManager : MonoBehaviour
 
     private void DeactivateParticles()
     {
-        if (compellingVfxSpawned != null)
-        {
-            compellingVfxSpawned = null;
-            Destroy(compellingVfxSpawned);
-        }
+        GameObject[] sunflowerParticles = GameObject.FindGameObjectsWithTag("Sunflower Particles");
 
-        sunflowerVfxSpawned = null;
-        Destroy(sunflowerVfxSpawned);
-
-        if (secondSunflowerVfxSpawned != null)
+        for (int i = 0; i < sunflowerParticles.Length; i++)
         {
-            secondSunflowerVfxSpawned = null;
-            Destroy(secondSunflowerVfxSpawned);
+            Destroy(sunflowerParticles[i]);
         }
     }
 

@@ -9,6 +9,8 @@ public class PepeHabanero : CropBase
 
     private bool reachedExplosionPos;
 
+    [SerializeField] private AudioSource audioSource;
+
     protected override void CropAttack()
     {
         if (!reachedExplosionPos)
@@ -56,7 +58,19 @@ public class PepeHabanero : CropBase
             enemyCollider.GetComponent<AIHealth>().TakeDamage(damage);
         }
 
+        audioSource.Play();
+
+        while(audioSource.isPlaying)
+        {
+            yield return null;
+        }
+
         Destroy(gameObject);
+    }
+
+    void PlayNukeSound()
+    {
+        audioSource.Play();
     }
 
     private void OnDrawGizmos()

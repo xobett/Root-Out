@@ -22,6 +22,12 @@ public class CornyGuy : CropBase
 
     [SerializeField] private GameObject cornyGuyVfx;
 
+    [Header("AUDIO SETTINGS")]
+    [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private AudioClip regainCornsClip;
+    [SerializeField] private AudioClip shootCornsClip;
+
     protected override void CropAttack()
     {
         HeadToShootingPos();
@@ -77,8 +83,6 @@ public class CornyGuy : CropBase
     {
         abilityUsed = true;
 
-        Debug.Log("Entered the ability method");
-
         yield return new WaitUntil(() => arrivedToShootingPosition);
 
         cropAnimCtrlr.SetTrigger("Shoot Corns");
@@ -92,6 +96,9 @@ public class CornyGuy : CropBase
 
         Instantiate(cornyGuyVfx, shootPivot.position, vfxRotation);
 
+        audioSource.clip = shootCornsClip;
+        audioSource.Play();
+
         yield return new WaitForSeconds(shootingTime);
 
         ableToShoot = false;
@@ -102,6 +109,11 @@ public class CornyGuy : CropBase
         yield return new WaitForSeconds(nudeTime);
 
         cropAnimCtrlr.SetBool("isNude", false);
+
+        yield return new WaitForSeconds(1.85f);
+
+        audioSource.clip = regainCornsClip;
+        audioSource.Play();
 
         yield return new WaitForSeconds(unNudeTransitionTime);
 

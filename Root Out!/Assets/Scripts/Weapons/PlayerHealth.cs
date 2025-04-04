@@ -22,12 +22,14 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private GameObject hud;
 
+    private bool playerIsDead;
+
     public void TakeDamagePlayer(float damage)
     {
         currentHealth -= damage;
         playerLifeBar.fillAmount = currentHealth / maxHealth; // Calcula el fillAmount basado en la vida actual y máxima
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !playerIsDead)
         {
             StartCoroutine(Die());
         }
@@ -55,7 +57,11 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator Die()
     {
+        playerIsDead = true;
+
         hud.SetActive(false);
+
+        playerAnimCtrlr.SetLayerWeight(1, 0);
 
         playerAnimCtrlr.SetTrigger("Death");
 

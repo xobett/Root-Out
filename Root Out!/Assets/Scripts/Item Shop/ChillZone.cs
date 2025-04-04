@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ChillZone : MonoBehaviour, IInteractable
 {
+    [SerializeField] private GameObject interactVfx;
+    [SerializeField] private Transform spawnVfxPos;
+
     public void OnInteract()
     {
         RestoreHealth();
@@ -13,6 +16,7 @@ public class ChillZone : MonoBehaviour, IInteractable
 
         if (playerhealth.currentHealth < playerhealth.maxHealth)
         {
+            Instantiate(interactVfx, spawnVfxPos.position, interactVfx.transform.rotation);
             playerhealth.SetPlayerHealth(playerhealth.maxHealth);
         }
     }

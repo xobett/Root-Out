@@ -5,9 +5,29 @@ public class RedChibiPepper : CropBase
 {
     [Header("RED CHIBI PEPPER SETTINGS")]
     [SerializeField] private GameObject redChibiExplosion;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip warCryClip;
+    [SerializeField] private AudioClip explosionClip;
+
+    private bool audioPlayed;
+
     protected override void CropAttack()
     {
+        PlayWarCry();
+
         HeadToEnemy();
+    }
+
+    private void PlayWarCry()
+    {
+        if (!audioPlayed)
+        {
+            audioSource.clip = warCryClip;
+            audioSource.Play();
+
+            audioPlayed = true;
+        }
     }
 
     protected override void SetAnimatorParameters()
@@ -21,6 +41,7 @@ public class RedChibiPepper : CropBase
         else
         {
             cropAnimCtrlr.SetBool("isRunning", false);
+            audioSource.Stop();
         }
     }
 
@@ -28,7 +49,13 @@ public class RedChibiPepper : CropBase
     {
         if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(redChibiExplosion, transform.position, Quaternion.identity);
+            audioSource.clip = explosionClip;
+            audioSource.Play();
+
+            Vector3 spawnPos = transform.position;
+            spawnPos.y = 0.6f;
+
+            Instantiate(redChibiExplosion, spawnPos, Quaternion.identity);
             enemy.gameObject.GetComponent<AIHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }
