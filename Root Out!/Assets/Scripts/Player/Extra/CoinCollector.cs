@@ -11,7 +11,8 @@ public class CoinCollector : MonoBehaviour
 
         if (tag == "Seed Coin" || tag == "Weapon" || tag == "Perk" || tag == "Crop Card" || tag == "Ammo")
         {
-            Instantiate(grabVfx, other.transform.position, grabVfx.transform.rotation);
+            GameObject particules = Instantiate(grabVfx, other.transform.position, grabVfx.transform.rotation);
+            Destroy(particules, 3);
             other.GetComponent<Item>().ItemInteraction();
         }
 

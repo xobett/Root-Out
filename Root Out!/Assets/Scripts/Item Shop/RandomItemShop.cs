@@ -14,29 +14,22 @@ public class RandomItemShop : MonoBehaviour, IInteractable
 
     [Header("SPAWN SHOP ITEM SETTINGS")]
     [SerializeField] private Transform itemSpawnPosition;
+    [SerializeField] private GameObject spawnVfx;
 
     [Header("SHOP ANIMATOR SETTINGS")]
     [SerializeField] private Animator shopInfoAnimator;
     [SerializeField] private Animator shopCostAnimator;
 
+    [SerializeField] private Animator eggAnimator;
+
     public void OnInteract()
     {
-        DisplayCooldownMessage();
         BuyRandomItem();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && cooldownActive && playerIsNear)
-        {
-            GameManager.instance.DisplayMessage("Next hatch is being prepared!");
-            Debug.Log("Test");
-        }
-    }
-
-    void DisplayCooldownMessage()
-    {
-        if (cooldownActive)
         {
             GameManager.instance.DisplayMessage("Next hatch is being prepared!");
         }
@@ -71,11 +64,18 @@ public class RandomItemShop : MonoBehaviour, IInteractable
             yield return null;
         }
 
+        eggAnimator.SetTrigger("Outro");
+
+        Instantiate(spawnVfx, itemSpawnPosition.position, Quaternion.identity);
         Instantiate(GetRandomShopItem().ItemPrefab, itemSpawnPosition.position, Quaternion.identity);
 
         cooldownActive = true;
 
         yield return new WaitForSeconds(shopCooldownTime);
+
+        eggAnimator.SetTrigger("Intro");
+
+        yield return new WaitForSeconds(3);
 
         LayerMask interaction = LayerMask.NameToLayer("Growth Selection");
         gameObject.layer = interaction;

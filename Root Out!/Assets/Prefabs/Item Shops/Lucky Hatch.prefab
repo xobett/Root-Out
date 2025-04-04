@@ -220,7 +220,7 @@ Transform:
   m_GameObject: {fileID: 699513167857426921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.787, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1834,8 +1834,10 @@ MonoBehaviour:
   shopCooldownTime: 10
   cooldownActive: 0
   itemSpawnPosition: {fileID: 4306869467887499413}
+  spawnVfx: {fileID: 7029457241230710701, guid: 02e00710e441e9d4491bbd9dfaafd36c, type: 3}
   shopInfoAnimator: {fileID: 1692353043508751564}
   shopCostAnimator: {fileID: 8576465996239002816}
+  eggAnimator: {fileID: 4671170816110585374}
 --- !u!65 &7377833158121166314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1957,7 +1959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2017455715203116424, guid: 065e2ebc9c99cfb4390d130e04059fea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3036613533237427237, guid: 065e2ebc9c99cfb4390d130e04059fea, type: 3}
       propertyPath: m_LocalScale.x
