@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour, IBullet
     [SerializeField] private GameObject hitVfx;
     [SerializeField] private GameObject explosiveHitVfx;
 
+    [SerializeField] private GameObject hitEnemyVfx;
+
     public void SetDamage(float damageAmount)
     {
         damage = damageAmount;
@@ -15,7 +17,11 @@ public class Bullet : MonoBehaviour, IBullet
     {
         if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth)) // Si el objeto colisionado tiene un componente AIHealth
         {
-            aiHealth.TakeDamage(damage); // Aplicar daño al AIHealth
+            Instantiate(hitEnemyVfx, transform.position, hitEnemyVfx.transform.rotation);
+
+            aiHealth.TakeDamage(damage);
+
+            Destroy(gameObject);
         }
 
         if (GameManager.instance.explosionUpgradeActivated)

@@ -48,6 +48,13 @@ public class GameManager : MonoBehaviour
     private Animator currentSecondSunflowerLifebarAnimator;
 
     [Header("ACTIVE EVENT SETTINGS")]
+    [SerializeField] private GameObject activeSunflowerVfx;
+    [SerializeField] private GameObject compellingSunflowerVfx;
+
+    private GameObject sunflowerVfxSpawned;
+    private GameObject secondSunflowerVfxSpawned;
+    private GameObject compellingVfxSpawned;
+
     public float enemySpawnTime;
     private float originalEnemySpawnTime;
 
@@ -177,55 +184,63 @@ public class GameManager : MonoBehaviour
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator, ref bool selectionMade)
     {
-        if (totalTerrainsGenerated < maxTerrainsPerGame)
+        if (totalTerrainsGenerated == maxTerrainsPerGame - 1 && growthType == GrowthSelection.Marvelous)
         {
-            currentSunflower = sunflower;
-            currentSunflowerAnimator = sunflowerAnimator;
-            currentSunflowerLifebarAnimator = sunflowerLifeBarAnimator;
-
-            switch (growthType)
-            {
-                case GrowthSelection.Marvelous:
-                    {
-                        if (playerInventoryHandler.SeedCoins >= marvelousGrowthCost)
-                        {
-                            playerInventoryHandler.PaySeedCoins(marvelousGrowthCost);
-                            StartCoroutine(MarvelousEvent());
-                        }
-                        else
-                        {
-                            DisplayMessage("You don't have enough Seeds!");
-                            selectionMade = false;
-                        }
-                        break;
-                    }
-
-                case GrowthSelection.Genuine:
-                    {
-                        if (playerInventoryHandler.SeedCoins >= genuineGrowthCost)
-                        {
-                            playerInventoryHandler.PaySeedCoins(genuineGrowthCost);
-                            StartCoroutine(NormalEvent());
-                        }
-                        else
-                        {
-                            DisplayMessage("You don't have enough Seeds!");
-                            selectionMade = false;
-                        }
-                        break;
-                    }
-
-                case GrowthSelection.Compelling:
-                    {
-                        StartCoroutine(CompellingEvent());
-                        break;
-                    }
-            } 
+            DisplayMessage("You only spawn one more terrain");
+            selectionMade = false;
         }
         else
         {
-            DisplayMessage("You reached the limit of the map!");
-            selectionMade = false;
+            if (totalTerrainsGenerated < maxTerrainsPerGame)
+            {
+                currentSunflower = sunflower;
+                currentSunflowerAnimator = sunflowerAnimator;
+                currentSunflowerLifebarAnimator = sunflowerLifeBarAnimator;
+
+                switch (growthType)
+                {
+                    case GrowthSelection.Marvelous:
+                        {
+                            if (playerInventoryHandler.SeedCoins >= marvelousGrowthCost)
+                            {
+                                playerInventoryHandler.PaySeedCoins(marvelousGrowthCost);
+                                StartCoroutine(MarvelousEvent());
+                            }
+                            else
+                            {
+                                DisplayMessage("You don't have enough Seeds!");
+                                selectionMade = false;
+                            }
+                            break;
+                        }
+
+                    case GrowthSelection.Genuine:
+                        {
+                            if (playerInventoryHandler.SeedCoins >= genuineGrowthCost)
+                            {
+                                playerInventoryHandler.PaySeedCoins(genuineGrowthCost);
+                                StartCoroutine(NormalEvent());
+                            }
+                            else
+                            {
+                                DisplayMessage("You don't have enough Seeds!");
+                                selectionMade = false;
+                            }
+                            break;
+                        }
+
+                    case GrowthSelection.Compelling:
+                        {
+                            StartCoroutine(CompellingEvent());
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                DisplayMessage("You reached the limit of the map!");
+                selectionMade = false;
+            }
         }
     }
 
@@ -398,16 +413,62 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Animations
+
+    private void SpawnParticles()
+    {
+        Vector3 particlesSpawn = currentSunflower.gameObject.transform.position;
+        particlesSpawn.y = 1;
+
+        Quaternion particlesRotation = Quaternion.Euler(-90, 0, 0);
+
+        if (compellingEventActive)
+        {
+            compellingVfxSpawned = Instantiate(compellingSunflowerVfx, currentSunflower.gameObject.transform.position, particlesRotation);
+        }
+        else
+        {
+            sunflowerVfxSpawned = Instantiate(activeSunflowerVfx, particlesSpawn, particlesRotation);
+        }
+
+        if (marvelousEventActive)
+        {
+            Vector3 secondParticlesSpawn = currentSecondSunflower.gameObject.transform.position;
+            secondParticlesSpawn.y = 1;
+
+            secondSunflowerVfxSpawned = Instantiate(activeSunflowerVfx, secondParticlesSpawn, particlesRotation);
+        }
+    }
+
+    private void DeactivateParticles()
+    {
+        if (compellingVfxSpawned != null)
+        {
+            compellingVfxSpawned = null;
+            Destroy(compellingVfxSpawned);
+        }
+
+        sunflowerVfxSpawned = null;
+        Destroy(sunflowerVfxSpawned);
+
+        if (secondSunflowerVfxSpawned != null)
+        {
+            secondSunflowerVfxSpawned = null;
+            Destroy(secondSunflowerVfxSpawned);
+        }
+    }
+
     private void StartSunflowerAnimations()
     {
         currentSunflowerAnimator.SetTrigger("Begin Charge");
         currentSunflowerLifebarAnimator.SetTrigger("Intro State");
-
+        
         if (marvelousEventActive)
         {
             currentSecondSunflowerAnimator.SetTrigger("Begin Charge");
             currentSecondSunflowerLifebarAnimator.SetTrigger("Intro State");
         }
+
+        SpawnParticles();
     }
     private void SetGrowthSuccessAnimations()
     {
@@ -421,6 +482,8 @@ public class GameManager : MonoBehaviour
             currentSecondSunflowerAnimator.SetTrigger("Charge Completed");
             currentSecondSunflowerLifebarAnimator.SetTrigger("Outro State");
         }
+
+        DeactivateParticles();
     }
     private void SetGrowthFailedAnimations()
     {
@@ -432,6 +495,8 @@ public class GameManager : MonoBehaviour
             currentSecondSunflowerAnimator.SetTrigger("Return to Idle");
             currentSecondSunflowerLifebarAnimator.SetTrigger("Outro State");
         }
+
+        DeactivateParticles();
     }
     public void DisplayMessage(string message)
     {

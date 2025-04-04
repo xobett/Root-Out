@@ -3981,6 +3981,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697197684}
   m_CullTransparentMesh: 1
+--- !u!1001 &749851443
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1564299451844398381, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_Name
+      value: Pistola Bellota Renovado (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936859655523426109, guid: ff808567e671caf42adad4b2f5132195, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff808567e671caf42adad4b2f5132195, type: 3}
 --- !u!1 &775688779
 GameObject:
   m_ObjectHideFlags: 0
@@ -11199,6 +11256,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: activeSunflowerVfx
+      value: 
+      objectReference: {fileID: 5006625431276573523, guid: d6a3abf47f2bc4c4a8b2dae45158027d, type: 3}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: finalEventCountdown
       value: 120
       objectReference: {fileID: 0}
@@ -11214,6 +11275,10 @@ PrefabInstance:
       propertyPath: normalEventCountdown
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: compellingSunflowerVfx
+      value: 
+      objectReference: {fileID: 4875996267063934058, guid: f1ad4b9216d76374f9a4539fced2f49a, type: 3}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: totalTerrainsGenerated
       value: 0
@@ -11381,6 +11446,7 @@ SceneRoots:
   - {fileID: 122925255}
   - {fileID: 293787023}
   - {fileID: 1847679261}
+  - {fileID: 749851443}
   - {fileID: 1050917393}
   - {fileID: 1679475177}
   - {fileID: 1924911996}

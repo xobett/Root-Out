@@ -108,6 +108,12 @@ public class CameraFollow : MonoBehaviour
 
             orbitAngle.y = Mathf.Clamp(orbitAngle.y, downLimit * Mathf.Deg2Rad, upLimit * Mathf.Deg2Rad);
         }
+
+        if (isZooming)
+        {
+            downLimit = -10;
+            upLimit = 5;
+        }
     }
     private void FollowAndOrbit()
     {
