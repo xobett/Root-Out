@@ -19,6 +19,14 @@ public class LeafJump : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            AudioManager.instance.PlaySFX("Aterrizaje");
+        } 
+    }
+
     private void Jump()
     {
         //Checa si se dejo de presionar la barra espaciadora y si el jugador se encuentra en el suelo.
@@ -28,6 +36,8 @@ public class LeafJump : MonoBehaviour
             GetComponent<PlayerMovement>().gravity.y = currentChargedForce;
 
             playerAnimCtrlr.SetBool("isJumping", true);
+
+            AudioManager.instance.PlaySFX("Salto");
 
             //Tras saltar, se reinicia el valor del salto cargado.
             currentChargedForce = 0f;

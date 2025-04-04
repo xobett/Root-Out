@@ -3286,15 +3286,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2474978611337814044, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2474978611337814044, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2474978611337814044, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2715516868800530258, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3382,11 +3382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3526424386515563165, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3526424386515563165, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3533888601963165575, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_Name
@@ -3394,7 +3394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3533888601963165575, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4292593608724268994, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3740,15 +3740,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8500659275673377968, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8500659275673377968, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8500659275673377968, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8535549964447455358, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_Value
@@ -3820,11 +3820,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8741357204350111083, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8741357204350111083, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8810552122891590108, guid: 870f23df3cff782459093f8952b360d2, type: 3}
       propertyPath: m_fontColor.b
@@ -4426,7 +4426,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e2439454592c28e439acfc35bd01de5e, type: 3}
   m_Resource: {fileID: 8300000, guid: e2439454592c28e439acfc35bd01de5e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.905
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -9257,6 +9257,14 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: cargaGirasolClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 740e69250a3e26643a2f5e23d2dacfae, type: 3}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: desaparicionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 81e1c5f6cfee3da4b9743c14959a4692, type: 3}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: genuineGrowthCost
       value: 50
       objectReference: {fileID: 0}
@@ -11866,23 +11874,87 @@ PrefabInstance:
       objectReference: {fileID: 629478844}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.size
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.data[3].clip
       value: 
-      objectReference: {fileID: 8300000, guid: a9c235f232519ea4b8ffe268afc93d04, type: 3}
+      objectReference: {fileID: 8300000, guid: 6cb663ec7a2cef74eb04d11bccbcc969, type: 3}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.data[3].name
-      value: Corn Shoot
+      value: Salto
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0da55443539bfd24497a4461a5f9bbca, type: 3}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[4].name
+      value: Aterrizaje
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b6541166fcdf7c4db1cbb89705c911f, type: 3}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[5].name
+      value: Aparicion huevo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e8d7c8b6bcfdfa48bb30189c4fd69ad, type: 3}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[6].name
+      value: Tomar jugo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 34abdfb8f17ec6b479849d3100715ea5, type: 3}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[7].name
+      value: Bomba estrella
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.data[3].pitch
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[4].pitch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[5].pitch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[6].pitch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[7].pitch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.data[3].volume
-      value: 0.851
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[4].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[5].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[6].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[7].volume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2121122756107147020, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: m_Name

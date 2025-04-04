@@ -16,6 +16,8 @@ public class ChillZone : MonoBehaviour, IInteractable
 
         if (playerhealth.currentHealth < playerhealth.maxHealth)
         {
+            AudioManager.instance.PlaySFX("Tomar jugo");
+
             Instantiate(interactVfx, spawnVfxPos.position, interactVfx.transform.rotation);
             playerhealth.SetPlayerHealth(playerhealth.maxHealth);
         }

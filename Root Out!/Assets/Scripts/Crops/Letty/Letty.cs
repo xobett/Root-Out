@@ -7,7 +7,10 @@ public class Letty : CropBase
     [SerializeField] private GameObject lettyShield;
     [SerializeField] private GameObject leafVfx;
 
-    private bool shieldSpawned;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip leafClip;
+
+    private bool audioPlayed;
 
     protected override void CropAttack()
     {
@@ -28,12 +31,25 @@ public class Letty : CropBase
         if (GameObject.FindGameObjectWithTag("Letty Shield") == null)
         {
             SpawnShield();
+            PlayAudio();
             Destroy(gameObject);
         }
         else
         {
             lettyShield.GetComponent<LettyShield>().AddShieldLeaf();
+            PlayAudio();
             Destroy(gameObject);
+        }
+    }
+
+    private void PlayAudio()
+    {
+        if (!audioPlayed)
+        {
+            audioSource.clip = leafClip;
+            audioSource.Play();
+
+            audioPlayed = true;
         }
     }
 

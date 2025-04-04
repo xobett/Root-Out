@@ -152,6 +152,8 @@ MonoBehaviour:
   nukePrefab: {fileID: 6749730267601847604, guid: 9a8af0ba22f8ba54ca64b5794ebfa081, type: 3}
   nukeRadius: 13
   audioSource: {fileID: 2322492986986653831}
+  nukeClip: {fileID: 8300000, guid: 66f4908b6bd1bbc429b8684d4287d522, type: 3}
+  warCryClip: {fileID: 8300000, guid: ef5bf0acba34cbe45aa7c0d5affb2aa3, type: 3}
 --- !u!82 &2322492986986653831
 AudioSource:
   m_ObjectHideFlags: 0
@@ -165,7 +167,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 66f4908b6bd1bbc429b8684d4287d522, type: 3}
   m_Resource: {fileID: 8300000, guid: 66f4908b6bd1bbc429b8684d4287d522, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.36
   m_Pitch: 1
   Loop: 0
   Mute: 0

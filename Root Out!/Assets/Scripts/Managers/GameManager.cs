@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject activeSunflowerVfx;
     [SerializeField] private GameObject compellingSunflowerVfx;
 
+    [SerializeField] private AudioClip cargaGirasolClip;
+    [SerializeField] private AudioClip desaparicionClip;
+
     private GameObject sunflowerVfxSpawned;
     private GameObject secondSunflowerVfxSpawned;
     private GameObject compellingVfxSpawned;
@@ -465,11 +468,20 @@ public class GameManager : MonoBehaviour
     {
         currentSunflowerAnimator.SetTrigger("Begin Charge");
         currentSunflowerLifebarAnimator.SetTrigger("Intro State");
+
+        AudioSource sunflowerAudio = currentSunflower.gameObject.GetComponent<AudioSource>();
+        sunflowerAudio.clip = cargaGirasolClip;
+        sunflowerAudio.Play();
+
         
         if (marvelousEventActive)
         {
             currentSecondSunflowerAnimator.SetTrigger("Begin Charge");
             currentSecondSunflowerLifebarAnimator.SetTrigger("Intro State");
+
+            AudioSource secondSunflowerAudio = currentSecondSunflower.gameObject.GetComponent<AudioSource>();
+            sunflowerAudio.clip = cargaGirasolClip;
+            sunflowerAudio.Play();
         }
 
         SpawnParticles();
@@ -479,12 +491,18 @@ public class GameManager : MonoBehaviour
         currentSunflowerAnimator.SetTrigger("Charge Completed");
         currentSunflowerLifebarAnimator.SetTrigger("Outro State");
 
-        Debug.Log("Should set success animations");
+        AudioSource sunflowerAudio = currentSunflower.gameObject.GetComponent<AudioSource>();
+        sunflowerAudio.clip = desaparicionClip;
+        sunflowerAudio.Play();
 
         if (marvelousEventActive)
         {
             currentSecondSunflowerAnimator.SetTrigger("Charge Completed");
             currentSecondSunflowerLifebarAnimator.SetTrigger("Outro State");
+
+            AudioSource secondSunflowerAudio = currentSecondSunflower.gameObject.GetComponent<AudioSource>();
+            sunflowerAudio.clip = desaparicionClip;
+            sunflowerAudio.Play();
         }
 
         DeactivateParticles();

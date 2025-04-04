@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -40,6 +41,9 @@ public class Sunflower : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI porcentLife;
     [SerializeField] private Image sunflowerLifebar;
+
+    [Header("AUDIO SETTINGS")]
+    [SerializeField] public AudioSource audioSource;
 
     private void Start()
     {

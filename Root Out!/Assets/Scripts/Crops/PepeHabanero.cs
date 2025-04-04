@@ -10,6 +10,8 @@ public class PepeHabanero : CropBase
     private bool reachedExplosionPos;
 
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip nukeClip;
+    [SerializeField] private AudioClip warCryClip;
 
     protected override void CropAttack()
     {
@@ -47,7 +49,13 @@ public class PepeHabanero : CropBase
 
         reachedExplosionPos = true;
 
-        yield return new WaitForSeconds(2);
+        audioSource.clip = warCryClip;
+        audioSource.Play();
+
+        while (audioSource.isPlaying)
+        {
+            yield return null;
+        }
 
         Instantiate(nukePrefab, transform.position, Quaternion.identity);
 
@@ -58,6 +66,7 @@ public class PepeHabanero : CropBase
             enemyCollider.GetComponent<AIHealth>().TakeDamage(damage);
         }
 
+        audioSource.clip = nukeClip;
         audioSource.Play();
 
         while(audioSource.isPlaying)

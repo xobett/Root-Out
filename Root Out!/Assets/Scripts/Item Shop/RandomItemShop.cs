@@ -22,6 +22,8 @@ public class RandomItemShop : MonoBehaviour, IInteractable
 
     [SerializeField] private Animator eggAnimator;
 
+    [SerializeField] private AudioSource audioSource;
+
     public void OnInteract()
     {
         BuyRandomItem();
@@ -66,6 +68,8 @@ public class RandomItemShop : MonoBehaviour, IInteractable
 
         eggAnimator.SetTrigger("Outro");
 
+        AudioManager.instance.PlaySFX("Bomba estrella");
+
         Instantiate(spawnVfx, itemSpawnPosition.position, Quaternion.identity);
         Instantiate(GetRandomShopItem().ItemPrefab, itemSpawnPosition.position, Quaternion.identity);
 
@@ -74,6 +78,8 @@ public class RandomItemShop : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(shopCooldownTime);
 
         eggAnimator.SetTrigger("Intro");
+
+        audioSource.Play();
 
         yield return new WaitForSeconds(3);
 
