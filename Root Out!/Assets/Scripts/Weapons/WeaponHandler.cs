@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Weapons;
 
 public class WeaponHandler : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class WeaponHandler : MonoBehaviour
     // Variable para rastrear el tiempo del último cambio de arma
     private float lastWeaponChangeTime = 0f;
     // Cooldown de 0.5 segundos
-    private const float weaponChangeCooldown = 1.5f;
+    private const float weaponChangeCooldown = 0.7f;
 
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 5f;
@@ -37,53 +38,56 @@ public class WeaponHandler : MonoBehaviour
     // Maneja la rotación de la rueda del ratón para cambiar de arma
     private void HandleMouseScroll()
     {
-
-        if (weapons.Count < 2)
+        if (currentWeapon != null && !currentWeapon.GetComponent<WeaponsBase>().isReloading)
         {
-            return; // No permitir rotación si hay menos de dos armas
-        }
 
-        if (Time.time - lastWeaponChangeTime < weaponChangeCooldown)
-        {
-            return; // No permitir cambio de arma si el cooldown no ha terminado
-        }
-
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        if (scrollInput > 0f) // Si el ratón se desplaza hacia arriba
-        {
-            for (int i = selectedWeaponIndex + 1; i < weapons.Count; i++)
+            if (weapons.Count < 2)
             {
-                if (weapons[i] != null)
-                {
-                    StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia arriba
-                    selectedWeaponIndex = i; 
-                    SwitchWeapon(selectedWeaponIndex); 
-                    lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
-                  //  StartCoroutine(ColdDownWheelAnimation());
+                return; // No permitir rotación si hay menos de dos armas
+            }
 
-                    var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-                    playerMovement.SetAnimationState(GetCurrentAim());
-                    break;
+            if (Time.time - lastWeaponChangeTime < weaponChangeCooldown)
+            {
+                return; // No permitir cambio de arma si el cooldown no ha terminado
+            }
+
+            float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+            if (scrollInput > 0f) // Si el ratón se desplaza hacia arriba
+            {
+                for (int i = selectedWeaponIndex + 1; i < weapons.Count; i++)
+                {
+                    if (weapons[i] != null)
+                    {
+                        StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia arriba
+                        selectedWeaponIndex = i;
+                        SwitchWeapon(selectedWeaponIndex);
+                        lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+                        StartCoroutine(ColdDownWheelAnimation());
+
+                        var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+                        playerMovement.SetAnimationState(GetCurrentAim());
+                        break;
+                    }
                 }
             }
-        }
-        else if (scrollInput < 0f) // Si el ratón se desplaza hacia abajo
-        {
-            for (int i = selectedWeaponIndex - 1; i >= 0; i--)
+            else if (scrollInput < 0f) // Si el ratón se desplaza hacia abajo
             {
-                if (weapons[i] != null)
+                for (int i = selectedWeaponIndex - 1; i >= 0; i--)
                 {
-                    StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
-                    selectedWeaponIndex = i;
-                    SwitchWeapon(selectedWeaponIndex);
-                    lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
-                  //  StartCoroutine(ColdDownWheelAnimation());
+                    if (weapons[i] != null)
+                    {
+                        StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
+                        selectedWeaponIndex = i;
+                        SwitchWeapon(selectedWeaponIndex);
+                        lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
+                        StartCoroutine(ColdDownWheelAnimation());
 
-                    var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-                    playerMovement.SetAnimationState(GetCurrentAim());
-                    break;
+                        var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+                        playerMovement.SetAnimationState(GetCurrentAim());
+                        break;
+                    }
                 }
-            }
+            } 
         }
     }
 
@@ -175,6 +179,9 @@ public class WeaponHandler : MonoBehaviour
 
             // **Actualizar posiciones de los íconos en el UI**
             UpdateWeaponPositions();
+
+            // Establecer la nueva arma como el arma actual
+            SetCurrentWeapon(newWeapon);
         }
         else
         {

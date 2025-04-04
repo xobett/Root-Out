@@ -69,6 +69,8 @@ namespace Weapons
         [SerializeField] private GameObject sweetJackVfx;
         [SerializeField] private bool sweetJackShoot;
 
+        public bool isReloading = false; // Indica si el arma está recargando
+
         #endregion
 
         #region Explosive Bullets Boolean
@@ -204,6 +206,8 @@ namespace Weapons
                 animacionRecarga.Play(); // Reproducir la animación de recarga
             }
 
+            isReloading = true; // Indica que el arma está recargando
+
             yield return new WaitForSeconds(reloadTime); // Espera el tiempo de recarga
 
             if (animacionRecarga != null)
@@ -228,7 +232,8 @@ namespace Weapons
                 currentAmmo += bulletReserve; // Añade las balas restantes de la reserva a la munición actual
                 bulletReserve = 0; // Agota la reserva de balas
             }
-
+            yield return new WaitForSeconds(0.5f); // Espera un breve momento antes de continuar
+            isReloading = false; // Indica que la recarga ha terminado
             Debug.Log("Reloaded. Ammo: " + currentAmmo + ", Bullets in Reserve: " + bulletReserve);
         }
 
