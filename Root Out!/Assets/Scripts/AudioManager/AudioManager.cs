@@ -15,6 +15,8 @@ public class Sound
 
     // Indica si el sonido debe repetirse en bucle
     public bool loop = false;
+
+    public bool playOnAwake = false; // Indica si el sonido debe reproducirse al iniciar
 }
 
 public class AudioManager : MonoBehaviour
@@ -23,7 +25,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     //[Header("Audio Source")]
-    [SerializeField] public AudioSource audioSource; // Fuente de audio única para reproducir sonidos
+    [SerializeField] private AudioSource audioSource; // Fuente de audio única para reproducir sonidos
 
     [Header("Audio Clips")]
     public Sound[] musicClips; // Arreglo de clips de música
@@ -49,6 +51,42 @@ public class AudioManager : MonoBehaviour
         // Inicializar los diccionarios de audio y asegurar que el AudioSource está asignado
         InitializeAudioDictionaries();
         EnsureAudioSource();
+
+        // Reproducir automáticamente los sonidos que tienen playOnAwake configurado en true
+        PlaySoundsOnAwake();
+    }
+
+    private void PlaySoundsOnAwake()
+    {
+        // Reproducir los clips de música que tienen playOnAwake configurado en true
+        foreach (var sound in musicClips)
+        {
+            if (sound.playOnAwake)
+            {
+                Debug.Log("Playing music on awake: " + sound.name);
+                PlayMusic(sound.name);
+            }
+        }
+
+        // Reproducir los efectos de sonido que tienen playOnAwake configurado en true
+        foreach (var sound in sfxClips)
+        {
+            if (sound.playOnAwake)
+            {
+                Debug.Log("Playing SFX on awake: " + sound.name);
+                PlaySFX(sound.name);
+            }
+        }
+
+        // Reproducir los clips de sonido aleatorios que tienen playOnAwake configurado en true
+        foreach (var sound in randomClips)
+        {
+            if (sound.playOnAwake)
+            {
+                Debug.Log("Playing random sound on awake: " + sound.name);
+                PlaySFX(sound.name);
+            }
+        }
     }
 
     private void InitializeAudioDictionaries()
@@ -75,6 +113,12 @@ public class AudioManager : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        // Depuración adicional para verificar la configuración del AudioSource
+        Debug.Log("AudioSource is assigned.");
+        Debug.Log("AudioSource volume: " + audioSource.volume);
+        Debug.Log("AudioSource mute: " + audioSource.mute);
+        Debug.Log("AudioSource enabled: " + audioSource.enabled);
     }
 
     public void PlayMusic(string name)
@@ -85,6 +129,7 @@ public class AudioManager : MonoBehaviour
         // Reproducir el clip de música correspondiente al nombre proporcionado
         if (musicDictionary.TryGetValue(name, out var sound))
         {
+            Debug.Log("Playing music: " + name);
             audioSource.clip = sound.clip;
             audioSource.volume = sound.volume;
             audioSource.pitch = sound.pitch;
@@ -105,6 +150,7 @@ public class AudioManager : MonoBehaviour
         // Reproducir el efecto de sonido correspondiente al nombre proporcionado
         if (sfxDictionary.TryGetValue(name, out var sound))
         {
+            Debug.Log("Playing SFX: " + name);
             audioSource.PlayOneShot(sound.clip, sound.volume);
         }
         else
@@ -127,6 +173,7 @@ public class AudioManager : MonoBehaviour
 
         int index = Random.Range(0, randomClips.Length);
         Sound sound = randomClips[index];
+        Debug.Log("Playing random sound: " + sound.name);
         audioSource.PlayOneShot(sound.clip, sound.volume);
     }
 
@@ -146,6 +193,8 @@ public class AudioManager : MonoBehaviour
 
         // Establecer el volumen del AudioSource
         audioSource.volume = volume;
+
+        SetMusicClipsVolume(volume); // Establecer el volumen de los clips de música
     }
 
     // Método para establecer el volumen de los VFX
@@ -155,6 +204,23 @@ public class AudioManager : MonoBehaviour
         {
             sound.volume = volume;
         }
+    }
+
+    public void SetMusicClipsVolume(float volume)
+    {
+        foreach (var sound in musicClips)
+        {
+            sound.volume = volume;
+        }
+    }
+
+    public float GetMusicClipVolume()
+    {
+        if (musicClips.Length > 0)
+        {
+            return musicClips[0].volume;
+        }
+        return 0.5f; // Valor por defecto si no hay clips de música
     }
 
     // Método para obtener el volumen actual de los VFX
