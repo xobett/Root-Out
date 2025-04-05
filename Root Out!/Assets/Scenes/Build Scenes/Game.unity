@@ -11280,6 +11280,10 @@ PrefabInstance:
       value: Disparo Manzana
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.data[3].pitch
       value: 0.1
       objectReference: {fileID: 0}
@@ -11310,14 +11314,26 @@ PrefabInstance:
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: musicClips.Array.data[0].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 568bf2be9633b944392ff62a55a0172c, type: 3}
+      objectReference: {fileID: 8300000, guid: e2439454592c28e439acfc35bd01de5e, type: 3}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: musicClips.Array.data[0].loop
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: musicClips.Array.data[0].name
       value: Principal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: musicClips.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 568bf2be9633b944392ff62a55a0172c, type: 3}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: musicClips.Array.data[1].name
+      value: Batalla
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[0].volume
+      value: 0.575
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.data[10].pitch
@@ -11342,6 +11358,10 @@ PrefabInstance:
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.data[15].pitch
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: sfxClips.Array.data[1].volume
+      value: 0.449
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: sfxClips.Array.data[3].volume
@@ -11373,6 +11393,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: musicClips.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: musicClips.Array.data[1].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
@@ -11409,7 +11433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: musicClips.Array.data[0].volume
-      value: 1
+      value: 0.088
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: musicClips.Array.data[1].volume
+      value: 0.444
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: randomClips.Array.data[0].volume
@@ -11421,6 +11449,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: musicClips.Array.data[0].playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: musicClips.Array.data[1].playOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
