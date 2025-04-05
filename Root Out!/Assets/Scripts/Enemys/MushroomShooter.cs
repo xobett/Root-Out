@@ -74,7 +74,7 @@ public class MushroomShooter : WeaponsBase
             }
         }
 
-        Debug.Log(agent.velocity.magnitude);
+       // Debug.Log(agent.velocity.magnitude);
 
         shooterSpeed = agent.velocity.magnitude;
 

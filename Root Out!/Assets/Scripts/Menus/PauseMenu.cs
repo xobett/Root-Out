@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject vfx; // Referencia al menú de efectos visuales
     [SerializeField] GameObject back; // Referencia al botón de retroceso
     [SerializeField] GameObject volumen; // Referencia al menú de volumen
+    [SerializeField] GameObject ammoDisplay;
+    [SerializeField] GameObject coinsDisplay;
 
     private CameraFollow cameraController; // Referencia al controlador de la cámara
     private PlayerMovement movementController; // Referencia al controlador de movimiento del jugador
@@ -70,9 +72,11 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
         cameraController.enabled = false; // Desactiva el controlador de la cámara
+        GameManager.instance.gamePaused = true;
+        ammoDisplay.SetActive(false); // Desactiva el HUD de munición
+        coinsDisplay.SetActive(false); // Desactiva el HUD de monedas
         //movementController.enabled = false; // Desactiva el controlador de movimiento del jugador
         //leafJump.enabled = false; //Desactiva el controlador de salto del jugador
-        GameManager.instance.gamePaused = true;
         //HUD.SetActive(false); // Desactiva el HUD
         pauseMenu.SetActive(true); // Activa el menú de pausa
         Time.timeScale = 0f; // Detiene el tiempo del juego
@@ -85,6 +89,8 @@ public class PauseMenu : MonoBehaviour
         cameraController.enabled = true; // Activa el controlador de la cámara
         GameManager.instance.gamePaused = false;
         pauseMenu.SetActive(false); // Desactiva el menú de pausa
+        ammoDisplay.SetActive(true); // Activa el HUD de munición
+        coinsDisplay.SetActive(true); // Activa el HUD de monedas
         Time.timeScale = 1f; // Restaura el tiempo del juego
         //movementController.enabled = true; // Activa el controlador de movimiento del jugador
         //leafJump.enabled = true; //Activa el controlador de salto del jugador

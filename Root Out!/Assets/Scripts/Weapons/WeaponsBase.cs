@@ -239,8 +239,7 @@ namespace Weapons
 
         protected virtual void Reload() // Método que maneja la recarga
         {
-            // Detecta si se presiona la tecla de recarga (R)
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) || currentAmmo == 0)
             {
                 if (canvasRecargaImage != null) // Comprueba si la imagen de recarga no es nula
                 {

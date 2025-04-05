@@ -55,7 +55,7 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
     {
         if (bulletText != null)
         {
-            bulletText.text = "INFINITY"; // Actualiza el texto con la munición actual y máxima
+            bulletText.text = " IFINITIE"; // Actualiza el texto con la munición actual y máxima
         }
     }
 }

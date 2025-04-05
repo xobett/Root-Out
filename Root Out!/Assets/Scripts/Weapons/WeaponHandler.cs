@@ -28,7 +28,10 @@ public class WeaponHandler : MonoBehaviour
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 5f;
 
-
+    private void Awake()
+    {
+        weaponSelectionWheel.gameObject.SetActive(false); // Desactivar la rueda de armas al inicio
+    }
     private void Update()
     {
         HandleMouseScroll();  // Maneja la rotación de la rueda del ratón para cambiar de arma
@@ -59,8 +62,8 @@ public class WeaponHandler : MonoBehaviour
                     if (weapons[i] != null)
                     {
                         StartCoroutine(RotateWeaponSelectionWheel(60f)); // Rotar 60 grados hacia arriba
-                        selectedWeaponIndex = i;
-                        SwitchWeapon(selectedWeaponIndex);
+                        selectedWeaponIndex = i; // Cambiar el índice de selección
+                        SwitchWeapon(selectedWeaponIndex); // Cambiar el arma
                         lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
                         StartCoroutine(ColdDownWheelAnimation());
 
@@ -102,7 +105,7 @@ public class WeaponHandler : MonoBehaviour
         weaponSelectionWheel.gameObject.SetActive(false); // Asegurarse de que la rueda esté activa
     }
 
-    private IEnumerator RotateWeaponSelectionWheel(float targetValue)
+    private IEnumerator RotateWeaponSelectionWheel(float targetValue) // Método para rotar la rueda de selección de armas
     {
 
         var selectionWheelRect = weaponSelectionWheel.GetComponent<RectTransform>(); // Obtener el RectTransform de la rueda
@@ -121,7 +124,7 @@ public class WeaponHandler : MonoBehaviour
 
 
         yield return null;
-    }
+    } 
 
     // Método para recoger un arma nueva
     public void PickUpWeapon(GameObject newWeapon, WeaponData newWeaponData)
@@ -182,6 +185,12 @@ public class WeaponHandler : MonoBehaviour
 
             // Establecer la nueva arma como el arma actual
             SetCurrentWeapon(newWeapon);
+
+            // Activar la rueda de selección de armas si no está activa
+            if (!weaponSelectionWheel.gameObject.activeSelf)
+            {
+                weaponSelectionWheel.gameObject.SetActive(true);
+            }
         }
         else
         {
