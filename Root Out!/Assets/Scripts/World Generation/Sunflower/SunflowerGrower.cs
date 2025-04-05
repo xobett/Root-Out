@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SunflowerGrower : MonoBehaviour, IInteractable
@@ -38,29 +39,18 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        if (playerIsNear && !selectionMade && !GameManager.instance.eventTimerIsActive)
+        if (selectionActive && !selectionMade && !GameManager.instance.eventTimerIsActive)
         {
-            switch (GameManager.instance.MarvelousEventActive)
+            if (GameManager.instance.MarvelousEventActive)
             {
-                case true:
-                    {
-                        GameManager.instance.GetSecondSunflower(sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
-                        break;
-                    }
-
-                case false:
-                    {
-                        ActivateOptionsCanvas();
-                        selectionActive = true;
-                        break;
-                    }
+                GameManager.instance.GetSecondSunflower(sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
             }
         }
     }
 
     private void HandleGrowthSelection()
     {
-        if (playerIsNear && !selectionMade && selectionActive)
+        if (selectionActive && !selectionMade && !GameManager.instance.MarvelousEventActive && !GameManager.instance.EventActive)
         {
             if (IsPressingOne())
             {
@@ -94,14 +84,16 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        playerIsNear = true;
+        selectionActive = true;
+        if (!GameManager.instance.EventActive && !GameManager.instance.MarvelousEventActive)
+        {
+            ActivateOptionsCanvas();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        playerIsNear = false;
         selectionActive = false;
-
         DeactivateOptionsCanvas();
     }
 

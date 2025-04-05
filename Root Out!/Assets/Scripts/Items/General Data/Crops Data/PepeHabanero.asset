@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: PepeHabanero
   m_EditorClassIdentifier: 
   cropName: Pepe Habanero
-  cropDescription: 
+  cropDescription: Explosive attack that will neutralize any near threat!
   type: 1
-  cropHealth: 0
+  cropHealth: 100
   cropWalkSpeed: 0
   cropRunSpeed: 0
   cropCooldownTime: 10
-  cropDamage: 0
+  cropDamage: 100
+  cooldownBypass: 0
+  cooldownAnimation: 0
+  timer: -8.871135
   cropIcon: {fileID: 21300000, guid: 5c00ef61bef54334cb32c0d0bdb7b37b, type: 3}
   cropPrefab: {fileID: 8955997720524101367, guid: 61fd17fb793cfdd4ca51ee8e9e0f1d0a, type: 3}

@@ -12,6 +12,8 @@ public class Sunflower : MonoBehaviour
     [Header("TERRAIN SPAWN SETTINGS")]
     [SerializeField] private GameObject[] terrainPrefabs;
 
+    public bool spawnedTerrain;
+
     [Header("FOG SPAWN SETTINGS")]
     [SerializeField] private GameObject worldFog;
 
@@ -99,6 +101,8 @@ public class Sunflower : MonoBehaviour
 
         ////Se genera un nuevo terreno en la posicion creada.
         Instantiate(terrainToSpawn, spawnPos, terrainToSpawn.transform.rotation);
+
+        spawnedTerrain = true;
 
         //Se actualiza el navmesh surface para que los enemigos naveguen por el.
         navMeshSurface.BuildNavMesh();

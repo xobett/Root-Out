@@ -109,7 +109,6 @@ MonoBehaviour:
   damage: 0
   frontShootingDistance: 2
   sideShootingDistance: -3.6
-  sphereDetectionRadius: 18
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
@@ -149,7 +148,7 @@ MonoBehaviour:
   maxAmmo: 100000
   bulletReserve: 100000
   maxBulletReserve: 0
-  damage: 2
+  damage: 5
   range: 3
   fireRate: 4
   reloadTime: 1
@@ -162,6 +161,7 @@ MonoBehaviour:
   inventoryItemToAdd: {fileID: 0}
   sweetJackVfx: {fileID: 2582821607894381710, guid: 7c14dd799fdb205489088c7916483182, type: 3}
   sweetJackShoot: 1
+  isReloading: 0
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
 --- !u!1 &8531700995258327092

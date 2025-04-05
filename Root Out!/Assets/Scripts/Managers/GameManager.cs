@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
     private bool compellingEventActive;
 
     private bool finalEventActive;
+
+    public bool EventActive => marvelousEventActive || normalEventActive || compellingEventActive;
     public bool MarvelousEventActive => marvelousEventActive;
 
     [Header("MESSAGE TEXT SETTINGS")]
