@@ -58,8 +58,8 @@ public class UIInventory : MonoBehaviour
 
     private void DisplayCoinsAndAmmo()
     {
-        totalCoinsText.text = $"Total coins: {playerInventory.SeedCoins}";
-        totalAmmoText.text = $"Total Ammo: {playerInventory.Ammo}";
+        totalCoinsText.text = $"{playerInventory.SeedCoins}";
+        totalAmmoText.text = $"{playerInventory.Ammo}";
 
         if (totalCoinsText.alpha >= 0.9f)
         {
