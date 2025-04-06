@@ -65,34 +65,34 @@ public class AudioManager : MonoBehaviour
     private void PlaySoundsOnAwake()
     {
         // Reproducir los clips de música que tienen playOnAwake configurado en true
-        foreach (var sound in musicClips)
-        {
-            if (sound.playOnAwake)
-            {
-                Debug.Log("Playing music on awake: " + sound.name);
-                PlayMusic(sound.name);
-            }
-        }
+        //foreach (var sound in musicClips)
+        //{
+        //    if (sound.playOnAwake)
+        //    {
+        //        Debug.Log("Playing music on awake: " + sound.name);
+        //        PlayMusic(sound.name);
+        //    }
+        //}
 
-        // Reproducir los efectos de sonido que tienen playOnAwake configurado en true
-        foreach (var sound in sfxClips)
-        {
-            if (sound.playOnAwake)
-            {
-                Debug.Log("Playing SFX on awake: " + sound.name);
-                PlaySFX(sound.name);
-            }
-        }
+        //// Reproducir los efectos de sonido que tienen playOnAwake configurado en true
+        //foreach (var sound in sfxClips)
+        //{
+        //    if (sound.playOnAwake)
+        //    {
+        //        Debug.Log("Playing SFX on awake: " + sound.name);
+        //        PlaySFX(sound.name);
+        //    }
+        //}
 
-        // Reproducir los clips de sonido aleatorios que tienen playOnAwake configurado en true
-        foreach (var sound in randomClips)
-        {
-            if (sound.playOnAwake)
-            {
-                Debug.Log("Playing random sound on awake: " + sound.name);
-                PlaySFX(sound.name);
-            }
-        }
+        //// Reproducir los clips de sonido aleatorios que tienen playOnAwake configurado en true
+        //foreach (var sound in randomClips)
+        //{
+        //    if (sound.playOnAwake)
+        //    {
+        //        Debug.Log("Playing random sound on awake: " + sound.name);
+        //        PlaySFX(sound.name);
+        //    }
+        //}
     }
 
     private void InitializeAudioDictionaries()
@@ -114,54 +114,54 @@ public class AudioManager : MonoBehaviour
 
     private void EnsureAudioSources()
     {
-        // Asegurarse de que los AudioSources están asignados, y si no lo están, añadirlos
-        if (musicAudioSource == null)
-        {
-            musicAudioSource = gameObject.AddComponent<AudioSource>();
-        }
+        //// Asegurarse de que los AudioSources están asignados, y si no lo están, añadirlos
+        //if (musicAudioSource == null)
+        //{
+        //    musicAudioSource = gameObject.AddComponent<AudioSource>();
+        //}
 
-        if (sfxAudioSource == null)
-        {
-            sfxAudioSource = gameObject.AddComponent<AudioSource>();
-        }
+        //if (sfxAudioSource == null)
+        //{
+        //    sfxAudioSource = gameObject.AddComponent<AudioSource>();
+        //}
     }
 
     public void PlayMusic(string name)
     {
-        // Asegurarse de que el AudioSource está asignado
-        EnsureAudioSources();
+        //// Asegurarse de que el AudioSource está asignado
+        //EnsureAudioSources();
 
-        // Reproducir el clip de música correspondiente al nombre proporcionado
-        if (musicDictionary.TryGetValue(name, out var sound))
-        {
-            Debug.Log("Playing music: " + name);
-            musicAudioSource.clip = sound.clip;
-            musicAudioSource.volume = sound.volume;
-            musicAudioSource.pitch = sound.pitch;
-            musicAudioSource.loop = sound.loop;
-            musicAudioSource.Play();
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró el clip de música: " + name);
-        }
+        //// Reproducir el clip de música correspondiente al nombre proporcionado
+        //if (musicDictionary.TryGetValue(name, out var sound))
+        //{
+        //    Debug.Log("Playing music: " + name);
+        //    musicAudioSource.clip = sound.clip;
+        //    musicAudioSource.volume = sound.volume;
+        //    musicAudioSource.pitch = sound.pitch;
+        //    musicAudioSource.loop = sound.loop;
+        //    musicAudioSource.Play();
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("No se encontró el clip de música: " + name);
+        //}
     }
 
     public void PlaySFX(string name)
     {
         // Asegurarse de que el AudioSource está asignado
-        EnsureAudioSources();
+        //EnsureAudioSources();
 
-        // Reproducir el efecto de sonido correspondiente al nombre proporcionado
-        if (sfxDictionary.TryGetValue(name, out var sound))
-        {
-            Debug.Log("Playing SFX: " + name);
-            sfxAudioSource.PlayOneShot(sound.clip, sfxAudioSource.volume);
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró el clip de efecto de sonido: " + name);
-        }
+        //// Reproducir el efecto de sonido correspondiente al nombre proporcionado
+        //if (sfxDictionary.TryGetValue(name, out var sound))
+        //{
+        //    Debug.Log("Playing SFX: " + name);
+        //    sfxAudioSource.PlayOneShot(sound.clip, sfxAudioSource.volume);
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("No se encontró el clip de efecto de sonido: " + name);
+        //}
     }
 
     public void PlayRandomSound()

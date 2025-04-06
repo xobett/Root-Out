@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         EventTimer();
         SunflowerHealthCheck();
 
-        HintPlayer();
+        //HintPlayer();
     }
 
     private void HintPlayer()

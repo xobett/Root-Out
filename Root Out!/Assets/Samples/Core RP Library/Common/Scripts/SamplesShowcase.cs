@@ -237,6 +237,7 @@ public class SamplesShowcase : MonoBehaviour
             transformA.position=Vector3.Lerp(transformA.position,transformB.position,Time.time-startTime); 
             transformA.rotation = Quaternion.Lerp(transformA.rotation,transformB.rotation, Time.time-startTime);
             yield return 1; // wait for next frame
+            yield return null;
         }
     }
 

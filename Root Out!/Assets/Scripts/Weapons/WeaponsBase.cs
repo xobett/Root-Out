@@ -423,6 +423,7 @@ namespace Weapons
                 Debug.LogWarning("daño original" + damage); // Mensaje de depuración  
                 yield return new WaitForSeconds(15f); // Esperar el tiempo de espera  
                 Debug.LogWarning("Reinicio de perk"); // Mensaje de depuración  
+                yield return null;
             }
         }
 

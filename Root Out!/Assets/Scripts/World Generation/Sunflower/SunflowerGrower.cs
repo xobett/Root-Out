@@ -88,7 +88,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
     private void OnTriggerEnter(Collider other)
     {
         selectionActive = true;
-        if (!GameManager.instance.EventActive && !GameManager.instance.MarvelousEventActive)
+        if (!selectionMade && !GameManager.instance.MarvelousEventActive)
         {
             ActivateOptionsCanvas();
         }

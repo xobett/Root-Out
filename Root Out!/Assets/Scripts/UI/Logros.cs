@@ -63,6 +63,7 @@ public class Logros : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1f); // Actualizar cada segundo
+            yield return null;
         }
     }
 }

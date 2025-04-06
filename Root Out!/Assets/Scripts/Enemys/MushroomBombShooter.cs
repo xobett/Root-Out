@@ -128,6 +128,7 @@ public class MushroomBombShooter : WeaponsBase
                 point = Instantiate(HUDTargetPoint, pointFloor, Quaternion.identity); // Instancia de la imagen 
             }
             Destroy(point, 1.5f); // Destruye la imagen después de 0.5 segundos
+            yield return null;
         }
     }
 

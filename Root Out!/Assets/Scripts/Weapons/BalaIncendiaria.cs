@@ -38,6 +38,7 @@ public class BalaIncendiaria : MonoBehaviour, IBullet
             // Espera el intervalo antes de aplicar el siguiente daño
             yield return new WaitForSeconds(intervalo);
             tiempoTranscurrido += intervalo;
+            yield return null;
         }
 
         // Destruye la bala después de que termine de aplicar el daño continuo
