@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -78,7 +78,7 @@ public class PauseMenu : MonoBehaviour
         // Guardar los volúmenes actuales y bajar el volumen general a 0.01
         previousMusicVolume = AudioManager.instance.GetMusicClipVolume();
         previousSFXVolume = AudioManager.instance.GetVFXVolume();
-        AudioManager.instance.SetAudioVolume(0.03f);
+        AudioManager.instance.SetAudioVolume(0.01f);
 
         isPaused = true; // Establece la variable de pausa a true
     }
@@ -151,5 +151,5 @@ public class PauseMenu : MonoBehaviour
         AudioManager.instance.SetMusicClipsVolume(volume); // Llama al método del AudioManager para establecer el volumen principal
     }
 }
-
+    
 

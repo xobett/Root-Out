@@ -25,9 +25,9 @@ public class AudioManager : MonoBehaviour
     // Instancia estática del AudioManager para acceso global
     public static AudioManager instance;
 
-    //[Header("Audio Source")]
-     private AudioSource musicAudioSource; // Fuente de audio para música
-     private AudioSource sfxAudioSource; // Fuente de audio para efectos de sonido
+    [Header("Audio Source")]
+    [SerializeField] private AudioSource musicAudioSource; // Fuente de audio para música
+    [SerializeField] private AudioSource sfxAudioSource; // Fuente de audio para efectos de sonido
 
     [Header("Audio Clips")]
     public Sound[] musicClips; // Arreglo de clips de música
@@ -54,8 +54,9 @@ public class AudioManager : MonoBehaviour
         InitializeAudioDictionaries();
         EnsureAudioSources();
 
-        // Establecer el volumen de los SFX en 1 al iniciar el juego
-       // SetVFXVolume(1f);
+        // Inicializar los volúmenes desde el inspector
+        musicAudioSource.volume = GetMusicClipVolume();
+        sfxAudioSource.volume = GetVFXVolume();
 
         // Reproducir automáticamente los sonidos que tienen playOnAwake configurado en true
         PlaySoundsOnAwake();
@@ -123,17 +124,6 @@ public class AudioManager : MonoBehaviour
         {
             sfxAudioSource = gameObject.AddComponent<AudioSource>();
         }
-
-        // Depuración adicional para verificar la configuración de los AudioSources
-        Debug.Log("Music AudioSource is assigned.");
-        Debug.Log("Music AudioSource volume: " + musicAudioSource.volume);
-        Debug.Log("Music AudioSource mute: " + musicAudioSource.mute);
-        Debug.Log("Music AudioSource enabled: " + musicAudioSource.enabled);
-
-        Debug.Log("SFX AudioSource is assigned.");
-        Debug.Log("SFX AudioSource volume: " + sfxAudioSource.volume);
-        Debug.Log("SFX AudioSource mute: " + sfxAudioSource.mute);
-        Debug.Log("SFX AudioSource enabled: " + sfxAudioSource.enabled);
     }
 
     public void PlayMusic(string name)
@@ -166,7 +156,7 @@ public class AudioManager : MonoBehaviour
         if (sfxDictionary.TryGetValue(name, out var sound))
         {
             Debug.Log("Playing SFX: " + name);
-            sfxAudioSource.PlayOneShot(sound.clip, sound.volume);
+            sfxAudioSource.PlayOneShot(sound.clip, sfxAudioSource.volume);
         }
         else
         {
@@ -189,7 +179,7 @@ public class AudioManager : MonoBehaviour
         int index = Random.Range(0, randomClips.Length);
         Sound sound = randomClips[index];
         Debug.Log("Playing random sound: " + sound.name);
-        sfxAudioSource.PlayOneShot(sound.clip, sound.volume);
+        sfxAudioSource.PlayOneShot(sound.clip, sfxAudioSource.volume);
     }
 
     public void StopAudio()
@@ -218,19 +208,11 @@ public class AudioManager : MonoBehaviour
     public void SetVFXVolume(float volume)
     {
         sfxAudioSource.volume = volume; // Actualizar el volumen del AudioSource de SFX
-        foreach (var sound in sfxClips)
-        {
-            sound.volume = volume;
-        }
     }
 
     public void SetMusicClipsVolume(float volume)
     {
         musicAudioSource.volume = volume; // Actualizar el volumen del AudioSource de música
-        foreach (var sound in musicClips)
-        {
-            sound.volume = volume;
-        }
     }
 
     public float GetMusicClipVolume()
