@@ -1,0 +1,837 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &238143498500115447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7944886372668327695}
+  m_Layer: 0
+  m_Name: Niebla carpeta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7944886372668327695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238143498500115447}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8560361951623396971}
+  - {fileID: 93102935240655850}
+  - {fileID: 4017196268849699647}
+  - {fileID: 8534227630414400627}
+  - {fileID: 1356942898197281568}
+  - {fileID: 2988372228617889876}
+  - {fileID: 2750835420690814519}
+  - {fileID: 2998634869755618781}
+  - {fileID: 4199655952705907028}
+  - {fileID: 3486019581189129681}
+  - {fileID: 8097322941617474516}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &159794374177957127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468551303592870699, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.47
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &4017196268849699647 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 159794374177957127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &425751573564603369
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 1660148412464167467, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Size.x
+      value: 1.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &3486019581189129681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 425751573564603369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1135023983429146476
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.269999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &4199655952705907028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 1135023983429146476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2023536925307444197
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &2998634869755618781 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 2023536925307444197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2836303469583631640
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.219999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &1356942898197281568 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 2836303469583631640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3481099028361404494
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 535273271298373438, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.7699995
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506185919270148052, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque chico obstaculo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506185919270148052, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1613401569650747589, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+--- !u!4 &2750835420690814519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+  m_PrefabInstance: {fileID: 3481099028361404494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3801744222661705170
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.219999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &93102935240655850 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 3801744222661705170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4547337751230389805
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 535273271298373438, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.2599998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506185919270148052, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque chico obstaculo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506185919270148052, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1613401569650747589, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+--- !u!4 &2988372228617889876 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1613334452223014521, guid: 5a9798ecb5d6ffc4aa3ec50c9d1e747a, type: 3}
+  m_PrefabInstance: {fileID: 4547337751230389805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4847216033787543635
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &8560361951623396971 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 4847216033787543635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4893139324060086859
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 1660148412464167467, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Size.x
+      value: 1.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &8534227630414400627 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 4893139324060086859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5032560147366360556
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7944886372668327695}
+    m_Modifications:
+    - target: {fileID: 3225762801312079858, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.269999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Name
+      value: Fog bloque mediano obstaculo (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106099380528517004, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3058537063799505931, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+--- !u!4 &8097322941617474516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
+  m_PrefabInstance: {fileID: 5032560147366360556}
+  m_PrefabAsset: {fileID: 0}

@@ -87,6 +87,14 @@ PrefabInstance:
       value: -20.241
       objectReference: {fileID: 0}
     - target: {fileID: -6483264720827800135, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6483264720827800135, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6483264720827800135, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
@@ -95,9 +103,25 @@ PrefabInstance:
       value: Rama 3 placeholder
       objectReference: {fileID: 0}
     - target: {fileID: 4191509097384965755, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191509097384965755, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191509097384965755, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
+    - target: {fileID: 7330095381222774183, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330095381222774183, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7330095381222774183, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -158,6 +182,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: m_RayTracingMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
@@ -227,6 +259,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1468662180276524799, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1468662180276524799, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1468662180276524799, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9053bb7254de31b4ebefe704f40ce025, type: 2}
@@ -235,9 +275,25 @@ PrefabInstance:
       value: Cubeta placeholder
       objectReference: {fileID: 0}
     - target: {fileID: 1790868808166937211, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790868808166937211, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790868808166937211, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9053bb7254de31b4ebefe704f40ce025, type: 2}
+    - target: {fileID: 4953232840523182856, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953232840523182856, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4953232840523182856, guid: a20bd6f8b00941e41b6331ccc744f618, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -301,12 +357,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2682167134973850427, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2682167134973850427, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2682167134973850427, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
     - target: {fileID: 919132149155446097, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
       propertyPath: m_Name
       value: Rama 2 placeholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484468418975526891, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484468418975526891, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7484468418975526891, guid: 6f5f831d408a5784f899658e4343c14e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -369,6 +441,14 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -36.319
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -434,6 +514,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
+      propertyPath: m_RayTracingMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 807c52c23a03553449e2a171b549eb6e, type: 3}
@@ -503,6 +591,14 @@ PrefabInstance:
       value: 21.811
       objectReference: {fileID: 0}
     - target: {fileID: -6483264720827800135, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6483264720827800135, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6483264720827800135, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
@@ -511,9 +607,25 @@ PrefabInstance:
       value: Rama 3 placeholder (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4191509097384965755, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191509097384965755, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191509097384965755, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 39358f4717d475e4eb45e696eca9c63f, type: 2}
+    - target: {fileID: 7330095381222774183, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330095381222774183, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7330095381222774183, guid: 8e3f5be665e1c5b47ba182ac66aff7ee, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
