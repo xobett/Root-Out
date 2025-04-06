@@ -26,7 +26,9 @@ public class Letty : CropBase
     {
         GameObject lettyShield = GameObject.FindGameObjectWithTag("Letty Shield");
 
-        Instantiate(leafVfx, transform.position, Quaternion.identity);
+        GameObject vfx = Instantiate(leafVfx, transform.position, Quaternion.identity);
+
+        Destroy(vfx, 2);
 
         if (GameObject.FindGameObjectWithTag("Letty Shield") == null)
         {

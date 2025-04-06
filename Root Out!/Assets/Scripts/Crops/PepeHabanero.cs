@@ -57,7 +57,7 @@ public class PepeHabanero : CropBase
             yield return null;
         }
 
-        Instantiate(nukePrefab, transform.position, Quaternion.identity);
+        GameObject nukeExplosion = Instantiate(nukePrefab, transform.position, Quaternion.identity);
 
         Collider[] enemyColliders = Physics.OverlapSphere(transform.position, nukeRadius, whatIsEnemy);
 
@@ -65,6 +65,8 @@ public class PepeHabanero : CropBase
         {
             enemyCollider.GetComponent<AIHealth>().TakeDamage(damage);
         }
+
+        Destroy(nukeExplosion, 7);
 
         audioSource.clip = nukeClip;
         audioSource.Play();

@@ -55,7 +55,9 @@ public class RedChibiPepper : CropBase
             Vector3 spawnPos = transform.position;
             spawnPos.y = 0.6f;
 
-            Instantiate(redChibiExplosion, spawnPos, Quaternion.identity);
+            GameObject explosion = Instantiate(redChibiExplosion, spawnPos, Quaternion.identity);
+
+            Destroy(explosion, 3);
             enemy.gameObject.GetComponent<AIHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }

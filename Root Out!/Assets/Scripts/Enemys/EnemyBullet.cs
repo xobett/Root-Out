@@ -25,9 +25,11 @@ public class EnemyBullet : MonoBehaviour, IBullet
         {
             playerHealth.TakeDamagePlayer(damageToPlayer); // Aplica el daño al jugador
 
-            Instantiate(playerHitVfx, transform.position, hitVfx.transform.rotation);
+            GameObject spawnVfx = Instantiate(playerHitVfx, transform.position, hitVfx.transform.rotation);
 
             AudioManager.instance.PlaySFX("Player hit");
+
+            Destroy(spawnVfx, 1);
 
             Destroy(gameObject);
         }
@@ -36,7 +38,9 @@ public class EnemyBullet : MonoBehaviour, IBullet
             sunFlower.DamageSunFlower(damageToPlayer); // Aplica el da?o al hoja de calabaza
         }
 
-        Instantiate(hitVfx, transform.position, hitVfx.transform.rotation);
+        GameObject vfx = Instantiate(hitVfx, transform.position, hitVfx.transform.rotation);
+
+        Destroy(vfx, 1);
 
         Destroy(gameObject);
     }

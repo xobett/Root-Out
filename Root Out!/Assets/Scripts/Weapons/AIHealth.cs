@@ -33,7 +33,10 @@ public class AIHealth : MonoBehaviour
         audioSource.clip = deathClip;
         audioSource.Play();
 
-        Instantiate(deathVfx, transform.position, Quaternion.identity);
+        GameObject vfx = Instantiate(deathVfx, transform.position, Quaternion.identity);
+
+        Destroy(vfx, 2);
+
         Destroy(gameObject);
     }
 }

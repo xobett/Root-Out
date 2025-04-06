@@ -112,7 +112,9 @@ public class MushroomBombShooter : WeaponsBase
     {
         Quaternion smokeOrientation = Quaternion.Euler(-90, 0, 0);
 
-        Instantiate(smokePrefab, aiming.position, smokeOrientation);
+        GameObject explosion = Instantiate(smokePrefab, aiming.position, smokeOrientation);
+
+        Destroy(explosion, 4);
     }
     IEnumerator TargetPointCoroutine() // Corrutina para instanciar targetShooting
     {

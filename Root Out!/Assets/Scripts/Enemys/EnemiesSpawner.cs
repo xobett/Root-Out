@@ -39,8 +39,9 @@ public class EnemiesSpawner : MonoBehaviour
         spawnAudioSource.clip = spawnClip;
         spawnAudioSource.Play();
 
-
         yield return new WaitForSeconds(3.5f);
+
+        Destroy(spawnVfx, 1);
 
         GameObject enemyClone = Instantiate(enemyToSpawn, position, Quaternion.identity);
         lastEnemySpawned = enemyToSpawn;

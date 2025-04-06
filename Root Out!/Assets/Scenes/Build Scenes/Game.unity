@@ -2640,7 +2640,6 @@ GameObject:
   - component: {fileID: 460357733}
   - component: {fileID: 460357737}
   - component: {fileID: 460357736}
-  - component: {fileID: 460357735}
   - component: {fileID: 460357734}
   m_Layer: 5
   m_Name: General Message Text
@@ -2680,28 +2679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8cbb014e7866434e91ee9bd67b41e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &460357735
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460357732}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 723b0b771b82db1458bb4586f9bd9295, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &460357736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2722,7 +2699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Protect the Sunflower growth's at all costs!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -8768,6 +8745,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: fadeSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1622530919}
@@ -8775,6 +8756,10 @@ PrefabInstance:
       propertyPath: messageText
       value: 
       objectReference: {fileID: 460357736}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: textDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: enemySpawnTime
       value: 12
@@ -8818,7 +8803,7 @@ PrefabInstance:
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: messageTextAnimator
       value: 
-      objectReference: {fileID: 460357735}
+      objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: normalEventCountdown
       value: 30
@@ -8827,6 +8812,10 @@ PrefabInstance:
       propertyPath: compellingSunflowerVfx
       value: 
       objectReference: {fileID: 4875996267063934058, guid: f1ad4b9216d76374f9a4539fced2f49a, type: 3}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: timeBeforeNextReminder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: compellingEventCountdown
       value: 60

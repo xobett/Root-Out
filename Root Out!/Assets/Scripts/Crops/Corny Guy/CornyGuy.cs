@@ -94,7 +94,7 @@ public class CornyGuy : CropBase
 
         Quaternion vfxRotation = Quaternion.Euler(90, 0, 0);
 
-        Instantiate(cornyGuyVfx, shootPivot.position, vfxRotation);
+        GameObject shootVfx = Instantiate(cornyGuyVfx, shootPivot.position, vfxRotation);
 
         audioSource.clip = shootCornsClip;
         audioSource.Play();
@@ -103,6 +103,8 @@ public class CornyGuy : CropBase
 
         ableToShoot = false;
         gameObject.GetComponent<WeaponCoryGuy>().enabled = false;
+
+        Destroy(shootVfx, 1);
 
         cropAnimCtrlr.SetBool("isNude", true);
 

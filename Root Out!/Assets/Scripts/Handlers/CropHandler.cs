@@ -141,7 +141,9 @@ public class CropHandler : MonoBehaviour
             Vector3 spawnPosition = transform.position - transform.forward * spawnDistance;
             spawnPosition.y += 1;
             GameObject clone = Instantiate(equippedCrop.CropPrefab, spawnPosition, transform.rotation);
-            Instantiate(spawnCropVfx, spawnPosition, Quaternion.identity);
+            GameObject vfx = Instantiate(spawnCropVfx, spawnPosition, Quaternion.identity);
+
+            Destroy(vfx, 2);
             totalCropsDropped++;
         }
     }

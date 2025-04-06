@@ -17,22 +17,27 @@ public class Bullet : MonoBehaviour, IBullet
     {
         if (collision.collider.TryGetComponent<AIHealth>(out var aiHealth)) // Si el objeto colisionado tiene un componente AIHealth
         {
-            Instantiate(hitEnemyVfx, transform.position, hitEnemyVfx.transform.rotation);
+            GameObject enemyVfx = Instantiate(hitEnemyVfx, transform.position, hitEnemyVfx.transform.rotation);
 
             AudioManager.instance.PlaySFX("Enemy hit");
 
             aiHealth.TakeDamage(damage);
+
+            Destroy(enemyVfx, 1);
 
             Destroy(gameObject);
         }
 
         if (GameManager.instance.explosionUpgradeActivated)
         {
-            Instantiate(explosiveHitVfx, transform.position, explosiveHitVfx.transform.rotation);
+            GameObject explosiveVfx = Instantiate(explosiveHitVfx, transform.position, explosiveHitVfx.transform.rotation);
+
+            Destroy(explosiveVfx, 1);
         }
         else
         {
-            Instantiate(hitVfx, transform.position, hitVfx.transform.rotation);
+            GameObject normalVfx = Instantiate(hitVfx, transform.position, hitVfx.transform.rotation);
+            Destroy(normalVfx, 1);
         }
 
         Destroy(gameObject); // Destruir la bala después de la colisión

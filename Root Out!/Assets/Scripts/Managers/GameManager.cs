@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
                 DisplayMessage("Find a nearby Sunflower to activate!");
             }
             DisplayNearSunflower();
+            reminderTimer = timeBeforeNextReminder;
         }
     }
 
