@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_RayTracingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5167668690830756132, guid: 30ce3476925d6944386611aa58ee486e, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5319412357685774011, guid: 30ce3476925d6944386611aa58ee486e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -517,11 +521,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6918953326946868387, guid: 4925a3daaf2dcfd4780518af2b952473, type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6918953326946868387, guid: 4925a3daaf2dcfd4780518af2b952473, type: 3}
       propertyPath: m_RayTracingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918953326946868387, guid: 4925a3daaf2dcfd4780518af2b952473, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6918953326946868387, guid: 4925a3daaf2dcfd4780518af2b952473, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

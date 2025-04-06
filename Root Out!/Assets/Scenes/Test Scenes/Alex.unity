@@ -20921,6 +20921,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6841261334391780192, guid: 7dfcdceb34db75f4eb3947c30c13f061, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
+    - target: {fileID: -5250776620772104737, guid: 7dfcdceb34db75f4eb3947c30c13f061, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
+    - target: {fileID: -4451080368086357815, guid: 7dfcdceb34db75f4eb3947c30c13f061, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
+    - target: {fileID: -3869331887709814071, guid: 7dfcdceb34db75f4eb3947c30c13f061, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
     - target: {fileID: 919132149155446097, guid: 7dfcdceb34db75f4eb3947c30c13f061, type: 3}
       propertyPath: m_Name
       value: Hongo disparador low prueba
@@ -46494,8 +46510,8 @@ MonoBehaviour:
   m_LightAngle: 1
   m_MaxDepthBias: 0.001
   m_ShadowResolution:
-    m_Override: 512
-    m_UseOverride: 0
+    m_Override: 16
+    m_UseOverride: 1
     m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
@@ -46509,7 +46525,7 @@ MonoBehaviour:
   m_PenumbraTint: 0
   m_NormalBias: 0.75
   m_SlopeBias: 0.5
-  m_ShadowUpdateMode: 0
+  m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
   m_UpdateShadowOnLightMovement: 0
   m_CachedShadowTranslationThreshold: 0.01
@@ -46531,7 +46547,7 @@ MonoBehaviour:
   m_ShadowVariant: 0
   m_ShadowPrecision: 0
   useOldInspector: 0
-  useVolumetric: 1
+  useVolumetric: 0
   featuresFoldout: 1
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
@@ -75616,6 +75632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Aparici\xF3n de enemigos"
       objectReference: {fileID: 0}
+    - target: {fileID: 7648770278138305637, guid: fa9497cf54c4d5a4e92d862fea325a02, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 41d36bd30d005634a952d3c766177349, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -134683,6 +134703,7 @@ SceneRoots:
   - {fileID: 829251747}
   - {fileID: 1911639630}
   - {fileID: 2010561345}
+  - {fileID: 1238436588}
   - {fileID: 1921757200}
   - {fileID: 1917373072}
   - {fileID: 1570817907}
@@ -134716,7 +134737,6 @@ SceneRoots:
   - {fileID: 828609642665044636}
   - {fileID: 1147597037120586017}
   - {fileID: 6030423027445258610}
-  - {fileID: 1238436588}
   - {fileID: 35516614}
   - {fileID: 7556576480565512050}
   - {fileID: 796898426}

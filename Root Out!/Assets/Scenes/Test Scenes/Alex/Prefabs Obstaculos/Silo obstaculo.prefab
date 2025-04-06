@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_RayTracingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5831718620593856778, guid: 5b5b9dea06910b247b87f497033b5607, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370969813175134914, guid: 5b5b9dea06910b247b87f497033b5607, type: 3}
       propertyPath: m_CastShadows
       value: 1
@@ -83,6 +87,10 @@ PrefabInstance:
     - target: {fileID: 6370969813175134914, guid: 5b5b9dea06910b247b87f497033b5607, type: 3}
       propertyPath: m_RayTracingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370969813175134914, guid: 5b5b9dea06910b247b87f497033b5607, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6705492888553980042, guid: 5b5b9dea06910b247b87f497033b5607, type: 3}
       propertyPath: m_LocalPosition.x
@@ -131,6 +139,10 @@ PrefabInstance:
     - target: {fileID: 6805830543953783688, guid: 5b5b9dea06910b247b87f497033b5607, type: 3}
       propertyPath: m_RayTracingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805830543953783688, guid: 5b5b9dea06910b247b87f497033b5607, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
