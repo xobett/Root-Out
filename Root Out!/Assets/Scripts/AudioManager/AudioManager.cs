@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable]
 public class Sound
 {
@@ -8,7 +9,7 @@ public class Sound
     public AudioClip clip;
 
     [Range(0f, 1f)]
-    public float volume = 0.5f;
+    public float volume = 1f;
 
     [Range(.1f, 3f)]
     public float pitch = 1f;
@@ -24,8 +25,9 @@ public class AudioManager : MonoBehaviour
     // Instancia estática del AudioManager para acceso global
     public static AudioManager instance;
 
-    //[Header("Audio Source")]
-    [SerializeField] private AudioSource audioSource; // Fuente de audio única para reproducir sonidos
+    [Header("Audio Source")]
+    [SerializeField] private AudioSource musicAudioSource; // Fuente de audio para música
+    [SerializeField] private AudioSource sfxAudioSource; // Fuente de audio para efectos de sonido
 
     [Header("Audio Clips")]
     public Sound[] musicClips; // Arreglo de clips de música
@@ -48,9 +50,13 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Inicializar los diccionarios de audio y asegurar que el AudioSource está asignado
+        // Inicializar los diccionarios de audio y asegurar que los AudioSources están asignados
         InitializeAudioDictionaries();
-        EnsureAudioSource();
+        EnsureAudioSources();
+
+        // Inicializar los volúmenes desde el inspector
+        musicAudioSource.volume = GetMusicClipVolume();
+        sfxAudioSource.volume = GetVFXVolume();
 
         // Reproducir automáticamente los sonidos que tienen playOnAwake configurado en true
         PlaySoundsOnAwake();
@@ -106,35 +112,34 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void EnsureAudioSource()
+    private void EnsureAudioSources()
     {
-        // Asegurarse de que el AudioSource está asignado, y si no lo está, añadir uno nuevo
-        if (audioSource == null)
+        // Asegurarse de que los AudioSources están asignados, y si no lo están, añadirlos
+        if (musicAudioSource == null)
         {
-            audioSource = gameObject.AddComponent<AudioSource>();
+            musicAudioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        // Depuración adicional para verificar la configuración del AudioSource
-        Debug.Log("AudioSource is assigned.");
-        Debug.Log("AudioSource volume: " + audioSource.volume);
-        Debug.Log("AudioSource mute: " + audioSource.mute);
-        Debug.Log("AudioSource enabled: " + audioSource.enabled);
+        if (sfxAudioSource == null)
+        {
+            sfxAudioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public void PlayMusic(string name)
     {
         // Asegurarse de que el AudioSource está asignado
-        EnsureAudioSource();
+        EnsureAudioSources();
 
         // Reproducir el clip de música correspondiente al nombre proporcionado
         if (musicDictionary.TryGetValue(name, out var sound))
         {
             Debug.Log("Playing music: " + name);
-            audioSource.clip = sound.clip;
-            audioSource.volume = sound.volume;
-            audioSource.pitch = sound.pitch;
-            audioSource.loop = sound.loop;
-            audioSource.Play();
+            musicAudioSource.clip = sound.clip;
+            musicAudioSource.volume = sound.volume;
+            musicAudioSource.pitch = sound.pitch;
+            musicAudioSource.loop = sound.loop;
+            musicAudioSource.Play();
         }
         else
         {
@@ -145,13 +150,13 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(string name)
     {
         // Asegurarse de que el AudioSource está asignado
-        EnsureAudioSource();
+        EnsureAudioSources();
 
         // Reproducir el efecto de sonido correspondiente al nombre proporcionado
         if (sfxDictionary.TryGetValue(name, out var sound))
         {
             Debug.Log("Playing SFX: " + name);
-            audioSource.PlayOneShot(sound.clip, sound.volume);
+            sfxAudioSource.PlayOneShot(sound.clip, sfxAudioSource.volume);
         }
         else
         {
@@ -162,7 +167,7 @@ public class AudioManager : MonoBehaviour
     public void PlayRandomSound()
     {
         // Asegurarse de que el AudioSource está asignado
-        EnsureAudioSource();
+        EnsureAudioSources();
 
         // Reproducir un clip de sonido aleatorio del arreglo de clips aleatorios
         if (randomClips.Length == 0)
@@ -174,25 +179,27 @@ public class AudioManager : MonoBehaviour
         int index = Random.Range(0, randomClips.Length);
         Sound sound = randomClips[index];
         Debug.Log("Playing random sound: " + sound.name);
-        audioSource.PlayOneShot(sound.clip, sound.volume);
+        sfxAudioSource.PlayOneShot(sound.clip, sfxAudioSource.volume);
     }
 
     public void StopAudio()
     {
         // Asegurarse de que el AudioSource está asignado
-        EnsureAudioSource();
+        EnsureAudioSources();
 
         // Detener el audio en el AudioSource
-        audioSource.Stop();
+        musicAudioSource.Stop();
+        sfxAudioSource.Stop();
     }
 
     public void SetAudioVolume(float volume)
     {
         // Asegurarse de que el AudioSource está asignado
-        EnsureAudioSource();
+        EnsureAudioSources();
 
         // Establecer el volumen del AudioSource
-        audioSource.volume = volume;
+        musicAudioSource.volume = volume;
+        sfxAudioSource.volume = volume;
 
         SetMusicClipsVolume(volume); // Establecer el volumen de los clips de música
     }
@@ -200,36 +207,22 @@ public class AudioManager : MonoBehaviour
     // Método para establecer el volumen de los VFX
     public void SetVFXVolume(float volume)
     {
-        foreach (var sound in sfxClips)
-        {
-            sound.volume = volume;
-        }
+        sfxAudioSource.volume = volume; // Actualizar el volumen del AudioSource de SFX
     }
 
     public void SetMusicClipsVolume(float volume)
     {
-        foreach (var sound in musicClips)
-        {
-            sound.volume = volume;
-        }
+        musicAudioSource.volume = volume; // Actualizar el volumen del AudioSource de música
     }
 
     public float GetMusicClipVolume()
     {
-        if (musicClips.Length > 0)
-        {
-            return musicClips[0].volume;
-        }
-        return 0.5f; // Valor por defecto si no hay clips de música
+        return musicAudioSource.volume; // Devolver el volumen actual del AudioSource de música
     }
 
     // Método para obtener el volumen actual de los VFX
     public float GetVFXVolume()
     {
-        if (sfxClips.Length > 0)
-        {
-            return sfxClips[0].volume;
-        }
-        return 0.5f; // Valor por defecto si no hay clips de sonido
+        return sfxAudioSource.volume; // Devolver el volumen actual del AudioSource de SFX
     }
 }

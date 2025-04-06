@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -24,6 +24,9 @@ public class PauseMenu : MonoBehaviour
     public bool isPaused = false; // Variable para controlar si el juego está en pausa
 
     [SerializeField] private UIInventory uiInventory;
+
+    private float previousMusicVolume; // Variable para almacenar el volumen anterior de la música
+    private float previousSFXVolume; // Variable para almacenar el volumen anterior de los SFX
 
     private void Start()
     {
@@ -54,7 +57,6 @@ public class PauseMenu : MonoBehaviour
             if (!isPaused) // Si el juego no está en pausa
             {
                 PauseGame(); // Pausa el juego
-                AudioManager.instance.SetAudioVolume(0.1f);
             }
             else
             {
@@ -73,7 +75,11 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true); // Activa el menú de pausa
         Time.timeScale = 0f; // Detiene el tiempo del juego
 
-        AudioManager.instance.SetAudioVolume(0.2f);
+        // Guardar los volúmenes actuales y bajar el volumen general a 0.01
+        previousMusicVolume = AudioManager.instance.GetMusicClipVolume();
+        previousSFXVolume = AudioManager.instance.GetVFXVolume();
+        AudioManager.instance.SetAudioVolume(0.01f);
+
         isPaused = true; // Establece la variable de pausa a true
     }
 
@@ -87,8 +93,10 @@ public class PauseMenu : MonoBehaviour
         coinsDisplay.SetActive(true); // Activa el HUD de monedas
         Time.timeScale = 1f; // Restaura el tiempo del juego
 
-        // Restaurar el volumen del audio al reanudar
-        AudioManager.instance.SetAudioVolume(mainVolumeSlider.value);
+        // Restaurar los volúmenes guardados al reanudar
+        AudioManager.instance.SetMusicClipsVolume(mainVolumeSlider.value);
+        AudioManager.instance.SetVFXVolume(vfxVolumeSlider.value);
+
         isPaused = false;
     }
 
@@ -143,7 +151,5 @@ public class PauseMenu : MonoBehaviour
         AudioManager.instance.SetMusicClipsVolume(volume); // Llama al método del AudioManager para establecer el volumen principal
     }
 }
-
-
-
+    
 
