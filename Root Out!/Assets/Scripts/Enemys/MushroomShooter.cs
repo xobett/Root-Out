@@ -2,8 +2,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Weapons;
-using System;
-using TMPro.SpriteAssetUtilities;
 public class MushroomShooter : WeaponsBase
 {
     [Header("MushroomShooter")]
@@ -51,7 +49,7 @@ public class MushroomShooter : WeaponsBase
     }
     protected override void Shoot()
     {
-        if (shooterSpeed == 0 && Detection())
+        if (shooterSpeed == 0 && (Detection() || sunFlower != null))
         {
             base.Shoot();
             audioSource.Play();
@@ -60,21 +58,16 @@ public class MushroomShooter : WeaponsBase
 
     void TargetToAtack()
     {
-        if (Detection())
+        if (sunFlower != null)
+        {
+            agent.destination = sunFlower.transform.position;
+            LookAtTarget(sunFlower);
+        }
+        else
         {
             agent.destination = player.transform.position;
             LookAtTarget(player);
         }
-        else
-        {
-            if (sunFlower != null)
-            {
-                agent.destination = sunFlower.transform.position;
-                LookAtTarget(sunFlower);
-            }
-        }
-
-       // Debug.Log(agent.velocity.magnitude);
 
         shooterSpeed = agent.velocity.magnitude;
 
@@ -95,7 +88,7 @@ public class MushroomShooter : WeaponsBase
         if (GameManager.instance.GetActiveSunflower() != null)
         {
             GameObject activeSunflower = GameManager.instance.GetActiveSunflower().gameObject;
-            sunFlower = activeSunflower.transform; 
+            sunFlower = activeSunflower.transform;
         }
     }
     private new void OnDrawGizmos()
@@ -114,5 +107,5 @@ public class MushroomShooter : WeaponsBase
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Rotación de mirada
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f); // Rotación suave
     }
-    
+
 }

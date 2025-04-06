@@ -48,6 +48,8 @@ public class KamikazeMushroom : WeaponsBase
 
     private void KamikazeBehaviour()
     {
+        if (!agent.isActiveAndEnabled) return;
+
         if (sunFlowerGameObject != null && GameManager.instance.eventTimerIsActive)
         {
             agent.speed = 3;

@@ -53,10 +53,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip cargaGirasolClip;
     [SerializeField] private AudioClip desaparicionClip;
 
-    private GameObject sunflowerVfxSpawned;
-    private GameObject secondSunflowerVfxSpawned;
-    private GameObject compellingVfxSpawned;
-
     public float enemySpawnTime;
     private float originalEnemySpawnTime;
 
@@ -71,7 +67,13 @@ public class GameManager : MonoBehaviour
 
     [Header("MESSAGE TEXT SETTINGS")]
     [SerializeField] private TextMeshProUGUI messageText;
-    [SerializeField] private Animator messageTextAnimator;
+
+    //Varibles de animacion
+    [SerializeField] private float fadeSpeed;
+    [SerializeField] private float textDuration;
+
+    private float reminderTimer;
+    [SerializeField] private float timeBeforeNextReminder;
 
     [Header("GROWTH EVENT SETTINGS")]
     [SerializeField] private TextMeshProUGUI timerText;
@@ -101,12 +103,49 @@ public class GameManager : MonoBehaviour
 
         GetInputReferences();
         GetPlayerReferences();
+
+        reminderTimer = timeBeforeNextReminder;
     }
 
     private void Update()
     {
         EventTimer();
         SunflowerHealthCheck();
+
+        HintPlayer();
+    }
+
+    private void HintPlayer()
+    {
+        reminderTimer -= Time.deltaTime;
+
+        if (reminderTimer < 0 && !EventActive)
+        {
+            if (!marvelousEventActive)
+            {
+                DisplayMessage("Find a nearby Sunflower to activate!");
+            }
+            DisplayNearSunflower();
+        }
+    }
+
+    private void DisplayNearSunflower()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        LayerMask sunflowerLayer = LayerMask.GetMask("Sunflower");
+
+        Collider[] sunflowerCollider = Physics.OverlapSphere(player.transform.position, 20f, sunflowerLayer);
+
+        if (sunflowerCollider != null)
+        {
+            Quaternion particlesRotation = Quaternion.Euler(-90, 0, 0);
+
+            foreach (Collider collider in sunflowerCollider)
+            {
+                Instantiate(activeSunflowerVfx, collider.transform.position, particlesRotation);
+            }
+        }
     }
 
     private void EventTimer()
@@ -132,9 +171,7 @@ public class GameManager : MonoBehaviour
             StopCoroutine(MarvelousEvent());
             marvelousEventActive = false;
 
-            messageTextAnimator.SetTrigger("Exit Sunflower selection");
-            messageText.text = "You don't have enough Seeds!";
-            messageTextAnimator.SetBool("secondSunflowerNotChosen", false);
+            DisplayMessage("You don't have enough Seeds");
 
             playerInventoryHandler.AddSeedCoins(marvelousGrowthCost);
 
@@ -183,10 +220,8 @@ public class GameManager : MonoBehaviour
     public void StartFinaEvent()
     {
         DisplayMessage("Survive the last minute!");
-        messageTextAnimator.SetBool("secondSunflowerNotChosen", true);
         StartCoroutine(FinalEvent());
     }
-
 
     public void GrowSunflowerEvent(GrowthSelection growthType, Sunflower sunflower, Animator sunflowerAnimator, Animator sunflowerLifeBarAnimator, ref bool selectionMade)
     {
@@ -260,7 +295,6 @@ public class GameManager : MonoBehaviour
         {
             enemySpawner.GetComponent<EnemiesSpawner>().StartSpawner();
         }
-
     }
 
     public Sunflower GetActiveSunflower()
@@ -294,19 +328,16 @@ public class GameManager : MonoBehaviour
             enemy.GetComponent<AIHealth>().TakeDamage(100);
         }
     }
-
     private IEnumerator FinalEvent()
     {
         finalEventActive = true;
 
         StartTimer();
-
         SpawnEnemiesInWorld();
 
         yield return new WaitUntil(() => timer <= 0);
 
         EndTimer();
-
         ClearEnemies();
 
         DisplayMessage("YOU WON!");
@@ -322,12 +353,9 @@ public class GameManager : MonoBehaviour
         marvelousEventActive = true;
 
         DisplayMessage("Select a second Sunflower to grow!");
-        messageTextAnimator.SetBool("secondSunflowerNotChosen", true);
 
         //Se espera hasta que se haya elegido un segundo girasol para crecer.
         yield return new WaitUntil(() => currentSunflower != null && currentSecondSunflower != null);
-
-        messageTextAnimator.SetBool("secondSunflowerNotChosen", false);
 
         StartTimer();
         StartSunflowerAnimations();
@@ -439,6 +467,8 @@ public class GameManager : MonoBehaviour
     {
         eventTimerIsActive = false;
         timerText.gameObject.SetActive(false);
+
+        reminderTimer = timeBeforeNextReminder;
     }
     #endregion
 
@@ -453,11 +483,11 @@ public class GameManager : MonoBehaviour
 
         if (compellingEventActive)
         {
-            compellingVfxSpawned = Instantiate(compellingSunflowerVfx, currentSunflower.gameObject.transform.position, particlesRotation);
+            Instantiate(compellingSunflowerVfx, currentSunflower.gameObject.transform.position, particlesRotation);
         }
         else
         {
-            sunflowerVfxSpawned = Instantiate(activeSunflowerVfx, particlesSpawn, particlesRotation);
+            Instantiate(activeSunflowerVfx, particlesSpawn, particlesRotation);
         }
 
         if (marvelousEventActive)
@@ -465,11 +495,11 @@ public class GameManager : MonoBehaviour
             Vector3 secondParticlesSpawn = currentSecondSunflower.gameObject.transform.position;
             secondParticlesSpawn.y = 1;
 
-            secondSunflowerVfxSpawned = Instantiate(activeSunflowerVfx, secondParticlesSpawn, particlesRotation);
+            Instantiate(activeSunflowerVfx, secondParticlesSpawn, particlesRotation);
         }
     }
 
-    private void DeactivateParticles()
+    public void DeactivateParticles()
     {
         GameObject[] sunflowerParticles = GameObject.FindGameObjectsWithTag("Sunflower Particles");
 
@@ -535,10 +565,47 @@ public class GameManager : MonoBehaviour
 
         DeactivateParticles();
     }
+
     public void DisplayMessage(string message)
     {
+        reminderTimer = timeBeforeNextReminder;
+
+        StopCoroutine(AnimateText());
         messageText.text = message;
-        messageTextAnimator.SetTrigger("Show Message");
+        StartCoroutine(AnimateText());
+    }
+
+    private IEnumerator AnimateText()
+    {
+        messageText.alpha = 0;
+
+        float time = 0;
+        while (time < 1)
+        {
+            messageText.alpha = Mathf.Lerp(messageText.alpha, 1, time);
+            time += fadeSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        messageText.alpha = 1;
+
+        if (marvelousEventActive)
+        {
+            yield return new WaitUntil(() => currentSecondSunflower != null);
+        }
+
+        yield return new WaitForSeconds(textDuration);
+
+        time = 0;
+        while (time < 1)
+        {
+            messageText.alpha = Mathf.Lerp(messageText.alpha, 0, time);
+            time += fadeSpeed * Time.deltaTime;
+            yield return null;
+        }
+        messageText.alpha = 0;
+
+        StopCoroutine(AnimateText());
     }
     #endregion
 

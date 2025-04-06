@@ -34,6 +34,13 @@ public class Sunflower : MonoBehaviour
     private bool sunflowerColliding;
     private bool groundColliding;
 
+    [Header("COMPELLING TRANSITION SETTINGS")]
+    [SerializeField] private Material compellingMaterial;
+    [SerializeField] private GameObject sunflowerModelBase;
+    [SerializeField] private GameObject sunflowerModelPetals1;
+    [SerializeField] private GameObject sunflowerModelPetals2;
+    [SerializeField] private GameObject sunflowerModelPetals3;
+
     [Header("NAVMESH SETTINGS")]
     private NavMeshSurface navMeshSurface;
 
@@ -172,8 +179,30 @@ public class Sunflower : MonoBehaviour
         return terrainPrefabs[randomTerrainIndex];
     }
 
-    //private void UpdateLife()
-    //{
-    //    porcentLife.text = $"{currentHealth}%";
-    //}
+    [ContextMenu("ChangeColor")]
+    public void ChangeMaterial()
+    {
+        foreach (Transform child in sunflowerModelBase.transform)
+        {
+            if (child.GetComponent<Renderer>())
+            {
+                child.GetComponent<Renderer>().material = compellingMaterial; 
+            }
+        }
+
+        foreach (Transform child in sunflowerModelPetals1.transform)
+        {
+            child.GetComponent<Renderer>().material = compellingMaterial;
+        }
+
+        foreach (Transform child in sunflowerModelPetals2.transform)
+        {
+            child.GetComponent<Renderer>().material = compellingMaterial;
+        }
+
+        foreach (Transform child in sunflowerModelPetals3.transform)
+        {
+            child.GetComponent<Renderer>().material = compellingMaterial;
+        }
+    }
 }

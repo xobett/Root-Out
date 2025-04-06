@@ -38,8 +38,6 @@ public class UIInventory : MonoBehaviour
 
     [SerializeField] private PauseMenu pauseMenu;
 
-    private float targetValue;
-
     void Start()
     {
         GetPlayerInventory();
@@ -60,17 +58,6 @@ public class UIInventory : MonoBehaviour
     {
         totalCoinsText.text = $"{playerInventory.SeedCoins}";
         totalAmmoText.text = $"{playerInventory.Ammo}";
-
-        if (totalCoinsText.alpha >= 0.9f)
-        {
-            targetValue = 0;
-        }
-        else if (totalCoinsText.alpha <= 0.1f)
-        {
-            targetValue = 1;
-        }
-
-        totalCoinsText.alpha = Mathf.Lerp(totalCoinsText.alpha, targetValue, fadeSpeed * Time.deltaTime);
     }
 
     private void OpenInventory()

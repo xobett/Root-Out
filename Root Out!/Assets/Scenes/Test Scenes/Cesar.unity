@@ -3256,7 +3256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Protect the Sunflower growth's at all costs!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3343,7 +3343,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674236097}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 723b0b771b82db1458bb4586f9bd9295, type: 2}
   m_CullingMode: 0
@@ -8255,6 +8255,8 @@ MonoBehaviour:
   perkInventoryGrid: {fileID: 916288274}
   playerInventory: {fileID: 0}
   itemsDisplayed: 0
+  isOpened: 0
+  pauseMenu: {fileID: 0}
 --- !u!114 &1906038127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9011,7 +9013,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.792
+      value: 0.209
       objectReference: {fileID: 0}
     - target: {fileID: 1585821201999089465, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9326,6 +9328,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: fadeSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1322128579}
@@ -9333,6 +9339,10 @@ PrefabInstance:
       propertyPath: messageText
       value: 
       objectReference: {fileID: 674236099}
+    - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
+      propertyPath: textDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4565603306093082078, guid: f9c67f0628117044fa46ffe221cbe8c7, type: 3}
       propertyPath: enemySpawnTime
       value: 12

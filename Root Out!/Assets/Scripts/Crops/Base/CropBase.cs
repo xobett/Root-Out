@@ -10,8 +10,8 @@ public abstract class CropBase : MonoBehaviour
     [SerializeField] protected Animator cropAnimCtrlr;
 
     [Header("MOVEMENT SETTINGS")]
-    [SerializeField, Range(0f, 1f)] protected float cropWalkSpeed;
-    [SerializeField, Range(0f, 1f)] protected float cropRunSpeed;
+    protected float cropWalkSpeed = 2.8f;
+    protected float cropRunSpeed = 3f;
 
     protected float originalRunSpeed;
 
@@ -31,7 +31,7 @@ public abstract class CropBase : MonoBehaviour
 
 
     [Header("ENEMY DETECTION")]
-    protected float sphereDetectionRadius = 15f;
+    protected float sphereDetectionRadius = 12f;
     [SerializeField] protected LayerMask whatIsEnemy;
     [SerializeField] protected float maxHitDistance;
 
@@ -57,13 +57,6 @@ public abstract class CropBase : MonoBehaviour
     {
         BehaviourCheck();
         SetAnimatorParameters();
-
-        Collider[] enemyColliders = Physics.OverlapSphere(playerPos.position, sphereDetectionRadius, whatIsEnemy);
-
-        foreach(Collider enemyCollider in enemyColliders)
-        {
-            Debug.Log("Enemy detected");
-        }
     }
 
     private void FixedUpdate()
@@ -83,13 +76,6 @@ public abstract class CropBase : MonoBehaviour
             enemyDetected = true;
             enemyPos = GetEnemyInWorld().transform;
         }
-
-        //if (EnemyDetection() && !enemyDetected)
-        //{
-        //    isFollowingPlayer = false;
-        //    enemyDetected = true;
-        //    enemyPos = hit.collider.transform;
-        //}
 
         if (!enemyDetected)
         {
@@ -172,7 +158,7 @@ public abstract class CropBase : MonoBehaviour
     protected void SetDestination(Vector3 desiredFollowingPos, float speed)
     {
         //Moves at a constant speed.
-        transform.position = Vector3.MoveTowards(transform.position, desiredFollowingPos, Time.deltaTime * 2.8f);
+        transform.position = Vector3.MoveTowards(transform.position, desiredFollowingPos, Time.deltaTime * speed);
     }
     protected void LookAtTarget(Transform target)
     {

@@ -167,6 +167,8 @@ MonoBehaviour:
   lootPos:
   - {fileID: 6837186367464503355}
   - {fileID: 5804479257288442283}
+  nestMarket: {fileID: 0}
+  premiumItempShopPos: {fileID: 0}
   lootPositionsGroups: {fileID: 5686726336061892682}
 --- !u!1 &1611457042602156102
 GameObject:
@@ -653,7 +655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2272696271097556117, guid: b9b2fe85cbc7d624294ab9f9c17380dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.96
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2272696271097556117, guid: b9b2fe85cbc7d624294ab9f9c17380dd, type: 3}
       propertyPath: m_LocalPosition.z

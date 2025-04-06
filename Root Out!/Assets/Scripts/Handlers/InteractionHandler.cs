@@ -23,7 +23,8 @@ public class InteractionHandler : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward * range, out outHit, range, whatIsInteraction))
             {
                 // Llama al método OnInteract del objeto con el que se ha colisionado
-                Debug.Log($"Se interactuo con {outHit.collider.name}");
+
+                GameManager.instance.DeactivateParticles();
                 outHit.collider.GetComponent<IInteractable>().OnInteract();
             }
         }

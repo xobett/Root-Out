@@ -1343,6 +1343,7 @@ MonoBehaviour:
   - {fileID: 6362847232082063437, guid: 1e471ff23beba5b4887db5c0b8421174, type: 3}
   - {fileID: 7265976116618393509, guid: e3227c1ec7f098a46801791514b40865, type: 3}
   - {fileID: 7265976116618393509, guid: b0fe9679d5de6e843b06530bb4ce7a2c, type: 3}
+  spawnedTerrain: 0
   worldFog: {fileID: 7755707530198357774, guid: 16092768c172a284f96bc5135fd72cf5, type: 3}
   whatIsSunflower:
     serializedVersion: 2
@@ -1350,6 +1351,11 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  compellingMaterial: {fileID: 2100000, guid: 199642bc5a0ee3848a4cae472c6382ec, type: 2}
+  sunflowerModelBase: {fileID: 3521219341410361770}
+  sunflowerModelPetals1: {fileID: 8449009254226118510}
+  sunflowerModelPetals2: {fileID: 2181653868676095160}
+  sunflowerModelPetals3: {fileID: 7301339541793664824}
   currentHealth: 0
   porcentLife: {fileID: 0}
   sunflowerLifebar: {fileID: 86253666475666074}
@@ -2102,6 +2108,21 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6331995336362673510}
   m_SourcePrefab: {fileID: 100100000, guid: b54f62837578c3e4fb0bb46f2188320c, type: 3}
+--- !u!1 &2181653868676095160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -771603910591062092, guid: b54f62837578c3e4fb0bb46f2188320c, type: 3}
+  m_PrefabInstance: {fileID: 7713677660477539084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3521219341410361770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2607128286012202330, guid: b54f62837578c3e4fb0bb46f2188320c, type: 3}
+  m_PrefabInstance: {fileID: 7713677660477539084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7301339541793664824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8187564636703380428, guid: b54f62837578c3e4fb0bb46f2188320c, type: 3}
+  m_PrefabInstance: {fileID: 7713677660477539084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7479657814532324957 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b54f62837578c3e4fb0bb46f2188320c, type: 3}
@@ -2132,5 +2153,10 @@ Animator:
 --- !u!4 &7820155007492957415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b54f62837578c3e4fb0bb46f2188320c, type: 3}
+  m_PrefabInstance: {fileID: 7713677660477539084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8449009254226118510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7040087395718167454, guid: b54f62837578c3e4fb0bb46f2188320c, type: 3}
   m_PrefabInstance: {fileID: 7713677660477539084}
   m_PrefabAsset: {fileID: 0}
