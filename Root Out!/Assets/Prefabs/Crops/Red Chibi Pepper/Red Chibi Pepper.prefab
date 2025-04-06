@@ -132,15 +132,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropData: {fileID: 11400000, guid: 7f628994f8057274bbbcccf8d23a26ea, type: 2}
   cropAnimCtrlr: {fileID: 3434052659255231410}
-  cropWalkSpeed: 0.6
-  cropRunSpeed: 0.9
   stoppingDistance: 1.5
   backDistance: 1.5
   sideDistance: -1.1
   damage: 100
   frontShootingDistance: 0
   sideShootingDistance: 0
-  sphereDetectionRadius: 18
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
@@ -303,9 +300,17 @@ PrefabInstance:
       value: Chile explosivo animaciones
       objectReference: {fileID: 0}
     - target: {fileID: 3953200719583494306, guid: 4bd16240ae707ba4f8d192ba3313e047, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953200719583494306, guid: 4bd16240ae707ba4f8d192ba3313e047, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 02259ace526d95c4faeceb894a51f000, type: 2}
+    - target: {fileID: 5742879447185589246, guid: 4bd16240ae707ba4f8d192ba3313e047, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5742879447185589246, guid: 4bd16240ae707ba4f8d192ba3313e047, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

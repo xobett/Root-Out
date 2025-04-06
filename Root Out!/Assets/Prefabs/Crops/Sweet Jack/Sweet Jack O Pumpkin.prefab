@@ -101,8 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropData: {fileID: 11400000, guid: 41fd113dc464ead489dca958a2b639fe, type: 2}
   cropAnimCtrlr: {fileID: 6509141081125666180}
-  cropWalkSpeed: 0.6
-  cropRunSpeed: 0.9
   stoppingDistance: 1.5
   backDistance: 2.5
   sideDistance: 0
@@ -244,9 +242,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7787610979627777465, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7787610979627777465, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6859d8b838e60a9439c6853b89b9084b, type: 2}
+    - target: {fileID: -206873504129841233, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -206873504129841233, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -256,13 +262,25 @@ PrefabInstance:
       value: Sweet Jack
       objectReference: {fileID: 0}
     - target: {fileID: 7473031902566022396, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473031902566022396, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6859d8b838e60a9439c6853b89b9084b, type: 2}
     - target: {fileID: 8421658239089781747, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421658239089781747, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6859d8b838e60a9439c6853b89b9084b, type: 2}
+    - target: {fileID: 8545127656815155439, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8545127656815155439, guid: 49df00c2aeb5f744392f4eb2b5becb02, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

@@ -70,13 +70,17 @@ PrefabInstance:
       value: Paja_1_8
       objectReference: {fileID: 0}
     - target: {fileID: 2466408786544961369, guid: 41a4b5e1e553dc446920511105d20de6, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466408786544961369, guid: 41a4b5e1e553dc446920511105d20de6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 37ab8bb672824cb40884bb81724d9a43, type: 2}
+      objectReference: {fileID: 2100000, guid: 3769bedb2e338bf44b9c7197d5af9727, type: 2}
     - target: {fileID: 2466408786544961369, guid: 41a4b5e1e553dc446920511105d20de6, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 37ab8bb672824cb40884bb81724d9a43, type: 2}
+      objectReference: {fileID: 2100000, guid: 3769bedb2e338bf44b9c7197d5af9727, type: 2}
     - target: {fileID: 5795927558666879199, guid: 41a4b5e1e553dc446920511105d20de6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -136,6 +140,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 4210565442752304589}
     m_Modifications:
     - target: {fileID: -8856561828531859408, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8856561828531859408, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8856561828531859408, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9053bb7254de31b4ebefe704f40ce025, type: 2}
@@ -180,6 +192,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6468085518280132687, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6468085518280132687, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6468085518280132687, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9053bb7254de31b4ebefe704f40ce025, type: 2}
@@ -188,9 +208,25 @@ PrefabInstance:
       value: pajar 1 placeholder
       objectReference: {fileID: 0}
     - target: {fileID: 2509802017764886665, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509802017764886665, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509802017764886665, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9053bb7254de31b4ebefe704f40ce025, type: 2}
+    - target: {fileID: 3566390031902043909, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566390031902043909, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3566390031902043909, guid: 6cf4db949c01b8444bed4757c8004fdd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
