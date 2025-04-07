@@ -349,6 +349,7 @@ Transform:
   - {fileID: 4357970962174078402}
   - {fileID: 7647737375034932091}
   - {fileID: 1087936016823310637}
+  - {fileID: 3882923501511345047}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548933534476983820
@@ -1079,7 +1080,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 37ca61eff6f9aa542887193c9e952974, type: 2}
+  - {fileID: 2100000, guid: 3c78006f68e57c546a02afd830117fe2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5323,6 +5324,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9190132368328091474, guid: 6211b70f90814e047814e0932238fc1e, type: 3}
   m_PrefabInstance: {fileID: 7684110309708635179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7770356942509196401
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2772897099206856946}
+    m_Modifications:
+    - target: {fileID: 633400976577192117, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_Name
+      value: Cesped y flores
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+--- !u!4 &3882923501511345047 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6788947887043233766, guid: 4d5cd7f9185cbcf409bf65a366435573, type: 3}
+  m_PrefabInstance: {fileID: 7770356942509196401}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8104515706040513233
 PrefabInstance:
