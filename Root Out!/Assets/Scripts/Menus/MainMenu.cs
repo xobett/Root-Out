@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
         // Asegurarse de que el tiempo de juego esté corriendo
         Time.timeScale = 1;
 
-        AudioManagerSFX.Instance.PlaySFX("Entrada");
+        //AudioManagerSFX.Instance.PlaySFX("Entrada");
         // Iniciar la transición de la viñeta
         StartCoroutine(VignetteTransition());
     }
@@ -64,31 +64,31 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
-        AudioManagerSFX.Instance.PlaySFX("Out");
+        //AudioManagerSFX.Instance.PlaySFX("Out");
         Application.Quit();
     }
     public void Settings()
     {
-        AudioManagerSFX.Instance.PlaySFX("Into");
+        //AudioManagerSFX.Instance.PlaySFX("Into");
         panelMain.SetActive(false);
         panelSettings.SetActive(true); // Activa el menú de configuración
     }
     public void Back()
     {
-        AudioManagerSFX.Instance.PlaySFX("Out");
+        //AudioManagerSFX.Instance.PlaySFX("Out");
         panelMain.SetActive(true);
         panelSettings.SetActive(false);
     }
 
     public void Logros()
     {
-        AudioManagerSFX.Instance.PlaySFX("Into");
+        //AudioManagerSFX.Instance.PlaySFX("Into");
         panelMain.SetActive(false);
         panelLogros.SetActive(true);
     }
     public void BackLogros()
     {
-        AudioManagerSFX.Instance.PlaySFX("Out");
+        //AudioManagerSFX.Instance.PlaySFX("Out");
         panelMain.SetActive(true);
         panelLogros.SetActive(false);
     }
