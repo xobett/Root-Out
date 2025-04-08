@@ -68,7 +68,7 @@ public class RandomItemShop : MonoBehaviour, IInteractable
 
         eggAnimator.SetTrigger("Outro");
 
-        AudioManager.instance.PlaySFX("Bomba estrella");
+        AudioManagerSFX.Instance.PlaySFX("Bomba estrella");
 
         Instantiate(spawnVfx, itemSpawnPosition.position, Quaternion.identity);
         Instantiate(GetRandomShopItem().ItemPrefab, itemSpawnPosition.position, Quaternion.identity);

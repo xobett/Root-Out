@@ -27,7 +27,7 @@ public class EnemyBullet : MonoBehaviour, IBullet
 
             GameObject spawnVfx = Instantiate(playerHitVfx, transform.position, hitVfx.transform.rotation);
 
-            AudioManager.instance.PlaySFX("Player hit");
+            AudioManagerSFX.Instance.PlaySFX("Player hit");
 
             Destroy(spawnVfx, 1);
 

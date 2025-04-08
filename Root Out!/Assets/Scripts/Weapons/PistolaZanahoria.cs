@@ -21,7 +21,7 @@ public class PistolaZanahoria : WeaponsBase, IInteractable
         {
 
             base.Shoot();
-            AudioManager.instance.PlaySFX("Disparo Zanahoria");
+            AudioManagerSFX.Instance.PlaySFX("Disparo Zanahoria");
         }
     }
 

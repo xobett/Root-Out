@@ -24,7 +24,7 @@ public class PistolaHuevos : WeaponsBase, IInteractable
             //}
 
             base.Shoot();
-            AudioManager.instance.PlaySFX("Disparo Huevo");
+            AudioManagerSFX.Instance.PlaySFX("Disparo Huevo");
         }
     }
 

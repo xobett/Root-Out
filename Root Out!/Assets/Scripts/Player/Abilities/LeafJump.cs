@@ -23,7 +23,7 @@ public class LeafJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            AudioManager.instance.PlaySFX("Aterrizaje");
+            AudioManagerSFX.Instance.PlaySFX("Aterrizaje");
         } 
     }
 
@@ -37,7 +37,7 @@ public class LeafJump : MonoBehaviour
 
             playerAnimCtrlr.SetBool("isJumping", true);
 
-            AudioManager.instance.PlaySFX("Salto");
+            AudioManagerSFX.Instance.PlaySFX("Salto");
 
             //Tras saltar, se reinicia el valor del salto cargado.
             currentChargedForce = 0f;

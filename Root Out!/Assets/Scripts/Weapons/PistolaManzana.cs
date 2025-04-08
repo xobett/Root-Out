@@ -24,7 +24,7 @@ public class PistolaManzana : WeaponsBase, IInteractable
 
 
             base.Shoot();
-            AudioManager.instance.PlaySFX("Disparo Manzana");
+            AudioManagerSFX.Instance.PlaySFX("Disparo Manzana");
         }
     }
 

@@ -35,7 +35,7 @@ public class Logros : MonoBehaviour
     {
         if (scriptWeaponHandler.weapons.Count == 1) // Verificar si hay exactamente una arma en scriptWeaponHandler
         {
-            AudioManager.instance.PlaySFX("Logros");
+            AudioManagerSFX.Instance.PlaySFX("Logros");
             primeraArmaLogroMostrado = true; // Marcar el logro como mostrado
             animacionPrimeraArma.Play();
             logroCanvas.SetActive(true);
@@ -53,7 +53,7 @@ public class Logros : MonoBehaviour
 
             if (enemiesDefeat == 10)
             {
-                AudioManager.instance.PlaySFX("Logros");
+                AudioManagerSFX.Instance.PlaySFX("Logros");
                 animacion10Enemigos.Play();
                 canvas10Enemigos.SetActive(true);
                 yield return new WaitForSeconds(7f);

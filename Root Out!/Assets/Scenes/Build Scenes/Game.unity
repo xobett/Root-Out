@@ -8715,6 +8715,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191a23e83681b464682141421fa64868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &966994412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966994413}
+  - component: {fileID: 966994414}
+  m_Layer: 0
+  m_Name: AudioManagerSFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966994413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966994412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1974.669, y: 165.21059, z: 93.160965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &966994414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966994412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76abbfb49b520a1469a87d6227fcbde2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Pistola Guisantes
+    clip: {fileID: 8300000, guid: 76cb4efbc90536448bd287fa870dc271, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Logros
+    clip: {fileID: 8300000, guid: 25acc7d889bfdde4ea8995a6ed1b342f, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Salto
+    clip: {fileID: 8300000, guid: 6cb663ec7a2cef74eb04d11bccbcc969, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Aterrizaje
+    clip: {fileID: 8300000, guid: 0da55443539bfd24497a4461a5f9bbca, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Aparicion huevo
+    clip: {fileID: 8300000, guid: 1b6541166fcdf7c4db1cbb89705c911f, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Tomar jugo
+    clip: {fileID: 8300000, guid: 3e8d7c8b6bcfdfa48bb30189c4fd69ad, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Bomba estrella
+    clip: {fileID: 8300000, guid: 34abdfb8f17ec6b479849d3100715ea5, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Enemy hit
+    clip: {fileID: 8300000, guid: f17e61865eba92c40828173ed63b02bd, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Player hit
+    clip: {fileID: 8300000, guid: 890d8c6503844a24687c9df8f270043d, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Apuntar
+    clip: {fileID: 8300000, guid: fe55e2e57bfed8046825dc5803502c89, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Disparo Bellota
+    clip: {fileID: 8300000, guid: 1d1e5175aca19a34991d2fbce30bd0ff, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Disparo Calabaza
+    clip: {fileID: 8300000, guid: 071f37b413da15b4f92698459b5d2947, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Disparo Huevo
+    clip: {fileID: 8300000, guid: b0ac28fad3ee68f4d848a529c61336e4, type: 3}
+    volume: 1
+    pitch: 0.1
+  - name: Disparo Zanahoria
+    clip: {fileID: 8300000, guid: 2794511a02306774b84f5d4b2952837d, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Disparo Manzana
+    clip: {fileID: 8300000, guid: 9f7b7c886345ca64da8db9b543c49a4a, type: 3}
+    volume: 1
+    pitch: 0.1
 --- !u!1001 &971978656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19589,13 +19694,14 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 966994413}
+  - {fileID: 5193603633156814763}
   - {fileID: 1499024675}
   - {fileID: 2026462684}
   - {fileID: 2028066327}
   - {fileID: 4706963253206602725}
   - {fileID: 8839398623551731027}
   - {fileID: 511924273}
-  - {fileID: 5193603633156814763}
   - {fileID: 1467490296}
   - {fileID: 311888380}
   - {fileID: 680381932}

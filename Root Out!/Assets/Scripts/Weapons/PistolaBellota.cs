@@ -40,7 +40,7 @@ public class PistolaBellota : WeaponsBase, IInteractable
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
-            AudioManager.instance.PlaySFX("Disparo Bellota");
+            AudioManagerSFX.Instance.PlaySFX("Disparo Bellota");
             base.Shoot();
         }
     }

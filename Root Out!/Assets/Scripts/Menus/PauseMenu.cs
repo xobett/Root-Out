@@ -36,13 +36,13 @@ public class PauseMenu : MonoBehaviour
         back.SetActive(false);
         volumen.SetActive(false);
 
-        // Configurar el Slider de volumen de VFX
-        vfxVolumeSlider.onValueChanged.AddListener(SetVFXVolume); // Añade un listener para el slider de volumen de VFX
-        vfxVolumeSlider.value = AudioManager.instance.GetVFXVolume(); // Inicializa el slider con el valor actual del volumen de VFX
+        //// Configurar el Slider de volumen de VFX
+        //vfxVolumeSlider.onValueChanged.AddListener(SetVFXVolume); // Añade un listener para el slider de volumen de VFX
+        //vfxVolumeSlider.value = AudioManager.instance.GetVFXVolume(); // Inicializa el slider con el valor actual del volumen de VFX
 
-        // Configurar el Slider de volumen principal
-        mainVolumeSlider.onValueChanged.AddListener(SetMusicClipsVolume); // Añade un listener para el slider de volumen principal
-        mainVolumeSlider.value = AudioManager.instance.GetMusicClipVolume(); // Inicializa el slider con el valor actual del volumen principal
+        //// Configurar el Slider de volumen principal
+        //mainVolumeSlider.onValueChanged.AddListener(SetMusicClipsVolume); // Añade un listener para el slider de volumen principal
+        //mainVolumeSlider.value = AudioManager.instance.GetMusicClipVolume(); // Inicializa el slider con el valor actual del volumen principal
     }
 
     void Update()
@@ -75,9 +75,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true); // Activa el menú de pausa
         Time.timeScale = 0f; // Detiene el tiempo del juego
 
-        // Guardar los volúmenes actuales y bajar el volumen general a 0.01
-        previousMusicVolume = AudioManager.instance.GetMusicClipVolume();
-        previousSFXVolume = AudioManager.instance.GetVFXVolume();
+        //// Guardar los volúmenes actuales y bajar el volumen general a 0.01
+        //previousMusicVolume = AudioManager.instance.GetMusicClipVolume();
+        //previousSFXVolume = AudioManager.instance.GetVFXVolume();
         AudioManager.instance.SetAudioVolume(0.01f);
 
         isPaused = true; // Establece la variable de pausa a true
@@ -93,9 +93,9 @@ public class PauseMenu : MonoBehaviour
         coinsDisplay.SetActive(true); // Activa el HUD de monedas
         Time.timeScale = 1f; // Restaura el tiempo del juego
 
-        // Restaurar los volúmenes guardados al reanudar
-        AudioManager.instance.SetMusicClipsVolume(mainVolumeSlider.value);
-        AudioManager.instance.SetVFXVolume(vfxVolumeSlider.value);
+        //// Restaurar los volúmenes guardados al reanudar
+        //AudioManager.instance.SetMusicClipsVolume(mainVolumeSlider.value);
+        //AudioManager.instance.SetVFXVolume(vfxVolumeSlider.value);
 
         isPaused = false;
     }
@@ -116,17 +116,17 @@ public class PauseMenu : MonoBehaviour
         volumen.SetActive(true); // Activa el menú de volumen
     }
 
-    public void VFX()
-    {
-        vfxVolumeSlider.onValueChanged.AddListener(SetVFXVolume); // Añade un listener para el slider de volumen de VFX
-        vfxVolumeSlider.value = AudioManager.instance.GetVFXVolume(); // Inicializa el slider con el valor actual del volumen de VFX
-    }
+    //public void VFX()
+    //{
+    //    vfxVolumeSlider.onValueChanged.AddListener(SetVFXVolume); // Añade un listener para el slider de volumen de VFX
+    //    vfxVolumeSlider.value = AudioManager.instance.GetVFXVolume(); // Inicializa el slider con el valor actual del volumen de VFX
+    //}
 
-    public void Volumen()
-    {
-        mainVolumeSlider.onValueChanged.AddListener(SetMusicClipsVolume); // Añade un listener para el slider de volumen principal
-        mainVolumeSlider.value = AudioManager.instance.GetMusicClipVolume(); // Inicializa el slider con el valor actual del volumen principal
-    }
+    //public void Volumen()
+    //{
+    //    mainVolumeSlider.onValueChanged.AddListener(SetMusicClipsVolume); // Añade un listener para el slider de volumen principal
+    //    mainVolumeSlider.value = AudioManager.instance.GetMusicClipVolume(); // Inicializa el slider con el valor actual del volumen principal
+    //}
 
     public void Back()
     {
@@ -139,17 +139,17 @@ public class PauseMenu : MonoBehaviour
         panelResume.SetActive(true);
     }
 
-    // Método para actualizar el volumen de los VFX
-    public void SetVFXVolume(float volume)
-    {
-        AudioManager.instance.SetVFXVolume(volume); // Llama al método del AudioManager para establecer el volumen de los VFX
-    }
+    //// Método para actualizar el volumen de los VFX
+    //public void SetVFXVolume(float volume)
+    //{
+    //    AudioManager.instance.SetVFXVolume(volume); // Llama al método del AudioManager para establecer el volumen de los VFX
+    //}
 
-    // Método para actualizar el volumen principal
-    public void SetMusicClipsVolume(float volume)
-    {
-        AudioManager.instance.SetMusicClipsVolume(volume); // Llama al método del AudioManager para establecer el volumen principal
-    }
+    //// Método para actualizar el volumen principal
+    //public void SetMusicClipsVolume(float volume)
+    //{
+    //    AudioManager.instance.SetMusicClipsVolume(volume); // Llama al método del AudioManager para establecer el volumen principal
+    //}
 }
     
 
