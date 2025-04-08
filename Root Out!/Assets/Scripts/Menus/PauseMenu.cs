@@ -72,6 +72,7 @@ public class PauseMenu : MonoBehaviour
         GameManager.instance.gamePaused = true;
         ammoDisplay.SetActive(false); // Desactiva el HUD de munición
         coinsDisplay.SetActive(false); // Desactiva el HUD de monedas
+        HUD.SetActive(false);
         pauseMenu.SetActive(true); // Activa el menú de pausa
         Time.timeScale = 0f; // Detiene el tiempo del juego
 
@@ -90,6 +91,7 @@ public class PauseMenu : MonoBehaviour
         GameManager.instance.gamePaused = false;
         pauseMenu.SetActive(false); // Desactiva el menú de pausa
         ammoDisplay.SetActive(true); // Activa el HUD de munición
+        HUD.SetActive(true);
         coinsDisplay.SetActive(true); // Activa el HUD de monedas
         Time.timeScale = 1f; // Restaura el tiempo del juego
 

@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float normalEventCountdown;
     [SerializeField] private float finalEventCountdown;
 
-    public float premiumShopProbability;
+    public float premiumShopProbability = 0;
     
     public bool eventTimerIsActive;
 
@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
         GetPlayerReferences();
 
         reminderTimer = timeBeforeNextReminder;
+        premiumShopProbability = 0;
     }
 
     private void Update()
@@ -194,6 +195,9 @@ public class GameManager : MonoBehaviour
 
                 currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
                 currentSecondSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
+
+                currentSunflower = null;
+                currentSecondSunflower = null;
             }
             else if (normalEventActive && currentSunflower.currentHealth <= 0)
             {
@@ -203,6 +207,8 @@ public class GameManager : MonoBehaviour
                 normalEventActive = false;
 
                 currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
+
+                currentSunflower = null;
             }
             else if (compellingEventActive && currentSunflower.currentHealth <= 0)
             {
@@ -213,7 +219,8 @@ public class GameManager : MonoBehaviour
                 enemySpawnTime = originalEnemySpawnTime;
 
                 currentSunflower.gameObject.GetComponentInChildren<SunflowerGrower>().selectionMade = false;
-                
+
+                currentSunflower = null; 
             }
         }
     }
@@ -519,15 +526,15 @@ public class GameManager : MonoBehaviour
         sunflowerAudio.clip = cargaGirasolClip;
         sunflowerAudio.Play();
 
-        
+
         if (marvelousEventActive)
         {
             currentSecondSunflowerAnimator.SetTrigger("Begin Charge");
             currentSecondSunflowerLifebarAnimator.SetTrigger("Intro State");
 
             AudioSource secondSunflowerAudio = currentSecondSunflower.gameObject.GetComponent<AudioSource>();
-            sunflowerAudio.clip = cargaGirasolClip;
-            sunflowerAudio.Play();
+            secondSunflowerAudio.clip = cargaGirasolClip;
+            secondSunflowerAudio.Play();
         }
 
         SpawnParticles();
@@ -547,8 +554,8 @@ public class GameManager : MonoBehaviour
             currentSecondSunflowerLifebarAnimator.SetTrigger("Outro State");
 
             AudioSource secondSunflowerAudio = currentSecondSunflower.gameObject.GetComponent<AudioSource>();
-            sunflowerAudio.clip = desaparicionClip;
-            sunflowerAudio.Play();
+            secondSunflowerAudio.clip = desaparicionClip;
+            secondSunflowerAudio.Play();
         }
 
         DeactivateParticles();

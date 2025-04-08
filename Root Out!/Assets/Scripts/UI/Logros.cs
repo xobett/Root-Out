@@ -7,7 +7,9 @@ public class Logros : MonoBehaviour
     [SerializeField] GameObject logroCanvas;
     [SerializeField] WeaponHandler scriptWeaponHandler;
     [SerializeField] Animation animacionPrimeraArma;
+
     private bool primeraArmaLogroMostrado = false; // Variable para controlar si el logro ya se mostró
+    private bool enemigosEliminadosLogroMostrado = false;
 
     [Header("Enemigos Derrotados")]
     [SerializeField] Animation animacion10Enemigos;
@@ -24,19 +26,25 @@ public class Logros : MonoBehaviour
 
     private void Update()
     {
-        if (!primeraArmaLogroMostrado)
+        if (!primeraArmaLogroMostrado && scriptWeaponHandler.weapons.Count == 1)
         {
             StartCoroutine(PrimeraArma());
         }
-        StartCoroutine(NumberEnemmiesDefeat());
+
+        if (enemigosEliminadosLogroMostrado && AIHealth.enemiesDefeated == 10)
+        {
+            StartCoroutine(NumberEnemmiesDefeat());
+        }
+
     }
 
     public IEnumerator PrimeraArma()
     {
         if (scriptWeaponHandler.weapons.Count == 1) // Verificar si hay exactamente una arma en scriptWeaponHandler
         {
-            AudioManagerSFX.Instance.PlaySFX("Logros");
             primeraArmaLogroMostrado = true; // Marcar el logro como mostrado
+
+            AudioManagerSFX.Instance.PlaySFX("Logros");
             animacionPrimeraArma.Play();
             logroCanvas.SetActive(true);
             yield return new WaitForSeconds(7f);
@@ -47,23 +55,17 @@ public class Logros : MonoBehaviour
 
     public IEnumerator NumberEnemmiesDefeat()
     {
-        while (true)
+        if (enemiesDefeat == 10)
         {
-            enemiesDefeat = AIHealth.enemiesDefeated; // Obtener el contador de enemigos derrotado
+            enemigosEliminadosLogroMostrado = true;
 
-            if (enemiesDefeat == 10)
-            {
-                AudioManagerSFX.Instance.PlaySFX("Logros");
-                animacion10Enemigos.Play();
-                canvas10Enemigos.SetActive(true);
-                yield return new WaitForSeconds(7f);
-                animacion10Enemigos.Stop();
-                canvas10Enemigos.SetActive(false);
-                StopCoroutine(NumberEnemmiesDefeat());
-            }
-
-            yield return new WaitForSeconds(1f); // Actualizar cada segundo
-            yield return null;
+            AudioManagerSFX.Instance.PlaySFX("Logros");
+            animacion10Enemigos.Play();
+            canvas10Enemigos.SetActive(true);
+            yield return new WaitForSeconds(7f);
+            animacion10Enemigos.Stop();
+            canvas10Enemigos.SetActive(false);
+            StopCoroutine(NumberEnemmiesDefeat());
         }
     }
 }

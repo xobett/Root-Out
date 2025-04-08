@@ -13,7 +13,7 @@ public class LifeUpgrade : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         scriptPlayerHealth.currentHealth += lifeUpgrade;
-        scriptPlayerHealth.playerLifeBar.fillAmount += lifeUpgrade;
+        scriptPlayerHealth.SetPlayerHealth(lifeUpgrade);
         Destroy(gameObject);
     }
 }

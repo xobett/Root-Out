@@ -70,7 +70,10 @@ public class PropsSpawner : MonoBehaviour
     {
         float probability = Random.Range(0, 100);
 
-        probability *= GameManager.instance.premiumShopProbability;
+        if (GameManager.instance != null)
+        {
+            probability *= GameManager.instance.premiumShopProbability; 
+        }
 
         if (probability > 100)
         {

@@ -10,8 +10,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("PLAYER HEALTH SETTINGS")]
     public float maxHealth = 100;
     [SerializeField, Range(0, 100)] public float currentHealth;
-    [SerializeField] public Image playerLifeBar;
 
+    [SerializeField] private Slider lifebarFill;
 
     [Header("PLAYER DEATH ANIMATION SETTINGS")]
     [SerializeField] private Animator playerAnimCtrlr;
@@ -27,7 +27,8 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamagePlayer(float damage)
     {
         currentHealth -= damage;
-        playerLifeBar.fillAmount = currentHealth / maxHealth; // Calcula el fillAmount basado en la vida actual y máxima
+
+        lifebarFill.value = currentHealth / maxHealth;
 
         if (currentHealth <= 0 && !playerIsDead)
         {
@@ -38,7 +39,8 @@ public class PlayerHealth : MonoBehaviour
     public void SetPlayerHealth(float health)
     {
         currentHealth = health;
-        playerLifeBar.fillAmount = currentHealth / maxHealth;
+
+        lifebarFill.value = currentHealth / maxHealth;
         Debug.Log("Health was set to its maximum!");
     }
 
@@ -46,7 +48,8 @@ public class PlayerHealth : MonoBehaviour
     public void Damage()
     {
         currentHealth -= 20;
-        playerLifeBar.fillAmount = currentHealth / maxHealth; // Calcula el fillAmount basado en la vida actual y máxima
+
+        lifebarFill.value = currentHealth / maxHealth;
         Debug.Log("Vida del jugador: " + currentHealth);
 
         if (currentHealth <= 0)

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -91,7 +90,7 @@ public class Sunflower : MonoBehaviour
                 terrainToSpawn = GenerateRandomTerrainType();
                 Debug.Log("Was supposed to spawn final hub but it was already created");
                 yield return null;
-            } 
+            }
         }
         else if (terrainToSpawn == terrainPrefabs[0] && !GameManager.instance.finalHubCreated)
         {
@@ -124,6 +123,8 @@ public class Sunflower : MonoBehaviour
 
         cloneFog = Instantiate(worldFog, fogSpawnPos, Quaternion.identity);
         cloneFog.transform.parent = gameObject.transform.parent;
+
+        Debug.Log("Spawned fog");
     }
 
     private void BugDetection()
@@ -162,7 +163,9 @@ public class Sunflower : MonoBehaviour
 
     private void GetReferences()
     {
+
         navMeshSurface = GameObject.FindGameObjectWithTag("Main Floor").GetComponent<NavMeshSurface>();
+
     }
 
     public void DamageSunFlower(float damage)
@@ -186,7 +189,7 @@ public class Sunflower : MonoBehaviour
         {
             if (child.GetComponent<Renderer>())
             {
-                child.GetComponent<Renderer>().material = compellingMaterial; 
+                child.GetComponent<Renderer>().material = compellingMaterial;
             }
         }
 
