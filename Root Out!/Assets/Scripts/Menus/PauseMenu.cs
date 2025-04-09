@@ -25,8 +25,6 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private UIInventory uiInventory;
 
-    private float previousMusicVolume; // Variable para almacenar el volumen anterior de la música
-    private float previousSFXVolume; // Variable para almacenar el volumen anterior de los SFX
 
     private void Start()
     {
@@ -40,9 +38,9 @@ public class PauseMenu : MonoBehaviour
         //vfxVolumeSlider.onValueChanged.AddListener(SetVFXVolume); // Añade un listener para el slider de volumen de VFX
         //vfxVolumeSlider.value = AudioManager.instance.GetVFXVolume(); // Inicializa el slider con el valor actual del volumen de VFX
 
-        //// Configurar el Slider de volumen principal
-        //mainVolumeSlider.onValueChanged.AddListener(SetMusicClipsVolume); // Añade un listener para el slider de volumen principal
-        //mainVolumeSlider.value = AudioManager.instance.GetMusicClipVolume(); // Inicializa el slider con el valor actual del volumen principal
+        // Configurar el Slider de volumen principal
+       // mainVolumeSlider.onValueChanged.AddListener(SetMusicClipsVolume); // Añade un listener para el slider de volumen principal
+        mainVolumeSlider.value = AudioManager.instance.GetMusicClipVolume(); // Inicializa el slider con el valor actual del volumen principal
     }
 
     void Update()
@@ -95,9 +93,6 @@ public class PauseMenu : MonoBehaviour
         coinsDisplay.SetActive(true); // Activa el HUD de monedas
         Time.timeScale = 1f; // Restaura el tiempo del juego
 
-        //// Restaurar los volúmenes guardados al reanudar
-        //AudioManager.instance.SetMusicClipsVolume(mainVolumeSlider.value);
-        //AudioManager.instance.SetVFXVolume(vfxVolumeSlider.value);
 
         isPaused = false;
     }

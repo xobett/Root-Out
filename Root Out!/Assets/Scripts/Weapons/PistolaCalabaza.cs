@@ -41,7 +41,7 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
 
             FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
             base.Shoot();
-            AudioManagerSFX.Instance.PlaySFX("Disparo Calabaza");
+            AudioManagerSFX.Instance.PlaySFX("Pistola Calabaza");
         }
     }
 

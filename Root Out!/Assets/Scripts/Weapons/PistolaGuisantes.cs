@@ -5,7 +5,7 @@ using Weapons;
 public class PistolaGuisantes : WeaponsBase, IInteractable
 {
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
-   // [SerializeField] private AudioSource audioSource; // Referencia al AudioSource para reproducir sonidos
+  
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
     protected override void Start()
@@ -61,12 +61,5 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
         }
     }
 
-    //private void PistolSound()
-    //{
-    //    if (Input.GetKey(KeyCode.Mouse0))
-    //    {
-    //        audioSource.Play(); // Reproducir el sonido de recarga
-
-    //    }
-    //}
+   
 }

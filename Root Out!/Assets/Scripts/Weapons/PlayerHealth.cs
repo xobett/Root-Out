@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100;
     [SerializeField, Range(0, 100)] public float currentHealth;
 
-    [SerializeField] private Slider lifebarFill;
+    [SerializeField] private Image lifebarFill;
 
     [Header("PLAYER DEATH ANIMATION SETTINGS")]
     [SerializeField] private Animator playerAnimCtrlr;
@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
-        lifebarFill.value = currentHealth / maxHealth;
+        lifebarFill.fillAmount = currentHealth / maxHealth;
 
         if (currentHealth <= 0 && !playerIsDead)
         {
@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = health;
 
-        lifebarFill.value = currentHealth / maxHealth;
+        lifebarFill.fillAmount = currentHealth / maxHealth;
         Debug.Log("Health was set to its maximum!");
     }
 
@@ -49,12 +49,14 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= 20;
 
-        lifebarFill.value = currentHealth / maxHealth;
+        lifebarFill.fillAmount = currentHealth / maxHealth;
         Debug.Log("Vida del jugador: " + currentHealth);
 
         if (currentHealth <= 0)
         {
+            AudioManagerSFX.Instance.PlaySFX("Muerte");
             StartCoroutine(Die());
+
         }
     }
 
