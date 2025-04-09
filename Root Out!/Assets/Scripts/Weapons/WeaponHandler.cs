@@ -23,7 +23,7 @@ public class WeaponHandler : MonoBehaviour
     // Variable para rastrear el tiempo del último cambio de arma
     private float lastWeaponChangeTime = 0f;
     // Cooldown de 0.5 segundos
-    private const float weaponChangeCooldown = 0.7f;
+    private const float weaponChangeCooldown = 2f;
 
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 5f;
@@ -102,8 +102,9 @@ public class WeaponHandler : MonoBehaviour
         Animation anim = weaponSelectionWheel.GetComponent<Animation>();
         anim.Play("RuedaArmasAbajo");
         yield return new WaitForSeconds(anim["RuedaArmasAbajo"].length);
+        yield return new WaitForSeconds(2.5f);
         anim.Play("RuedaArmasArriba");
-        yield return new WaitForSeconds(anim["RuedaArmasArriba"].length);
+        yield return new WaitForSeconds(2.5f);
         weaponSelectionWheel.gameObject.SetActive(false); // Asegurarse de que la rueda esté activa
     }
 
