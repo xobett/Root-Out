@@ -71,4 +71,24 @@ public class AudioManagerSFX : MonoBehaviour
             Debug.LogWarning($"El sonido '{name}' no fue encontrado.");
         }
     }
+    public void SetSFXVolume(float volume) //Metodo de volumen general de SFX
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound.source != null)
+            {
+                sound.source.volume = volume; // Ajusta el volumen de cada AudioSource
+            }
+        }
+        Debug.Log($"Volumen global ajustado a: {volume}");
+    }
+    public float GetCurrentSFXVolume()
+    {
+        if (sounds.Count > 0 && sounds[0].source != null)
+        {
+            return sounds[0].source.volume; // Devuelve el volumen del primer sonido como referencia
+        }
+        Debug.LogWarning("No hay sonidos configurados o el AudioSource no está inicializado.");
+        return 0f; // Devuelve 0 si no hay sonidos configurados
+    }
 }

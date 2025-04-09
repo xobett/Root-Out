@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -54,7 +54,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            AudioManagerSFX.Instance.PlaySFX("Muerte");
             StartCoroutine(Die());
 
         }
@@ -70,6 +69,8 @@ public class PlayerHealth : MonoBehaviour
 
         playerAnimCtrlr.SetTrigger("Death");
 
+        AudioManagerSFX.Instance.PlaySFX("Muerte");
+
         var playerMovement = gameObject.GetComponent<PlayerMovement>();
         var playerCropHandler = gameObject.GetComponent<CropHandler>();
         var playerLeafJump = gameObject.GetComponent<LeafJump>();
@@ -82,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
         cameraFollow.enabled = false;
 
         //yield return new WaitForSecondsRealtime(2f);
-        
+
         volume.profile.TryGet(out colorAdjustments);
 
         float duration = 5f;
@@ -92,7 +93,7 @@ public class PlayerHealth : MonoBehaviour
 
         while (elapsed < duration)
         {
-            Time.timeScale = Mathf.Lerp(1f, 0f, elapsed/duration);
+            Time.timeScale = Mathf.Lerp(1f, 0f, elapsed / duration);
             colorAdjustments.saturation.value = Mathf.Lerp(startSaturation, endSaturation, elapsed / duration);
             elapsed += Time.unscaledDeltaTime;
             yield return null;
