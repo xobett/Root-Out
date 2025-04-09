@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public void Move()
     {
         rb.linearVelocity = transform.rotation * new Vector3(HorizontalMove() * ActualSpeed(), rb.linearVelocity.y, VerticalMove() * ActualSpeed());
+       // AudioManagerSFX.Instance.PlaySFX("Caminata"); // Reproduce el sonido de caminar
     }
     void Jump()
     {

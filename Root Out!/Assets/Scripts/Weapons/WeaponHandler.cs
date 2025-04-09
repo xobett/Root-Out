@@ -28,6 +28,8 @@ public class WeaponHandler : MonoBehaviour
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 5f;
 
+    private bool isWheelAnimationActive = false;
+
 
     private void Start()
     {
@@ -46,6 +48,13 @@ public class WeaponHandler : MonoBehaviour
         if (currentWeapon != null && !currentWeapon.GetComponent<WeaponsBase>().isReloading)
         {
 
+            // Bloquear la entrada del ratón si la animación de la rueda está activa
+            if (isWheelAnimationActive)
+            {
+                Debug.Log("Mouse wheel input blocked: Wheel animation is active.");
+                return;
+            }
+
             if (weapons.Count < 2)
             {
                 return; // No permitir rotación si hay menos de dos armas
@@ -57,7 +66,7 @@ public class WeaponHandler : MonoBehaviour
             }
 
             float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-            if (scrollInput > 0f) // Si el ratón se desplaza hacia arriba
+            if (scrollInput > 0f) // Si el ratón se desplaza hacia arriba y la rueda de armas no este activa
             {
                 for (int i = selectedWeaponIndex + 1; i < weapons.Count; i++)
                 {
@@ -84,8 +93,8 @@ public class WeaponHandler : MonoBehaviour
                         StartCoroutine(RotateWeaponSelectionWheel(-60f)); // Rotar 60 grados hacia abajo
                         selectedWeaponIndex = i;
                         SwitchWeapon(selectedWeaponIndex);
-                        lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
                         StartCoroutine(ColdDownWheelAnimation());
+                        lastWeaponChangeTime = Time.time; // Actualizar el tiempo del último cambio de arma
 
                         var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
                         playerMovement.SetAnimationState(GetCurrentAim());
@@ -95,9 +104,10 @@ public class WeaponHandler : MonoBehaviour
             }
         }
     }
-
     private IEnumerator ColdDownWheelAnimation()
+
     {
+        isWheelAnimationActive = true; // Activar la bandera
         weaponSelectionWheel.gameObject.SetActive(true); // Asegurarse de que la rueda esté activa
         Animation anim = weaponSelectionWheel.GetComponent<Animation>();
         anim.Play("RuedaArmasAbajo");
@@ -106,6 +116,7 @@ public class WeaponHandler : MonoBehaviour
         anim.Play("RuedaArmasArriba");
         yield return new WaitForSeconds(2.5f);
         weaponSelectionWheel.gameObject.SetActive(false); // Asegurarse de que la rueda esté activa
+        isWheelAnimationActive = false; // Desactivar la bandera    
     }
 
     private IEnumerator RotateWeaponSelectionWheel(float targetValue) // Método para rotar la rueda de selección de armas
