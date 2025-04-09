@@ -28,10 +28,12 @@ public class WeaponHandler : MonoBehaviour
     // Velocidad de rotación de la rueda de armas
     [SerializeField] float rotationSpeed = 5f;
 
-    private void Awake()
+
+    private void Start()
     {
-        weaponSelectionWheel.gameObject.SetActive(false); // Desactivar la rueda de armas al inicio
+       // weaponSelectionWheel.gameObject.SetActive(false); // Desactivar la rueda de armas al inicio
     }
+
     private void Update()
     {
         HandleMouseScroll();  // Maneja la rotación de la rueda del ratón para cambiar de arma
@@ -96,13 +98,13 @@ public class WeaponHandler : MonoBehaviour
 
     private IEnumerator ColdDownWheelAnimation()
     {
-        weaponSelectionWheel.gameObject.SetActive(true); // Asegurarse de que la rueda esté activa
+       // weaponSelectionWheel.gameObject.SetActive(true); // Asegurarse de que la rueda esté activa
         Animation anim = weaponSelectionWheel.GetComponent<Animation>();
         anim.Play("RuedaArmasAbajo");
         yield return new WaitForSeconds(anim["RuedaArmasAbajo"].length);
         anim.Play("RuedaArmasArriba");
         yield return new WaitForSeconds(anim["RuedaArmasArriba"].length);
-        weaponSelectionWheel.gameObject.SetActive(false); // Asegurarse de que la rueda esté activa
+       // weaponSelectionWheel.gameObject.SetActive(false); // Asegurarse de que la rueda esté activa
     }
 
     private IEnumerator RotateWeaponSelectionWheel(float targetValue) // Método para rotar la rueda de selección de armas
@@ -227,12 +229,29 @@ public class WeaponHandler : MonoBehaviour
     // Método para posicionar correctamente los íconos en el UI
     private void UpdateWeaponPositions()
     {
+        // Lista de posiciones manuales para los íconos
+        Vector3[] manualPositions = new Vector3[]
+        {
+            new Vector3(84, -121, 0),  // Posición para el primer ícono
+            new Vector3(0, 100, 0),   // Posición para el segundo ícono
+            new Vector3(100, 50, 0),  // Posición para el tercer ícono
+            new Vector3(100, -50, 0), // Posición para el cuarto ícono
+            new Vector3(0, -100, 0),  // Posición para el quinto ícono
+            new Vector3(-100, -50, 0) // Posición para el sexto ícono
+        };
+
         for (int i = 0; i < weaponIcons.Count; i++)
         {
             if (i < weapons.Count)
             {
+                // Asignar la posición manual al ícono
                 weaponIcons[i].transform.SetParent(weaponSelectionWheel);
-                weaponIcons[i].transform.localPosition = weaponIcons[i].transform.localPosition; // Ajustar posición si es necesario
+                weaponIcons[i].transform.localPosition = manualPositions[i];
+                weaponIcons[i].gameObject.SetActive(true); // Asegurarse de que el ícono esté activo
+            }
+            else
+            {
+                weaponIcons[i].gameObject.SetActive(false); // Desactivar íconos no usados
             }
         }
     }
