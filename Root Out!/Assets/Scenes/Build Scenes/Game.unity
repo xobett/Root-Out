@@ -8246,9 +8246,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
-      propertyPath: cropAiming
-      value: 
+      propertyPath: damage
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: fireRate
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429142755090644267, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 2006717221}
     - target: {fileID: 5014879619776171729, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8292,6 +8300,22 @@ PrefabInstance:
     - target: {fileID: 5680093412022981739, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
       propertyPath: m_Name
       value: Pistola guisantes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508536407110592936, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508536407110592936, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_Pitch
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508536407110592936, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_Volume
+      value: 0.578
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508536407110592936, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9351,111 +9375,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3857410708219379256, guid: f3e6697125170554bbe8e1683726a076, type: 3}
   m_PrefabInstance: {fileID: 581611390}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &966994412
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 966994413}
-  - component: {fileID: 966994414}
-  m_Layer: 0
-  m_Name: AudioManagerSFX
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &966994413
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966994412}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1974.669, y: 165.21059, z: 93.160965}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &966994414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966994412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76abbfb49b520a1469a87d6227fcbde2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Pistola Guisantes
-    clip: {fileID: 8300000, guid: 76cb4efbc90536448bd287fa870dc271, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Logros
-    clip: {fileID: 8300000, guid: 25acc7d889bfdde4ea8995a6ed1b342f, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Salto
-    clip: {fileID: 8300000, guid: 6cb663ec7a2cef74eb04d11bccbcc969, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Aterrizaje
-    clip: {fileID: 8300000, guid: 0da55443539bfd24497a4461a5f9bbca, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Aparicion huevo
-    clip: {fileID: 8300000, guid: 1b6541166fcdf7c4db1cbb89705c911f, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Tomar jugo
-    clip: {fileID: 8300000, guid: 3e8d7c8b6bcfdfa48bb30189c4fd69ad, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Bomba estrella
-    clip: {fileID: 8300000, guid: 34abdfb8f17ec6b479849d3100715ea5, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Enemy hit
-    clip: {fileID: 8300000, guid: f17e61865eba92c40828173ed63b02bd, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Player hit
-    clip: {fileID: 8300000, guid: 890d8c6503844a24687c9df8f270043d, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Apuntar
-    clip: {fileID: 8300000, guid: fe55e2e57bfed8046825dc5803502c89, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Disparo Bellota
-    clip: {fileID: 8300000, guid: 1d1e5175aca19a34991d2fbce30bd0ff, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Disparo Calabaza
-    clip: {fileID: 8300000, guid: 071f37b413da15b4f92698459b5d2947, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Disparo Huevo
-    clip: {fileID: 8300000, guid: b0ac28fad3ee68f4d848a529c61336e4, type: 3}
-    volume: 1
-    pitch: 0.1
-  - name: Disparo Zanahoria
-    clip: {fileID: 8300000, guid: 2794511a02306774b84f5d4b2952837d, type: 3}
-    volume: 1
-    pitch: 0
-  - name: Disparo Manzana
-    clip: {fileID: 8300000, guid: 9f7b7c886345ca64da8db9b543c49a4a, type: 3}
-    volume: 1
-    pitch: 0.1
 --- !u!4 &971944270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4210565442752304589, guid: 7a99305548fe26c41a18a4101d18decc, type: 3}
@@ -17199,6 +17118,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f7c5b62bed1c8469c216cad7d523dd, type: 3}
+--- !u!82 &2006717221 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8508536407110592936, guid: 9d3bfb853b1b1a04d8077efbc731174d, type: 3}
+  m_PrefabInstance: {fileID: 771108729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2008054411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9190132368328091474, guid: 6211b70f90814e047814e0932238fc1e, type: 3}
@@ -19478,316 +19402,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: audioSource
+      propertyPath: musicAudioSource
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: randomClips.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[0].loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6cb663ec7a2cef74eb04d11bccbcc969, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[3].name
-      value: Salto
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0da55443539bfd24497a4461a5f9bbca, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[4].name
-      value: Aterrizaje
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1b6541166fcdf7c4db1cbb89705c911f, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[5].name
-      value: Aparicion huevo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3e8d7c8b6bcfdfa48bb30189c4fd69ad, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[6].name
-      value: Tomar jugo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 34abdfb8f17ec6b479849d3100715ea5, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[7].name
-      value: Bomba estrella
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[8].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: f17e61865eba92c40828173ed63b02bd, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[8].name
-      value: Enemy hit
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[9].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 890d8c6503844a24687c9df8f270043d, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[9].name
-      value: Player hit
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[10].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: fe55e2e57bfed8046825dc5803502c89, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[10].name
-      value: Apuntar
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[11].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1d1e5175aca19a34991d2fbce30bd0ff, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[11].name
-      value: Disparo Bellota
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[12].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 071f37b413da15b4f92698459b5d2947, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[12].name
-      value: Disparo Calabaza
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[13].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b0ac28fad3ee68f4d848a529c61336e4, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[13].name
-      value: Disparo Huevo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[14].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2794511a02306774b84f5d4b2952837d, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[14].name
-      value: Disparo Zanahoria
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[15].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9f7b7c886345ca64da8db9b543c49a4a, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[15].name
-      value: Disparo Manzana
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[1].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[3].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[4].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[5].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[6].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[7].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[8].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[9].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e2439454592c28e439acfc35bd01de5e, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[0].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[0].name
-      value: Principal
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 568bf2be9633b944392ff62a55a0172c, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[1].name
-      value: Batalla
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[0].volume
-      value: 0.322
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[10].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[11].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[12].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[13].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[14].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[15].pitch
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[1].volume
-      value: 0.405
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[3].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[4].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[5].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[6].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[7].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[8].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[9].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[0].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[1].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: randomClips.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e2439454592c28e439acfc35bd01de5e, type: 3}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: randomClips.Array.data[0].name
-      value: Main Theme
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[10].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[11].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[12].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[13].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[14].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[15].volume
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5193603633156814764}
     - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: musicClips.Array.data[0].volume
-      value: 0.088
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[1].volume
-      value: 0.444
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: randomClips.Array.data[0].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: sfxClips.Array.data[0].playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[0].playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: musicClips.Array.data[1].playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075383961098622, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: randomClips.Array.data[0].playOnAwake
-      value: 1
+      value: 0.275
       objectReference: {fileID: 0}
     - target: {fileID: 2121122756107147020, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2121122756107147020, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4689376592549766284, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19829,11 +19453,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7673665042974237245, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+--- !u!82 &5193603633156814764 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7673665042974237245, guid: 3057da570a141e64db5c3fef16e56c51, type: 3}
+  m_PrefabInstance: {fileID: 5193603633156814763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5365531066217871494
 GameObject:
   m_ObjectHideFlags: 0
@@ -20384,6 +20017,276 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6505241214675565944}
   m_CullTransparentMesh: 1
+--- !u!1001 &8356084676081177828
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 268105023597530800, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 268105023597530800, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 8356084676081177829}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 25acc7d889bfdde4ea8995a6ed1b342f, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[0].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: Logros
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6cb663ec7a2cef74eb04d11bccbcc969, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: Salto
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0da55443539bfd24497a4461a5f9bbca, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: Aterrizaje
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b6541166fcdf7c4db1cbb89705c911f, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: Aparicion huevo
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e8d7c8b6bcfdfa48bb30189c4fd69ad, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[4].name
+      value: Tomar jugo
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 34abdfb8f17ec6b479849d3100715ea5, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: Bomba estrella
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f17e61865eba92c40828173ed63b02bd, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[6].name
+      value: Enemy hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 890d8c6503844a24687c9df8f270043d, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: Player hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: fe55e2e57bfed8046825dc5803502c89, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: Apuntar
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d1e5175aca19a34991d2fbce30bd0ff, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[9].name
+      value: Disparo Bellota
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 071f37b413da15b4f92698459b5d2947, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[10].name
+      value: Disparo Calabaza
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b0ac28fad3ee68f4d848a529c61336e4, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[11].name
+      value: Disparo Huevo
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[12].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2794511a02306774b84f5d4b2952837d, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[12].name
+      value: Disparo Zanahoria
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[13].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f7b7c886345ca64da8db9b543c49a4a, type: 3}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[13].name
+      value: Disparo Manzana
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: Disparo Guisantes
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[3].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[4].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[6].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[7].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[9].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.629
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[10].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[11].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[12].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[13].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[14].pitch
+      value: 2.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445190747884909833, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: sounds.Array.data[14].volume
+      value: 0.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113539450683991048, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_Name
+      value: AudioManagerSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1974.669
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 165.21059
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 93.160965
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221515974578398635, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+--- !u!82 &8356084676081177829 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 268105023597530800, guid: de928e2218973404e9c469a54e91eb57, type: 3}
+  m_PrefabInstance: {fileID: 8356084676081177828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8356338933787045162 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8356338933963420955, guid: 870f23df3cff782459093f8952b360d2, type: 3}
@@ -20735,7 +20638,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 966994413}
+  - {fileID: 8356084676081177828}
   - {fileID: 5193603633156814763}
   - {fileID: 1499024675}
   - {fileID: 2026462684}

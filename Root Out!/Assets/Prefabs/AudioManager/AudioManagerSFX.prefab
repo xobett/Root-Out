@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2121122756107147020
+--- !u!1 &4113539450683991048
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,105 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4689376592549766284}
-  - component: {fileID: 6075383961098622}
+  - component: {fileID: 4221515974578398635}
+  - component: {fileID: 445190747884909833}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: AudioManagerSFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4689376592549766284
+--- !u!4 &4221515974578398635
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121122756107147020}
+  m_GameObject: {fileID: 4113539450683991048}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 1974.669, y: 165.21059, z: 93.160965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6591453628101806790}
+  - {fileID: 3243725960600018363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6075383961098622
+--- !u!114 &445190747884909833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121122756107147020}
+  m_GameObject: {fileID: 4113539450683991048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b29d3e04f08809d4db721390487554ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 76abbfb49b520a1469a87d6227fcbde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicAudioSource: {fileID: 0}
-  musicClips:
-  - name: Principal
-    clip: {fileID: 8300000, guid: e2439454592c28e439acfc35bd01de5e, type: 3}
-    volume: 0.088
-    pitch: 1
-    loop: 1
-    playOnAwake: 1
---- !u!1 &2217354058046917139
+  sounds:
+  - name: Pistola Guisantes
+    clip: {fileID: 8300000, guid: 76cb4efbc90536448bd287fa870dc271, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Logros
+    clip: {fileID: 8300000, guid: 25acc7d889bfdde4ea8995a6ed1b342f, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Salto
+    clip: {fileID: 8300000, guid: 6cb663ec7a2cef74eb04d11bccbcc969, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Aterrizaje
+    clip: {fileID: 8300000, guid: 0da55443539bfd24497a4461a5f9bbca, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Aparicion huevo
+    clip: {fileID: 8300000, guid: 1b6541166fcdf7c4db1cbb89705c911f, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Tomar jugo
+    clip: {fileID: 8300000, guid: 3e8d7c8b6bcfdfa48bb30189c4fd69ad, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Bomba estrella
+    clip: {fileID: 8300000, guid: 34abdfb8f17ec6b479849d3100715ea5, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Enemy hit
+    clip: {fileID: 8300000, guid: f17e61865eba92c40828173ed63b02bd, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Player hit
+    clip: {fileID: 8300000, guid: 890d8c6503844a24687c9df8f270043d, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Apuntar
+    clip: {fileID: 8300000, guid: fe55e2e57bfed8046825dc5803502c89, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Disparo Bellota
+    clip: {fileID: 8300000, guid: 1d1e5175aca19a34991d2fbce30bd0ff, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Disparo Calabaza
+    clip: {fileID: 8300000, guid: 071f37b413da15b4f92698459b5d2947, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Disparo Huevo
+    clip: {fileID: 8300000, guid: b0ac28fad3ee68f4d848a529c61336e4, type: 3}
+    volume: 1
+    pitch: 0.1
+  - name: Disparo Zanahoria
+    clip: {fileID: 8300000, guid: 2794511a02306774b84f5d4b2952837d, type: 3}
+    volume: 1
+    pitch: 0
+  - name: Disparo Manzana
+    clip: {fileID: 8300000, guid: 9f7b7c886345ca64da8db9b543c49a4a, type: 3}
+    volume: 1
+    pitch: 0.1
+--- !u!1 &6758779285058524314
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,37 +114,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6591453628101806790}
-  - component: {fileID: 7673665042974237245}
+  - component: {fileID: 3243725960600018363}
+  - component: {fileID: 268105023597530800}
   m_Layer: 0
-  m_Name: Audio Source Music
+  m_Name: Audio Source SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6591453628101806790
+--- !u!4 &3243725960600018363
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2217354058046917139}
+  m_GameObject: {fileID: 6758779285058524314}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4689376592549766284}
+  m_Father: {fileID: 4221515974578398635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &7673665042974237245
+--- !u!82 &268105023597530800
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2217354058046917139}
+  m_GameObject: {fileID: 6758779285058524314}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}

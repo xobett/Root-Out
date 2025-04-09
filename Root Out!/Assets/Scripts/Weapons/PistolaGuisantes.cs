@@ -5,6 +5,7 @@ using Weapons;
 public class PistolaGuisantes : WeaponsBase, IInteractable
 {
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
+   // [SerializeField] private AudioSource audioSource; // Referencia al AudioSource para reproducir sonidos
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
     protected override void Start()
@@ -18,7 +19,8 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
             base.Shoot();
-            AudioManagerSFX.Instance.PlaySFX("Pistola Guisantes"); // Llamar al método PlaySFX en la instancia de AudioManager
+            AudioManagerSFX.Instance.PlaySFX("Disparo Guisantes"); // Reproducir el sonido de disparo
+
         }
     }
 
@@ -58,4 +60,13 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
             bulletText.text = " IFINITIE"; // Actualiza el texto con la munición actual y máxima
         }
     }
+
+    //private void PistolSound()
+    //{
+    //    if (Input.GetKey(KeyCode.Mouse0))
+    //    {
+    //        audioSource.Play(); // Reproducir el sonido de recarga
+
+    //    }
+    //}
 }

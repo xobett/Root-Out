@@ -12,13 +12,13 @@ public class AudioManagerSFX : MonoBehaviour
         public AudioClip clip; // Clip de audio
         [Range(0f, 1f)] public float volume = 1f; // Volumen del sonido
         [Range(0.1f, 3f)] public float pitch = 1f; // Tono del sonido
+        public bool loop = false; // Indica si el sonido debe repetirse en bucle
+        [HideInInspector] public AudioSource source; // Fuente de audio asociada
     }
     #endregion
 
-
     public static AudioManagerSFX Instance; // Singleton para acceso global
     public List<Sound> sounds; // Lista de sonidos configurables
-    private Dictionary<string, AudioSource> soundDictionary; // Diccionario para acceso rápido
 
     private void Awake()
     {
@@ -34,24 +34,23 @@ public class AudioManagerSFX : MonoBehaviour
             return;
         }
 
-        // Inicializar el diccionario de sonidos
-        soundDictionary = new Dictionary<string, AudioSource>();
+        // Inicializar los AudioSources para cada sonido
         foreach (var sound in sounds)
         {
-            AudioSource source = gameObject.AddComponent<AudioSource>();
-            source.clip = sound.clip;
-            source.volume = sound.volume;
-            source.pitch = sound.pitch;
-            source.playOnAwake = false;
-            soundDictionary[sound.name] = source;
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.clip;
+            sound.source.volume = sound.volume;
+            sound.source.pitch = sound.pitch;
+            sound.source.loop = sound.loop;
         }
     }
 
-    public void PlaySFX(string name) 
+    public void PlaySFX(string name)
     {
-        if (soundDictionary.TryGetValue(name, out var source))
+        var sound = sounds.Find(s => s.name == name);
+        if (sound != null)
         {
-            source.Play();
+            sound.source.Play();
             Debug.Log($"Reproduciendo sonido: {name}");
         }
         else
@@ -60,12 +59,12 @@ public class AudioManagerSFX : MonoBehaviour
         }
     }
 
-    
-    public void Stop(string name) // Detener un sonido específico
+    public void Stop(string name)
     {
-        if (soundDictionary.TryGetValue(name, out var source))
+        var sound = sounds.Find(s => s.name == name);
+        if (sound != null)
         {
-            source.Stop();
+            sound.source.Stop();
         }
         else
         {
