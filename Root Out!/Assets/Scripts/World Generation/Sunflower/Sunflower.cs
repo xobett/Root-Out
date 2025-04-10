@@ -40,6 +40,8 @@ public class Sunflower : MonoBehaviour
     [SerializeField] private GameObject sunflowerModelPetals2;
     [SerializeField] private GameObject sunflowerModelPetals3;
 
+    [SerializeField] private float materialTransitionSpeed;
+
     [Header("NAVMESH SETTINGS")]
     private NavMeshSurface navMeshSurface;
 
@@ -185,6 +187,10 @@ public class Sunflower : MonoBehaviour
     [ContextMenu("ChangeColor")]
     public void ChangeMaterial()
     {
+        float value = 0f;
+
+        compellingMaterial.SetFloat("_Diffuse_transition", value);
+        
         foreach (Transform child in sunflowerModelBase.transform)
         {
             if (child.GetComponent<Renderer>())
@@ -206,6 +212,24 @@ public class Sunflower : MonoBehaviour
         foreach (Transform child in sunflowerModelPetals3.transform)
         {
             child.GetComponent<Renderer>().material = compellingMaterial;
+        }
+
+        StartCoroutine(ChangeColor());
+    }
+
+    private IEnumerator ChangeColor()
+    {
+        float time = 0f;
+        float targetValue = 40f;
+
+        float changingValue = 0f;
+
+        while (time < 1)
+        {
+            changingValue = Mathf.Lerp(changingValue, targetValue, time);
+            compellingMaterial.SetFloat("_Diffuse_transition", changingValue);
+            time += materialTransitionSpeed * Time.deltaTime;
+            yield return null;
         }
     }
 }

@@ -21,7 +21,9 @@ public class LeafJump : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        LayerMask groundLayer = LayerMask.GetMask("Ground");
+
+        if (collision.gameObject.layer == groundLayer)
         {
             AudioManagerSFX.Instance.PlaySFX("Aterrizaje");
         } 

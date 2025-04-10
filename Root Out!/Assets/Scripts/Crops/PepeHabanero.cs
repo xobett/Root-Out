@@ -4,6 +4,8 @@ using UnityEngine;
 public class PepeHabanero : CropBase
 {
     [Header("PEPE HABANERO SETTINGS")]
+    [SerializeField] private GameObject cropModel;
+
     [SerializeField] private GameObject nukePrefab;
     [SerializeField] private float nukeRadius;
 
@@ -58,6 +60,8 @@ public class PepeHabanero : CropBase
         }
 
         GameObject nukeExplosion = Instantiate(nukePrefab, transform.position, Quaternion.identity);
+
+        Destroy(cropModel);
 
         Collider[] enemyColliders = Physics.OverlapSphere(transform.position, nukeRadius, whatIsEnemy);
 

@@ -59,7 +59,7 @@ public class MainMenu : MonoBehaviour
         vignette.intensity.value = 1f; // Asegurarse de que la intensidad sea 1 al final
 
         // Cargar la escena "Game" en modo único para reiniciarla cada vez
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        SceneManager.LoadScene("Loading Game", LoadSceneMode.Single);
     }
 
     public void Quit()

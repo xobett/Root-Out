@@ -45,6 +45,10 @@ public class CropHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI equippedCropText;
     [SerializeField] private TextMeshProUGUI nextCropText;
 
+    [SerializeField] private Image previousCropCBImage;
+    [SerializeField] private Image equippedCropCBImage;
+    [SerializeField] private Image nextCropCBImage;
+
     [Header("COOLDOWN ANIMATION SETTINGS")]
     [SerializeField] private float fadeSpeed;
     [SerializeField] private float minimumValue;
@@ -63,9 +67,25 @@ public class CropHandler : MonoBehaviour
 
     private void DisplayCropsStats()
     {
-        if (previousCrop != null) previousCropText.text = $"+{previousCrop.cooldownBypass}";
-        if (equippedCrop != null) equippedCropText.text = $"+{equippedCrop.cooldownBypass}";
-        if (nextCrop != null) nextCropText.text = $"+{nextCrop.cooldownBypass}";
+        //if (previousCrop != null) previousCropText.text = $"+{previousCrop.cooldownBypass}";
+        //if (equippedCrop != null) equippedCropText.text = $"+{equippedCrop.cooldownBypass}";
+        //if (nextCrop != null) nextCropText.text = $"+{nextCrop.cooldownBypass}";
+
+
+
+        if (previousCrop != null && previousCrop.cooldownBypass > 0) previousCropCBImage.gameObject.SetActive(true);
+        else previousCropCBImage.gameObject.SetActive(false);
+
+        if (equippedCrop != null && equippedCrop.cooldownBypass > 0) equippedCropCBImage.gameObject.SetActive(true);
+        else equippedCropCBImage.gameObject.SetActive(false);
+
+        if (nextCrop != null && nextCrop.cooldownBypass > 0) nextCropCBImage.gameObject.SetActive(true);
+        else nextCropCBImage.gameObject.SetActive(false);
+
+        if (previousCrop != null) previousCropText.text = previousCrop.cooldownBypass > 0 ? $"{previousCrop.cooldownBypass}" : string.Empty;
+        if (equippedCrop != null) equippedCropText.text = equippedCrop.cooldownBypass > 0 ? $"{equippedCrop.cooldownBypass}" : string.Empty;
+        if (nextCrop != null) nextCropText.text = nextCrop.cooldownBypass > 0 ? $"{nextCrop.cooldownBypass}" : string.Empty;
+
     }
 
     private void CooldownAnimation()

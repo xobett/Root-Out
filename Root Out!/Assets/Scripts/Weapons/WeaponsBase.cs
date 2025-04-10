@@ -68,6 +68,7 @@ namespace Weapons
         [Header("VFX SETTINGS")]
         [SerializeField] private GameObject sweetJackVfx;
         [SerializeField] private bool sweetJackShoot;
+        [SerializeField] protected GameObject itemVfx;
 
         public bool isReloading = false; // Indica si el arma está recargando
 
@@ -147,6 +148,8 @@ namespace Weapons
         {
             var inventory = GameManager.instance.playerInventoryHandler;
             inventory.AddItem(inventoryItemToAdd);
+
+            Destroy(itemVfx);
         }
         #endregion
 

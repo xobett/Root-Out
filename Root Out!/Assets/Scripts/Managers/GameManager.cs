@@ -56,9 +56,9 @@ public class GameManager : MonoBehaviour
     public float enemySpawnTime;
     private float originalEnemySpawnTime;
 
-    private bool marvelousEventActive;
-    private bool normalEventActive;
-    private bool compellingEventActive;
+    [SerializeField] private bool marvelousEventActive;
+    [SerializeField] private bool normalEventActive;
+    [SerializeField] private bool compellingEventActive;
 
     private bool finalEventActive;
 
@@ -122,10 +122,13 @@ public class GameManager : MonoBehaviour
 
         if (reminderTimer < 0 && !EventActive)
         {
+            DeactivateParticles();
+
             if (!marvelousEventActive)
             {
                 DisplayMessage("Find a nearby Sunflower to activate!");
             }
+
             DisplayNearSunflower();
             reminderTimer = timeBeforeNextReminder;
         }
@@ -422,6 +425,8 @@ public class GameManager : MonoBehaviour
         originalEnemySpawnTime = enemySpawnTime;
         enemySpawnTime = enemySpawnTime / 2;
 
+        currentSunflower.ChangeMaterial();
+
         StartTimer();
         StartSunflowerAnimations();
 
@@ -465,6 +470,8 @@ public class GameManager : MonoBehaviour
     #region Timer Event Methods
     private void StartTimer()
     {
+        DeactivateParticles();
+
         timer = finalEventActive ? finalEventCountdown : compellingEventActive ? compellingEventCountdown : normalEventCountdown;
         eventTimerIsActive = true;
         timerText.gameObject.SetActive(true);
@@ -485,13 +492,17 @@ public class GameManager : MonoBehaviour
     private void SpawnParticles()
     {
         Vector3 particlesSpawn = currentSunflower.gameObject.transform.position;
-        particlesSpawn.y = 1;
+        particlesSpawn.y = 0.65f;
 
         Quaternion particlesRotation = Quaternion.Euler(-90, 0, 0);
 
         if (compellingEventActive)
         {
-            Instantiate(compellingSunflowerVfx, currentSunflower.gameObject.transform.position, particlesRotation);
+            Vector3 compellingParticlesSpawn = particlesSpawn;
+            compellingParticlesSpawn.y = 0.5f;
+
+            Instantiate(compellingSunflowerVfx, compellingParticlesSpawn, particlesRotation);
+            Debug.Log("Instantiated compelling particles!");
         }
         else
         {
