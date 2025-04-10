@@ -52,6 +52,8 @@ public class Sunflower : MonoBehaviour
     [SerializeField] private TextMeshProUGUI porcentLife;
     [SerializeField] private Image sunflowerLifebar;
 
+    [SerializeField] private Slider lifebar;
+
     [Header("AUDIO SETTINGS")]
     [SerializeField] public AudioSource audioSource;
 
@@ -173,7 +175,7 @@ public class Sunflower : MonoBehaviour
     public void DamageSunFlower(float damage)
     {
         currentHealth -= damage;
-        sunflowerLifebar.fillAmount = currentHealth / maxHealth;
+        lifebar.value = currentHealth / maxHealth;
         //UpdateLife();
     }
 

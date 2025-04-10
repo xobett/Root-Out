@@ -5,7 +5,9 @@ public class AIHealth : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private float actualHealth;
     [SerializeField, Range(0, 100)] private float maxHealth;
-    [SerializeField] private Image hUDLifeBar;
+
+    [SerializeField] private Slider lifeBar;
+
     public static int enemiesDefeated = 0; // Variable estática para contar los enemigos derrotados
 
     [SerializeField] private GameObject deathVfx;
@@ -17,7 +19,7 @@ public class AIHealth : MonoBehaviour
     {
         Debug.Log("El personaje " + name + " recibio daño");
         actualHealth -= damage;
-        hUDLifeBar.fillAmount = actualHealth / maxHealth;
+        lifeBar.value = actualHealth / maxHealth;
 
         if (actualHealth <= 0)
         {
