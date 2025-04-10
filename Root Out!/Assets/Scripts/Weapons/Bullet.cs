@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour, IBullet
 
     [SerializeField] private GameObject hitEnemyVfx;
 
+    private const float explosiveDamage = 12f;
+
     public void SetDamage(float damageAmount)
     {
         damage = damageAmount;
@@ -31,6 +33,16 @@ public class Bullet : MonoBehaviour, IBullet
         if (GameManager.instance.explosionUpgradeActivated)
         {
             GameObject explosiveVfx = Instantiate(explosiveHitVfx, transform.position, explosiveHitVfx.transform.rotation);
+
+            Collider[] enemyColliders = Physics.OverlapSphere(transform.position, 1.5f, LayerMask.GetMask("Enemy"));
+
+            if (enemyColliders.Length > 1)
+            {
+                foreach (Collider enemyCollider in enemyColliders)
+                {
+                    enemyCollider.GetComponent<AIHealth>().TakeDamage(damage + explosiveDamage);
+                }
+            }
 
             Destroy(explosiveVfx, 1);
         }

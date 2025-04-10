@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8824584919554669913}
   - component: {fileID: 4050266246086832980}
   - component: {fileID: 5206132578143412308}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3680556362367040578}
   - component: {fileID: 4770475727283798895}
   - component: {fileID: 3626666265589524772}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 1590446184436989693}
   - component: {fileID: 2726495942549011885}
   - component: {fileID: 4326056597202495204}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Jugo zanahoria part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5015,7 +5015,10 @@ GameObject:
   m_Component:
   - component: {fileID: 10872432672071403}
   - component: {fileID: 2678798828873288253}
-  m_Layer: 0
+  - component: {fileID: 723606480764539815}
+  - component: {fileID: 4689124810730311971}
+  - component: {fileID: 6748342984820700704}
+  m_Layer: 19
   m_Name: Zanahoria proyectil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5156,3 +5159,66 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!135 &723606480764539815
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5877589698005005802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.24
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4689124810730311971
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5877589698005005802}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
+--- !u!114 &6748342984820700704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5877589698005005802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e679e3bb49c90d47aa12f95480d5fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitVfx: {fileID: 5287823732984418618, guid: 47b08b583a099124994b0d4f6c72f32e, type: 3}
+  explosiveHitVfx: {fileID: 3096751718326257763, guid: 197182a5fbcfff847bfec19e17242331, type: 3}
+  hitEnemyVfx: {fileID: 625522613143090449, guid: d28d0b1eef275814e9b1dd150c1def2d, type: 3}
