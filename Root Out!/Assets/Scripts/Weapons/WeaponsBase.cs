@@ -86,8 +86,7 @@ namespace Weapons
 
         #region References
 
-        protected Image canvasRecargaImage;
-        protected Animation animacionRecarga;
+        protected SpriteRenderer spriteRecarga;
         protected TextMeshProUGUI bulletText;
 
         #endregion
@@ -99,15 +98,15 @@ namespace Weapons
             bulletReserve = maxBulletReserve;
             originalDamage = damage; // Almacenar el daño original del 
 
-            // Buscar y desactivar el componente Image de canvasRecarga al inicio
+            // Buscar y desactivar el componente de canvasRecarga al inicio
             GameObject canvasRecarga = GameObject.Find("Recarga");
             if (canvasRecarga != null)
             {
-                canvasRecargaImage = canvasRecarga.GetComponent<Image>();
-                animacionRecarga = canvasRecarga.GetComponent<Animation>();
-                if (canvasRecargaImage != null)
+                Debug.Log("Recarga found");
+                spriteRecarga = canvasRecarga.GetComponent<SpriteRenderer>();
+                if (spriteRecarga != null)
                 {
-                    canvasRecargaImage.enabled = false;
+                    spriteRecarga.enabled = false;
                 }
             }
 
@@ -199,27 +198,17 @@ namespace Weapons
         #region Logic Reload
         protected virtual IEnumerator ReloadCoroutine()  // Corrutina que maneja la lógica de recarga
         {
-            if (canvasRecargaImage != null)
+            if (spriteRecarga != null)
             {
-                canvasRecargaImage.enabled = true; // Activar la imagen de recarga
-            }
-
-            if (animacionRecarga != null)
-            {
-                animacionRecarga.Play(); // Reproducir la animación de recarga
+                spriteRecarga.enabled = true; // Activar la imagen de recarga
             }
 
             isReloading = true; // Indica que el arma está recargando
-
             yield return new WaitForSeconds(reloadTime); // Espera el tiempo de recarga
 
-            if (animacionRecarga != null)
+            if (spriteRecarga != null)
             {
-                animacionRecarga.Stop(); // Detener la animación de recarga
-            }
-            if (canvasRecargaImage != null)
-            {
-                canvasRecargaImage.enabled = false; // Desactivar la imagen de recarga
+                spriteRecarga.enabled = false; // Desactivar la imagen de recarga
             }
 
             // Calcula cuántas balas se necesitan para recargar completamente
@@ -244,9 +233,9 @@ namespace Weapons
         {
             if (Input.GetKeyDown(KeyCode.R) || currentAmmo == 0)
             {
-                if (canvasRecargaImage != null) // Comprueba si la imagen de recarga no es nula
+                if (spriteRecarga != null) // Comprueba si la imagen de recarga no es nula
                 {
-                    canvasRecargaImage.enabled = true; // Activar la imagen de recarga
+                    spriteRecarga.enabled = true; // Activar la imagen de recarga
                 }
 
                 if (bulletReserve > 0)
