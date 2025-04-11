@@ -24,9 +24,6 @@ public class MushroomBombShooter : WeaponsBase
     [SerializeField] private Animator bombShooterAnimCtrlr;
     private float mushroomSpeed;
 
-    [Header("BOMB SHOOTER AUDIO")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip shootClip;
 
     protected override void Start()
     {
@@ -35,15 +32,12 @@ public class MushroomBombShooter : WeaponsBase
         weaponHandler = FindFirstObjectByType<WeaponHandler>();
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(TargetPointCoroutine()); // Inicia la corrutina para instanciar targetShooting
-
-        audioSource.clip = shootClip;
     }
 
     protected override void Update()
     {
         base.Update();
-        // Mantener la posición en Y de bombMark constante
-        bombMark.position = new Vector3(player.position.x, 0.6f, player.position.z);
+        bombMark.position = new Vector3(player.position.x, 0.6f, player.position.z);  // Mantener la posición en Y de bombMark constante
     }
 
     private void LateUpdate()
@@ -69,7 +63,7 @@ public class MushroomBombShooter : WeaponsBase
     {
         if (mushroomSpeed == 0)
         {
-            audioSource.Play();
+            AudioManagerSFX.Instance.PlaySFX("HongoBomba"); // Sonido de disparo
 
             SmokeShoot();
             Mortar(); // Llama al método Mortar
