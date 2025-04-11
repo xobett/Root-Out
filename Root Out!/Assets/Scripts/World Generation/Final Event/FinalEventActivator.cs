@@ -6,10 +6,7 @@ public class FinalEventActivator : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        if (isNear)
-        {
-            GameManager.instance.StartFinaEvent();
-        }
+        GameManager.instance.StartFinaEvent();
     }
 
     private void OnTriggerEnter(Collider other)

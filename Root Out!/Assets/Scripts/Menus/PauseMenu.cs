@@ -71,8 +71,6 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
         cameraController.enabled = false; // Desactiva el controlador de la cámara
         GameManager.instance.gamePaused = true;
-        //ammoDisplay.SetActive(false); // Desactiva el HUD de munición
-        //coinsDisplay.SetActive(false); // Desactiva el HUD de monedas
         HUD.SetActive(false);
         pauseMenu.SetActive(true); // Activa el menú de pausa
         Time.timeScale = 0f; // Detiene el tiempo del juego
@@ -86,8 +84,6 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
         cameraController.enabled = true; // Activa el controlador de la cámara
         GameManager.instance.gamePaused = false;
-        //ammoDisplay.SetActive(true); // Activa el HUD de munición
-        //coinsDisplay.SetActive(true); // Activa el HUD de monedas
         HUD.SetActive(true);
         pauseMenu.SetActive(false); // Desactiva el menú de pausa
         Time.timeScale = 1f; // Restaura el tiempo del juego
@@ -96,18 +92,8 @@ public class PauseMenu : MonoBehaviour
     }
     public void Back()
     {
-        //volumen.SetActive(false); // Desactiva el menú de volumen
-        //vfx.SetActive(false); // Desactiva el menú de efectos visuales
-        //back.SetActive(false); // Desactiva el botón de retroceso
-
         settingsPanel.SetActive(false);
         optionsPanel.SetActive(true);
-
-
-        //mainMenu.SetActive(true); // Activa el menú principal
-        //settings.SetActive(true); // Activa el menú de configuración
-        //panelControls.SetActive(true); // Activa el panel de controles
-        //panelResume.SetActive(true);
     }
     public void MainMenu()
     {
@@ -115,14 +101,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void Settings()
     {
-        //settings.SetActive(false); // Desactiva el menú de configuración
-        //mainMenu.SetActive(false); // Desactiva el menú principal
-        //panelControls.SetActive(false); // Desactiva el panel de controles
-        //panelResume.SetActive(false);
-        //vfx.SetActive(true); // Activa el menú de efectos 
-        //back.SetActive(true); // Activa el botón de retroceso
-        //volumen.SetActive(true); // Activa el menú de volumen
-
         settingsPanel.SetActive(true);
         optionsPanel.SetActive(false);
     }
