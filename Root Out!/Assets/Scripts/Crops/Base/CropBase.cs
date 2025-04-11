@@ -181,13 +181,20 @@ public abstract class CropBase : MonoBehaviour
     protected abstract void CropAttack();
     protected virtual void SetAnimatorParameters()
     {
-        if (isFollowingPlayer)
+        if (cropAnimCtrlr != null) // Verificar si el Animator no es null
         {
-            cropAnimCtrlr.SetBool("isWalking", true);
+            if (isFollowingPlayer)
+            {
+                cropAnimCtrlr.SetBool("isWalking", true);
+            }
+            else
+            {
+                cropAnimCtrlr.SetBool("isWalking", false);
+            }
         }
         else
         {
-            cropAnimCtrlr.SetBool("isWalking", false);
+            Debug.LogWarning("El Animator 'cropAnimCtrlr' no está asignado o ha sido destruido.");
         }
     }
 

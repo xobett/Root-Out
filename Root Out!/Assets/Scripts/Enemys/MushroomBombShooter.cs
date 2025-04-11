@@ -37,7 +37,16 @@ public class MushroomBombShooter : WeaponsBase
     protected override void Update()
     {
         base.Update();
-        bombMark.position = new Vector3(player.position.x, 0.6f, player.position.z);  // Mantener la posición en Y de bombMark constante
+
+        // Verificar si bombMark sigue existiendo antes de acceder a su posición
+        if (bombMark != null)
+        {
+            bombMark.position = new Vector3(player.position.x, 0.6f, player.position.z);
+        }
+        else
+        {
+            Debug.LogWarning("El objeto 'bombMark' ha sido destruido o no está asignado.");
+        }
     }
 
     private void LateUpdate()
@@ -116,12 +125,22 @@ public class MushroomBombShooter : WeaponsBase
         {
             yield return new WaitForSeconds(1f / fireRate); // Espera el tiempo basado en la cadencia de disparo
 
-            pointFloor = bombMark.position + Vector3.down * 0; // Posición de la imagen
-            if (mushroomSpeed == 0)
+            // Verificar si bombMark sigue existiendo antes de acceder a su posición
+            if (bombMark != null)
             {
-                point = Instantiate(HUDTargetPoint, pointFloor, Quaternion.identity); // Instancia de la imagen 
+                pointFloor = bombMark.position + Vector3.down * 0; // Posición de la imagen
+                if (mushroomSpeed == 0)
+                {
+                    point = Instantiate(HUDTargetPoint, pointFloor, Quaternion.identity); // Instancia de la imagen 
+                    Destroy(point, 1.5f); // Destruye la imagen después de 1.5 segundos
+                }
             }
-            Destroy(point, 1.5f); // Destruye la imagen después de 0.5 segundos
+            else
+            {
+                Debug.LogWarning("El objeto 'bombMark' ha sido destruido o no está asignado.");
+                yield break; // Salir de la corrutina si bombMark ya no existe
+            }
+
             yield return null;
         }
     }
