@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject coinsDisplay;
 
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject optionsPanel;
 
     private CameraFollow cameraController; // Referencia al controlador de la cámara
 
@@ -31,10 +32,10 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         cameraController = FindFirstObjectByType<CameraFollow>(); // Busca el controlador de la cámara en la escena
-        pauseMenu.SetActive(false);
-        vfx.SetActive(false);
-        back.SetActive(false);
-        volumen.SetActive(false);
+        //pauseMenu.SetActive(false);
+        //vfx.SetActive(false);
+        //back.SetActive(false);
+        //volumen.SetActive(false);
 
         // Configurar el Slider de volumen de SFX
         vfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume); // Añade un listener para el slider de volumen de VFX
@@ -70,8 +71,8 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
         cameraController.enabled = false; // Desactiva el controlador de la cámara
         GameManager.instance.gamePaused = true;
-        ammoDisplay.SetActive(false); // Desactiva el HUD de munición
-        coinsDisplay.SetActive(false); // Desactiva el HUD de monedas
+        //ammoDisplay.SetActive(false); // Desactiva el HUD de munición
+        //coinsDisplay.SetActive(false); // Desactiva el HUD de monedas
         HUD.SetActive(false);
         pauseMenu.SetActive(true); // Activa el menú de pausa
         Time.timeScale = 0f; // Detiene el tiempo del juego
@@ -85,24 +86,28 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
         cameraController.enabled = true; // Activa el controlador de la cámara
         GameManager.instance.gamePaused = false;
-        pauseMenu.SetActive(false); // Desactiva el menú de pausa
-        ammoDisplay.SetActive(true); // Activa el HUD de munición
+        //ammoDisplay.SetActive(true); // Activa el HUD de munición
+        //coinsDisplay.SetActive(true); // Activa el HUD de monedas
         HUD.SetActive(true);
-        coinsDisplay.SetActive(true); // Activa el HUD de monedas
+        pauseMenu.SetActive(false); // Desactiva el menú de pausa
         Time.timeScale = 1f; // Restaura el tiempo del juego
-
 
         isPaused = false;
     }
     public void Back()
     {
-        volumen.SetActive(false); // Desactiva el menú de volumen
-        vfx.SetActive(false); // Desactiva el menú de efectos visuales
-        back.SetActive(false); // Desactiva el botón de retroceso
-        mainMenu.SetActive(true); // Activa el menú principal
-        settings.SetActive(true); // Activa el menú de configuración
-        panelControls.SetActive(true); // Activa el panel de controles
-        panelResume.SetActive(true);
+        //volumen.SetActive(false); // Desactiva el menú de volumen
+        //vfx.SetActive(false); // Desactiva el menú de efectos visuales
+        //back.SetActive(false); // Desactiva el botón de retroceso
+
+        settingsPanel.SetActive(false);
+        optionsPanel.SetActive(true);
+
+
+        //mainMenu.SetActive(true); // Activa el menú principal
+        //settings.SetActive(true); // Activa el menú de configuración
+        //panelControls.SetActive(true); // Activa el panel de controles
+        //panelResume.SetActive(true);
     }
     public void MainMenu()
     {
@@ -110,13 +115,16 @@ public class PauseMenu : MonoBehaviour
     }
     public void Settings()
     {
-        settings.SetActive(false); // Desactiva el menú de configuración
-        mainMenu.SetActive(false); // Desactiva el menú principal
-        panelControls.SetActive(false); // Desactiva el panel de controles
-        panelResume.SetActive(false);
-        vfx.SetActive(true); // Activa el menú de efectos 
-        back.SetActive(true); // Activa el botón de retroceso
-        volumen.SetActive(true); // Activa el menú de volumen
+        //settings.SetActive(false); // Desactiva el menú de configuración
+        //mainMenu.SetActive(false); // Desactiva el menú principal
+        //panelControls.SetActive(false); // Desactiva el panel de controles
+        //panelResume.SetActive(false);
+        //vfx.SetActive(true); // Activa el menú de efectos 
+        //back.SetActive(true); // Activa el botón de retroceso
+        //volumen.SetActive(true); // Activa el menú de volumen
+
+        settingsPanel.SetActive(true);
+        optionsPanel.SetActive(false);
     }
 
     public void SFX()
