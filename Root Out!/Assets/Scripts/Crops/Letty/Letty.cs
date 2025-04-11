@@ -28,30 +28,31 @@ public class Letty : CropBase
 
         GameObject vfx = Instantiate(leafVfx, transform.position, Quaternion.identity);
 
+        GameObject explosionSource = Instantiate(new GameObject(), transform.position, Quaternion.identity);
+        explosionSource.AddComponent<AudioSource>();
+
+        AudioSource explosionAudioSource = explosionSource.GetComponent<AudioSource>();
+        explosionAudioSource.clip = leafClip;
+
+        explosionAudioSource.playOnAwake = false;
+        explosionAudioSource.loop = false;
+
+        explosionAudioSource.Play();
+
+        Destroy(explosionSource, 3);
         Destroy(vfx, 2);
 
         if (GameObject.FindGameObjectWithTag("Letty Shield") == null)
         {
             SpawnShield();
-            PlayAudio();
+            explosionAudioSource.Play();
             Destroy(gameObject);
         }
         else
         {
             lettyShield.GetComponent<LettyShield>().AddShieldLeaf();
-            PlayAudio();
+            explosionAudioSource.Play();
             Destroy(gameObject);
-        }
-    }
-
-    private void PlayAudio()
-    {
-        if (!audioPlayed)
-        {
-            audioSource.clip = leafClip;
-            audioSource.Play();
-
-            audioPlayed = true;
         }
     }
 

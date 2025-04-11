@@ -147,6 +147,7 @@ MonoBehaviour:
   enemyDetected: 0
   isFollowingPlayer: 0
   isFollowingEnemy: 0
+  disappearVfx: {fileID: 241882218063588477, guid: 1ff645a71bd274f4288a556a072b88df, type: 3}
   timeBeforeShooting: 1.5
   shootingTime: 2
   nudeTime: 10
@@ -202,9 +203,12 @@ MonoBehaviour:
   inventoryItemToAdd: {fileID: 0}
   sweetJackVfx: {fileID: 0}
   sweetJackShoot: 0
+  itemVfx: {fileID: 0}
   isReloading: 0
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
+  shootSource: {fileID: 0}
+  shootClip: {fileID: 0}
 --- !u!82 &4883831237195678576
 AudioSource:
   m_ObjectHideFlags: 0

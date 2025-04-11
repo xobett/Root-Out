@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 994290727573053535}
   - component: {fileID: 5007511000987678289}
   - component: {fileID: 1025716450124364382}
+  - component: {fileID: 2331065386115938161}
   m_Layer: 22
   m_Name: Sweet Jack O Pumpkin
   m_TagString: Sweet Jack
@@ -115,6 +116,7 @@ MonoBehaviour:
   enemyDetected: 0
   isFollowingPlayer: 0
   isFollowingEnemy: 0
+  disappearVfx: {fileID: 241882218063588477, guid: 1ff645a71bd274f4288a556a072b88df, type: 3}
   bulletPrefab: {fileID: 9057334875416266116, guid: 34d74bd594858a647a19b51c6a5126f6, type: 3}
   shootSpawn: {fileID: 537288462962942467}
   nextShoot: 0
@@ -159,9 +161,109 @@ MonoBehaviour:
   inventoryItemToAdd: {fileID: 0}
   sweetJackVfx: {fileID: 2582821607894381710, guid: 7c14dd799fdb205489088c7916483182, type: 3}
   sweetJackShoot: 1
+  itemVfx: {fileID: 0}
   isReloading: 0
   canInstantiateExplosion: 1
   explosionUpgradeActivated: 0
+  shootSource: {fileID: 2331065386115938161}
+  shootClip: {fileID: 0}
+--- !u!82 &2331065386115938161
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827630455997267969}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: dd7281acafe00844a90671e398354c43, type: 3}
+  m_Resource: {fileID: 8300000, guid: dd7281acafe00844a90671e398354c43, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5.5
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8531700995258327092
 GameObject:
   m_ObjectHideFlags: 0

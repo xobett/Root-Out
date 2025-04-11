@@ -42,8 +42,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform camRef;
 
+    public bool playerDead;
+
     void Start()
     {
+        playerDead = false;
+        AudioManager.instance.PlayMusic("Principal");
+
         Application.targetFrameRate = 60;
 
         //Se consigue el componente de Character Controller.
@@ -168,22 +173,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovementCheck()
     {
-        if (IsAiming() && IsTouching())
+        if (!playerDead)
         {
-            playerAnimCtrlr.SetBool("isZooming", true);
+            if (IsAiming() && IsTouching())
+            {
+                playerAnimCtrlr.SetBool("isZooming", true);
 
-            FaceForward();
-            ZoomMovement();
-        }
-        else if (!IsTouching())
-        {
-            MidAirMovement();
-        }
-        else
-        {
-            playerAnimCtrlr.SetBool("isZooming", false);
+                FaceForward();
+                ZoomMovement();
+            }
+            else if (!IsTouching())
+            {
+                MidAirMovement();
+            }
+            else
+            {
+                playerAnimCtrlr.SetBool("isZooming", false);
 
-            NormalMovement();
+                NormalMovement();
+            } 
         }
     }
 

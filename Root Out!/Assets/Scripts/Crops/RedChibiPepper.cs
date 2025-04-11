@@ -7,6 +7,8 @@ public class RedChibiPepper : CropBase
     [SerializeField] private GameObject redChibiExplosion;
 
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource explosionSource;
+
     [SerializeField] private AudioClip warCryClip;
     [SerializeField] private AudioClip explosionClip;
 
@@ -17,6 +19,16 @@ public class RedChibiPepper : CropBase
         PlayWarCry();
 
         HeadToEnemy();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (enemyPos == null)
+        {
+            audioPlayed = false;
+        }
     }
 
     private void PlayWarCry()
@@ -49,8 +61,17 @@ public class RedChibiPepper : CropBase
     {
         if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy"))
         {
-            audioSource.clip = explosionClip;
-            audioSource.Play();
+            GameObject explosionSource = Instantiate(new GameObject(), transform.position, Quaternion.identity);
+            explosionSource.AddComponent<AudioSource>();
+
+            AudioSource explosionAudioSource = explosionSource.GetComponent<AudioSource>();
+            explosionAudioSource.clip = explosionClip;
+
+            explosionAudioSource.playOnAwake = false;
+            explosionAudioSource.loop = false;
+
+            explosionAudioSource.Play();
+            Destroy(explosionSource, 3);
 
             Vector3 spawnPos = transform.position;
             spawnPos.y = 0.6f;

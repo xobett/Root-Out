@@ -113,7 +113,19 @@ public class KamikazeMushroom : WeaponsBase
             agent.enabled = false;
 
             Instantiate(deathVfx, transform.position, Quaternion.identity);
-            audioSource.Play();
+
+            GameObject explosionSource = Instantiate(new GameObject(), transform.position, Quaternion.identity);
+            explosionSource.AddComponent<AudioSource>();
+
+            AudioSource explosionAudioSource = explosionSource.GetComponent<AudioSource>();
+            explosionAudioSource.clip = explosionClip;
+
+            explosionAudioSource.playOnAwake = false;
+            explosionAudioSource.loop = false;
+
+            explosionAudioSource.Play();
+            Destroy(explosionSource, 3);
+
             Destroy(gameObject);
         }
     }

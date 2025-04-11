@@ -77,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
         var cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
         //Desactiva el input del player.
-        playerMovement.enabled = false;
+        playerMovement.playerDead = true;
         playerCropHandler.enabled = false;
         playerLeafJump.enabled = false;
         cameraFollow.enabled = false;

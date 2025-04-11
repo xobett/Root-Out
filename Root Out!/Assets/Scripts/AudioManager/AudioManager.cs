@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Security.Principal;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 #region Sound Class
@@ -55,19 +57,24 @@ public class AudioManager : MonoBehaviour
         musicAudioSource.volume = GetMusicClipVolume();
 
         // Reproducir automáticamente los sonidos que tienen playOnAwake configurado en true
-        PlaySoundsOnAwake();
+        //PlaySoundsOnAwake();
     }
 
     private void PlaySoundsOnAwake()
     {
+        var currentScene = SceneManager.GetActiveScene();
+
         // Reproducir los clips de música que tienen playOnAwake configurado en true
-        foreach (var sound in musicClips)
+        if (currentScene.name != "Main Menu")
         {
-            if (sound.playOnAwake)
+            foreach (var sound in musicClips)
             {
-                Debug.Log("Playing music on awake: " + sound.name);
-                PlayMusic(sound.name);
-            }
+                if (sound.playOnAwake)
+                {
+                    Debug.Log("Playing music on awake: " + sound.name);
+                    PlayMusic(sound.name);
+                }
+            } 
         }
     }
 

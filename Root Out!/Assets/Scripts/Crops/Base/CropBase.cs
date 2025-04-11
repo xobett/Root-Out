@@ -46,6 +46,8 @@ public abstract class CropBase : MonoBehaviour
 
     protected CropHandler cropHandler;
 
+    [SerializeField] private GameObject disappearVfx;
+
     private void Start()
     {
         GetReferences();
@@ -223,6 +225,10 @@ public abstract class CropBase : MonoBehaviour
     private void OnDestroy()
     {
         cropHandler.UpdateDroppedCrop(cropData.CropName);
+
+        GameObject vfx = Instantiate(disappearVfx, transform.position, disappearVfx.transform.rotation);
+
+        Destroy(vfx, 3);
     }
 
     #region Reference Methods

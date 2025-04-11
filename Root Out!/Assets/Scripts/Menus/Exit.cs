@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class Exit : MonoBehaviour
 
  public void ExitGame()
     {
-        Application.Quit();
+        var sceneToLoad = SceneManager.GetSceneByName("Main Menu");
+        SceneManager.LoadSceneAsync(sceneToLoad.buildIndex);
         Debug.Log("Salir");
     }
 }

@@ -146,8 +146,10 @@ MonoBehaviour:
   enemyDetected: 0
   isFollowingPlayer: 0
   isFollowingEnemy: 0
+  disappearVfx: {fileID: 241882218063588477, guid: 1ff645a71bd274f4288a556a072b88df, type: 3}
   redChibiExplosion: {fileID: 4362371409038336509, guid: a9b108456512bb34aa0093c2c0ac7fd6, type: 3}
   audioSource: {fileID: 2354287623925533324}
+  explosionSource: {fileID: 0}
   warCryClip: {fileID: 8300000, guid: b3b1ad27432fb184eb3f147f8f70990a, type: 3}
   explosionClip: {fileID: 8300000, guid: 02fcbfa7fda6d724791d62b729a5d775, type: 3}
 --- !u!82 &2354287623925533324

@@ -79,6 +79,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     private float timer;
 
+    [SerializeField] private GameObject sunflowerBackground;
+
     [SerializeField] private float compellingEventCountdown;
     [SerializeField] private float normalEventCountdown;
     [SerializeField] private float finalEventCountdown;
@@ -349,12 +351,14 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitUntil(() => timer <= 0);
 
+        GameObject.FindGameObjectWithTag("Fireworks").GetComponent<FireworksSpawner>().SpawnEndingFireworks();
+
         EndTimer();
         ClearEnemies();
 
         DisplayMessage("YOU WON!");
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(8f);
 
         SceneManager.LoadScene("Credits", LoadSceneMode.Single);
 
@@ -476,6 +480,7 @@ public class GameManager : MonoBehaviour
         timer = finalEventActive ? finalEventCountdown : compellingEventActive ? compellingEventCountdown : normalEventCountdown;
         eventTimerIsActive = true;
         timerText.gameObject.SetActive(true);
+        sunflowerBackground.SetActive(true);
 
         if (!finalEventActive) DisplayMessage("Protect the sunflower from the Mushrooms!");
     }
@@ -483,6 +488,7 @@ public class GameManager : MonoBehaviour
     {
         eventTimerIsActive = false;
         timerText.gameObject.SetActive(false);
+        sunflowerBackground.SetActive(false);
 
         reminderTimer = timeBeforeNextReminder;
     }
