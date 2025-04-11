@@ -15,6 +15,8 @@ public class PepeHabanero : CropBase
     [SerializeField] private AudioClip nukeClip;
     [SerializeField] private AudioClip warCryClip;
 
+    private bool exploded = false;
+
     protected override void CropAttack()
     {
         if (!reachedExplosionPos)
@@ -39,8 +41,9 @@ public class PepeHabanero : CropBase
 
     private void OnCollisionEnter(Collision enemy)
     {
-        if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy"))
+        if (enemy.gameObject.CompareTag("Mushroom Shooter") || enemy.gameObject.CompareTag("Enemy") && !exploded)
         {
+            exploded = true;
             StartCoroutine(Explode());
         }
     }
