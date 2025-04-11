@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
     //Booleano que bloquea input de jugador al estar pausado el juego.
     [HideInInspector] public bool gamePaused;
 
+    [Header("BACKUP")]
+    [SerializeField] private GameObject backUpItems;
+    private string gameScene = "Game";
+    private string mainMenu = "Main Menu";
+
     [Header("FINAL HUB SETTINGS")]
     public bool finalHubCreated;
 
@@ -115,8 +120,24 @@ public class GameManager : MonoBehaviour
         EventTimer();
         SunflowerHealthCheck();
 
+        EmergencyBackup();
+
         //HintPlayer();
     }
+
+    private void EmergencyBackup()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            backUpItems.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SceneManager.LoadScene(mainMenu);
+        }
+    }
+
 
     private void HintPlayer()
     {
