@@ -28,7 +28,7 @@ public class PistolaGuisantes : WeaponsBase, IInteractable
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject)
         {
-            base.Reload();
+            return;
         }
     }
 
