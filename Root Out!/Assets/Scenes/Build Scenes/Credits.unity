@@ -671,12 +671,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139088135}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 08b14f9c940d23845a8376c9585c64c4, type: 3}
   m_Resource: {fileID: 8300000, guid: 08b14f9c940d23845a8376c9585c64c4, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.463
   m_Pitch: 1
   Loop: 1
@@ -1017,6 +1017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2414e10115fca498e651dee26f616e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: Main Menu
 --- !u!1 &1402631279
 GameObject:
   m_ObjectHideFlags: 0

@@ -4564,10 +4564,8 @@ Transform:
   m_Children:
   - {fileID: 764099396804791453}
   - {fileID: 3615489125368846964}
-  - {fileID: 3449699276808518543}
   - {fileID: 3776818559560416744}
   - {fileID: 6179022490251853104}
-  - {fileID: 6776039209305197157}
   - {fileID: 8832629879425673791}
   - {fileID: 2711489236524964279}
   m_Father: {fileID: 0}
@@ -4607,6 +4605,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactVfx: {fileID: 7114990601472210132, guid: db209945e7d260d4883577d88bfb968f, type: 3}
   spawnVfxPos: {fileID: 2711489236524964279}
+  vitalJuices:
+  - {fileID: 4549239069586171730}
+  - {fileID: 6812711051200309130}
+  - {fileID: 8203340528572133509}
 --- !u!1 &8205883325782964311
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,84 +5171,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &2906354798681562212
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2573935954190711045}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.84
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_Name
-      value: Vaso de jugo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444263678948303042, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_RayTracingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444263678948303042, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7178279370464960935, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_RayTracingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7178279370464960935, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8044a204367098f479395dd88daf1c02, type: 3}
---- !u!4 &3449699276808518543 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-  m_PrefabInstance: {fileID: 2906354798681562212}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3738916800877697539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5323,6 +5247,11 @@ PrefabInstance:
 --- !u!4 &3776818559560416744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
+  m_PrefabInstance: {fileID: 3738916800877697539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4549239069586171730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8044a204367098f479395dd88daf1c02, type: 3}
   m_PrefabInstance: {fileID: 3738916800877697539}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5929821561591765723
@@ -5403,83 +5332,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
   m_PrefabInstance: {fileID: 5929821561591765723}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6450257201553223054
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2573935954190711045}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.84
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_Name
-      value: Vaso de jugo (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444263678948303042, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_RayTracingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444263678948303042, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7178279370464960935, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_RayTracingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7178279370464960935, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8044a204367098f479395dd88daf1c02, type: 3}
---- !u!4 &6776039209305197157 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}
-  m_PrefabInstance: {fileID: 6450257201553223054}
+--- !u!1 &6812711051200309130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8044a204367098f479395dd88daf1c02, type: 3}
+  m_PrefabInstance: {fileID: 5929821561591765723}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9014367445721697748
 PrefabInstance:
@@ -5554,6 +5410,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8044a204367098f479395dd88daf1c02, type: 3}
+--- !u!1 &8203340528572133509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8044a204367098f479395dd88daf1c02, type: 3}
+  m_PrefabInstance: {fileID: 9014367445721697748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8832629879425673791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8044a204367098f479395dd88daf1c02, type: 3}

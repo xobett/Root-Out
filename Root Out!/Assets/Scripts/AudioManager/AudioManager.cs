@@ -34,6 +34,10 @@ public class AudioManager : MonoBehaviour
     [Header("Music Clips")]
     [SerializeField] public Sound[] musicClips;
 
+    [SerializeField] private string mainMenu = "Main Menu";
+    [SerializeField] private string creditsScene = "Credits";
+    [SerializeField] private string teamRoles = "Member Credits";
+
     private Dictionary<string, Sound> musicDictionary; // Diccionario para la música
 
     private void Awake()

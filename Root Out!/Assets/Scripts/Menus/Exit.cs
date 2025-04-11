@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
+    [SerializeField] private string scene;
+
     void Update()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -11,8 +13,7 @@ public class Exit : MonoBehaviour
 
  public void ExitGame()
     {
-        var sceneToLoad = SceneManager.GetSceneByName("Main Menu");
-        SceneManager.LoadSceneAsync(sceneToLoad.buildIndex);
+        SceneManager.LoadSceneAsync(scene);
         Debug.Log("Salir");
     }
 }

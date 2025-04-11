@@ -17,6 +17,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Slider mainVolumeSlider; // Referencia al slider de volumen principal
     [SerializeField] AudioSource audioSourceMain; // Referencia al AudioSource principal
 
+    [SerializeField] private string scene;
+
 
     private void Start()
     {
@@ -96,6 +98,11 @@ public class MainMenu : MonoBehaviour
     {
         mainVolumeSlider.onValueChanged.AddListener(SetMainVolume); // Añade un listener para el slider de volumen principal
         mainVolumeSlider.value = audioSourceMain.volume; // Inicializa el slider con el valor actual del volumen principal
+    }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadSceneAsync(scene);
     }
 
     // Método para actualizar el volumen principal

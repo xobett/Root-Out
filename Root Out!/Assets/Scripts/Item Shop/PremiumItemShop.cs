@@ -9,6 +9,8 @@ public class PremiumItemShop : MonoBehaviour
     [SerializeField] private Transform[] spawnPositions;
     private List<InventoryItemData> usedItems = new List<InventoryItemData>();
 
+    [SerializeField] private GameObject grabbedItemVfx;
+
     private bool itemsSpawned;
 
     void Start()
@@ -48,7 +50,7 @@ public class PremiumItemShop : MonoBehaviour
                 yield return null;
             }
 
-            GameObject itemSpawned = Instantiate(itemToSpawn.ItemPrefab, spawnPositions[i].position, Quaternion.identity);
+            GameObject itemSpawned = Instantiate(itemToSpawn.ItemPrefab, spawnPositions[i].position, spawnPositions[i].rotation);
             itemSpawned.transform.parent = spawnPositions[i].transform;
 
             usedItems.Add(itemToSpawn);
@@ -63,6 +65,7 @@ public class PremiumItemShop : MonoBehaviour
     {
         for (int i = 0; i < spawnPositions.Length; i++)
         {
+            Instantiate(grabbedItemVfx, spawnPositions[i].position, spawnPositions[i].rotation);
             Destroy(spawnPositions[i].gameObject);
         }
 
