@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject ammoDisplay;
     [SerializeField] GameObject coinsDisplay;
 
+    [SerializeField] private GameObject settingsPanel;
+
     private CameraFollow cameraController; // Referencia al controlador de la cámara
 
     [SerializeField] Slider vfxVolumeSlider; // Referencia al slider de volumen de efectos visuales

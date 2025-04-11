@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1009621989273948865}
   - component: {fileID: 5030825838640450003}
   - component: {fileID: 339959345469392436}
-  - component: {fileID: 9163284879659158460}
+  - component: {fileID: 901547781240766671}
   - component: {fileID: 6113411759211272134}
   m_Layer: 11
   m_Name: AmmoUpgrade
@@ -94,7 +94,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &9163284879659158460
+--- !u!114 &901547781240766671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,9 +103,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 340161551291883254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99c2255ee666ff84d8621a5e4d7ff0f3, type: 3}
+  m_Script: {fileID: 11500000, guid: b2580276738233e4b95f8e9de31b1005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoToAdd: 50
 --- !u!114 &6113411759211272134
 MonoBehaviour:
   m_ObjectHideFlags: 0

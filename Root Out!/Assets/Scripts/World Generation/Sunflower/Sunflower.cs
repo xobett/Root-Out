@@ -50,7 +50,6 @@ public class Sunflower : MonoBehaviour
     private float maxHealth = 100f;
 
     [SerializeField] private TextMeshProUGUI porcentLife;
-    [SerializeField] private Image sunflowerLifebar;
 
     [SerializeField] private Slider lifebar;
 
@@ -177,6 +176,12 @@ public class Sunflower : MonoBehaviour
         currentHealth -= damage;
         lifebar.value = currentHealth / maxHealth;
         //UpdateLife();
+    }
+
+    public void SetMaxHealth()
+    {
+        currentHealth = maxHealth;
+        lifebar.value = currentHealth / maxHealth;
     }
 
     private GameObject GenerateRandomTerrainType()

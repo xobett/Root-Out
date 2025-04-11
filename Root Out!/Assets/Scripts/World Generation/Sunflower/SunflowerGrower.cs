@@ -44,6 +44,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
             if (GameManager.instance.MarvelousEventActive)
             {
                 GameManager.instance.GetSecondSunflower(sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator);
+                sunflowerToUnlock.SetMaxHealth();
             }
         }
     }
@@ -60,6 +61,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
 
                 selectionMade = true;
                 GameManager.instance.GrowSunflowerEvent(GrowthSelection.Genuine, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator, ref selectionMade);
+                sunflowerToUnlock.SetMaxHealth();
             }
             else if (IsPressingTwo())
             {
@@ -69,6 +71,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
 
                 selectionMade = true;
                 GameManager.instance.GrowSunflowerEvent(GrowthSelection.Marvelous, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator, ref selectionMade);
+                sunflowerToUnlock.SetMaxHealth();
             }
             else if (IsPressingThree())
             {
@@ -78,6 +81,7 @@ public class SunflowerGrower : MonoBehaviour, IInteractable
 
                 selectionMade = true;
                 GameManager.instance.GrowSunflowerEvent(GrowthSelection.Compelling, sunflowerToUnlock, sunflowerAnimator, sunflowerLifebarAnimator, ref selectionMade);
+                sunflowerToUnlock.SetMaxHealth();
             }
         }
     }

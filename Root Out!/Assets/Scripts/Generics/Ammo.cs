@@ -1,4 +1,5 @@
 using UnityEngine;
+using Weapons;
 
 public class Ammo : MonoBehaviour, IInteractable
 {
@@ -11,8 +12,8 @@ public class Ammo : MonoBehaviour, IInteractable
 
     private void AddAmmo()
     {
-        var playerInventory = GameManager.instance.playerInventoryHandler;
-        playerInventory.AddAmmo(ammoToAdd);
+        var weaponHandler = GameObject.FindFirstObjectByType<WeaponHandler>();
+        weaponHandler.currentWeapon.GetComponent<WeaponsBase>().bulletReserve += ammoToAdd;
 
         Destroy(gameObject);
     }

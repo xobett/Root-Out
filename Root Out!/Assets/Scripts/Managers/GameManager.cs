@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviour
 
     public void StartFinaEvent()
     {
-        DisplayMessage("Survive the last minute!");
+        DisplayMessage("Survive until the timer ends!");
         StartCoroutine(FinalEvent());
     }
 
@@ -339,6 +339,7 @@ public class GameManager : MonoBehaviour
             enemy.GetComponent<AIHealth>().TakeDamage(100);
         }
     }
+
     private IEnumerator FinalEvent()
     {
         finalEventActive = true;
@@ -476,7 +477,7 @@ public class GameManager : MonoBehaviour
         eventTimerIsActive = true;
         timerText.gameObject.SetActive(true);
 
-        DisplayMessage("Protect the sunflower from the Mushrooms!");
+        if (!finalEventActive) DisplayMessage("Protect the sunflower from the Mushrooms!");
     }
     private void EndTimer()
     {

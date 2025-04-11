@@ -57,7 +57,6 @@ public class UIInventory : MonoBehaviour
     private void DisplayCoinsAndAmmo()
     {
         totalCoinsText.text = $"{playerInventory.SeedCoins}";
-        totalAmmoText.text = $"{playerInventory.Ammo}";
     }
 
     private void OpenInventory()

@@ -167,13 +167,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 794c0880f5f8d5a448659d78736f08fd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 18307081299131752}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 794c0880f5f8d5a448659d78736f08fd, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6531454568060272900}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 794c0880f5f8d5a448659d78736f08fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5592024250709026374}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 794c0880f5f8d5a448659d78736f08fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 18307081299131752}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 794c0880f5f8d5a448659d78736f08fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: -3768027079313050474}
@@ -188,20 +188,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 794c0880f5f8d5a448659d78736f08fd, type: 3}
   m_PrefabInstance: {fileID: 5993461248761263452}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &18307081299131752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6912010104849483789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ed15ea061fa514fbf8a4498792dae2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryItemToAdd: {fileID: 11400000, guid: b13186aaf1f04c040b839aeaad38618f, type: 2}
-  rechargeUpgrade: 0.5
 --- !u!65 &6531454568060272900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -250,6 +236,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &18307081299131752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6912010104849483789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ed15ea061fa514fbf8a4498792dae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryItemToAdd: {fileID: 11400000, guid: b13186aaf1f04c040b839aeaad38618f, type: 2}
+  rechargeUpgrade: 0.5
 --- !u!114 &-3768027079313050474
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,18 +16,18 @@ public class FastRecharge : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        var playerInventory = GameManager.instance.playerInventoryHandler;
-        playerInventory.AddItem(inventoryItemToAdd);
-
-        if (weaponBase != null)
+        if (!GameManager.instance.playerInventoryHandler.Inventory.Contains(inventoryItemToAdd))
         {
-            weaponBase.reloadTime = rechargeUpgrade; 
+            var playerInventory = GameManager.instance.playerInventoryHandler;
+            playerInventory.AddItem(inventoryItemToAdd);
+
+            if (weaponBase != null)
+            {
+                weaponBase.reloadTime = rechargeUpgrade;
+            } 
         }
         Destroy(gameObject);
     }
-
-
-
 }
 
 
