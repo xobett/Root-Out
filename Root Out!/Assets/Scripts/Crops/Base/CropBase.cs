@@ -181,7 +181,7 @@ public abstract class CropBase : MonoBehaviour
     protected abstract void CropAttack();
     protected virtual void SetAnimatorParameters()
     {
-        if (cropAnimCtrlr != null) // Verificar si el Animator no es null
+         if (cropAnimCtrlr != null) // Verificar si el Animator no es null
         {
             if (isFollowingPlayer)
             {

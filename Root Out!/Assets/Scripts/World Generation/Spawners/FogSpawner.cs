@@ -30,7 +30,6 @@ public class FogSpawner : MonoBehaviour
         else
         {
             SpawnFog();
-            Debug.Log("Spawned fog");
         }
     }
 

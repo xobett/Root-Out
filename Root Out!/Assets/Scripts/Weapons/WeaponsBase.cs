@@ -102,7 +102,6 @@ namespace Weapons
             GameObject canvasRecarga = GameObject.Find("Recarga");
             if (canvasRecarga != null)
             {
-                Debug.Log("Recarga found");
                 spriteRecarga = canvasRecarga.GetComponent<SpriteRenderer>();
                 if (spriteRecarga != null)
                 {
