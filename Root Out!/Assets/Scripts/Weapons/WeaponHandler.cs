@@ -178,12 +178,6 @@ public class WeaponHandler : MonoBehaviour
                 weaponIcons.RemoveAt(6);
             }
 
-            Debug.Log("Current weapon order:");
-            for (int i = 0; i < weapons.Count; i++)
-            {
-                Debug.Log($"Weapon {i}: {weapons[i].name}");
-            }
-
             // Desactivar el collider del arma para que no se pueda volver a recoger
             if (newWeapon.TryGetComponent<Collider>(out var weaponCollider))
             {
@@ -267,13 +261,12 @@ public class WeaponHandler : MonoBehaviour
     private void UpdateWeaponPositions()
     {
 
-        // Recorrer la lista de armas y asignar posiciones a los íconos
         for (int i = 0; i < weaponIcons.Count; i++)
         {
             if (i < weapons.Count && weapons[i] != null) // Verificar que haya un arma en la posición
             {
                 weaponIcons[i].enabled = true; // Habilitar el ícono
-                Debug.Log($"Icon {i} for weapon {weapons[i].name} positioned at {weaponIcons[i]}");
+                
 
             }
         }

@@ -19,8 +19,6 @@ public class AmmoUpgrade : MonoBehaviour, IInteractable
                 if (weapon.TryGetComponent<WeaponsBase>(out WeaponsBase weaponBase))
                 {
                     weaponBase.currentAmmo = weaponBase.maxAmmo; // Establecer la munición actual al máximo  
-                    weaponBase.bulletReserve = weaponBase.maxBulletReserve;
-                    Debug.Log("Upgrade Adquirido");
                 }
             }
         }

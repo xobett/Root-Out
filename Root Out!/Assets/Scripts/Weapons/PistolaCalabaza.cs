@@ -4,7 +4,6 @@ using Weapons;
 public class PistolaCalabaza : WeaponsBase, IInteractable
 {
     [Header("SHOTGUN SETTINGS")]
-    [SerializeField] private int bulletsPerShot = 6; // Número de balas por disparo
     [SerializeField] private WeaponData weaponData; // Referencia al Scriptable Object del arma
 
     private WeaponHandler weaponHandler; // Referencia al WeaponHandler
@@ -38,8 +37,6 @@ public class PistolaCalabaza : WeaponsBase, IInteractable
     {
         if (weaponHandler != null && weaponHandler.currentWeapon == gameObject) // Verificar si el arma está en el WeaponHandler y es el arma actual
         {
-
-            FireBullet(bulletsPerShot); // Dispara 6 balas a la vez
             base.Shoot();
             AudioManagerSFX.Instance.PlaySFX("Pistola Calabaza");
         }
