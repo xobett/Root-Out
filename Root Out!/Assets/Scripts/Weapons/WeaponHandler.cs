@@ -30,10 +30,21 @@ public class WeaponHandler : MonoBehaviour
 
     private bool isWheelAnimationActive = false;
 
+    private Dictionary<Image, Quaternion> initialIconRotations = new Dictionary<Image, Quaternion>();
+   
 
     private void Start()
     {
         weaponSelectionWheel.gameObject.SetActive(false); // Desactivar la rueda de armas al inicio
+                                                        
+        foreach (var icon in weaponIcons)
+        {
+            if (icon != null)
+            {
+                initialIconRotations[icon] = icon.transform.rotation;
+               
+            }
+        }
     }
 
     private void Update()
@@ -41,6 +52,16 @@ public class WeaponHandler : MonoBehaviour
         HandleMouseScroll();  // Maneja la rotación de la rueda del ratón para cambiar de arma
     }
 
+    private void LateUpdate()
+    {
+        foreach (var icon in weaponIcons)
+        {
+            if (icon != null && initialIconRotations.ContainsKey(icon))
+            {
+                icon.transform.rotation = initialIconRotations[icon]; // Restaurar rotación inicial
+            }
+        }
+    }
 
     // Maneja la rotación de la rueda del ratón para cambiar de arma
     private void HandleMouseScroll()
@@ -143,6 +164,7 @@ public class WeaponHandler : MonoBehaviour
     // Método para recoger un arma nueva
     public void PickUpWeapon(GameObject newWeapon, WeaponData newWeaponData)
     {
+
         if (weapons.Count < 6) // Limitar el número de armas a 6
         {
             // Insertar el arma en el primer lugar de la lista de armas
@@ -154,13 +176,6 @@ public class WeaponHandler : MonoBehaviour
                 weapons.RemoveAt(6); // Mantener un máximo de 6 armas
                 Destroy(weaponIcons[6].gameObject); // Eliminar el ícono correspondiente
                 weaponIcons.RemoveAt(6);
-            }
-
-            Debug.Log($"Picked up weapon: {newWeapon.name}");
-            Debug.Log("Current weapon order:");
-            for (int i = 0; i < weapons.Count; i++)
-            {
-                Debug.Log($"Weapon {i}: {weapons[i].name}");
             }
 
             // Desactivar el collider del arma para que no se pueda volver a recoger
@@ -246,15 +261,12 @@ public class WeaponHandler : MonoBehaviour
     private void UpdateWeaponPositions()
     {
 
-        // Recorrer la lista de armas y asignar posiciones a los íconos
         for (int i = 0; i < weaponIcons.Count; i++)
         {
             if (i < weapons.Count && weapons[i] != null) // Verificar que haya un arma en la posición
             {
-                weaponIcons[i].transform.SetParent(weaponSelectionWheel); // Asignar el ícono al padre correcto
-                weaponIcons[i].transform.localPosition = weaponIcons[i].transform.localPosition; // Asignar la posición correspondiente
                 weaponIcons[i].enabled = true; // Habilitar el ícono
-                Debug.Log($"Icon {i} for weapon {weapons[i].name} positioned at {weaponIcons[i]}");
+                
 
             }
         }

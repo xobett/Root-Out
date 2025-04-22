@@ -105,7 +105,6 @@ public class AudioManager : MonoBehaviour
         // Reproducir el clip de música correspondiente al nombre proporcionado
         if (musicDictionary.TryGetValue(name, out var sound))
         {
-            Debug.Log("Playing music: " + name);
             musicAudioSource.clip = sound.clip;
             musicAudioSource.volume = sound.volume;
             musicAudioSource.pitch = sound.pitch;

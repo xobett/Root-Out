@@ -52,10 +52,6 @@ public class CameraFollow : MonoBehaviour
         GetCameraNearPlaneSize();
 
         puntoDeMiraCanvas = GameObject.FindGameObjectWithTag("PuntoMira").GetComponent<Image>();
-        if(puntoDeMiraCanvas != null)
-        {
-            Debug.Log("Punto de mira encontrado");
-        }
 
     }
 

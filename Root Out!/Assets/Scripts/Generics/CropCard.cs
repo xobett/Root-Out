@@ -18,8 +18,6 @@ public class CropCard : MonoBehaviour, IInteractable
 
         cropHandler.AddCrop(cropToAdd);
         inventoryHandler.AddItem(inventoryItemToAdd);
-
-        Debug.Log($"{cropToAdd.CropName} was added to the crop handler.");
         Destroy(gameObject);
     }
 }

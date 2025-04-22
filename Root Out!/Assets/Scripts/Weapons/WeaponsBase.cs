@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 namespace Weapons
@@ -44,8 +43,8 @@ namespace Weapons
         [Header("Munición")]
         [SerializeField] public int currentAmmo; // Munición actual
         [SerializeField] public int maxAmmo; // Capacidad máxima de munición
-        [SerializeField] public int bulletReserve; // Reserva de balas
-        [SerializeField] public int maxBulletReserve; // necesito esta variable para que el upgrade haga effecto correctamente
+                                             // [SerializeField] public int bulletReserve; // Reserva de balas
+                                             // [SerializeField] public int maxBulletReserve; // necesito esta variable para que el upgrade haga effecto correctamente
 
         [Header("Estadísticas")]
         [SerializeField] public float damage; // Daño 
@@ -95,14 +94,13 @@ namespace Weapons
         protected virtual void Start()
         {
             currentAmmo = maxAmmo;  // Inicializar la munición actual al valor máximo permitido
-            bulletReserve = maxBulletReserve;
+            //bulletReserve = maxBulletReserve;
             originalDamage = damage; // Almacenar el daño original del 
 
             // Buscar y desactivar el componente de canvasRecarga al inicio
             GameObject canvasRecarga = GameObject.Find("Recarga");
             if (canvasRecarga != null)
             {
-                Debug.Log("Recarga found");
                 spriteRecarga = canvasRecarga.GetComponent<SpriteRenderer>();
                 if (spriteRecarga != null)
                 {
@@ -162,7 +160,7 @@ namespace Weapons
             }
             else if (weaponType == WeaponType.Automatic)
             {
-                // Detecta si se mantiene presionado el botón y si es posible disparar
+
                 if (Input.GetKey(KeyCode.Mouse0) && CanShoot())
                 {
                     nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
@@ -172,7 +170,7 @@ namespace Weapons
             else if (weaponType == WeaponType.BurstFire)
             {
                 // Detecta si se presiona el botón y si es posible disparar en ráfagas
-                if (Input.GetKey(KeyCode.Mouse0) && CanShoot())
+                if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
                 {
                     Shoot();
                 }
@@ -180,30 +178,28 @@ namespace Weapons
             else
             {
                 // Detecta si se presiona el botón y si es posible disparar
-                if (Input.GetKey(KeyCode.Mouse0) && CanShoot())
+                if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
                 {
                     nextTimeToFire = Time.time + 1f / fireRate; // Calcula el tiempo hasta el próximo disparo permitido
                     Shoot(); // Llama al método Shoot para disparar
                 }
-
-                else if (Input.GetKeyDown(KeyCode.Mouse0) && !CanShoot())
-                {
-                    Debug.Log("No ammo left!"); // Mensaje de depuración si no se puede disparar
-                }
             }
-            Reload();
-        }
-        #endregion
 
-        #region Logic Reload
-        protected virtual IEnumerator ReloadCoroutine()  // Corrutina que maneja la lógica de recarga
+            if (!Input.GetKey(KeyCode.Mouse0))  // Solo intenta recargar si no se está manteniendo presionado el clic para disparar
+            {
+                Reload();
+            }
+        }
+
+        protected virtual IEnumerator ReloadCoroutine()
         {
             if (spriteRecarga != null)
             {
                 spriteRecarga.enabled = true; // Activar la imagen de recarga
             }
 
-            isReloading = true; // Indica que el arma está recargando
+            isReloading = true; // Activa el candado de recarga
+
             yield return new WaitForSeconds(reloadTime); // Espera el tiempo de recarga
 
             if (spriteRecarga != null)
@@ -214,55 +210,50 @@ namespace Weapons
             // Calcula cuántas balas se necesitan para recargar completamente
             int bulletsToReload = maxAmmo - currentAmmo;
 
-            if (bulletReserve >= bulletsToReload)
+            // Llama a UseAmmo en el InventoryHandler para reducir la munición de reserva
+            int ammoTaken = GameManager.instance.playerInventoryHandler.UseAmmo(bulletsToReload);
+
+            if (ammoTaken > 0)
             {
-                bulletReserve -= bulletsToReload; // Reduce la reserva de balas
-                currentAmmo = maxAmmo; // Rellena la munición actual al máximo
+                currentAmmo += ammoTaken; // Añade las balas tomadas al cargador actual
             }
-            else
-            {
-                currentAmmo += bulletReserve; // Añade las balas restantes de la reserva a la munición actual
-                bulletReserve = 0; // Agota la reserva de balas
-            }
-            yield return new WaitForSeconds(0.5f); // Espera un breve momento antes de continuar
-            isReloading = false; // Indica que la recarga ha terminado
-            Debug.Log("Reloaded. Ammo: " + currentAmmo + ", Bullets in Reserve: " + bulletReserve);
+
+            isReloading = false; // Desactiva el candado de recarga
         }
 
-        protected virtual void Reload() // Método que maneja la recarga
+        protected virtual void Reload()
         {
+            if (isReloading) // Evita múltiples llamadas
+            {
+                return;
+            }
+
             if (Input.GetKeyDown(KeyCode.R) || currentAmmo == 0)
             {
-                if (spriteRecarga != null) // Comprueba si la imagen de recarga no es nula
-                {
-                    spriteRecarga.enabled = true; // Activar la imagen de recarga
-                }
-
-                if (bulletReserve > 0)
-                {
-                    StartCoroutine(ReloadCoroutine()); // Inicia la recarga si hay balas en la reserva
-                }
-                else
-                {
-                    Debug.Log("No bullets left in reserve!"); // Mensaje de depuración si no hay balas en la reserva
-                }
+                StartCoroutine(ReloadCoroutine()); 
             }
         }
-        #endregion
-
-        #region Logic Fire
         protected virtual void Shoot()
         {
-            int numberBullets = weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1; // Obtener el número de balas a disparar
-            UseAmmo(numberBullets); // Reduce la munición actual
-            FireBullet(numberBullets); // Dispara una bala (instancia el prefab)
+            int numberBullets = weaponType == WeaponType.BurstFire ? bulletsPerBurst : 1;
+
+            if (isReloading) 
+            {
+                return; // Bloquea el disparo si se está recargando
+            }
+
+            if (currentAmmo >= numberBullets) // Verificar si hay suficientes balas en el cargador actual
+            {
+                UseAmmo(numberBullets); // Reduce solo currentAmmo
+                FireBullet(numberBullets);
+            }
         }
         protected bool CanShoot() // Método que verifica si es posible disparar
         {
             // Comprueba que haya pasado suficiente tiempo desde el último disparo y que haya munición disponible
             return Time.time >= nextTimeToFire && currentAmmo > 0;
         }
-        protected void UseAmmo(int numberBullets)  // Método que reduce la munición actual al disparar
+        protected void UseAmmo(int numberBullets) // Método que reduce la munición actual al disparar
         {
             currentAmmo -= numberBullets;
         }
@@ -451,7 +442,7 @@ namespace Weapons
         {
             if (bulletText != null)
             {
-                bulletText.text = $"{currentAmmo} / {bulletReserve}"; // Actualiza el texto con la munición actual y máxima
+                bulletText.text = $"{currentAmmo} / {GameManager.instance.playerInventoryHandler.CurrentAmmoReserve}"; // Actualiza el texto de munición
             }
         }
 

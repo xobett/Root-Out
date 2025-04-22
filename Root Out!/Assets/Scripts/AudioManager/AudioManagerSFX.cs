@@ -51,7 +51,6 @@ public class AudioManagerSFX : MonoBehaviour
         if (sound != null)
         {
             sound.source.Play();
-            Debug.Log($"Reproduciendo sonido: {name}");
         }
         else
         {
@@ -80,7 +79,6 @@ public class AudioManagerSFX : MonoBehaviour
                 sound.source.volume = volume; // Ajusta el volumen de cada AudioSource
             }
         }
-        Debug.Log($"Volumen global ajustado a: {volume}");
     }
     public float GetCurrentSFXVolume()
     {

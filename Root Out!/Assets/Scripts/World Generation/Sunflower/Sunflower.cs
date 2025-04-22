@@ -127,7 +127,6 @@ public class Sunflower : MonoBehaviour
         cloneFog = Instantiate(worldFog, fogSpawnPos, Quaternion.identity);
         cloneFog.transform.parent = gameObject.transform.parent;
 
-        Debug.Log("Spawned fog");
     }
 
     private void BugDetection()

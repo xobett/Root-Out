@@ -12,8 +12,11 @@ public class Ammo : MonoBehaviour, IInteractable
 
     private void AddAmmo()
     {
-        var weaponHandler = GameObject.FindFirstObjectByType<WeaponHandler>();
-        weaponHandler.currentWeapon.GetComponent<WeaponsBase>().bulletReserve += ammoToAdd;
+        //var weaponHandler = GameObject.FindFirstObjectByType<WeaponHandler>();
+        //weaponHandler.currentWeapon.GetComponent<WeaponsBase>().bulletReserve += ammoToAdd;
+
+        // Accede al InventoryHandler para agregar munición
+        GameManager.instance.playerInventoryHandler.AddAmmo(ammoToAdd);
 
         Destroy(gameObject);
     }
