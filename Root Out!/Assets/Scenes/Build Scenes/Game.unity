@@ -2308,6 +2308,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aeff53778275394c86c71a7b022b2f3, type: 3}
+--- !u!4 &237535441 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+  m_PrefabInstance: {fileID: 1847989125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &241128226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3505,7 +3510,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3fe1114dcc34992418bbdc62f598448a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3571,7 +3576,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &352554924
@@ -3613,6 +3618,7 @@ Transform:
   m_Children:
   - {fileID: 152332304}
   - {fileID: 1751025167}
+  - {fileID: 237535441}
   - {fileID: 1019690625}
   - {fileID: 1635876991}
   - {fileID: 728324163}
@@ -5411,7 +5417,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3fe1114dcc34992418bbdc62f598448a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5477,7 +5483,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &554155852
@@ -9381,7 +9387,7 @@ GameObject:
   - component: {fileID: 1021826351}
   - component: {fileID: 1021826350}
   m_Layer: 5
-  m_Name: Next CB
+  m_Name: Equipped CB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9713,7 +9719,7 @@ GameObject:
   - component: {fileID: 1056480727}
   - component: {fileID: 1056480726}
   m_Layer: 5
-  m_Name: Equipped CB
+  m_Name: Next CB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16681,6 +16687,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6491290909466312365, guid: ea0d108839f47f14ea50ed2ab98b613f, type: 3}
   m_PrefabInstance: {fileID: 1701918621}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1847989125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 364596687}
+    m_Modifications:
+    - target: {fileID: 654653523062588023, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_Name
+      value: Red Chibi Pepper Crop Card (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.925
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061843214654895633, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c3b3338310483b4697a9c074b2cc53d, type: 3}
 --- !u!1001 &1876382543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17541,7 +17604,7 @@ PrefabInstance:
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: nextCropCBImage
       value: 
-      objectReference: {fileID: 1021826350}
+      objectReference: {fileID: 1056480726}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: equippedCropIcon
       value: 
@@ -17561,7 +17624,7 @@ PrefabInstance:
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: equippedCropCBImage
       value: 
-      objectReference: {fileID: 1056480726}
+      objectReference: {fileID: 1021826350}
     - target: {fileID: 6837202042025227312, guid: ef4c7facc672dc44793553d252835415, type: 3}
       propertyPath: previousCropCBImage
       value: 
@@ -18436,7 +18499,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3fe1114dcc34992418bbdc62f598448a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -18502,7 +18565,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2081028924
