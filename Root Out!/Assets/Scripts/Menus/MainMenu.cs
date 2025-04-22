@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject panelSettings;
     [SerializeField] GameObject panelMain;
     [SerializeField] GameObject panelLogros;
+    [SerializeField] GameObject panelHowToPlay;
 
     [SerializeField] Slider mainVolumeSlider; // Referencia al slider de volumen principal
     [SerializeField] AudioSource audioSourceMain; // Referencia al AudioSource principal
@@ -98,6 +99,18 @@ public class MainMenu : MonoBehaviour
     {
         mainVolumeSlider.onValueChanged.AddListener(SetMainVolume); // Añade un listener para el slider de volumen principal
         mainVolumeSlider.value = audioSourceMain.volume; // Inicializa el slider con el valor actual del volumen principal
+    }
+
+    public void HowToPlay()
+    {
+        panelMain.SetActive(false);
+        panelHowToPlay.SetActive(true);
+    }
+
+    public void BackHowToPlay()
+    {
+        panelMain.SetActive(true);
+        panelHowToPlay.SetActive(false);
     }
 
     public void LoadCredits()
