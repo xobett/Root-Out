@@ -46,7 +46,7 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // No destruir este objeto al cargar una nueva escena
+           // DontDestroyOnLoad(gameObject); // No destruir este objeto al cargar una nueva escena
         }
 
         // Inicializar el diccionario de música y asegurar que el AudioSource está asignado
