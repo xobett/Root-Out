@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] Slider mainVolumeSlider; // Referencia al slider de volumen principal
     [SerializeField] AudioSource audioSourceMain; // Referencia al AudioSource principal
+    [SerializeField] AudioSource audioTouch; // Referencia al AudioSource para los efectos de sonido al tocar una opcion
 
     [SerializeField] private string scene;
 
@@ -41,7 +42,6 @@ public class MainMenu : MonoBehaviour
         // Asegurarse de que el tiempo de juego esté corriendo
         Time.timeScale = 1;
 
-        //AudioManagerSFX.Instance.PlaySFX("Entrada");
         // Iniciar la transición de la viñeta
         StartCoroutine(VignetteTransition());
     }
@@ -66,31 +66,30 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
-        //AudioManagerSFX.Instance.PlaySFX("Out");
         Application.Quit();
     }
     public void Settings()
     {
-        //AudioManagerSFX.Instance.PlaySFX("Into");
+        audioTouch.Play(); // Reproduce el sonido al tocar la opción
         panelMain.SetActive(false);
         panelSettings.SetActive(true); // Activa el menú de configuración
     }
     public void Back()
     {
-        //AudioManagerSFX.Instance.PlaySFX("Out");
+        audioTouch.Play(); // Reproduce el sonido al tocar la opción
         panelMain.SetActive(true);
         panelSettings.SetActive(false);
     }
 
     public void Logros()
     {
-        //AudioManagerSFX.Instance.PlaySFX("Into");
+        audioTouch.Play(); // Reproduce el sonido al tocar la opción
         panelMain.SetActive(false);
         panelLogros.SetActive(true);
     }
     public void BackLogros()
     {
-        //AudioManagerSFX.Instance.PlaySFX("Out");
+        audioTouch.Play(); // Reproduce el sonido al tocar la opción
         panelMain.SetActive(true);
         panelLogros.SetActive(false);
     }
@@ -102,6 +101,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadCredits()
     {
+        audioTouch.Play(); // Reproduce el sonido al tocar la opción
         SceneManager.LoadSceneAsync(scene);
     }
 

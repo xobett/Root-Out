@@ -67,51 +67,24 @@ public class CropHandler : MonoBehaviour
 
     private void DisplayCropsStats()
     {
-        //if (previousCrop != null) previousCropText.text = previousCrop.cooldownBypass > 0 ? $"{previousCrop.cooldownBypass}" : string.Empty;
-        //if (equippedCrop != null) equippedCropText.text = equippedCrop.cooldownBypass > 0 ? $"{equippedCrop.cooldownBypass}" : string.Empty;
-        //if (nextCrop != null) nextCropText.text = nextCrop.cooldownBypass > 0 ? $"{nextCrop.cooldownBypass}" : string.Empty;
+        //if (previousCrop != null) previousCropText.text = $"+{previousCrop.cooldownBypass}";
+        //if (equippedCrop != null) equippedCropText.text = $"+{equippedCrop.cooldownBypass}";
+        //if (nextCrop != null) nextCropText.text = $"+{nextCrop.cooldownBypass}";
 
-        if (previousCrop != null)
-        {
-            if (previousCrop.cooldownBypass > 0)
-            {
-                previousCropText.text = previousCrop.cooldownBypass.ToString();
-                previousCropCBImage.gameObject.SetActive(true);
-            }
-            else
-            {
-                previousCropText.text = string.Empty;
-                previousCropCBImage.gameObject.SetActive(false);
-            }
-        }
 
-        if (equippedCrop != null)
-        {
-            if (equippedCrop.cooldownBypass > 0)
-            {
-                equippedCropText.text = equippedCrop.cooldownBypass.ToString();
-                equippedCropCBImage.gameObject.SetActive(true); 
-            }
-            else
-            {
-                equippedCropText.text = string.Empty;
-                equippedCropCBImage.gameObject.SetActive(false);
-            }
-        }
 
-        if (nextCrop != null)
-        {
-            if (nextCrop.cooldownBypass > 0)
-            {
-                nextCropText.text = nextCrop.cooldownBypass.ToString();
-                nextCropCBImage.gameObject.SetActive(true); 
-            }
-            else
-            {
-                nextCropText.text = string.Empty;
-                nextCropCBImage.gameObject.SetActive(false);
-            }
-        }
+        if (previousCrop != null && previousCrop.cooldownBypass > 0) previousCropCBImage.gameObject.SetActive(true);
+        else previousCropCBImage.gameObject.SetActive(false);
+
+        if (equippedCrop != null && equippedCrop.cooldownBypass > 0) equippedCropCBImage.gameObject.SetActive(true);
+        else equippedCropCBImage.gameObject.SetActive(false);
+
+        if (nextCrop != null && nextCrop.cooldownBypass > 0) nextCropCBImage.gameObject.SetActive(true);
+        else nextCropCBImage.gameObject.SetActive(false);
+
+        if (previousCrop != null) previousCropText.text = previousCrop.cooldownBypass > 0 ? $"{previousCrop.cooldownBypass}" : string.Empty;
+        if (equippedCrop != null) equippedCropText.text = equippedCrop.cooldownBypass > 0 ? $"{equippedCrop.cooldownBypass}" : string.Empty;
+        if (nextCrop != null) nextCropText.text = nextCrop.cooldownBypass > 0 ? $"{nextCrop.cooldownBypass}" : string.Empty;
 
     }
 

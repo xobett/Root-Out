@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,8 +28,6 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private GameObject cropInventoryGrid;
     [SerializeField] private GameObject weaponInventoryGrid;
     [SerializeField] private GameObject perkInventoryGrid;
-
-    private List<InventoryItemData> itemsInstantiated = new List<InventoryItemData>();
 
     [Header("PLAYER INVENTORY SETTINGS")]
     [SerializeField] private InventoryHandler playerInventory;
@@ -73,38 +69,34 @@ public class UIInventory : MonoBehaviour
             DeactivateInput();
 
             for (int i = itemsDisplayed; i < playerInventory.Inventory.Count; i++)
-            {
-                if (!VerifyDuplicate(playerInventory.Inventory[i]))
+            {                
+                GameObject uiIcon = Instantiate(uiInventoryIcon);
+                uiIcon.GetComponent<Image>().sprite = playerInventory.Inventory[i].ItemIcon;
+
+                var uiIconInfo = uiIcon.GetComponent<UiInventoryIconInfo>();
+                uiIconInfo.GetItem(playerInventory.Inventory[i]);
+
+                switch (playerInventory.Inventory[i].ItemType)
                 {
-                    GameObject uiIcon = Instantiate(uiInventoryIcon);
-                    uiIcon.GetComponent<Image>().sprite = playerInventory.Inventory[i].ItemIcon;
+                    case ItemType.Crop:
+                        {
+                            uiIcon.transform.SetParent(cropInventoryGrid.transform, false);
+                            break;
+                        }
 
-                    var uiIconInfo = uiIcon.GetComponent<UiInventoryIconInfo>();
-                    uiIconInfo.GetItem(playerInventory.Inventory[i]);
+                    case ItemType.Weapon:
+                        {
+                            uiIcon.transform.SetParent(weaponInventoryGrid.transform, false);
+                            break;
+                        }
 
-                    switch (playerInventory.Inventory[i].ItemType)
-                    {
-                        case ItemType.Crop:
-                            {
-                                uiIcon.transform.SetParent(cropInventoryGrid.transform, false);
-                                break;
-                            }
-
-                        case ItemType.Weapon:
-                            {
-                                uiIcon.transform.SetParent(weaponInventoryGrid.transform, false);
-                                break;
-                            }
-
-                        case ItemType.Perk:
-                            {
-                                uiIcon.transform.SetParent(perkInventoryGrid.transform, false);
-                                break;
-                            } 
-                    }
+                    case ItemType.Perk:
+                        {
+                            uiIcon.transform.SetParent(perkInventoryGrid.transform, false);
+                            break;
+                        }
                 }
 
-                itemsInstantiated.Add(playerInventory.Inventory[i]);
                 itemsDisplayed++;
                 Debug.Log($"Inventory item number : {i}");
             }
@@ -114,11 +106,6 @@ public class UIInventory : MonoBehaviour
         {
             RegainInput();
         }
-    }
-
-    private bool VerifyDuplicate(InventoryItemData itemToVerify)
-    {
-        return itemsInstantiated.Contains(itemToVerify); 
     }
 
     private void DeactivateInput()
